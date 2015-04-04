@@ -12,6 +12,12 @@ title: 'Hello, world.'
 </head>
 <body>
   <h1>Scott Staniewicz</h1>
-  <p>Another paragraph!  Maybe more text!</p>
+  <ul>
+  {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
 </body>
 </html>
