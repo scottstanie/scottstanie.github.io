@@ -1,0 +1,52 @@
+<h1>Insertion Sort</h1>
+
+<p>Start with sequence of keys &lt; a<sub>1</sub>, a<sub>2</sub>, ... ,a<sub>n</sub> ></p>
+
+<p>The insertion sort algorithm in python looks like the following:</p>
+
+<pre><code>for j in range(1, len(A)):
+    key = A[j]
+    # Insert A[j] into sorted sequence A[0..j-1]
+    i = j - 1
+    while i &gt;= -1 and A[i] &gt; key:
+        A[i + 1] = A[i]
+        i -= 1
+    A[i + 1] = key
+
+return A
+</code></pre>
+
+<p>Explained briefly, the algorithm will look at each item starting with the second, compare it to all items that come before it (lower index, to the left), move each item to the left once over, and stop once either the beginning of the array is reached or the current key is greater than the item to the left.</p>
+
+<h3>Loop invariant</h3>
+
+<p>At each itertion of j, the array A[0..j-1] consists of the elements originally in the posisions 0 through j-1, but now in sorted order.<br/>
+There are three points to show about a loop invariant to prove it is correct:</p>
+
+<ul>
+<li><strong>Initialization</strong>: It is true prior to the first iteration of the loop</li>
+<li><strong>Maintenance</strong>: If it is true before an iteration, it remains true after</li>
+<li><strong>Termination</strong>: When a loop terminates, the invariant gives us a useful property that helps show the algorithm is correct</li>
+</ul>
+
+
+<p>The Initialization and Maintenance properties are similar to the base case and inductive step of mathematical induction.</p>
+
+<p>In the insertion sort example:</p>
+
+<ul>
+<li><strong>Initialization</strong>: Prior to the first iteration, A[0..j-1] = A[0], which is trivially sorted</li>
+<li><strong>Maintenance</strong>: Each iteration, the loop inner i loop will move A[j-1], A[j-2], ... to the right until the correct place for A[j] is found. After incrementing j, the loop invariant holds.</li>
+<li><strong>Termination</strong>: When the loop terminates, this means that j has reached the end of A. Since the loop invariant holds during each iteration, we now have all of A sorted.</li>
+</ul>
+
+
+<h2>Big O Analysis of Insertion Sort</h2>
+
+<p>To study the running times of insertion sort, we must define the input size and which running time we mean. Most cases, input size means the number of items in the input- in this case, the array of size n. When multiplying two integers, the total number of bits needed to represent the input is the input size.<br/>
+Running Time is usually measured in primitive \"steps\" to make it machine indepedent. Analysis can consist of looking at:
+- Worst case run time: theta of n
+- Average case: big-O
+- Best case:</p>
+
+<p>Worst case is often used when you either want to know the upper bound of run time, or realistically the algorithm's worst case may appear often (e.g. a database search algorithm where the item is not present).</p>
