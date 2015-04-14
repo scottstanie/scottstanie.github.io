@@ -1,3 +1,4 @@
+port: 5000
 # Name of your blog (this will show up at the top of your page and in the RSS feed)
 name: Blog of Scott Staniewicz
 
@@ -38,6 +39,6 @@ defaults:
   -
     scope:
       path: ""
-      type: "posts"
+      # type: "posts"
     values:
-      layout: "my-site"
+      layout: "default"
