@@ -1,3 +1,7 @@
+---
+title: 'First part of algorithms.'
+layout: default
+---
 # Insertion Sort
 
 Start with sequence of keys < a<sub>1</sub>, a<sub>2</sub>, \.\.\. ,a<sub>n</sub> >
