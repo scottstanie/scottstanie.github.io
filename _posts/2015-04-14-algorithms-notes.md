@@ -44,3 +44,17 @@ Running Time is usually measured in primitive \"steps\" to make it machine indep
 - Best case:
 
 Worst case is often used when you either want to know the upper bound of run time, or realistically the algorithm's worst case may appear often (e.g. a database search algorithm where the item is not present).  
+
+
+# Merge Sort
+
+Merge sort is the first example of a *divide and conquer* algorithm. This is in contrast to the *incremental* algorithm of insertion sort. In that case, we had A[1..j-1] sorted, and just inserted A[j] into its proper place.  
+Divide and conquer algorithms have three stages:
+- **Divide** the problem into smaller instances of the same problem
+- **Conquer** the subproblems by solving recursively. Once they are small enough, solve in a straightforward manner.
+- **Combine** the solutions into the overall olution
+
+In merge sort, the steps are:
+- Divide the n-element sequence into two subsequences
+- Conquer each subsequence using merge sort
+- Merge the two sorted subsequences into one sorted answer
