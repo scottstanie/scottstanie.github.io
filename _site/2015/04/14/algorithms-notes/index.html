@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Algorithms Notes</title>
+    <title>First part of algorithms.</title>
      <link rel="stylesheet"
   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <style type="text/css" media="screen">
@@ -27,6 +27,8 @@
   <body>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <h1>Insertion Sort</h1>
+
+<p><img src="http://i.imgur.com/25LFv2K.png" title="source: imgur.com" /></p>
 
 <p>Start with sequence of keys &lt; a<sub>1</sub>, a<sub>2</sub>, ... ,a<sub>n</sub> ></p>
 
@@ -78,6 +80,19 @@ Running Time is usually measured in primitive \"steps\" to make it machine indep
 - Best case:</p>
 
 <p>Worst case is often used when you either want to know the upper bound of run time, or realistically the algorithm's worst case may appear often (e.g. a database search algorithm where the item is not present).</p>
+
+<h1>Merge Sort</h1>
+
+<p>Merge sort is the first example of a <em>divide and conquer</em> algorithm. This is in contrast to the <em>incremental</em> algorithm of insertion sort. In that case, we had A[1..j-1] sorted, and just inserted A[j] into its proper place.<br/>
+Divide and conquer algorithms have three stages:
+- <strong>Divide</strong> the problem into smaller instances of the same problem
+- <strong>Conquer</strong> the subproblems by solving recursively. Once they are small enough, solve in a straightforward manner.
+- <strong>Combine</strong> the solutions into the overall olution</p>
+
+<p>In merge sort, the steps are:
+- Divide the n-element sequence into two subsequences
+- Conquer each subsequence using merge sort
+- Merge the two sorted subsequences into one sorted answer</p>
 
   </body>
 </html>

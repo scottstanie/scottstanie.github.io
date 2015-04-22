@@ -1,0 +1,23 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{hyperref}
+\usepackage{amsmath}
+
+\title{Sorting}
+\begin{document}
+
+\begin{tabular}{l | l l}
+	Algorithm & Worst-case & Average\slash expected \\
+	\hline
+	Insertion sort & $\Theta(n^2)$ & $\Theta(n^2)$ \\
+	Merge sort & $\Theta(n \lg n)$ & $\Theta(n \lg n)$ \\
+	Heapsort & $\Theta(n \lg n)$ & -- \\
+	Quicksort & $\Theta(n^2)$ & $\Theta(n \lg n)$ (expected) \\
+	Counting sort & $\Theta(k + n)$ & $\Theta(k + n)$ \\
+	Radix sort & $\Theta(d(n + k))$ & $\Theta(d(n + j))$ \\
+	Bucket sort & $\Theta(n^2)$ & $\Theta(n)$ (average) \\
+
+\end{tabular}
+
+\end{document}
