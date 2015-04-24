@@ -135,6 +135,7 @@ and pushed onto a queue to be searched.
 Visited boards are marked
 '''
 from collections import deque
+import copy
 
 
 class Piece(object):
@@ -152,6 +153,19 @@ class Piece(object):
     def __repr__(self):
         return self.letter
 
+    # Check if it can move up
+    def chk_d(self, pos):
+        return pos < 12
+
+    def chk_u(self, pos):
+        return pos > 3
+
+    def chk_l(self, pos):
+        return pos % 4 != 0
+
+    def chk_r(self, pos):
+        return (pos - 3) % 4 != 0
+
     def chk_ul(self, pos):
         return self.chk_u(pos) and self.chk_l(pos)
 
@@ -165,28 +179,13 @@ class Piece(object):
         return self.chk_d(pos) and self.chk_r(pos)
 
 
-    @staticmethod
-    # Check if it can move up
-    def chk_d(pos):
-        return pos < 12
-
-    def chk_u(pos):
-        return pos > 3
-
-    def chk_l(pos):
-        return pos % 4 != 0
-
-    def chk_r(pos):
-        return (pos - 3) % 4 != 0
-
-
 class Pawn(Piece):
     def __init__(self, *args):
         super(Pawn, self).__init__(*args)
         self.letter = 'P'
         self.my_moves = [
-            (3, self.chk_r),
-            (5, self.chk_l),
+            (3, self.chk_dl),
+            (5, self.chk_dr),
             ]
 
     def __str__(self):
@@ -199,7 +198,7 @@ class Pawn(Piece):
 class Knight(Piece):
     def __init__(self, *args):
         super(Knight, self).__init__(*args)
-        self.letter = 'K'
+        self.letter = 'N'
             # [UUL, UUR, ULL, URR, DLL, DRR, DDL, DDR]
         self.my_moves = [
             (-9, self.chk_uul),
@@ -212,43 +211,41 @@ class Knight(Piece):
             (9, self.chk_ddr),
         ]
 
-    def chk_uul(self):
-        return self.chk_uu() and self.chk_l()
+    def chk_dd(self, pos):
+        return pos < 8
 
-    def chk_uur(self):
-        return self.chk_uu() and self.chk_r()
+    def chk_uu(self, pos):
+        return pos > 7
 
-    def chk_ull(self):
-        return self.chk_u() and self.chk_ll()
+    def chk_ll(self, pos):
+        return (pos % 4 != 0) and ((pos - 1) % 4 != 0)
 
-    def chk_urr(self):
-        return self.chk_u() and self.chk_rr()
-
-    def chk_dll(self):
-        return self.chk_d() and self.chk_ll()
-
-    def chk_drr(self):
-        return self.chk_d() and self.chk_rr()
-
-    def chk_ddl(self):
-        return self.chk_dd() and self.chk_l()
-
-    def chk_ddr(self):
-        return self.chk_dd() and self.chk_r()
-
-    @staticmethod
-    # Knight specific movement checks
-    def chk_dd(pos):
-        return pos > 8
-
-    def chk_uu(pos):
-        return pos < 7
-
-    def chk_ll(pos):
-        return (pos.pos % 4 != 0) and ((pos - 1) % 4 != 0)
-
-    def chk_rr(pos):
+    def chk_rr(self, pos):
         return ((pos - 2) % 4 != 0) and ((pos - 3) % 4 != 0)
+
+    def chk_uul(self, pos):
+        return self.chk_uu(pos) and self.chk_l(pos)
+
+    def chk_uur(self, pos):
+        return self.chk_uu(pos) and self.chk_r(pos)
+
+    def chk_ull(self, pos):
+        return self.chk_u(pos) and self.chk_ll(pos)
+
+    def chk_urr(self, pos):
+        return self.chk_u(pos) and self.chk_rr(pos)
+
+    def chk_dll(self, pos):
+        return self.chk_d(pos) and self.chk_ll(pos)
+
+    def chk_drr(self, pos):
+        return self.chk_d(pos) and self.chk_rr(pos)
+
+    def chk_ddl(self, pos):
+        return self.chk_dd(pos) and self.chk_l(pos)
+
+    def chk_ddr(self, pos):
+        return self.chk_dd(pos) and self.chk_r(pos)
 
 
 class Bishop(Piece):
@@ -305,6 +302,7 @@ class Board_state(object):
         self.pieces = pieces
         self.neighbors = neighbors
         self.visited = visited
+        self.parent = parent
         self.string_form = self.stringify()
         self.stringify()
         self.winner = False  # Used to trace paths of winners
@@ -323,6 +321,9 @@ class Board_state(object):
 
     def __str__(self):
         return self.string_form
+
+    def size(self):
+        return len([p for p in self.pieces if p])
 
     def initialize_pieces(self):
         '''Returns non zero pieces and sets their index pos'''
@@ -347,68 +348,66 @@ class Board_state(object):
         for piece in pieces:
             # Find the captures available- a list of new positions
             capture_positions = self.find_capture(piece)
-            for idx in piece.next_positions():
-                if idx in piece_indices and idx != piece.pos:
-                    print 'piece is: ', piece
-                    print 'pieces next position ', idx
-                    new_pieces = self.capture(piece, idx, piece.pos)
-                    b = Board_state(pieces=new_pieces)
-                    b.initialize_pieces()
-                    # if not visited.get(b.string_form):
-                    new_boards.append(b)
-                        # Mark as visited by storing in hash
-                        # visited[b] = 1
-                    b.parent = self
+            for cap_pos in capture_positions:
+                new_pieces = self.capture(piece, cap_pos, piece.pos)
+                b = Board_state(pieces=new_pieces)
+                b.initialize_pieces()
+                new_boards.append(b)
+                b.parent = self
 
-        # print 'new boards'
-        # for b in new_boards:
-            # print b
-        # print '---'
         return new_boards
-
-    def capture(self, piece_to_move, capture_pos, old_pos):
-        '''If there is a capture, return pieces for a new Board_state'''
-        new_pieces = list(self.pieces)
-        piece_to_move.pos = capture_pos
-        new_pieces[capture_pos] = piece_to_move
-        new_pieces[old_pos] = 0
-        return tuple(new_pieces)
 
     def find_capture(self, piece):
         # Check all legal directions with their checking function
-        legal_dirs = [(move, chk_func) for move, chk_func in piece.my_moves if piece.chk_func(piece.pos)]
-        cur_pos = piece.pos
-
+        legal_dirs = [(move, chk_func) for move, chk_func in piece.my_moves if chk_func(piece.pos)]
         capture_positions = []
         for direc, chk_func in legal_dirs:
+            cur_pos = piece.pos  # Reset to the original position
             capture_flag = False
-            one_move_flag = False
+            one_move_flag = False  # Pawns and knight only move once
+
             # Keep moving until there is a capture or a boundary
-            while not capture_flag and not one_move_flag and piece.chk_func(cur_pos):
+            while not capture_flag and not one_move_flag and chk_func(cur_pos):
                 if self.pieces[cur_pos + direc]:
                     capture_flag = True
                     capture_positions.append(cur_pos + direc)
                 cur_pos += direc
-                if piece.letter in ('N', 'P'):  # Pawns and knight only move once
+                if piece.letter in ('N', 'P'):
                     one_move_flag = True
 
         return capture_positions
 
+    def capture(self, piece_to_move, capture_pos, old_pos):
+        '''If there is a capture, return pieces for a new Board_state'''
+        new_pieces = list(self.pieces)
+        piece_copy = copy.deepcopy(piece_to_move)
+        piece_copy.pos = capture_pos
+        new_pieces[capture_pos] = piece_copy
+        new_pieces[old_pos] = 0
+        return tuple(new_pieces)
 
 
+def find_path(cur_board, path_num, path_list=[]):
+    if cur_board.parent:
+        cur_copy = copy.deepcopy(cur_board)
+        cur_copy.parent.winner = path_num
+        path_list.append(cur_copy.parent)
+        path_list = find_path(cur_copy.parent, path_num, path_list)
 
-if __name__ == '__main__':
+    return path_list
+
+
+def main():
     q = Queen()
     r = Rook()
     p = Pawn()
-    # print q.my_moves
-    # print 'position: ', q.pos
-    # print q.allowed_moves()
+    n = Knight()
+
     pieces = (
             0, q, 0, 0,
-            0, p, r, 0,
             0, 0, 0, 0,
-            0, 0, 0, 0,)
+            0, 0, p, 0,
+            0, n, 0, 0,)
     b = Board_state(pieces=pieces)
     b.initialize_pieces()
     print 'START'
@@ -417,18 +416,55 @@ if __name__ == '__main__':
     qu = deque()
     qu.append(b)
 
+    all_boards = []
+    all_boards.append(b)
+
     visited = {}
     iter_num = 1
     while len(qu) > 0:
-        print '{} Boards in the queue'.format(len(qu))
-        print 'Running this board: '
+        # print '{} Boards in the queue'.format(len(qu))
+        # print 'Running this board: '
         cur = qu.popleft()
-        print cur
-        new_boards = cur.find_all_captures(visited)
-        qu.extend(new_boards)
-        # print visited
-        print 'ITERATION NUMBER {}'.format(iter_num)
-        iter_num += 1
-        if iter_num == 100:
-            break
+        all_boards.append(cur)
+        # print cur
 
+        if cur.size() > 1:
+            new_boards = cur.find_all_captures(visited)
+            # print 'new boards on iter ', iter_num
+            # for b in new_boards:
+                # print b
+            qu.extend(new_boards)
+        else:
+            cur.winner = True
+
+        # print visited
+        iter_num += 1
+
+    all_winners = [board for board in all_boards if board.winner]
+
+    print 'all winners'
+    # for b in all_winners:
+        # print b
+
+    win_path = []
+    for path_num, board in enumerate(all_winners):
+        # print path_num
+        # print board
+        # print 'parent'
+        # print board.parent
+        board.winner = path_num
+        one_path = find_path(board, path_num)
+        win_path.append(one_path)
+
+    print 'WINNERS:'
+    # for w_path in win_path:
+        # print '---------'
+        # for w in w_path
+            # print w
+    for b in all_boards:
+        if b.winner:
+            print b.winner
+            print b
+
+if __name__ == '__main__':
+    main()

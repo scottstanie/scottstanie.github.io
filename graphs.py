@@ -108,8 +108,6 @@ class Stack(object):
         return not self.items
 
 
-
-
 if __name__ == '__main__':
     a = List_node(1)
     b = List_node(2)
