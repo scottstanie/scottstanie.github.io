@@ -383,8 +383,8 @@ class Board_state(object):
         return tuple(new_pieces)
 
 
-def run_BFS(start, queue):
-    queue.append(start)
+def run_BFS(start_board, queue):
+    queue.append(start_board)
 
     all_boards = []
     win_idx = 0
@@ -440,16 +440,16 @@ def main():
             r, 0, 0, q,
             0, 0, p, 0,
             0, n, 0, 0,)
-    start = Board_state(pieces=pieces)
-    start.initialize_pieces()
+    start_board = Board_state(pieces=pieces)
+    start_board.initialize_pieces()
 
-    print 'START'
+    print 'START_board'
     print '------'
-    print start
+    print start_board
 
     queue = deque()
 
-    all_boards, num_strategies = run_BFS(start, queue)
+    all_boards, num_strategies = run_BFS(start_board, queue)
 
     all_winners = [board for board in all_boards if board.win_paths]
 

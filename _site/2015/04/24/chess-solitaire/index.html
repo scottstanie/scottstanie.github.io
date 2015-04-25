@@ -26,8 +26,37 @@
   </head>
   <body>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <p>Here is an example of Breadth First Search to traverse a graph and find all possible paths. The graph here is a representation of a 4x4 chess board in the game of <a href="http://www.thinkfun.com/microsite/solitairechess/demo">chess solitaire</a>. The pieces are standard chess pieces. The only legal moves are captures of other pieces. Pawns only being able to move downward.
-The board starts in a random configuration, and the objective of the puzzle is to be left with only one piece.</p>
+    <p>Here is an example of Breadth First Search (BFS) to traverse a graph and find all possible paths. The graph here is a representation of a 4x4 chess board in the game of <a href="http://www.thinkfun.com/microsite/solitairechess/demo">chess solitaire</a>. The pieces are standard chess pieces. The only legal moves are captures of other pieces. Pawns only being able to move downward.<br/>
+The board starts in a random configuration, and the objective of the puzzle is to be left with only one piece.<br/>
+An interesting programming problem related to this game: Create a program that can accept an arbitrary board state as input and determine if there is a solution. If there are solutions, print out all steps for each one.<br/>
+The steps to programming this solution are as follows:
+1. Create classes for each type of piece, with methods for the available move directions that test for boundaries
+2. Create a class for the board state with the methods to find all available moves from the current state. Include an attribute for marking the parent of the board state- that is, which board came before the current one, with <code>None</code> as the parent of the starting board.
+3. For the BFS, create a queue (from <code>collections.deque</code>) to store the board states for testing each one. As new board states are found from each one tested, push them on to the back of the queue.</p>
+
+<p>The actual BFS algorithm looks like this, where <code>Board_state.size()</code> is a method to list how many pieces are left on the board, and <code>Board_state.win_paths</code> is list of the indices to keep track of which winning paths the state was a part of.</p>
+
+<pre><code>def run_BFS(start_board, queue):
+    all_boards = []
+    win_idx = 0
+
+    queue.append(start_board)
+
+    while len(queue) &gt; 0:
+        cur = queue.popleft()
+        all_boards.append(cur)
+
+        if cur.size() &gt; 1:
+            new_boards = cur.find_all_captures()
+            queue.extend(new_boards)
+        else:
+            cur.win_paths.append(win_idx)
+            win_idx += 1
+
+    num_strategies = win_idx
+
+    return all_boards, num_strategies
+</code></pre>
 
   </body>
 </html>
