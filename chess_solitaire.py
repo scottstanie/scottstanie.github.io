@@ -383,6 +383,32 @@ class Board_state(object):
         return tuple(new_pieces)
 
 
+def run_BFS(start, queue):
+    queue.append(start)
+
+    all_boards = []
+    win_idx = 0
+
+    while len(queue) > 0:
+        cur = queue.popleft()
+        all_boards.append(cur)
+
+        # DEBUG: print each board through the queue
+        # print 'Running this board: '
+        # print cur
+
+        if cur.size() > 1:
+            new_boards = cur.find_all_captures()
+            queue.extend(new_boards)
+        else:
+            cur.win_paths.append(win_idx)
+            win_idx += 1
+
+    num_strategies = win_idx
+
+    return all_boards, num_strategies
+
+
 def find_path(cur_board, path_num):
     if cur_board.parent:
         cur_board.parent.win_paths.append(path_num)
@@ -411,41 +437,24 @@ def main():
 
     pieces = (
             0, q, 0, 0,
-            0, 0, 0, 0,
+            r, 0, 0, 0,
             0, 0, p, 0,
             0, n, 0, 0,)
-    b = Board_state(pieces=pieces)
-    b.initialize_pieces()
+    start = Board_state(pieces=pieces)
+    start.initialize_pieces()
+
     print 'START'
     print '------'
-    print b
+    print start
 
-    qu = deque()
-    qu.append(b)
+    queue = deque()
 
-    all_boards = []
-    win_idx = 0
-    while len(qu) > 0:
-        cur = qu.popleft()
-        all_boards.append(cur)
-
-        # DEBUG: print each board through the queue
-        # print 'Running this board: '
-        # print cur
-
-        if cur.size() > 1:
-            new_boards = cur.find_all_captures()
-            qu.extend(new_boards)
-        else:
-            cur.win_paths.append(win_idx)
-            win_idx += 1
-
-    num_strategies = win_idx
+    all_boards, num_strategies = run_BFS(start, queue)
 
     all_winners = [board for board in all_boards if board.win_paths]
 
+    # Trace back along the graph for each winner to enumerate paths
     for path_num, board in enumerate(all_winners):
-        # Trace back along the graph for each winner to enumerate path
         find_path(board, path_num)
 
     print_winners(all_boards, num_strategies)
