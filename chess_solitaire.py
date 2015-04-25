@@ -132,7 +132,6 @@ each board state as a node on the graph. The funtion find_next(board)
 will calculate all possible next board configurations.
 These next possible configurations are listed as neighbors for the node
 and pushed onto a queue to be searched.
-Visited boards are marked
 '''
 from collections import deque
 import copy
@@ -297,15 +296,13 @@ class Board_state(object):
                     0, 0, 0, 0,
                     0, 0, 0, 0,),
             neighbors=[],
-            parent=None,
-            visited=False):
+            parent=None):
         self.pieces = pieces
         self.neighbors = neighbors
-        self.visited = visited
         self.parent = parent
         self.string_form = self.stringify()
         self.stringify()
-        self.winner = False  # Used to trace paths of winners
+        self.win_paths = []  # Used to trace paths of winners
 
         # self.initialize_pieces()
 
@@ -338,7 +335,7 @@ class Board_state(object):
         self.pieces = tuple(new_pieces)
         self.string_form = self.stringify()
 
-    def find_all_captures(self, visited):
+    def find_all_captures(self):
         '''Loop through pieces of board, find available next moves'''
         pieces = [piece for piece in self.pieces if piece]
         # piece_indices = [idx for idx, p in enumerate(self.pieces) if p]
@@ -352,8 +349,8 @@ class Board_state(object):
                 new_pieces = self.capture(piece, cap_pos, piece.pos)
                 b = Board_state(pieces=new_pieces)
                 b.initialize_pieces()
-                new_boards.append(b)
                 b.parent = self
+                new_boards.append(b)
 
         return new_boards
 
@@ -387,14 +384,10 @@ class Board_state(object):
         return tuple(new_pieces)
 
 
-def find_path(cur_board, path_num, path_list=[]):
+def find_path(cur_board, path_num):
     if cur_board.parent:
-        cur_copy = copy.deepcopy(cur_board)
-        cur_copy.parent.winner = path_num
-        path_list.append(cur_copy.parent)
-        path_list = find_path(cur_copy.parent, path_num, path_list)
-
-    return path_list
+        cur_board.parent.win_paths.append(path_num)
+        find_path(cur_board.parent, path_num)
 
 
 def main():
@@ -417,54 +410,43 @@ def main():
     qu.append(b)
 
     all_boards = []
-    all_boards.append(b)
-
-    visited = {}
-    iter_num = 1
+    win_idx = 0
     while len(qu) > 0:
-        # print '{} Boards in the queue'.format(len(qu))
-        # print 'Running this board: '
         cur = qu.popleft()
         all_boards.append(cur)
-        # print cur
+        print 'Running this board: '
+        print cur
 
         if cur.size() > 1:
-            new_boards = cur.find_all_captures(visited)
-            # print 'new boards on iter ', iter_num
-            # for b in new_boards:
-                # print b
+            new_boards = cur.find_all_captures()
             qu.extend(new_boards)
         else:
-            cur.winner = True
+            cur.win_paths.append(win_idx)
+            win_idx += 1
 
-        # print visited
-        iter_num += 1
+    all_winners = [board for board in all_boards if board.win_paths]
 
-    all_winners = [board for board in all_boards if board.winner]
-
-    print 'all winners'
-    # for b in all_winners:
-        # print b
-
-    win_path = []
     for path_num, board in enumerate(all_winners):
-        # print path_num
-        # print board
-        # print 'parent'
-        # print board.parent
-        board.winner = path_num
-        one_path = find_path(board, path_num)
-        win_path.append(one_path)
+        find_path(board, path_num)
 
     print 'WINNERS:'
-    # for w_path in win_path:
-        # print '---------'
-        # for w in w_path
-            # print w
-    for b in all_boards:
-        if b.winner:
-            print b.winner
-            print b
+
+    still_winners = True
+    win_idx = 0
+
+    while still_winners:
+        test_flag = 0
+        for b in all_boards:
+            if win_idx in b.win_paths:
+                test_flag = 1
+                print b.win_paths
+                print b
+
+        if not test_flag:
+            still_winners = False
+        else:
+            win_idx += 1
+
 
 if __name__ == '__main__':
     main()
