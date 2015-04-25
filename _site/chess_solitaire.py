@@ -436,8 +436,8 @@ def main():
     n = Knight()
 
     pieces = (
-            0, 0, 0, 0,
-            r, 0, 0, q,
+            0, q, 0, 0,
+            r, 0, 0, 0,
             0, 0, p, 0,
             0, n, 0, 0,)
     start = Board_state(pieces=pieces)
