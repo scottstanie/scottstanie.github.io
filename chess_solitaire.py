@@ -414,8 +414,7 @@ def main():
     while len(qu) > 0:
         cur = qu.popleft()
         all_boards.append(cur)
-        print 'Running this board: '
-        print cur
+        print 'Running this board: ', cur
 
         if cur.size() > 1:
             new_boards = cur.find_all_captures()
@@ -429,12 +428,15 @@ def main():
     for path_num, board in enumerate(all_winners):
         find_path(board, path_num)
 
-    print 'WINNERS:'
+    print '------'
+    print 'WINNING PATHS:'
+    print '------'
 
     still_winners = True
     win_idx = 0
 
     while still_winners:
+        print 'Strategy Number {}'.format(win_idx)
         test_flag = 0
         for b in all_boards:
             if win_idx in b.win_paths:
@@ -446,7 +448,7 @@ def main():
             still_winners = False
         else:
             win_idx += 1
-
+            print '-------'
 
 if __name__ == '__main__':
     main()
