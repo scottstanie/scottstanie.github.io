@@ -299,21 +299,8 @@ class Board_state(object):
         self.pieces = pieces
         self.neighbors = neighbors
         self.parent = parent
-        self.string_form = self.stringify()
-        self.stringify()
+        self.string_form = self.stringify(self.pieces)
         self.win_paths = []  # Used to trace paths of winners
-
-        # self.initialize_pieces()
-
-    def stringify(self):
-        '''Visualize board state'''
-        all_str = ''
-        for row_idx in range(4):
-            row = self.pieces[4*row_idx: 4*(row_idx + 1)]
-            str_row = ' '.join(str(item) for item in row)
-            all_str += str_row + '\n'
-
-        return all_str
 
     def __str__(self):
         return self.string_form
@@ -332,7 +319,7 @@ class Board_state(object):
             new_pieces.append(p)
 
         self.pieces = tuple(new_pieces)
-        self.string_form = self.stringify()
+        self.string_form = self.stringify(self.pieces)
 
     def find_all_captures(self):
         '''Loop through pieces of board, find available next moves'''
@@ -382,6 +369,18 @@ class Board_state(object):
         new_pieces[old_pos] = 0
         return tuple(new_pieces)
 
+    @classmethod
+    def stringify(cls, pieces):
+        '''Visualize board state'''
+        all_str = ''
+        for row_idx in range(4):
+            row = pieces[4*row_idx: 4*(row_idx + 1)]
+            str_row = ' '.join(str(item) for item in row)
+            all_str += str_row + '\n'
+
+        return all_str
+
+
 
 def run_BFS(start_board, queue):
     queue.append(start_board)
@@ -421,7 +420,7 @@ def print_winners(all_boards, num_strategies):
     print '------'
 
     for win_idx in range(num_strategies):
-        print 'Strategy Number {}'.format(win_idx + 1)
+        print 'Strategy Number {}: '.format(win_idx + 1)
         for b in all_boards:
             if win_idx in b.win_paths:
                 print b
@@ -429,21 +428,67 @@ def print_winners(all_boards, num_strategies):
         print '-------'
 
 
-def main():
-    q = Queen()
-    r = Rook()
-    p = Pawn()
-    n = Knight()
+def get_user_input():
+    test_input = raw_input("Type 'custom' to enter a custom board.\
+         \n Otherwise, press enter to run the sample board: ")
 
-    pieces = (
-            0, 0, 0, 0,
-            r, 0, 0, q,
-            0, 0, p, 0,
-            0, n, 0, 0,)
-    start_board = Board_state(pieces=pieces)
+    # Used for creating classes from user string input
+    letter_map = {
+        'Q': Queen,
+        'R': Rook,
+        'N': Knight,
+        'B': Bishop,
+        'P': Pawn,
+    }
+
+    if not test_input:
+        # Sample board to solve with 1 solution
+        r1 = Rook()
+        r2 = Rook()
+        n1 = Knight()
+        n2 = Knight()
+        b = Bishop()
+        p1 = Pawn()
+        p2 = Pawn()
+        p3 = Pawn()
+        pieces = (0, 0, n1, 0, p1, p2, 0, 0, n2, b, r1, 0, 0, 0, r2, p3)
+    else:
+        print "For each position 1-16, enter on of the following: "
+        print "P = Pawn, N = Knight, B = Bishop, R = Rook, Q = Queen"
+        print "Enter a 0 or just press enter to leave position blank"
+        possible_letters = ['P', 'N', 'B', 'R', 'Q', 0, '']
+        pieces = [
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 0, 0, 0]
+
+        for idx in range(16):
+            pieces[idx] = '?'
+            str_pieces = Board_state.stringify(pieces)
+            print str_pieces
+            p = raw_input("Enter for position {}: ".format(idx))
+            valid = p.upper() in possible_letters
+            while not valid:
+                print "Please enter a valid input"
+                p = raw_input("Choices: {}".format(
+                        ', '.join(str(l) for l in possible_letters)))
+                valid = p.upper() in possible_letters
+
+            pieces[idx] = letter_map[p.upper()]() if p else 0
+            print '----------\n'
+
+    return pieces
+
+
+def main():
+
+    pieces = get_user_input
+
+    start_board = Board_state(pieces=tuple(pieces))
     start_board.initialize_pieces()
 
-    print 'START_board'
+    print 'STARTING BOARD'
     print '------'
     print start_board
 
