@@ -1,4 +1,3 @@
-# Solves the 4x4 Chess Solitaire problem:
 '''Consider the game of Solitaire Chess, which is played on a
 4x4 chess board with an arbitrary number of pieces, all of the same color.
 To win, a player must eliminate all pieces on the board, save for one.
@@ -130,7 +129,7 @@ N: Knight is the most complicated for calculating moves.
 The solution will use a Breadth First Search (BFS), representing
 each board state as a node on the graph. The funtion find_next(board)
 will calculate all possible next board configurations.
-These next possible configurations are listed as neighbors for the node
+These next possible configurations are children of the node
 and pushed onto a queue to be searched.
 '''
 from collections import deque
@@ -390,6 +389,20 @@ def find_path(cur_board, path_num):
         find_path(cur_board.parent, path_num)
 
 
+def print_winners(all_boards, num_strategies):
+    print '------'
+    print 'WINNING PATHS:'
+    print '------'
+
+    for win_idx in range(num_strategies):
+        print 'Strategy Number {}'.format(win_idx + 1)
+        for b in all_boards:
+            if win_idx in b.win_paths:
+                print b
+
+        print '-------'
+
+
 def main():
     q = Queen()
     r = Rook()
@@ -405,6 +418,7 @@ def main():
     b.initialize_pieces()
     print 'START'
     print '------'
+    print b
 
     qu = deque()
     qu.append(b)
@@ -414,7 +428,10 @@ def main():
     while len(qu) > 0:
         cur = qu.popleft()
         all_boards.append(cur)
-        print 'Running this board: ', cur
+
+        # DEBUG: print each board through the queue
+        # print 'Running this board: '
+        # print cur
 
         if cur.size() > 1:
             new_boards = cur.find_all_captures()
@@ -423,32 +440,15 @@ def main():
             cur.win_paths.append(win_idx)
             win_idx += 1
 
+    num_strategies = win_idx
+
     all_winners = [board for board in all_boards if board.win_paths]
 
     for path_num, board in enumerate(all_winners):
+        # Trace back along the graph for each winner to enumerate path
         find_path(board, path_num)
 
-    print '------'
-    print 'WINNING PATHS:'
-    print '------'
-
-    still_winners = True
-    win_idx = 0
-
-    while still_winners:
-        print 'Strategy Number {}'.format(win_idx)
-        test_flag = 0
-        for b in all_boards:
-            if win_idx in b.win_paths:
-                test_flag = 1
-                print b.win_paths
-                print b
-
-        if not test_flag:
-            still_winners = False
-        else:
-            win_idx += 1
-            print '-------'
+    print_winners(all_boards, num_strategies)
 
 if __name__ == '__main__':
     main()
