@@ -1,5 +1,5 @@
 ---
-title: 'First part of algorithms.'
+title: 'Sorting algorithms.'
 layout: default
 ---
 # Insertion Sort
@@ -64,3 +64,38 @@ In merge sort, the steps are:
 - Divide the n-element sequence into two subsequences
 - Conquer each subsequence using merge sort
 - Merge the two sorted subsequences into one sorted answer
+
+
+# Quick Sort
+
+Another divide and conquer algorithm.
+
+    def quick_sort(A, low, high):
+        if low < high:
+            splitpoint = partition(A, low, high)
+            quick_sort(A, low, splitpoint - 1)
+            quick_sort(A, splitpoint + 1, high)
+
+
+    def partition(A, low, high):
+        '''Find new split point for quick sort'''
+        pivot = A[low]
+        left = low
+        right = high
+
+        found = False  # Search for new split point
+        while not found:
+            while left <= right and A[left] <= pivot:
+                left += 1
+
+            while left <= right and A[right] >= pivot:
+                right -= 1
+
+            if right < left:
+                found = True
+            else:
+                A[left], A[right] = A[right], A[left]
+
+        # Insert pivot to correct place and return new splitpoint
+        A[low], A[right] = A[right], A[low]
+        return right
