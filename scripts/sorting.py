@@ -67,6 +67,24 @@ def non_increasing_insertion_sort(A):
         print 'new array: ', A, '\n'
 
 
+def bubble_sort(A):
+    '''Implement bubblesort on the list A'''
+    for passnum in xrange(len(A) - 1, 0, -1):
+        for idx in xrange(passnum):
+            if A[idx] > A[idx + 1]:
+                A[idx], A[idx + 1] = A[idx + 1], A[idx]
+
+
+def selection_sort(alist):
+    '''Same idea as bubblesort, but only one swap per loop iteration'''
+    for fillslot in range(len(alist) - 1, 0, -1):
+        positionOfMax = 0
+        for location in range(1, fillslot + 1):
+            if alist[location] > alist[positionOfMax]:
+                positionOfMax = location
+
+        alist[fillslot], alist[positionOfMax] = alist[positionOfMax], alist[fillslot]
+
 if __name__ == '__main__':
 
     # A = random.sample(xrange(10), 10)
@@ -74,5 +92,6 @@ if __name__ == '__main__':
     print 'A before the sort: ', A, '\n'
 
     # A = insertion_sort(A)
-    A = non_increasing_insertion_sort(A)
+    # A = non_increasing_insertion_sort(A)
+    selection_sort(A)
     print 'A after the sort: ', A
