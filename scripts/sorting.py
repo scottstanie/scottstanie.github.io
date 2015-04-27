@@ -85,6 +85,38 @@ def selection_sort(alist):
 
         alist[fillslot], alist[positionOfMax] = alist[positionOfMax], alist[fillslot]
 
+
+def quick_sort(A, low, high):
+    if low < high:
+        splitpoint = partition(A, low, high)
+        quick_sort(A, low, splitpoint - 1)
+        quick_sort(A, splitpoint + 1, high)
+
+
+def partition(A, low, high):
+    '''Find new split point for quick sort'''
+    pivot = A[low]
+    left = low
+    right = high
+
+    found = False  # Search for new split point
+    while not found:
+        while left <= right and A[left] <= pivot:
+            left += 1
+
+        while left <= right and A[right] >= pivot:
+            right -= 1
+
+        if right < left:
+            found = True
+        else:
+            A[left], A[right] = A[right], A[left]
+
+    # Insert pivot to correct place and return new splitpoint
+    A[low], A[right] = A[right], A[low]
+    return right
+
+
 if __name__ == '__main__':
 
     # A = random.sample(xrange(10), 10)
@@ -93,5 +125,6 @@ if __name__ == '__main__':
 
     # A = insertion_sort(A)
     # A = non_increasing_insertion_sort(A)
-    selection_sort(A)
+    # selection_sort(A)
+    quick_sort(A, 0, len(A) - 1)
     print 'A after the sort: ', A
