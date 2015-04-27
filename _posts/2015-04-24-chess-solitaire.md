@@ -34,3 +34,30 @@ The actual BFS algorithm looks like this, where `Board_state.size()` is a method
 
         return all_boards, num_strategies
 
+
+If we were to use Depth First Search (DFS), the algorithm would look like this:
+
+    def run_DFS(start_board, stack):
+        stack.append(start_board)
+
+        all_boards = []
+        win_idx = 0
+
+        while len(stack) > 0:
+            cur = stack.pop()
+            all_boards.append(cur)
+
+            if cur.size() > 1:
+                new_boards = cur.find_all_captures()
+                stack.extend(new_boards)
+            else:
+                cur.win_paths.append(win_idx)
+                win_idx += 1
+
+        num_strategies = win_idx
+
+        return all_boards, num_strategies
+
+
+The main difference here is that we are using stack instead of a queue, though in python they can be the same data structure- a deque. The deque and a normal `list` would be the same here, as we are simply popping graph nodes on top of the stack and removing one at each iteration.  
+The difference in DFS is that the nodes that were most recently placed on top are examined first, leading to some solution along a path quicker. If we were to stop at the first possible solution, DFS would be usually be quicker (unless the one solution were the last branch of the graph).

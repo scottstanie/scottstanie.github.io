@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Chess Solitaire in Python.</title>
+    <title>Solitaire Chess in Python.</title>
      <link rel="stylesheet"
   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <style type="text/css" media="screen">
@@ -26,7 +26,7 @@
   </head>
   <body>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <p>Here is an example of Breadth First Search (BFS) to traverse a graph and find all possible paths. The graph here is a representation of a 4x4 chess board in the game of <a href="http://www.thinkfun.com/microsite/solitairechess/demo">chess solitaire</a>. The pieces are standard chess pieces. The only legal moves are captures of other pieces. Pawns only being able to move downward.<br/>
+    <p>Here is an example of Breadth First Search (BFS) to traverse a graph and find all possible paths. The graph here is a representation of a 4x4 chess board in the game of <a href="http://www.thinkfun.com/microsite/solitairechess/demo">solitaire chess</a>. The pieces are standard chess pieces. The only legal moves are captures of other pieces. Pawns only being able to move downward.<br/>
 The board starts in a random configuration, and the objective of the puzzle is to be left with only one piece.<br/>
 An interesting programming problem related to this game: Create a program that can accept an arbitrary board state as input and determine if there is a solution. If there are solutions, print out all steps for each one.<br/>
 The steps to programming this solution are as follows:
@@ -57,6 +57,33 @@ The steps to programming this solution are as follows:
 
     return all_boards, num_strategies
 </code></pre>
+
+<p>If we were to use Depth First Search (DFS), the algorithm would look like this:</p>
+
+<pre><code>def run_DFS(start_board, stack):
+    stack.append(start_board)
+
+    all_boards = []
+    win_idx = 0
+
+    while len(stack) &gt; 0:
+        cur = stack.pop()
+        all_boards.append(cur)
+
+        if cur.size() &gt; 1:
+            new_boards = cur.find_all_captures()
+            stack.extend(new_boards)
+        else:
+            cur.win_paths.append(win_idx)
+            win_idx += 1
+
+    num_strategies = win_idx
+
+    return all_boards, num_strategies
+</code></pre>
+
+<p>The main difference here is that we are using stack instead of a queue, though in python they can be the same data structure- a deque. The deque and a normal <code>list</code> would be the same here, as we are simply popping graph nodes on top of the stack and removing one at each iteration.<br/>
+The difference in DFS is that the nodes that were most recently placed on top are examined first, leading to some solution along a path quicker. If we were to stop at the first possible solution, DFS would be usually be quicker (unless the one solution were the last branch of the graph).</p>
 
   </body>
 </html>

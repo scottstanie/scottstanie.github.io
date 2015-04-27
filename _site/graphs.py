@@ -108,6 +108,23 @@ class Stack(object):
         return not self.items
 
 
+def radix_convert(decimal, base):
+    '''Takes a decimal integer and returns a string
+     of the number in the specified base <= 16'''
+    digits = "0123456789ABCDEF"
+    stack = Stack()
+
+    while decimal > 0:
+        rem = decimal % base
+        stack.push(rem)
+        decimal = decimal // base
+
+    bin_string = ""
+    while not stack.empty():
+        bin_string += str(digits[stack.pop()])
+
+    return bin_string
+
 if __name__ == '__main__':
     a = List_node(1)
     b = List_node(2)
