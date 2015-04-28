@@ -32,4 +32,11 @@ Another interesting point about the binary heap is that it can be implemented us
 - Each layer of the heap is ordered
 - For each layer *i* (except the bottom) there will *always* be 2^i items
 
+In the array, each layer will be a slice of size 2^i. The binary heap pictured above will look as follows in an array:
+
+    B = [0, 5, 10, 94, 97, 24]
+
+Finding the root simple: `B[1]`. The left and right child of node at index *i* will be located at \\(2\times i \\) and \\(2\times i + 1\\), respectively. This also means that the parent of node *i* is `i // 2`, where `//` denotes integer division.
+
+
 

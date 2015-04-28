@@ -110,6 +110,13 @@ What is a binary heap? It is simply a binary tree that is:<br/>
 - Each layer of the heap is ordered
 - For each layer <em>i</em> (except the bottom) there will <em>always</em> be 2<sup>i</sup> items</p>
 
+<p>In the array, each layer will be a slice of size 2<sup>i</sup>. The binary heap pictured above will look as follows in an array:</p>
+
+<pre><code>B = [0, 5, 10, 94, 97, 24]
+</code></pre>
+
+<p>Finding the root simple: <code>B[1]</code>. The left and right child of node at index <em>i</em> will be located at \(2\times i \) and \(2\times i + 1\), respectively. This also means that the parent of node <em>i</em> is <code>i // 2</code>, where <code>//</code> denotes integer division.</p>
+
     </div>
   </body>
 </html>
