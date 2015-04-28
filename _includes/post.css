@@ -1,0 +1,10 @@
+table {
+  margin:0;padding:0;
+  width:100%;
+  box-shadow: 10px 10px 5px #888888;
+  border:1px solid #000000;
+
+  -moz-border-radius-bottomleft:0;
+  -webkit-border-bottom-left-radius:0;
+  border-bottom-left-radius:0;
+}
