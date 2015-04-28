@@ -3,6 +3,8 @@ title: 'Solitaire Chess in Python.'
 layout: default
 ---
 
+# Breadth First Search in Solitaire Chess
+
 Here is an example of Breadth First Search (BFS) to traverse a graph and find all possible paths. The graph here is a representation of a 4x4 chess board in the game of [solitaire chess](http://www.thinkfun.com/microsite/solitairechess/demo). The pieces are standard chess pieces. The only legal moves are captures of other pieces. Pawns only being able to move downward.  
 The board starts in a random configuration, and the objective of the puzzle is to be left with only one piece.  
 An interesting programming problem related to this game: Create a program that can accept an arbitrary board state as input and determine if there is a solution. If there are solutions, print out all steps for each one.  

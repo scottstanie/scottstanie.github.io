@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>First part of algorithms.</title>
+    <title>Sorting algorithms.</title>
      <link rel="stylesheet"
   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <style type="text/css" media="screen">
       body {
         background:white; color:#020202;
-        font:13px georgia, serif;
+        font:1.5rem georgia, serif;
         line-height:1.4;
         font-weight: lighter;
         text-rendering: optimizelegibility;
@@ -22,13 +22,28 @@
         -webkit-font-smoothing: antialiased;
       }
     </style>
-  
+
   </head>
   <body>
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Scott Staniewicz</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/projects">Projects</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    </div>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <h1>Insertion Sort</h1>
-
-<p><img src="http://i.imgur.com/25LFv2K.png" title="source: imgur.com" /></p>
 
 <p>Start with sequence of keys &lt; a<sub>1</sub>, a<sub>2</sub>, ... ,a<sub>n</sub> ></p>
 
@@ -93,6 +108,41 @@ Divide and conquer algorithms have three stages:
 - Divide the n-element sequence into two subsequences
 - Conquer each subsequence using merge sort
 - Merge the two sorted subsequences into one sorted answer</p>
+
+<h1>Quick Sort</h1>
+
+<p>Another divide and conquer algorithm.</p>
+
+<pre><code>def quick_sort(A, low, high):
+    if low &lt; high:
+        splitpoint = partition(A, low, high)
+        quick_sort(A, low, splitpoint - 1)
+        quick_sort(A, splitpoint + 1, high)
+
+
+def partition(A, low, high):
+    '''Find new split point for quick sort'''
+    pivot = A[low]
+    left = low
+    right = high
+
+    found = False  # Search for new split point
+    while not found:
+        while left &lt;= right and A[left] &lt;= pivot:
+            left += 1
+
+        while left &lt;= right and A[right] &gt;= pivot:
+            right -= 1
+
+        if right &lt; left:
+            found = True
+        else:
+            A[left], A[right] = A[right], A[left]
+
+    # Insert pivot to correct place and return new splitpoint
+    A[low], A[right] = A[right], A[low]
+    return right
+</code></pre>
 
   </body>
 </html>

@@ -9,7 +9,7 @@
     <style type="text/css" media="screen">
       body {
         background:white; color:#020202;
-        font:13px georgia, serif;
+        font:1.5rem georgia, serif;
         line-height:1.4;
         font-weight: lighter;
         text-rendering: optimizelegibility;
@@ -22,9 +22,12 @@
         -webkit-font-smoothing: antialiased;
       }
     </style>
-  
+
   </head>
   <body>
+    {% include nav.html %}
+
+    </div>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     {{ content }}
   </body>

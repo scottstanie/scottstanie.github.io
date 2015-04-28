@@ -9,7 +9,7 @@
     <style type="text/css" media="screen">
       body {
         background:white; color:#020202;
-        font:13px georgia, serif;
+        font:1.5rem georgia, serif;
         line-height:1.4;
         font-weight: lighter;
         text-rendering: optimizelegibility;
@@ -22,11 +22,30 @@
         -webkit-font-smoothing: antialiased;
       }
     </style>
-  
+
   </head>
   <body>
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Scott Staniewicz</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/projects">Projects</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    </div>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <p>Here is an example of Breadth First Search (BFS) to traverse a graph and find all possible paths. The graph here is a representation of a 4x4 chess board in the game of <a href="http://www.thinkfun.com/microsite/solitairechess/demo">solitaire chess</a>. The pieces are standard chess pieces. The only legal moves are captures of other pieces. Pawns only being able to move downward.<br/>
+    <h1>Breadth First Search in Solitaire Chess</h1>
+
+<p>Here is an example of Breadth First Search (BFS) to traverse a graph and find all possible paths. The graph here is a representation of a 4x4 chess board in the game of <a href="http://www.thinkfun.com/microsite/solitairechess/demo">solitaire chess</a>. The pieces are standard chess pieces. The only legal moves are captures of other pieces. Pawns only being able to move downward.<br/>
 The board starts in a random configuration, and the objective of the puzzle is to be left with only one piece.<br/>
 An interesting programming problem related to this game: Create a program that can accept an arbitrary board state as input and determine if there is a solution. If there are solutions, print out all steps for each one.<br/>
 The steps to programming this solution are as follows:

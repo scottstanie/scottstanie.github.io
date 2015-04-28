@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Tree Algorithms</title>
+     <link rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <style type="text/css" media="screen">
+      body {
+        background:white; color:#020202;
+        font:1.5rem georgia, serif;
+        line-height:1.4;
+        font-weight: lighter;
+        text-rendering: optimizelegibility;
+      }
+      div.breaker { clear:both; }
+      img { border:none; vertical-align:bottom; }
+      hr { height:1px; border:none; background-color:#ddd; }
+      h1,h2,h3,h4 {
+        font-family: 'Helvetica Neue', helvetica, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+    </style>
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Scott Staniewicz</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/projects">Projects</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    </div>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <h1>Priority Queues and Binary Heaps</h1>
+
+<p>A priority queue is an abstract data type that is used in many different problems: essentially, anywhere that would require a queue, but also have a need to serve high priority items before lower priority items. Examples include operating systems, where jobs are scheduled according to priority, or doctors in the ER taking patients according to severity of injuries. It is first in first out (FIFO) similar to a queue, but high priority items are inserted near the front.<br/>
+Priority queues can be implemented with a binary heap. These have several advantages over other data structures which might be used. Below shows a table that outlines the run times of <code>find_min</code> and <code>insert</code> for these data structures:</p>
+
+<table>
+<thead>
+<tr>
+<th>Data Structure   </th>
+<th style="text-align:left;"> <code>insert</code> </th>
+<th style="text-align:center;">  <code>find_min</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>List- sorted) </td>
+<td style="text-align:left;"> O(1) </td>
+<td style="text-align:center;"> O(n)</td>
+</tr>
+<tr>
+<td>List- unsorted) </td>
+<td style="text-align:left;"> O(n) </td>
+<td style="text-align:center;"> O(1))</td>
+</tr>
+<tr>
+<td>Binary Search Tree (BST) </td>
+<td style="text-align:left;"> O(log n) </td>
+<td style="text-align:center;"> O(log n))</td>
+</tr>
+<tr>
+<td>Binary Heap </td>
+<td style="text-align:left;"> O(log n) </td>
+<td style="text-align:center;"> O(1)</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>The Binary Search Tree option is good for different applications where all finds need to be quick. The Binary heap however is quicker when only <code>find_min</code> will be used.<br/>
+What is a binary heap? It is simply a binary tree that is:<br/>
+- Complete: Every level is filled, except possibly the bottom (which gets filled in left to right)<br/>
+- Satisfies the <em>heap order property</em>, which means for a min/ max heap that every node is less/ greater than or equal to its children</p>
+
+<p>The heap order property leads to a few interesting characteristics:<br/>
+- The root node is always the smallest (largest for max heap)<br/>
+- Any path down a subtree is sorted, but different subtrees may not be sorted relative to each other (see below)</p>
+
+<p><img src="http://i.imgur.com/tclAVS3.png" alt="Drawing" style="width: 300px;"/>
+<img src="http://i.imgur.com/5goc4AX.png" alt="Drawing" style="width: 300px;"/></p>
+
+<p>Another interesting point about the binary heap is that it can be implemented using only an array.  Even though it is best visualized with a graph, no special node struct is needed. There are two reasons for this:<br/>
+- Each layer of the heap is ordered
+- For each layer <em>i</em> (except the bottom) there will <em>always</em> be 2<sup>i</sup> items</p>
+
+  </body>
+</html>

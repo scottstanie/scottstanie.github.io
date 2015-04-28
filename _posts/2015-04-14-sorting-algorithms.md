@@ -4,8 +4,6 @@ layout: default
 ---
 # Insertion Sort
 
-<img src="http://i.imgur.com/25LFv2K.png" title="source: imgur.com" />
-
 Start with sequence of keys < a<sub>1</sub>, a<sub>2</sub>, \.\.\. ,a<sub>n</sub> >
 
 The insertion sort algorithm in python looks like the following:

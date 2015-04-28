@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Graphs in python.</title>
+     <link rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <style type="text/css" media="screen">
+      body {
+        background:white; color:#020202;
+        font:1.5rem georgia, serif;
+        line-height:1.4;
+        font-weight: lighter;
+        text-rendering: optimizelegibility;
+      }
+      div.breaker { clear:both; }
+      img { border:none; vertical-align:bottom; }
+      hr { height:1px; border:none; background-color:#ddd; }
+      h1,h2,h3,h4 {
+        font-family: 'Helvetica Neue', helvetica, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+    </style>
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Scott Staniewicz</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/projects">Projects</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    </div>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <h1>Graphs in python</h1>
+
+<h2>Depth First Search</h2>
+
+<p>Sketch of algorithm:</p>
+
+<pre><code>1. Start with a node to search from, and mark it as 'searched'
+2. Visit one of the neighboring nodes and mark it
+3. Visit some neighbor node until there are none you haven't visited, then go to next neighbor node from (2)
+4. Continue until all are marked
+</code></pre>
+
+<h2>Breadth First Search</h2>
+
+<p>Sketch of algorithm:</p>
+
+<p>Before proving the various properties of breadth-first search, we take on the somewhat easier job of analyzing its running time on an input graph G D = (V;E). We use aggregate analysis, as we saw in Section 17.1. After initialization, breadth-first search never whitens a vertex, and thus the test in line 13 ensures that each vertex is enqueued at most once, and hence dequeued at most once. The operations of enqueuing and dequeuing take O(1) time, and so the total time devoted to queue operations is O(V)). Because the procedure scans the adjacency list of each vertex only when the vertex is dequeued, it scans each adjacency list at most once. Since the sum of the lengths of all the adjacency lists is \theta(E), the total time spent in scanning adjacency lists is O(E). The overhead for initialization is O(V), and thus the total running time of the BFS procedure is O(V + E). Thus, breadth-first search runs in time linear in the size of the adjacency-list representation of G.</p>
+
+  </body>
+</html>

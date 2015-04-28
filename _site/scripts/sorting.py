@@ -67,6 +67,56 @@ def non_increasing_insertion_sort(A):
         print 'new array: ', A, '\n'
 
 
+def bubble_sort(A):
+    '''Implement bubblesort on the list A'''
+    for passnum in xrange(len(A) - 1, 0, -1):
+        for idx in xrange(passnum):
+            if A[idx] > A[idx + 1]:
+                A[idx], A[idx + 1] = A[idx + 1], A[idx]
+
+
+def selection_sort(alist):
+    '''Same idea as bubblesort, but only one swap per loop iteration'''
+    for fillslot in range(len(alist) - 1, 0, -1):
+        positionOfMax = 0
+        for location in range(1, fillslot + 1):
+            if alist[location] > alist[positionOfMax]:
+                positionOfMax = location
+
+        alist[fillslot], alist[positionOfMax] = alist[positionOfMax], alist[fillslot]
+
+
+def quick_sort(A, low, high):
+    if low < high:
+        splitpoint = partition(A, low, high)
+        quick_sort(A, low, splitpoint - 1)
+        quick_sort(A, splitpoint + 1, high)
+
+
+def partition(A, low, high):
+    '''Find new split point for quick sort'''
+    pivot = A[low]
+    left = low
+    right = high
+
+    found = False  # Search for new split point
+    while not found:
+        while left <= right and A[left] <= pivot:
+            left += 1
+
+        while left <= right and A[right] >= pivot:
+            right -= 1
+
+        if right < left:
+            found = True
+        else:
+            A[left], A[right] = A[right], A[left]
+
+    # Insert pivot to correct place and return new splitpoint
+    A[low], A[right] = A[right], A[low]
+    return right
+
+
 if __name__ == '__main__':
 
     # A = random.sample(xrange(10), 10)
@@ -74,5 +124,7 @@ if __name__ == '__main__':
     print 'A before the sort: ', A, '\n'
 
     # A = insertion_sort(A)
-    A = non_increasing_insertion_sort(A)
+    # A = non_increasing_insertion_sort(A)
+    # selection_sort(A)
+    quick_sort(A, 0, len(A) - 1)
     print 'A after the sort: ', A

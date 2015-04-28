@@ -5,9 +5,14 @@ title: 'Hello, world.'
 <h1>Scott Staniewicz</h1>
 {{page.author_email}}
 <ul>
-{% for post in site.posts %}
   <li>
-    <a href="{{ post.url }}">{{ post.title }}</a>
+    <a href="/posts">Posts</a>
   </li>
-{% endfor %}
+  <li>
+    <a href="/about">About</a>
+  </li>
+  <li>
+    <a href="/projects">Projects</a>
+  </li>
 </ul>
+
