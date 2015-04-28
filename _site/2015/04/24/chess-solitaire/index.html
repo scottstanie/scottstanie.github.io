@@ -21,8 +21,21 @@
         font-family: 'Helvetica Neue', helvetica, sans-serif;
         -webkit-font-smoothing: antialiased;
       }
-    </style>
+      #content {
+        padding:20px;
+      }
+      table {
+  margin:0;padding:0;
+  width:100%;
+  box-shadow: 10px 10px 5px #888888;
+  border:1px solid #000000;
 
+  -moz-border-radius-bottomleft:0;
+  -webkit-border-bottom-left-radius:0;
+  border-bottom-left-radius:0;
+}
+
+    </style>
   </head>
   <body>
     <nav class="navbar navbar-default">
@@ -40,10 +53,9 @@
   </div>
 </nav>
 
-
-    </div>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <h1>Breadth First Search in Solitaire Chess</h1>
+    <div id="content">
+      <h1>Breadth First Search in Solitaire Chess</h1>
 
 <p>Here is an example of Breadth First Search (BFS) to traverse a graph and find all possible paths. The graph here is a representation of a 4x4 chess board in the game of <a href="http://www.thinkfun.com/microsite/solitairechess/demo">solitaire chess</a>. The pieces are standard chess pieces. The only legal moves are captures of other pieces. Pawns only being able to move downward.<br/>
 The board starts in a random configuration, and the objective of the puzzle is to be left with only one piece.<br/>
@@ -104,5 +116,6 @@ The steps to programming this solution are as follows:
 <p>The main difference here is that we are using stack instead of a queue, though in python they can be the same data structure- a deque. The deque and a normal <code>list</code> would be the same here, as we are simply popping graph nodes on top of the stack and removing one at each iteration.<br/>
 The difference in DFS is that the nodes that were most recently placed on top are examined first, leading to some solution along a path quicker. If we were to stop at the first possible solution, DFS would be usually be quicker (unless the one solution were the last branch of the graph).</p>
 
+    </div>
   </body>
 </html>

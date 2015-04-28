@@ -21,14 +21,17 @@
         font-family: 'Helvetica Neue', helvetica, sans-serif;
         -webkit-font-smoothing: antialiased;
       }
+      #content {
+        padding:20px;
+      }
+      {% include post.css %}
     </style>
-
   </head>
   <body>
     {% include nav.html %}
-
-    </div>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    {{ content }}
+    <div id="content">
+      {{ content }}
+    </div>
   </body>
 </html>

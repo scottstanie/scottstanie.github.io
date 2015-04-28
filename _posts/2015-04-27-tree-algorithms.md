@@ -8,13 +8,14 @@ layout: default
 A priority queue is an abstract data type that is used in many different problems: essentially, anywhere that would require a queue, but also have a need to serve high priority items before lower priority items. Examples include operating systems, where jobs are scheduled according to priority, or doctors in the ER taking patients according to severity of injuries. It is first in first out (FIFO) similar to a queue, but high priority items are inserted near the front.  
 Priority queues can be implemented with a binary heap. These have several advantages over other data structures which might be used. Below shows a table that outlines the run times of `find_min` and `insert` for these data structures:
 
- Data Structure   | `insert` |  `find_min` 
+ Data Structure| `insert` |  `find_min` 
 |:---------------|:-----------:|----------:
 List- sorted) | O(1) | O(n)  
 List- unsorted) | O(n) | O(1))  
 Binary Search Tree (BST) | O(log n) | O(log n))  
 Binary Heap | O(log n) | O(1)  
 
+<br>
 The Binary Search Tree option is good for different applications where all finds need to be quick. The Binary heap however is quicker when only `find_min` will be used.  
 What is a binary heap? It is simply a binary tree that is:  
 - Complete: Every level is filled, except possibly the bottom (which gets filled in left to right)  

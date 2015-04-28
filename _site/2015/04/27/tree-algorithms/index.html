@@ -21,8 +21,21 @@
         font-family: 'Helvetica Neue', helvetica, sans-serif;
         -webkit-font-smoothing: antialiased;
       }
-    </style>
+      #content {
+        padding:20px;
+      }
+      table {
+  margin:0;padding:0;
+  width:100%;
+  box-shadow: 10px 10px 5px #888888;
+  border:1px solid #000000;
 
+  -moz-border-radius-bottomleft:0;
+  -webkit-border-bottom-left-radius:0;
+  border-bottom-left-radius:0;
+}
+
+    </style>
   </head>
   <body>
     <nav class="navbar navbar-default">
@@ -40,10 +53,9 @@
   </div>
 </nav>
 
-
-    </div>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <h1>Priority Queues and Binary Heaps</h1>
+    <div id="content">
+      <h1>Priority Queues and Binary Heaps</h1>
 
 <p>A priority queue is an abstract data type that is used in many different problems: essentially, anywhere that would require a queue, but also have a need to serve high priority items before lower priority items. Examples include operating systems, where jobs are scheduled according to priority, or doctors in the ER taking patients according to severity of injuries. It is first in first out (FIFO) similar to a queue, but high priority items are inserted near the front.<br/>
 Priority queues can be implemented with a binary heap. These have several advantages over other data structures which might be used. Below shows a table that outlines the run times of <code>find_min</code> and <code>insert</code> for these data structures:</p>
@@ -51,7 +63,7 @@ Priority queues can be implemented with a binary heap. These have several advant
 <table>
 <thead>
 <tr>
-<th>Data Structure   </th>
+<th>Data Structure</th>
 <th style="text-align:left;"> <code>insert</code> </th>
 <th style="text-align:center;">  <code>find_min</code></th>
 </tr>
@@ -81,7 +93,8 @@ Priority queues can be implemented with a binary heap. These have several advant
 </table>
 
 
-<p>The Binary Search Tree option is good for different applications where all finds need to be quick. The Binary heap however is quicker when only <code>find_min</code> will be used.<br/>
+<p><br>
+The Binary Search Tree option is good for different applications where all finds need to be quick. The Binary heap however is quicker when only <code>find_min</code> will be used.<br/>
 What is a binary heap? It is simply a binary tree that is:<br/>
 - Complete: Every level is filled, except possibly the bottom (which gets filled in left to right)<br/>
 - Satisfies the <em>heap order property</em>, which means for a min/ max heap that every node is less/ greater than or equal to its children</p>
@@ -97,5 +110,6 @@ What is a binary heap? It is simply a binary tree that is:<br/>
 - Each layer of the heap is ordered
 - For each layer <em>i</em> (except the bottom) there will <em>always</em> be 2<sup>i</sup> items</p>
 
+    </div>
   </body>
 </html>
