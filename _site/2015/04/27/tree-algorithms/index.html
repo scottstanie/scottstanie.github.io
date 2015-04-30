@@ -56,10 +56,28 @@
 
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <div id="content">
-      <h1>Priority Queues and Binary Heaps</h1>
+      <h1>Trees and Tree algorithms</h1>
 
-<p>A priority queue is an abstract data type that is used in many different problems: essentially, anywhere that would require a queue, but also have a need to serve high priority items before lower priority items. Examples include operating systems, where jobs are scheduled according to priority, or doctors in the ER taking patients according to severity of injuries. It is first in first out (FIFO) similar to a queue, but high priority items are inserted near the front.<br/>
-Priority queues can be implemented with a binary heap. These have several advantages over other data structures which might be used. Below shows a table that outlines the run times of <code>find_min</code> and <code>insert</code> for these data structures:</p>
+<p>Heaps and Binary search trees (BST) are two variations of a general binary tree. A binary tree is simply a linked data structure where each node is an object. Every node contains the attributes a <em>parent</em>, <em>left child</em>, and <em>right child</em>. The children may be null is the nodes are leaves of the tree, and the parent is null for the root. Heaps and BSTs are binary trees that have certain special ordering properties that make them useful.</p>
+
+<h2>Binary Heaps</h2>
+
+<p>What is a binary heap? It is simply a binary tree that is:<br/>
+- <strong><em>Complete</em></strong>: Every level is filled, except possibly the bottom (which gets filled in left to right)<br/>
+- <strong><em>Satisfies</em></strong> the <em>heap order property</em>, which means for a min/ max heap that every node is less/ greater than or equal to its children</p>
+
+<p>The heap order property leads to a few interesting characteristics:<br/>
+- The root node is always the smallest (largest for max heap)<br/>
+- Any path down a subtree is sorted, but different subtrees may not be sorted relative to each other (see below)</p>
+
+<p><img src="http://i.imgur.com/tclAVS3.png" alt="Drawing" style="width: 300px;"/>
+<img src="http://i.imgur.com/5goc4AX.png" alt="Drawing" style="width: 300px;"/></p>
+
+<h2>Priority Queues</h2>
+
+<p>To understand why we might use a binary head, let's examine what a <strong>priority queue</strong> is.
+A <em>priority queue</em> is an abstract data type that is used in many different problems: essentially, anywhere that would require a queue, but also have a need to serve high priority items before lower priority items. Examples include operating systems, where jobs are scheduled according to priority, or doctors in the ER taking patients according to severity of injuries. It is first in first out (FIFO) similar to a queue, but high priority items are inserted near the front.<br/>
+Priority queues can be implemented with a heap, which have several advantages over other data structures which might be used. Below shows a table that outlines the run times of <code>find_min</code> and <code>insert</code> for these data structures:</p>
 
 <table>
 <thead>
@@ -81,12 +99,12 @@ Priority queues can be implemented with a binary heap. These have several advant
 <td style="text-align:center;"> O(1))</td>
 </tr>
 <tr>
-<td>Binary Search Tree (BST) </td>
+<td>BST </td>
 <td style="text-align:left;"> O(log n) </td>
 <td style="text-align:center;"> O(log n))</td>
 </tr>
 <tr>
-<td>Binary Heap </td>
+<td>Heap </td>
 <td style="text-align:left;"> O(log n) </td>
 <td style="text-align:center;"> O(1)</td>
 </tr>
@@ -95,19 +113,9 @@ Priority queues can be implemented with a binary heap. These have several advant
 
 
 <p><br>
-The Binary Search Tree option is good for different applications where all finds need to be quick. The Binary heap however is quicker when only <code>find_min</code> will be used.<br/>
-What is a binary heap? It is simply a binary tree that is:<br/>
-- <strong><em>Complete</em></strong>: Every level is filled, except possibly the bottom (which gets filled in left to right)<br/>
-- <strong><em>Satisfies</em></strong> the <em>heap order property</em>, which means for a min/ max heap that every node is less/ greater than or equal to its children</p>
+The BST (explored further below) option is good for different applications where all finds need to be quick. The Binary heap however is quicker when only <code>find_min</code> will be used.</p>
 
-<p>The heap order property leads to a few interesting characteristics:<br/>
-- The root node is always the smallest (largest for max heap)<br/>
-- Any path down a subtree is sorted, but different subtrees may not be sorted relative to each other (see below)</p>
-
-<p><img src="http://i.imgur.com/tclAVS3.png" alt="Drawing" style="width: 300px;"/>
-<img src="http://i.imgur.com/5goc4AX.png" alt="Drawing" style="width: 300px;"/></p>
-
-<p>Another interesting point about the binary heap is that it can be implemented using only an array.  Even though it is best visualized with a graph, no special node struct is needed. There are two reasons for this:<br/>
+<p>Another point about the binary heap is that it can be implemented using only an array.  Even though it is best visualized with a graph, no special node structure is needed. There are two reasons for this:<br/>
 - Each layer of the heap is ordered
 - For each layer <em>i</em> (except the bottom) there will <em>always</em> be 2<sup>i</sup> items</p>
 
@@ -118,7 +126,7 @@ What is a binary heap? It is simply a binary tree that is:<br/>
 
 <p>Finding the root simple: <code>H[1]</code>. The left and right child of node at index <em>i</em> will be located at \(2\times i \) and \(2\times i + 1\), respectively. This also means that the parent of node <em>i</em> is <code>i // 2</code>, where <code>//</code> denotes integer division.</p>
 
-<h4>Heap Operations</h4>
+<h3>Heap Operations</h3>
 
 <p>Clearly finding the min is easy (<code>H[1]</code>). What about inserting into the heap? The obvious first step would be appending to the end of the list. This would maintain the <em>complete</em> property of the heap, but probably not maintain the well ordered property. Therefore, we must <em>percolate up</em> the new node until it fits satisfies the ordering property.<br/>
 This really just involves comparing the inserted node to each of its parents up the subtree until one is found that is smaller. We can use the division techniques described about. So, for inserting <code>7</code> into the array H above the percolation steps are:</p>
@@ -162,7 +170,7 @@ What about deleting the min node at the top of the heap? What we can do is repla
             return 2*idx + 1
 </code></pre>
 
-<p>Then, the function <code>percolate_down</code> might look like this:</p>
+<p>Then, after popping the last item off the array and inserting it at the front, the function <code>percolate_down</code> might look like this:</p>
 
 <pre><code>def percolate_down(self):
     idx = 1
@@ -172,6 +180,114 @@ What about deleting the min node at the top of the heap? What we can do is repla
             self.swap_nodes(idx, min_idx)
         idx = min_idx
 </code></pre>
+
+<p>With these opearations to maintain the heap structure, implementing a priority queue is straightforward.</p>
+
+<h2>Binary search trees</h2>
+
+<p>What is a binary search tree? It is quite similar to a binary heap, with slightly different ordering of the nodes. The <strong><em>binary-search-tree</em></strong> property is the following: If x is a node in a BST, then for any node <code>r</code> in the right subtree of x and any node <code>l</code> in the left subtree, either \(l &lt;= x\) or \(r >= x\)</p>
+
+<p>This means ordering of a BST allows us to search through or print the node values quickly and in a simple recursive way.</p>
+
+<h3>Tree Operations</h3>
+
+<p>To print the values of the tree in order, we use a function <code>in_order_walk</code> that looks like this:</p>
+
+<pre><code>def in_order_walk(node):
+  if node is not None:
+    in_order_walk(node.left)
+    print node
+    in_order_walk(node.right)
+</code></pre>
+
+<h4>Searching</h4>
+
+<p>If we are looking for <code>k</code> in a BST <code>b</code>, the search algorithm looks like this:</p>
+
+<pre><code>def search(node, k):
+  if node is None or node == k:
+    return node
+  if x &lt;= node:
+    return search(node.left, k)
+  else:
+    return search(node.right, k)
+</code></pre>
+
+<p>If we call <code>search(b.root, k)</code>, the entire tree will be searched. The function only looks down half of the tree at each point, which means that it runs in O(log n). The above recursive procedure can also be rewritten iteratively:</p>
+
+<pre><code>def search(node, k):
+  while node is not None and node != k:
+    if node &lt;= k:
+      node = node.left
+    else:
+      node = node.right
+  return node
+</code></pre>
+
+<p>This is usually more efficient than the recursive form.<br/>
+Finding the minimum and maximum of the tree is straightforward as well:</p>
+
+<pre><code>def find_max(node):
+  while node.left is not None:
+    node = node.left
+  return node
+
+def find_min(node):
+  while node.right is not None:
+    node = node.right
+  return node
+</code></pre>
+
+<p>A <em>successor</em> of a node <code>x</code> is the smallest tree node with a key <em>greater</em> than <code>x.key</code>. To find this, we must consider the two cases of whether the right subtree of x is or is not null. The algorithm looks like this:</p>
+
+<pre><code>def find_successor(x):
+  if x.right is not None:
+    return find_min(x)
+  else:
+    y = x.parent
+    while y is not None and y.right == x:
+      x = y
+      y = x.parent
+    return y
+</code></pre>
+
+<p>The case of a non-null right subtree is simple: the right child will be larger than <code>x</code>, so finding the minimum of the right subtree returns the minimum node greater than <code>x</code>.<br/>
+For the other case, we must traverse up the tree. The successor will appear as the first ancestor for which the current node is not the right child. If we take <code>y</code> as the parent and find that x is the left child (so <code>y.right != x</code>), this means that y is greater than x, and thus is the successor. If <code>y</code> becomes <code>None</code>, that means that there is no successor- the node is the largest in the tree.</p>
+
+<h4>Insertion</h4>
+
+<p>Inserting a new node <code>z</code> into the tree <code>T</code> requires us to traverse down the tree and insert it at some leaf.</p>
+
+<pre><code>def insert_node(T, z):
+  x = T.root  # Start at the root
+  y = None  # The leaf that we will insert under
+  while x is not None:
+    y = x
+    if z.key &lt; x.key:
+      x = x.left
+    else:
+      x = x.right
+
+    z.parent = y
+    if y is None:
+      T.root = z  # If the tree was empty
+
+    if z.key &lt; y.key:
+      y.left = z
+    else:
+      y.right = z  
+</code></pre>
+
+<h4>Deletion</h4>
+
+<p>For deleting a node <code>z</code> from a tree <code>T</code>, there are 3 basic cases to consider:
+- <code>z</code> has no children: simply delete <code>z</code>
+- <code>z</code> has one child: delete z and replace the z with the subtree of its child
+- <code>z</code> has two children: First, find <code>y</code>, the successor of <code>z</code>, which will be in the right subtree. Then consider two subcases:
+  - If the <code>y</code> is equal to the right child of <code>z</code>, just replace <code>z</code> right the subtree at <code>y</code>
+  - Otherwise, move the <code>y</code> right child of to where <code>y</code> was located, then replace <code>z</code> with <code>y</code></p>
+
+<p>This last subcase must be considered because we need to merge the two subtrees in a way that preserves the binary search property.</p>
 
     </div>
   </body>

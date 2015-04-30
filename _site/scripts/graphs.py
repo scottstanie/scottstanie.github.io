@@ -17,6 +17,13 @@ class Linked_list(object):
     def __init__(self):
         self.nodes = []
         self.head = None
+        self.tail = None
+
+    def insert(self, n):
+        self.nodes.append(n)
+        self.tail = n
+        self.head = self.nodes[0]
+
 
     def print_list(self):
         cur = self.nodes[0]
@@ -36,6 +43,13 @@ class Linked_list(object):
         else:
             return "Not possible"
 
+
+def list_search(L, k):
+    x = L.head
+    while x is not None and x.data != k:
+        x = x.next
+
+    return x
 
 class Tree_node(object):
     '''For a family tree'''
@@ -135,3 +149,4 @@ if __name__ == '__main__':
     ll = Linked_list()
     ll.nodes = [a, b, c]
     ll.print_list()
+    list_search(ll, 2)

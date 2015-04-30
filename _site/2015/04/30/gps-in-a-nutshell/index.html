@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Blog Posts.</title>
+    <title>Gps In A Nutshell</title>
      <link rel="stylesheet"
   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <style type="text/css" media="screen">
@@ -56,37 +56,17 @@
 
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <div id="content">
-      <h1>Blog Posts</h1>
-<div>
-  Posts overviewing some basic computer science algorithms as I learn them, outlining them in Python.
-</div>
-<ul>
+      <h1>How does GPS work?</h1>
 
-  <li>
-    <a href="/2015/04/30/gps-in-a-nutshell/">Gps In A Nutshell</a>
-  </li>
+<p>This is a summary of the ideas behind GPS, and how various parts are implemented.</p>
 
-  <li>
-    <a href="/2015/04/29/disjoint-sets/">Disjoint Sets</a>
-  </li>
+<p>First, what exactly is the Global Positioning System, besides something that tells you where you are on your phone? GPS started as a military project by the Department of Defense in the 80s. It is a system of satellies owned by the government that circles the globe and emits a signal. This signal contains both the times on the satellite clock and position of the satellite.</p>
 
-  <li>
-    <a href="/2015/04/28/dynamic-programming/">Dynamic Programming</a>
-  </li>
-
-  <li>
-    <a href="/2015/04/27/tree-algorithms/">Tree Algorithms</a>
-  </li>
-
-  <li>
-    <a href="/2015/04/24/bfs-python/">Breadth First Search in Python</a>
-  </li>
-
-  <li>
-    <a href="/2015/04/14/sorting-algorithms/">Sorting algorithms.</a>
-  </li>
-
-</ul>
+<p>How does this lead to you being able to figure out where you are? There are two key points about those pieces of information:
+1. If you know the time a signal was sent out, and you are keeping track of time yourself, you can convert this <em>time difference</em> to a <em>distance</em>.
+  - This is because all electromagnetic wave signal travel at the same speed, \(3 \time 10<sup>8</sup> \frac{m}{s}\)
+2. If you know the distances to 3 points in space and their locations, you can figure out your own position.
+This second point comes the idea of <strong><em>triangulation</em></strong>.  Looking in two dimension says that if you know the location of two points and how far they are from you, then you can figure out your own position. The formula used for this is</p>
 
     </div>
   </body>
