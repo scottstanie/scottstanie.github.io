@@ -1,3 +1,8 @@
+---
+title: 'GPS In A Nutshell'
+layout: default
+---
+
 # How does GPS work?
 
 This is a summary of the ideas behind GPS, and how various parts are implemented. 

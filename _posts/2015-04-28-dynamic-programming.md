@@ -1,3 +1,8 @@
+---
+title: 'Dynamic Programming'
+layout: default
+---
+
 # Dynamic Programming
 
 As a Dynamic Program (DP) is a technique based on a recurrence formula in which solutions are formed from previously found sub solutions. An example is probably the best way to see what this means.

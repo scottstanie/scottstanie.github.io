@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Blog Posts.</title>
+    <title>Cartesian Products</title>
      <link rel="stylesheet"
   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <style type="text/css" media="screen">
@@ -56,45 +56,32 @@
 
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <div id="content">
-      <h1>Blog Posts</h1>
-<div>
-  Posts overviewing some basic computer science algorithms as I learn them, outlining them in Python.
-</div>
-<ul>
+      <h1>Cartesian products in python</h1>
 
-  <li>
-    <a href="/2015/05/01/cartesian-products/">Cartesian Products</a>
-  </li>
+<h4>A final note</h4>
 
-  <li>
-    <a href="/2015/04/30/iterator-generator/">Iterators and Generators</a>
-  </li>
+<p>For actual implementation of the cartesian product, you can just do:</p>
 
-  <li>
-    <a href="/2015/04/30/gps-in-a-nutshell/">GPS In A Nutshell</a>
-  </li>
+<pre><code>import itertools
 
-  <li>
-    <a href="/2015/04/29/disjoint-sets/">Disjoint Sets</a>
-  </li>
+prods = itertools.product(choices, repeat=n)
 
-  <li>
-    <a href="/2015/04/28/dynamic-programming/">Dynamic Programming</a>
-  </li>
+for p in prods:
+    print p
+</code></pre>
 
-  <li>
-    <a href="/2015/04/27/tree-algorithms/">Tree Algorithms</a>
-  </li>
+<p>This will print all products, yielding them one at a time</p>
 
-  <li>
-    <a href="/2015/04/24/bfs-python/">Breadth First Search in Python</a>
-  </li>
+<pre><code>(1, 1, 1)
+(1, 1, 2)
+(1, 1, 3)
+(1, 2, 1)
+(1, 2, 2)
+...
+</code></pre>
 
-  <li>
-    <a href="/2015/04/14/sorting-algorithms/">Sorting algorithms.</a>
-  </li>
-
-</ul>
+<p>ty python.<br/>
+<img src="http://imgs.xkcd.com/comics/python.png" alt="" /></p>
 
     </div>
   </body>

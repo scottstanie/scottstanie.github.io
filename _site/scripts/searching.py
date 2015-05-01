@@ -1,5 +1,6 @@
 import time
 
+
 def binary_search_slice(alist, item):
     '''Sorts the list input and performs binary_search'''
     assert alist == sorted(alist), "Input list must be sorted"
