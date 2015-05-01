@@ -58,14 +58,27 @@
     <div id="content">
       <h1>Cartesian products in python</h1>
 
-<p>For intro to generators, <a href="/2015/04/30/iterator-generator/">see here</a></p>
-
 <h4>What is a cartesian product?</h4>
 
-<p>Mathematically, the cartesian product is an operator that acts on multiple sets and returns one set of all possible tuples from the sets. In set notation, the cartesian product of \(A \times B \) is:
+<p>Mathematically, the <strong>cartesian product</strong> is an operator that acts on multiple sets and returns one set of all possible tuples from the sets. In set notation, the cartesian product of \(A \times B \) is:
 $$
-  A \times B =
+  A \times B = \{(a, b) \mid a \in A, b \in B\}
 $$</p>
+
+<p>This can be extended beyond two sets- the legnth of the tuple is equal to the number of sets you are giving as input.</p>
+
+<p>Now if we have a list of possible symbols, and we want every possible arrangement of them \(n\) times, we would use the <strong>cartesian power</strong>:
+$$
+  X^n = \{(x_1, ... , x_n) \mid x_i \in X \quad \forall i \colon 1, ..., n \}
+$$</p>
+
+<p>We are just repeating the same set \(X\) for each position in the n-tuple.</p>
+
+<h4>In python</h4>
+
+<p>So how can we product this in python? It is clear that for even moderate size inputs, if we were to keep every element of the product in memory, it would grow to a monstrous size. This is because with m symbols in X, for a n-tuple, we have a set of size \(n^m\)<br/>
+This where where <strong>generators</strong> in python come in. For an intro to generators, <a href="/2015/04/30/iterator-generator/">see here</a><br/>
+Our generator needs to <code>yield</code> each n-tuple one at a time as our function returns it.</p>
 
 <h4>A final note</h4>
 
