@@ -90,6 +90,18 @@ The steps to programming this solution are as follows:
     return all_boards, num_strategies
 </code></pre>
 
+<h4>Depth first search</h4>
+
+<p>Depth first search on the other hand looks like the following/</p>
+
+<ol>
+<li>Start with a node to search from, and mark it as 'searched'</li>
+<li>Visit one of the neighboring nodes and mark it</li>
+<li>Visit some neighbor node until there are none you haven't visited, then go to next neighbor node from (2)</li>
+<li>Continue until the goal is found or all are marked</li>
+</ol>
+
+
 <p>If we were to use Depth First Search (DFS), the algorithm would look like this:</p>
 
 <pre><code>def run_DFS(start_board, stack):
