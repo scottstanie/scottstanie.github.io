@@ -16,39 +16,45 @@ def gen_perms(a):
                 yield a[i:i+i] + perm
 
 
-# def generate_weights(weights, poss_weights):
-#     '''generator for an array of length n
-#     of all possible weights from -1 to 1
-#         weights: array of numbers, each slot has a set to choose from
-#         poss_weights: the set of weights to choose from
-#         cur_idx: the current indexo f the array that you are changing
-#         max_idx: the highest index that will change'''
-#     while max_idx < len(weights):
-#         yield weights
-#         weights[cur_idx] = poss_weights[cur_idx]
+def cart_prod(out_idxs, cur_idx, choices):
+    if cur_idx == 0:
+        # To iterate through the choices in the tuple entry
+        while out_idxs[cur_idx] < len(choices):
+            yield [choices[i] for i in out_idxs]
+            out_idxs[cur_idx] += 1
+
+        out_idxs[0] = 0
+        for it in cart_prod(out_idxs, cur_idx + 1, choices):
+            yield it
+
+    elif cur_idx < len(out_idxs):
+        # Move the current choice index up one
+        out_idxs[cur_idx] += 1
+        if out_idxs[cur_idx] < len(choices):
+            for it in cart_prod(out_idxs, 0, choices):
+                yield it
+        else:
+            # Increment the current index and set all previous ones to 0
+            out_idxs = [0 if i <= cur_idx else widx for i, widx in enumerate(out_idxs)]
+            for it in cart_prod(out_idxs, cur_idx + 1, choices):
+                yield it
 
 
 def main():
-    poss_weights = [-1, 0, 1]
-    w = 3  # 3 Potential weights to choose from
-    n = 4  # Length of weight vector is 4
-    # This means there are 3^4 = 243 permutations
-    # to create for the weight vector
-    weights = [poss_weights[0] for i in range(n)]
-    print weights
-    # g = generate_weights(weights, 0)
-    # print list(g)
-    # f = fib()
-    # print list(f)
 
-    p = permute_string('abcd')
-    while True:
-        try:
-            print next(p)
-        except StopIteration:
-            break
+    # [0, 0, 0, 0]
+    tuple_length = 4
+    out_idxs = [0 for i in range(tuple_length)]
 
+    cur_idx = 0
+    choices = ['a', 'b', 'c']
 
+    gen = cart_prod(out_idxs, cur_idx, choices)
+    ct = 0
+
+    for g in gen:
+        ct += 1
+        print g, ct
 
 if __name__ == '__main__':
     main()
