@@ -30,19 +30,18 @@ def cart_prod(out_idxs, cur_idx, choices):
     elif cur_idx < len(out_idxs):
         # Move the current choice index up one
         out_idxs[cur_idx] += 1
+
         if out_idxs[cur_idx] < len(choices):
             for it in cart_prod(out_idxs, 0, choices):
                 yield it
         else:
-            # Increment the current index and set all previous ones to 0
+            # Increment the current position and set all previous indices to 0
             out_idxs = [0 if i <= cur_idx else widx for i, widx in enumerate(out_idxs)]
             for it in cart_prod(out_idxs, cur_idx + 1, choices):
                 yield it
 
 
 def main():
-
-    # [0, 0, 0, 0]
     tuple_length = 4
     out_idxs = [0 for i in range(tuple_length)]
 
