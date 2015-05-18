@@ -28,24 +28,88 @@ Where does a web app come into the picture described above? Once the server has 
     def serve_page():
       return "<html><body>Hello, World.</body></html>"
 
-This function would be called each time a visitor requests the page, and it would send back the barebones HTML to display "Hello, World."  
-Naturally, this examples ignores a lot of other code that needs to run to accept the request and talk to the server to send back the info. There is a lot of boilerplate code that goes into every application that needs to run on the internet, and this is where web application *frameworks* come in.
+This function would be called each time a visitor requests the page, and it would send back the barebones HTML to display "Hello, World." A more complicated web app like facebook, would might contain JavaScript to allow interactions between the browser and the user, databases to keep track of prior information about the user, and various other parts.  
+Naturally, this examples also ignores a lot of other code that needs to run to accept the request and talk to the server to send back the info. There is a lot of boilerplate code that goes into every application that needs to run on the internet, and this is where web application *frameworks* come in.
 
 
 ### Web application frameworks
 
-So now what is a **web application framework**? [As described here](http://www.fullstackpython.com/web-frameworks.html), web frameworks are reusable code libraries that make it easier to build a reliable, scalable, and maintainable web app. They help reuse code common for HTTP operations
+So what is a **web application framework**? [As described here](http://www.fullstackpython.com/web-frameworks.html), web frameworks are reusable code libraries that make it easier to build a reliable, scalable, and maintainable web app. They help reuse code common for HTTP operations and for typical application functionality, such as:  
+  1. URL routing  
+  2. HTML, [XML](http://www.w3schools.com/xml/), [JSON](http://json.org/), and other output format templating  
+  3. Database manipulation  
+  4. Security against [Cross-site request forgery (CSRF)](http://en.wikipedia.org/wiki/Cross-site_request_forgery) and other attacks  
 
+The various points above will come up as you learn more about Flask, so don't worry if you don't know what any of these mean yet.
 
-#### Extra web app and web framework resources
+To read a little more about frameworks in general, check you this [good tutorial by Jeff Knupp](http://www.jeffknupp.com/blog/2014/03/03/what-is-a-web-framework/), which contains a good deal of front matter about HTTP servers.
 
-[Brief on web frameworks](http://www.fullstackpython.com/web-frameworks.html)  
-[Good tutorial on web frameworks](http://www.jeffknupp.com/blog/2014/03/03/what-is-a-web-framework/)
-
-### "Full stack"? 
 
 ## Actually getting started with Flask
+Now that we have the primer with info needed to see how web apps fit into the internet, the best way to start learning what these functions of a framework are for is to see them in action. Let's make the simplest Flask app possible.
 
 #### Installing:
-[Virtual environments and the `pip` installer](http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/)
+If you're not sure what a virtual environment is, see this [into to virtual environments and the `pip` installer](http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/). Assuming we have Python 2.7 and `pip` installed, start by creating the virtual environment for your project and activate it. I put all my envs in `~/envs/`)\*   I'll call it `myapp`:  
+  
+    cd ~/envs/ && virtualenv myapp && source ~/envs/myapp/bin/activate
+ 
+Now make a folder where the project will live. Lets call it `myapp` as well:
 
+    mkdir myapp && cd myapp
+ 
+Install Flask:
+
+    pip install flask
+
+
+\* Note: some people like using [virtualenvwrapper](https://virtualenvwrapper.readthedocs.org/en/latest/), which can simplify the creation and management of virtual environments. Whether or not you use the wrapper tool, virtual envs are *strongly* recommended, especially for projects (like websites) that will be run on multiple locations.
+
+#### Our First App
+
+Now we can make a simple web app ([as shown in the Flask quickstart](http://flask.pocoo.org/docs/0.10/quickstart)) by creating a file called `hello.py` and fill it with the following:
+
+    from flask import Flask
+    app = Flask(__name__)
+
+    @app.route("/")
+    def hello():
+        return "Hello World!"
+
+    if __name__ == "__main__":
+        app.run()
+
+If we run `python hello.py`, open a browser, and go to `http://localhost:5000`, we will see our app running and presenting the page with "Hello World!"
+
+#### What is happening here?
+
+So how does this create a web app that is suddenly visible in your browser?
+
+1. First, we make an `Flask` instance, which handles much of the application boilerplate code described above for serving and receiving requests. We pass it the title of the module (`__name__` here) so the app knows where to look for files.  
+2. The `@app.route` is a [decorator](https://realpython.com/blog/python/primer-on-python-decorators/) which tells the app what to do for each URL. The only URL we handle here is `/`, the root URL.   
+3. The function below the decorator handles all the logic of what to serve, and returns text or HTML  
+4. The `app.run()` code tells the `Flask` instance to start, with `if __name__ == "__main__":` being provided to say "only run this if the module is called directly" (i.e., not by an import).  
+
+When you ran this, you saw:
+    
+    (myapp)Scott:mysite scott$ python hello.py
+    * Running on http://127.0.0.1:5000/
+    * Restarting with reloader
+
+By default, Flask will run on the localhost, where your local machine acts as a web server. This means that typing `http://localhost:5000` goes through the same steps outlined about, but instead of going to some external server for the site, the browser just looks at what is running on your computer, which is your program, until you press `ctrl-C` to stop it. The `5000` is just another port that a server might go through to reach an application. Port 80 is the usual port for external websites. See the [Internet tutorial link](http://web.stanford.edu/class/msande91si/www-spr04/readings/week1/InternetWhitepaper.htm) for more info on this.  
+So once you visited the root URL of `localhost`, our application received this request, ran the function `hello()` and returned the string `Hello World!`.
+
+#### Routing
+
+### Doing More: Other Routes, Templates
+
+
+
+### Finally: "Full stack"? 
+
+As alluded to above, the Python application is only one part of the *stack*. You may have heard the term *full-stack* developer get thrown around without knowing what is this stack that they are developing. The stack simply refers to the series of technologies required to build, run, and deploy an app on the internet. The Python program may handle the logic of what to serve each user, but it does not store data, nor does it handle HTTP requests directly. The four major parts of the stack (in the traditional sense) are:
+1. The **operating system** running the programs
+2. The **web server** handling the incoming requests
+3. The **database** for storing all website info
+4. The **application language** (i.e. Python)
+
+[For an idea on what some people see as the responsibilities of the "full stack developer", see here](http://www.laurencegellert.com/2012/08/what-is-a-full-stack-developer/)

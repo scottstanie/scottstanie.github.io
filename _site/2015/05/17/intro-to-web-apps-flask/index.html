@@ -81,25 +81,94 @@ So if that is all that happens on your end when you type <code>google.com</code>
   return "&lt;html&gt;&lt;body&gt;Hello, World.&lt;/body&gt;&lt;/html&gt;"
 </code></pre>
 
-<p>This function would be called each time a visitor requests the page, and it would send back the barebones HTML to display "Hello, World."<br/>
-Naturally, this examples ignores a lot of other code that needs to run to accept the request and talk to the server to send back the info. There is a lot of boilerplate code that goes into every application that needs to run on the internet, and this is where web application <em>frameworks</em> come in.</p>
+<p>This function would be called each time a visitor requests the page, and it would send back the barebones HTML to display "Hello, World." A more complicated web app like facebook, would might contain JavaScript to allow interactions between the browser and the user, databases to keep track of prior information about the user, and various other parts.<br/>
+Naturally, this examples also ignores a lot of other code that needs to run to accept the request and talk to the server to send back the info. There is a lot of boilerplate code that goes into every application that needs to run on the internet, and this is where web application <em>frameworks</em> come in.</p>
 
 <h3>Web application frameworks</h3>
 
-<p>So now what is a <strong>web application framework</strong>? <a href="http://www.fullstackpython.com/web-frameworks.html">As described here</a>, web frameworks are reusable code libraries that make it easier to build a reliable, scalable, and maintainable web app. They help reuse code common for HTTP operations</p>
+<p>So what is a <strong>web application framework</strong>? <a href="http://www.fullstackpython.com/web-frameworks.html">As described here</a>, web frameworks are reusable code libraries that make it easier to build a reliable, scalable, and maintainable web app. They help reuse code common for HTTP operations and for typical application functionality, such as:<br/>
+  1. URL routing<br/>
+  2. HTML, <a href="http://www.w3schools.com/xml/">XML</a>, <a href="http://json.org/">JSON</a>, and other output format templating<br/>
+  3. Database manipulation<br/>
+  4. Security against <a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery">Cross-site request forgery (CSRF)</a> and other attacks</p>
 
-<h4>Extra web app and web framework resources</h4>
+<p>The various points above will come up as you learn more about Flask, so don't worry if you don't know what any of these mean yet.</p>
 
-<p><a href="http://www.fullstackpython.com/web-frameworks.html">Brief on web frameworks</a><br/>
-<a href="http://www.jeffknupp.com/blog/2014/03/03/what-is-a-web-framework/">Good tutorial on web frameworks</a></p>
-
-<h3>"Full stack"?</h3>
+<p>To read a little more about frameworks in general, check you this <a href="http://www.jeffknupp.com/blog/2014/03/03/what-is-a-web-framework/">good tutorial by Jeff Knupp</a>, which contains a good deal of front matter about HTTP servers.</p>
 
 <h2>Actually getting started with Flask</h2>
 
+<p>Now that we have the primer with info needed to see how web apps fit into the internet, the best way to start learning what these functions of a framework are for is to see them in action. Let's make the simplest Flask app possible.</p>
+
 <h4>Installing:</h4>
 
-<p><a href="http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/">Virtual environments and the <code>pip</code> installer</a></p>
+<p>If you're not sure what a virtual environment is, see this <a href="http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/">into to virtual environments and the <code>pip</code> installer</a>. Assuming we have Python 2.7 and <code>pip</code> installed, start by creating the virtual environment for your project and activate it. I put all my envs in <code>~/envs/</code>)*   I'll call it <code>myapp</code>:</p>
+
+<pre><code>cd ~/envs/ &amp;&amp; virtualenv myapp &amp;&amp; source ~/envs/myapp/bin/activate
+</code></pre>
+
+<p>Now make a folder where the project will live. Lets call it <code>myapp</code> as well:</p>
+
+<pre><code>mkdir myapp &amp;&amp; cd myapp
+</code></pre>
+
+<p>Install Flask:</p>
+
+<pre><code>pip install flask
+</code></pre>
+
+<p>* Note: some people like using <a href="https://virtualenvwrapper.readthedocs.org/en/latest/">virtualenvwrapper</a>, which can simplify the creation and management of virtual environments. Whether or not you use the wrapper tool, virtual envs are <em>strongly</em> recommended, especially for projects (like websites) that will be run on multiple locations.</p>
+
+<h4>Our First App</h4>
+
+<p>Now we can make a simple web app (<a href="http://flask.pocoo.org/docs/0.10/quickstart">as shown in the Flask quickstart</a>) by creating a file called <code>hello.py</code> and fill it with the following:</p>
+
+<pre><code>from flask import Flask
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+    return "Hello World!"
+
+if __name__ == "__main__":
+    app.run()
+</code></pre>
+
+<p>If we run <code>python hello.py</code>, open a browser, and go to <code>http://localhost:5000</code>, we will see our app running and presenting the page with "Hello World!"</p>
+
+<h4>What is happening here?</h4>
+
+<p>So how does this create a web app that is suddenly visible in your browser?</p>
+
+<ol>
+<li>First, we make an <code>Flask</code> instance, which handles much of the application boilerplate code described above for serving and receiving requests. We pass it the title of the module (<code>__name__</code> here) so the app knows where to look for files.</li>
+<li>The <code>@app.route</code> is a <a href="https://realpython.com/blog/python/primer-on-python-decorators/">decorator</a> which tells the app what to do for each URL. The only URL we handle here is <code>/</code>, the root URL.</li>
+<li>The function below the decorator handles all the logic of what to serve, and returns text or HTML</li>
+<li>The <code>app.run()</code> code tells the <code>Flask</code> instance to start, with <code>if __name__ == "__main__":</code> being provided to say "only run this if the module is called directly" (i.e., not by an import).</li>
+</ol>
+
+
+<p>When you ran this, you saw:</p>
+
+<pre><code>(myapp)Scott:mysite scott$ python hello.py
+* Running on http://127.0.0.1:5000/
+* Restarting with reloader
+</code></pre>
+
+<p>By default, Flask will run on the localhost, where your local machine acts as a web server. This means that typing <code>http://localhost:5000</code> goes through the same steps outlined about, but instead of going to some external server for the site, the browser just looks at what is running on your computer, which is your program, until you press <code>ctrl-C</code> to stop it. The <code>5000</code> is just another port that a server might go through to reach an application. Port 80 is the usual port for external websites. See the <a href="http://web.stanford.edu/class/msande91si/www-spr04/readings/week1/InternetWhitepaper.htm">Internet tutorial link</a> for more info on this.<br/>
+So once you visited the root URL of <code>localhost</code>, our application received this request, ran the function <code>hello()</code> and returned the string <code>Hello World!</code>.</p>
+
+<h3>Doing More: Other Routes, Templates</h3>
+
+<h3>Finally: "Full stack"?</h3>
+
+<p>As alluded to above, the Python application is only one part of the <em>stack</em>. You may have heard the term <em>full-stack</em> developer get thrown around without knowing what is this stack that they are developing. The stack simply refers to the series of technologies required to build, run, and deploy an app on the internet. The Python program may handle the logic of what to serve each user, but it does not store data, nor does it handle HTTP requests directly. The four major parts of the stack (in the traditional sense) are:
+1. The <strong>operating system</strong> running the programs
+2. The <strong>web server</strong> handling the incoming requests
+3. The <strong>database</strong> for storing all website info
+4. The <strong>application language</strong> (i.e. Python)</p>
+
+<p><a href="http://www.laurencegellert.com/2012/08/what-is-a-full-stack-developer/">For an idea on what some people see as the responsibilities of the "full stack developer", see here</a></p>
 
     </div>
   </body>
