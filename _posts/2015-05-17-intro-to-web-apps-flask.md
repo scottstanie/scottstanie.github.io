@@ -99,9 +99,45 @@ By default, Flask will run on the localhost, where your local machine acts as a 
 So once you visited the root URL of `localhost`, our application received this request, ran the function `hello()` and returned the string `Hello World!`.
 
 #### Routing
+We now have a basic output when going to the root level domain (the `/`). How do we handle more routes? Simple: add more decorators. To return the same output for two different routes, we can simply stack the decorators:
 
-### Doing More: Other Routes, Templates
+    @app.route("/index")
+    @app.route("/")
+    def hello():
+        return "Hello World!"
 
+Now if we visit `http://localhost:5000/index`, we get the same output: Both of these routes receive the same function.  
+
+
+#### Templates
+How do we actually display HTML for our app? Instead of just a text string, we can hve our routing functions return HTML files. We can make a folder called `templates` and put our basic HTML file into it:
+
+    <!doctype html>
+    <head>
+      <title>My App</title>
+    </head>
+    <body>
+      Hello, World!
+    </body>
+
+Add the following import to the top of hello.py:
+
+    from flask import render_template
+
+And now the rendering function can look like this:
+
+    @app.route("/index")
+    @app.route("/")
+    def hello():
+        return render_template('index.html')
+
+We have our first template being rendered.  
+These templates can function as reusable layouts in order to minimize duplicated HTML. See http://flask.pocoo.org/docs/0.10/tutorial/templates/ for a further example on it. Try working through the entire tutorial for the info on a full basic functions of a flask app.
+
+Also, [this tutorial](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) is a very detailed walk through, though slightly outdated.
+
+## Polis Interlude
+https://git.adverplex.com/social/polis-templater/tree/scott
 
 
 ### Finally: "Full stack"? 

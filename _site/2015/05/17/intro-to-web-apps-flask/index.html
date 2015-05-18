@@ -158,6 +158,31 @@ if __name__ == "__main__":
 <p>By default, Flask will run on the localhost, where your local machine acts as a web server. This means that typing <code>http://localhost:5000</code> goes through the same steps outlined about, but instead of going to some external server for the site, the browser just looks at what is running on your computer, which is your program, until you press <code>ctrl-C</code> to stop it. The <code>5000</code> is just another port that a server might go through to reach an application. Port 80 is the usual port for external websites. See the <a href="http://web.stanford.edu/class/msande91si/www-spr04/readings/week1/InternetWhitepaper.htm">Internet tutorial link</a> for more info on this.<br/>
 So once you visited the root URL of <code>localhost</code>, our application received this request, ran the function <code>hello()</code> and returned the string <code>Hello World!</code>.</p>
 
+<h4>Routing</h4>
+
+<p>We now have a basic output when going to the root level domain (the <code>/</code>). How do we handle more routes? Simple: add more decorators. To return the same output for two different routes, we can simply stack the decorators:</p>
+
+<pre><code>@app.route("/index")
+@app.route("/")
+def hello():
+    return "Hello World!"
+</code></pre>
+
+<h4>Templates</h4>
+
+<p>How do we actually display HTML for our app? Instead of just a text string, we can hve our routing functions return HTML files. We can make a folder called <code>templates</code> and put our basic HTML file into it:</p>
+
+<pre><code>&lt;!doctype html&gt;
+&lt;head&gt;
+  &lt;title&gt;My App&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  Hello, World!
+&lt;/body&gt;
+</code></pre>
+
+<p>Now if we visit <code>http://localhost:5000/index</code>, we get the same output: Both of these routes receive the same function.</p>
+
 <h3>Doing More: Other Routes, Templates</h3>
 
 <h3>Finally: "Full stack"?</h3>
