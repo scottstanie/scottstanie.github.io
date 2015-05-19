@@ -19,7 +19,10 @@ The crux of how the internet works in most sites (in two steps):
 
 If you understand that, you can skip to the next section. 
 
-The internet is a global network of computers, each with a specific address. These addresses look something like xxx.xxx.xxx.xxx, x being a number from 0-255.  When you go to your browser and type `www.google.com`, you are sending a Hypertext Transfer Protocol (HTTP\*) request that says "Send me the data from the IP address with the name google.com". Then your request goes to a **domain name service** (DNS) which keeps track of the IP address for `google.com`. To see this, type fewuhaof.com, and you will get a DNS error, since there is no address for that gibberish name. Once the DNS gets the address you need, your ISP can send your request to the right computer.  
+The internet is a global network of computers, each with a specific address. These addresses look something like xxx.xxx.xxx.xxx, x being a number from 0-255.  
+![](http://1.bp.blogspot.com/-gTRV25VTdb8/T55rvji6cEI/AAAAAAAACXM/9clbBo-y0nY/s1600/dnslookups.png)  
+
+When you go to your browser and type `www.google.com`, you are sending a Hypertext Transfer Protocol (HTTP\*) request that says "Send me the data from the IP address with the name google.com". Then your request goes to a **domain name service** (DNS) which keeps track of the IP address for `google.com`. To see this, type fewuhaof.com, and you will get a DNS error, since there is no address for that gibberish name. Once the DNS gets the address you need, your ISP can send your request to the right computer.  
 
 So if that is all that happens on your end when you type `google.com`, what is the thing that responded on the other end? That is where a **web server** comes in. Once your request to `GET` the data from `google.com` reached the right IP address, it was met by a *server*, which is just a computer located somewhere that is connected to the internet and sits waiting for incoming requests. Once it receives a request like yours (to `GET google.com`), it will send back the files needed to show the Google web page, which are HTML, CSS, and JavaScript files.  
 
