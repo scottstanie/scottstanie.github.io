@@ -56,49 +56,82 @@
 
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <div id="content">
-      <h2>What is Flask</h2>
+      <h1>Web Apps and Flask</h1>
 
-<p><a href="https://github.com/mitsuhiko/flask/">Flask</a> is an example of a Python <strong><em>web application framework</em></strong>. Specifically, it calls itself a <em>microframework</em> because it provides less up front. Before we dive in to how to use flask, let's take a step back and look at what a the very basics of how the internet works so you know what a <strong>web application</strong> consists of, and why you'd want to use a <strong>web framework</strong> to make one.</p>
+<p>This is intended to be a overview of a wide variety of topics related to web applications and some needed prerequisite knowledge. There's also a very brief walkthrough on how to get started with Flask, as well as plenty of links along the way to learn more and find a full Flask tutorial.<br/>
+Target demo: people with some programming experience but with little to no web programming experience, or just generally tech-savvy people.</p>
 
-<h2>The Internet in brief</h2>
+<h2>What is Flask</h2>
+
+<p><a href="https://github.com/mitsuhiko/flask/">Flask</a> is an example of a Python <a href="http://en.wikipedia.org/wiki/Web_application_framework"><strong><em>web application framework</em></strong></a>. Specifically, it calls itself a <em>microframework</em> because it provides less up front. Before we dive in to how to use flask, let's take a step back and look at what a the very basics of how the internet works so you know what a <strong>web application</strong> consists of, and why you'd want to use a <strong>web framework</strong> to make one.</p>
+
+<h2>The Internet In Brief</h2>
 
 <p>The crux of how the internet works in most sites (in two steps):<br/>
 - A client sends a request to visit some website<br/>
-- A serve sends back some files to display in the browser<br/>
-If you understand that, you can skip to the next section. For slightly more details*:</p>
+- A serve sends back some files to display in the browser</p>
 
-<p>The internet is a global network of computers, each with a specific address. These addresses look something like xxx.xxx.xxx.xxx, x being a number from 0-255.  When you go to your browser and type <code>www.google.com</code>, you are sending a Hypertext Transfer Protocol (HTTP**) request that says "Send me the data from the IP address with the name google.com". Then your request goes to a <strong>domain name service</strong> (DNS) which keeps track of the IP address for <code>google.com</code>. To see this, type fewuhaof.com, and you will get a DNS error, since there is no address for that gibberish name. Once the DNS gets the address you need, your ISP can send your request to the right computer.<br/>
-So if that is all that happens on your end when you type <code>google.com</code>, what is the thing that responded on the other end? That is where a <strong>web server</strong> comes in. Once your request to <code>GET</code> the data from <code>google.com</code> reached the right IP address, it was met by a <em>server</em>, which is just a computer located somewhere that is connected to the internet and sits waiting for incoming requests. Once it receives a request like yours (to <code>GET google.com</code>), it will send back the files needed to show the Google web page, which are HTML, CSS, and JavaScript files.</p>
+<p>If you understand that, you can skip to the next section.</p>
 
-<p>*<a href="http://web.stanford.edu/class/msande91si/www-spr04/readings/week1/InternetWhitepaper.htm">For an even more detailed overview of the internet, see here.</a><br/>
-**Note: Don't confuse HTTP with HTML. HTTP is a <em>protocol</em>: it gives directions to computers on how to talk to each other over the internet. <em>HTML</em> is HyperText Markup Language, which is just text with some directions to a browser on how to display properly like a web page.</p>
+<p>The internet is a global network of computers, each with a specific address. These addresses look something like xxx.xxx.xxx.xxx, x being a number from 0-255.  When you go to your browser and type <code>www.google.com</code>, you are sending a Hypertext Transfer Protocol (HTTP*) request that says "Send me the data from the IP address with the name google.com". Then your request goes to a <strong>domain name service</strong> (DNS) which keeps track of the IP address for <code>google.com</code>. To see this, type fewuhaof.com, and you will get a DNS error, since there is no address for that gibberish name. Once the DNS gets the address you need, your ISP can send your request to the right computer.</p>
+
+<p>So if that is all that happens on your end when you type <code>google.com</code>, what is the thing that responded on the other end? That is where a <strong>web server</strong> comes in. Once your request to <code>GET</code> the data from <code>google.com</code> reached the right IP address, it was met by a <em>server</em>, which is just a computer located somewhere that is connected to the internet and sits waiting for incoming requests. Once it receives a request like yours (to <code>GET google.com</code>), it will send back the files needed to show the Google web page, which are HTML, CSS, and JavaScript files.</p>
+
+<p>To see a <code>request</code>/<code>response</code> exchange in action, open up your terminal, and type <code>curl -v scottstanie.github.io</code>. Among other things, you'll see:</p>
+
+<pre><code>* Connected to scottstanie.github.io (199.27.75.133) port 80 (#0)
+&gt; GET / HTTP/1.1
+&gt; User-Agent: curl/7.30.0
+&gt; Host: scottstanie.github.io
+&gt; Accept: */*
+&gt;
+&lt; HTTP/1.1 200 OK
+...
+</code></pre>
+
+<p>This is the equivalent of going to your browser to visit this website, but all HTTP requests and server responses will print out in the terminal, as well as all the HTML and CSS files returned. The <code>GET / HTTP/1.1</code> you'll see is the beginning of the request, and the <code>HTTP/1.1 200 OK</code> starts the response.</p>
+
+<p>*Note: Don't confuse HTTP with HTML. HTTP is a <em>protocol</em>: it gives directions to computers on how to talk to each other over the internet. <em>HTML</em> is HyperText Markup Language, which is just text with some directions to a browser on how to display properly like a web page.</p>
 
 <h2>What is a web app?</h2>
 
-<p>Where does a web app come into the picture described above? Once the server has received your request to see a page, it translates the request to the web app to process. Thus, the web app is the program that runs and decides what should be done with every user that visits a website. For simple static websites (ones that just show an HTML page with no user inputs), that program in Python could look as simple as:</p>
+<p>Where does a web app come into the picture described above? Once the server has received your request to see a page, it translates the request to the web app to process. Thus, the web app is the program that decides what should be done with every user that visits a website. For simple static websites (ones that just show an HTML page with no user inputs), that program in Python could look as simple as:</p>
 
 <pre><code>def serve_page():
   return "&lt;html&gt;&lt;body&gt;Hello, World.&lt;/body&gt;&lt;/html&gt;"
 </code></pre>
 
-<p>This function would be called each time a visitor requests the page, and it would send back the barebones HTML to display "Hello, World." A more complicated web app like facebook, would might contain JavaScript to allow interactions between the browser and the user, databases to keep track of prior information about the user, and various other parts.<br/>
-Naturally, this examples also ignores a lot of other code that needs to run to accept the request and talk to the server to send back the info. There is a lot of boilerplate code that goes into every application that needs to run on the internet, and this is where web application <em>frameworks</em> come in.</p>
+<p>This function would be called each time a visitor requests the page, and it would send back the barebones HTML to display "Hello, World." A more complicated web app like Facebook, would might contain JavaScript to allow interactions between the browser and the user, databases to keep track of prior information about the user, and various other parts.</p>
+
+<p>Naturally, this examples also ignores a lot of other code that needs to run to accept the request and talk to the server to send back the info. There is a lot of boilerplate code that goes into every application that needs to run on the internet, and this is where web application <em>frameworks</em> come in.</p>
 
 <h3>Web application frameworks</h3>
 
 <p>So what is a <strong>web application framework</strong>? <a href="http://www.fullstackpython.com/web-frameworks.html">As described here</a>, web frameworks are reusable code libraries that make it easier to build a reliable, scalable, and maintainable web app. They help reuse code common for HTTP operations and for typical application functionality, such as:<br/>
   1. URL routing<br/>
-  2. HTML, <a href="http://www.w3schools.com/xml/">XML</a>, <a href="http://json.org/">JSON</a>, and other output format templating<br/>
+  2. Templating for HTML, <a href="http://www.w3schools.com/xml/">XML</a>, <a href="http://json.org/">JSON</a>, and other output formats<br/>
   3. Database manipulation<br/>
   4. Security against <a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery">Cross-site request forgery (CSRF)</a> and other attacks</p>
 
-<p>The various points above will come up as you learn more about Flask, so don't worry if you don't know what any of these mean yet.</p>
+<p>The various points above will come up as you learn more about Flask, so don't worry if you don't know what any of these mean yet. However, these points clearly do not cover all that is necessary to make a fully functioning website. So where does the rest of the <em>stack</em> come from?</p>
 
-<p>To read a little more about frameworks in general, check you this <a href="http://www.jeffknupp.com/blog/2014/03/03/what-is-a-web-framework/">good tutorial by Jeff Knupp</a>, which contains a good deal of front matter about HTTP servers.</p>
+<h3>"Full stack"?</h3>
 
-<h2>Actually getting started with Flask</h2>
+<p>You may have heard the term <em>full-stack</em> developer get thrown around without knowing what is this stack that they are developing. The stack simply refers to the <strong>layers of technologies</strong> required to build, run, and deploy an app on the internet. The Python program may handle the logic of what to show each user, but it does not store data, nor does it handle HTTP requests directly. The four major parts of the stack (in the traditional sense) are:</p>
 
-<p>Now that we have the primer with info needed to see how web apps fit into the internet, the best way to start learning what these functions of a framework are for is to see them in action. Let's make the simplest Flask app possible.</p>
+<ol>
+<li>The <strong>operating system</strong> running the programs</li>
+<li>The <strong>web server</strong> handling the incoming requests</li>
+<li>The <strong>database</strong> for storing all website info</li>
+<li>The <strong>application language</strong> (i.e. Python)</li>
+</ol>
+
+
+<p>Setting up #1-3 for your web app will not be covered here, as they are necessary once you have a handle on making a simple app and want to expand, scale, and deploy it.</p>
+
+<h1>Actually getting started with Flask</h1>
+
+<p>Now that we have the primer with info needed to see where web apps fits into the internet, the best way to start learning what a framework does is to see it in action. Let's make the simplest Flask app possible.</p>
 
 <h4>Installing:</h4>
 
@@ -168,9 +201,11 @@ def hello():
     return "Hello World!"
 </code></pre>
 
+<p>Now if we visit <code>http://localhost:5000/index</code>, we get the same output: Both of these routes receive the same function.</p>
+
 <h4>Templates</h4>
 
-<p>How do we actually display HTML for our app? Instead of just a text string, we can hve our routing functions return HTML files. We can make a folder called <code>templates</code> and put our basic HTML file into it:</p>
+<p>How do we actually display HTML for our app? Instead of just a text string, we can have our routing functions return HTML files. We can make a folder called <code>templates</code> and put our basic HTML file into it:</p>
 
 <pre><code>&lt;!doctype html&gt;
 &lt;head&gt;
@@ -181,19 +216,36 @@ def hello():
 &lt;/body&gt;
 </code></pre>
 
-<p>Now if we visit <code>http://localhost:5000/index</code>, we get the same output: Both of these routes receive the same function.</p>
+<p>Add the following import to the top of hello.py:</p>
 
-<h3>Doing More: Other Routes, Templates</h3>
+<pre><code>from flask import render_template
+</code></pre>
 
-<h3>Finally: "Full stack"?</h3>
+<p>And now the rendering function can look like this:</p>
 
-<p>As alluded to above, the Python application is only one part of the <em>stack</em>. You may have heard the term <em>full-stack</em> developer get thrown around without knowing what is this stack that they are developing. The stack simply refers to the series of technologies required to build, run, and deploy an app on the internet. The Python program may handle the logic of what to serve each user, but it does not store data, nor does it handle HTTP requests directly. The four major parts of the stack (in the traditional sense) are:
-1. The <strong>operating system</strong> running the programs
-2. The <strong>web server</strong> handling the incoming requests
-3. The <strong>database</strong> for storing all website info
-4. The <strong>application language</strong> (i.e. Python)</p>
+<pre><code>@app.route("/index")
+@app.route("/")
+def hello():
+    return render_template('index.html')
+</code></pre>
+
+<p>We have our first template being rendered.</p>
+
+<p>To see how these templates can be reusable, check out <a href="http://flask.pocoo.org/docs/0.10/tutorial/templates/">the Flask tutorial part on templating</a>.</p>
+
+<h4>Doing More</h4>
+
+<p>This is not intended to be a full tutorial on making a Flask app, as there have already been many good ones written. If you really want to get a grasp on Flask, <a href="http://flask.pocoo.org/docs/0.10/tutorial/">the site's own tutorial is quite good</a>. Working through the entire tutorial should give a feel of the basic functions of a flask app. Also, check out <a href="http://flask.pocoo.org/docs/0.10/patterns/">the rest of the patterns in their docs on best practices</a>. If their tutorial is not enough, there are plenty of other <a href="http://maximebf.com/blog/2012/10/building-websites-in-python-with-flask/#.VVqLOlVVikq">full Flask tutorials</a> out there, as well as <a href="http://mattupstate.com/python/2013/06/26/how-i-structure-my-flask-applications.html">info on structuring apps</a>.</p>
+
+<h3>More Reading</h3>
+
+<p><a href="http://web.stanford.edu/class/msande91si/www-spr04/readings/week1/InternetWhitepaper.htm">For an even more detailed overview of the internet, see here.</a></p>
+
+<p>More about frameworks in general: <a href="http://www.jeffknupp.com/blog/2014/03/03/what-is-a-web-framework/">a good tutorial by Jeff Knupp</a>, containing quite a bit of front matter about HTTP servers.</p>
 
 <p><a href="http://www.laurencegellert.com/2012/08/what-is-a-full-stack-developer/">For an idea on what some people see as the responsibilities of the "full stack developer", see here</a></p>
+
+<p><a href="http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">This tutorial by Miguel Grinberg</a> is a very detailed walk through, though slightly outdated at this point.</p>
 
     </div>
   </body>
