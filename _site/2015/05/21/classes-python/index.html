@@ -1,0 +1,285 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Classes in Python</title>
+     <link rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <style type="text/css" media="screen">
+      body {
+        background:white; color:#020202;
+        font:1.5rem georgia, serif;
+        line-height:1.4;
+        font-weight: lighter;
+        text-rendering: optimizelegibility;
+      }
+      div.breaker { clear:both; }
+      img { border:none; vertical-align:bottom; }
+      hr { height:1px; border:none; background-color:#ddd; }
+      h1,h2,h3,h4 {
+        font-family: 'Helvetica Neue', helvetica, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      #content {
+        padding:20px;
+      }
+      table {
+  margin:0;padding:0;
+  width:100%;
+  box-shadow: 10px 10px 5px #888888;
+  border:1px solid #000000;
+
+  -moz-border-radius-bottomleft:0;
+  -webkit-border-bottom-left-radius:0;
+  border-bottom-left-radius:0;
+}
+
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Scott Staniewicz</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/posts">Posts</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/projects">Projects</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <div id="content">
+      <h1>Classes in Python</h1>
+
+<p>First, what is a class?<br/>
+A class is simply a logical grouping of data and functions, where the functions are called <em>methods</em> of the class. They are really a modelling technique used in the organization of programs, which falls under <strong><em>object oriented programming (OOP)</em></strong>.<br/>
+In python, <a href="https://pythoninternal.wordpress.com/2014/08/11/everythings-an-object/">everything is an <strong>object</strong></a>, and defining a class is defining a blueprint for creating objects.</p>
+
+<h3>Object Oriented Terminology</h3>
+
+<p>First, let's go over the basic terms used in OOP.</p>
+
+<ul>
+<li><p><strong>Class</strong>: A user-defined <em>prototype</em> for an object that defines a set of attributes that characterize any object of the class. The attributes are <strong>data members</strong> (class variables and instance variables) and <strong>methods</strong>, accessed via dot notation.</p></li>
+<li><p><strong>Class variable</strong>: A variable that is shared by all instances of a class. Class variables are defined within a class but outside any of the class's methods. Class variables are not used as frequently as instance variables are.</p></li>
+<li><p><strong>Data member</strong>: A class variable or instance variable that holds data associated with a class and its objects.</p></li>
+<li><p><strong>Function</strong> overloading: The assignment of more than one behavior to a particular function. The operation performed varies by the types of objects or arguments involved.</p></li>
+<li><p><strong>Instance</strong> variable: A variable that is defined inside a method and belongs only to the current instance of a class.</p></li>
+<li><p><strong>Inheritance</strong>: The transfer of the characteristics of a class to other classes that are derived from it.</p></li>
+<li><p><strong>Instance</strong>: An individual object of a certain class. An object obj that belongs to a class Circle, for example, is an instance of the class Circle.</p></li>
+<li><p><strong>Instantiation</strong>: The creation of an instance of a class.</p></li>
+<li><p><strong>Method</strong> : A special kind of function that is defined in a class definition.</p></li>
+<li><p><strong>Object</strong>: A unique instance of a data structure that's defined by its class. An object comprises both data members (class variables and instance variables) and methods.</p></li>
+<li><p><strong>Operator overloading</strong>: The assignment of more than one function to a particular operator.</p></li>
+</ul>
+
+
+<h2>Why use classes?</h2>
+
+<p>Programming using OOP is really just a preference- [there are other paradigms] (http://cs.lmu.edu/~ray/notes/paradigms/) that can accomplish the same thing, some being better suited to certain problems than others. OOP can make problems conceptually easier to understand and visualize, <a href="http://c2.com/cgi/wiki?ArgumentsAgainstOop">even there are some strong opinions against it</a>. You can accomplish the same thing by using module-level (global) variables, but globals in general are a bad idea.</p>
+
+<h3>Defining your own class</h3>
+
+<p>Let's give a basic definition of a class:</p>
+
+<pre><code class="python">class Employee:
+  '''Common base class for all employees'''
+  empCount = 0
+
+  def __init__(self, name, salary):
+    self.name = name
+    self.salary = salary
+    Employee.empCount += 1
+
+  def printSelf(self):
+    return "Name : %s, Salary: %s" % (self.name, self.salary)
+</code></pre>
+
+<p>The variable empCount is a <strong>class variable</strong> whose value is shared among <strong>all instances</strong> of a this class. This can be accessed as <code>Employee.empCount</code> from inside the class or outside the class.</p>
+
+<p>The first method <code>__init__()</code> is a special method, which is called class constructor or initialization method that Python calls when you create a new instance of this class.</p>
+
+<p>You declare other class methods like normal functions with the exception that the first argument to each method is self.  You do not need to include it when you call the methods. If you make an instance <code>employee = Employee('scott', '10000')</code>, then calling <code>employee.printSelf()</code> implicitly adds the self to the argument list.</p>
+
+<h4><code>__str__</code> and <code>__repr__</code></h4>
+
+<p>OOP has uses in most languages, but Python has some pecularities in its class implementation.</p>
+
+<ul>
+<li>The goal of <code>__str__</code> is to be readable</li>
+<li>The goal of <code>__repr__</code> is to be unambiguous</li>
+</ul>
+
+
+<p>As an example, you might have this for a game board class:</p>
+
+<pre><code class="python">class BoardState(object):
+    def __init__(self,
+            pieces=(0, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,)):
+        self.pieces = pieces
+</code></pre>
+
+<p>If you initialze an object, it will be represented like this:</p>
+
+<pre><code class="python">In [1]: bs = BoardState()
+
+In [2]: bs
+Out[2]: &lt;__main__.BoardState at 0x10b3c22d0&gt;
+</code></pre>
+
+<p>Using <code>print</code> yeilds the same results. This is because it is using the default <code>__repr__</code> method. (which also is the default <code>__str__</code> method). It is <em>unambiguous</em> because it tells you exactly where it is in memory. However, you might want a little more detail about what is in the class.</p>
+
+<pre><code class="python">    def __repr__(self):
+        return "%s with pieces %s" % (self.__class__, self.__dict__)
+</code></pre>
+
+<p>Now you would see:</p>
+
+<pre><code class="python">In [2]: bs
+Out[2]: &lt;class '__main__.BoardState'&gt; with pieces {'pieces': (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)}
+</code></pre>
+
+<p>However, this is still ugly on sight. To really visualize it, you might define something like this:</p>
+
+<pre><code class="python">    def __str__(self):
+        all_str = ''
+        for row_idx in range(4):
+            row = self.pieces[4*row_idx: 4*(row_idx + 1)]
+            str_row = ' '.join(str(item) for item in row)
+            all_str += str_row + '\n'
+        return all_str
+</code></pre>
+
+<p>Now when we print, it looks like this:</p>
+
+<pre><code class="python">In [3]: print bs
+0 0 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0
+</code></pre>
+
+<p>*For a detailed explanation of <code>__repr__</code> vs <code>__str__</code>, <a href="http://stackoverflow.com/questions/1436703/difference-between-str-and-repr-in-python">see here</a></p>
+
+<h4>Other private methods of a class (string example)</h4>
+
+<pre><code class="python">In [27]: t = 'foo'
+In [29]: t.__
+t.__add__           t.__format__        t.__gt__            t.__mod__           t.__repr__          t.__subclasshook__
+t.__class__         t.__ge__            t.__hash__          t.__mul__           t.__rmod__
+t.__contains__      t.__getattribute__  t.__init__          t.__ne__            t.__rmul__
+t.__delattr__       t.__getitem__       t.__le__            t.__new__           t.__setattr__
+t.__doc__           t.__getnewargs__    t.__len__           t.__reduce__        t.__sizeof__
+t.__eq__            t.__getslice__      t.__lt__            t.__reduce_ex__     t.__str__
+</code></pre>
+
+<p><strong>lt</strong>, <strong>le</strong>, <strong>eq</strong>, <strong>ne</strong>, <strong>gt</strong> and <strong>ge</strong>: Called to compare the object with another object. These will be called if defined, otherwise Python will fall-back to using <strong>cmp</strong>.
+<strong>call</strong>: Lets an object be "called" e.g. so that you can write things like this: obj(arg1,arg2,...).
+Python also lets you define methods that let an object act like an array (so you can write things like this: obj[2] = "foo"), or like a numeric type (so you write things like this: print(obj1 + 3*obj2).
+<code>super</code> method</p>
+
+<h3>Special Attributes of Python Classes</h3>
+
+<p>Special attributes:</p>
+
+<ul>
+<li><p><code>__name__</code> is the class name;</p></li>
+<li><p><code>__module__</code> is the module name in which the class was defined;</p></li>
+<li><p><code>__dict__</code> is the dictionary containing the class’s namespace;</p></li>
+<li><p><code>__bases__</code> is a tuple (possibly empty or a singleton) containing the base classes, in the order of their occurrence in the base class list;</p></li>
+<li><p><code>__doc__</code> is the class’s documentation string, or None if undefined.</p></li>
+</ul>
+
+
+<h2>Overloading methods</h2>
+
+<p>If your class has a special way you want to perform a builtin operation- say, addition- then you can explicitly define that and override it for your class:</p>
+
+<pre><code class="python">class Vector:
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+
+    def __str__(self):
+        return 'Vector (%d, %d)' % (self.a, self.b)
+
+    def __add__(self,other):
+        return Vector(self.a + other.a, self.b + other.b)
+
+v1 = Vector(2,10)
+v2 = Vector(5,-2)
+print v1 + v2
+
+&gt;&gt; Vector (7, 8)
+</code></pre>
+
+<h2>Class Methods vs Instance Methods</h2>
+
+<pre><code class="python">class Employee:
+    '''Common base class for all employees'''
+    empCount = 0
+
+    def __init__(self, name, salary):
+        self.name = name
+        self.salary = salary
+        Employee.empCount += 1
+
+    def __str__(self):
+        return "Name : %s, Salary: %s" % (self.name, self.salary)
+
+    @classmethod
+    def displayCount(self):
+        print "Total Employees: %d" % Employee.empCount
+</code></pre>
+
+<h3>The @property method</h3>
+
+<p>Used to define setters and getters of class attributes. For example,</p>
+
+<pre><code class="python">@property
+def audience_selected(self):
+    return self.counters['audience']['selected'].get()
+</code></pre>
+
+<p>This, being part of a class, now allows us to call <code>self.audience_selected</code>. That will then call this function unstead of just having some number stored there. If we wrote</p>
+
+<pre><code class="python">@audience_selected.setter
+def audience_selected(self, value):
+    self.counters['audience']['selected'].set(value)
+</code></pre>
+
+<p>We would have a setter for <code>self.audience_selected = value</code></p>
+
+<pre><code class="python">class Celsius:
+    def __init__(self, temperature = 0):
+        self._temperature = temperature
+
+    def to_fahrenheit(self):
+        return (self.temperature * 1.8) + 32
+
+    @property
+    def temperature(self):
+        print("Getting value")
+        return self._temperature
+
+    @temperature.setter
+    def temperature(self, value):
+        if value &lt; -273:
+            raise ValueError("Temperature below -273 is not possible")
+        print("Setting value")
+        self._temperature = value
+</code></pre>
+
+    </div>
+  </body>
+</html>
