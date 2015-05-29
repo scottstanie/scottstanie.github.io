@@ -1,5 +1,4 @@
 # scottstanie.github.io
 
-A beginner's view of algorithms
+Snapshots of knowdledge about various topics
 
-scottstanie.github.io
