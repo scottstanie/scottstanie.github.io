@@ -131,50 +131,239 @@ In python, <a href="https://pythoninternal.wordpress.com/2014/08/11/everythings-
 <p>First, let's go over the basic terms used in OOP.</p>
 
 <ul>
-<li><p><strong>Class</strong>: A user-defined <em>prototype</em> for an object that defines a set of attributes that characterize any object of the class. The attributes are <strong>data members</strong> (class variables and instance variables) and <strong>methods</strong>, accessed via dot notation.</p></li>
-<li><p><strong>Class variable</strong>: A variable that is shared by all instances of a class. Class variables are defined within a class but outside any of the class's methods. Class variables are not used as frequently as instance variables are.</p></li>
-<li><p><strong>Data member</strong>: A class variable or instance variable that holds data associated with a class and its objects.</p></li>
-<li><p><strong>Function</strong> overloading: The assignment of more than one behavior to a particular function. The operation performed varies by the types of objects or arguments involved.</p></li>
-<li><p><strong>Instance</strong> variable: A variable that is defined inside a method and belongs only to the current instance of a class.</p></li>
-<li><p><strong>Inheritance</strong>: The transfer of the characteristics of a class to other classes that are derived from it.</p></li>
+<li><p><strong>Class</strong>: A user-defined <em>prototype</em> for an object that defines a set of features that characterize any object of the class. The features are <strong>data members</strong> (class variables and instance variables) and <strong>methods</strong>, accessed via dot notation.</p></li>
+<li><p><strong>Attribute</strong>: A class variable or instance variable that holds data associated with a class and its objects.</p>
+
+<ul>
+<li>Note that in OOP terminology,  "attributes", "fields", and "variables" are often used interchangeably.</li>
+</ul>
+</li>
+<li><p><strong>Method</strong>: A special kind of function that is defined in a class definition.</p></li>
+<li><p><strong>Member</strong>: A term to describe either class methods or attributes</p></li>
 <li><p><strong>Instance</strong>: An individual object of a certain class. An object obj that belongs to a class Circle, for example, is an instance of the class Circle.</p></li>
 <li><p><strong>Instantiation</strong>: The creation of an instance of a class.</p></li>
-<li><p><strong>Method</strong> : A special kind of function that is defined in a class definition.</p></li>
+<li><p><strong>Instance variable</strong>: A variable that is defined inside a method and belongs only to the current instance of a class.</p></li>
+<li><p><strong>Class variable</strong>: A variable that is shared by all instances of a class. Class variables are defined within a class but outside any of the class's methods. Class variables are not used as frequently as instance variables are.</p></li>
+<li><p><strong>Inheritance</strong>: The transfer of the characteristics of a class to other classes that are derived from it.</p></li>
 <li><p><strong>Object</strong>: A unique instance of a data structure that's defined by its class. An object comprises both data members (class variables and instance variables) and methods.</p></li>
-<li><p><strong>Operator overloading</strong>: The assignment of more than one function to a particular operator.</p></li>
 </ul>
 
 
 <h2>Why use classes?</h2>
 
-<p>Programming using OOP is really just a preference- [there are other paradigms] (http://cs.lmu.edu/~ray/notes/paradigms/) that can accomplish the same thing, some being better suited to certain problems than others. OOP can make problems conceptually easier to understand and visualize, <a href="http://c2.com/cgi/wiki?ArgumentsAgainstOop">even there are some strong opinions against it</a>. You can accomplish the same thing by using module-level (global) variables, but globals in general are a bad idea.</p>
+<p>Programming using OOP is really just a preference- [there are other paradigms] (http://cs.lmu.edu/~ray/notes/paradigms/) that can accomplish the same thing, some being better suited to certain problems than others. <a href="http://c2.com/cgi/wiki?ArgumentsAgainstOop">While there are some strong opinions against it,</a> OOP can make some problems conceptually easier to understand and visualize. Among the things that using classes do for you:</p>
+
+<ul>
+<li>Provide a logical grouping of functions</li>
+<li>Allow you to share data for these functions to use</li>
+<li>Provide a <a href="http://en.wikipedia.org/wiki/Namespace">namespace</a> for these functions and data attributes</li>
+<li>Structure programs to provide more reusable code</li>
+<li>Allows you to add new features to existing code
+
+<ul>
+<li>This point more apparent after seeing what a <strong>subclass</strong> is</li>
+</ul>
+</li>
+</ul>
+
+
+<p>You can accomplish the some of these things by using modules (specifically the namespace benefit), but using global variables, especially across code that will be shared and reused widely, is a bad idea. <a href="http://inventwithpython.com/blog/2014/12/02/why-is-object-oriented-programming-useful-with-an-role-playing-game-example/">More on why OOP is useful</a></p>
 
 <h3>Defining your own class</h3>
 
 <p>Let's give a basic definition of a class:</p>
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Employee</span><span class="p">:</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Employee</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Common base class for all employees&#39;&#39;&#39;</span>
-    <span class="n">empCount</span> <span class="o">=</span> <span class="mi">0</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">salary</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">salary</span><span class="o">=</span><span class="mi">10000</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">salary</span> <span class="o">=</span> <span class="n">salary</span>
-        <span class="n">Employee</span><span class="o">.</span><span class="n">empCount</span> <span class="o">+=</span> <span class="mi">1</span>
      
-    <span class="k">def</span> <span class="nf">printSelf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">print_self</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s">&quot;Name : </span><span class="si">%s</span><span class="s">, Salary: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">salary</span><span class="p">)</span></code></pre></div>
 
 
-<p>The variable empCount is a <strong>class variable</strong> whose value is shared among <strong>all instances</strong> of a this class. This can be accessed as <code>Employee.empCount</code> from inside the class or outside the class.</p>
+<p>The first method <code>__init__()</code> is a special method, which is called the <strong>class constructor</strong> or <strong>initialization method</strong>. Python calls this when you create a new instance of this class.</p>
 
-<p>The first method <code>__init__()</code> is a special method, which is called class constructor or initialization method that Python calls when you create a new instance of this class.</p>
+<p>You declare other class methods like normal functions with the exception that the first argument to each method is <code>self</code>.  You do not need to include it when you call the methods. If you make an instance <code>employee = Employee('scott', '10000')</code>, then calling <code>employee.print_self()</code> implicitly adds the self to the argument list. The function has access to all properties of that instance (<code>name</code> and <code>salary</code> above) as well as all <strong>class variables</strong>.</p>
 
-<p>You declare other class methods like normal functions with the exception that the first argument to each method is self.  You do not need to include it when you call the methods. If you make an instance <code>employee = Employee('scott', '10000')</code>, then calling <code>employee.printSelf()</code> implicitly adds the self to the argument list.</p>
+<h3>Class variables</h3>
 
-<h4><code>__str__</code> and <code>__repr__</code></h4>
+<p>We can also add data to a class that will be shared among <strong>all</strong> instances created:</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Employee</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Common base class for all employees&#39;&#39;&#39;</span>
+    <span class="n">employee_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">salary</span><span class="o">=</span><span class="mi">10000</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">salary</span> <span class="o">=</span> <span class="n">salary</span>
+        <span class="n">Employee</span><span class="o">.</span><span class="n">employee_count</span> <span class="o">+=</span> <span class="mi">1</span>
+     
+    <span class="k">def</span> <span class="nf">print_self</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s">&quot;Name : </span><span class="si">%s</span><span class="s">, Salary: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">salary</span><span class="p">)</span></code></pre></div>
+
+
+<p>The variable <code>employee_count</code> can be accessed inside the class or outside the class. This means you can call <code>employee.employee_count</code>, as you can for any normal class attribute, <em>or</em> <code>Employee.employee_count</code>, where the second is only true of class variables.</p>
+
+<h3>Class methods vs instance methods</h3>
+
+<p>Similar to class variables, you can also define <strong>class methods</strong>:</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Employee</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Common base class for all employees&#39;&#39;&#39;</span>
+    <span class="n">employee_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">salary</span><span class="o">=</span><span class="mi">10000</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">salary</span> <span class="o">=</span> <span class="n">salary</span>
+        <span class="n">Employee</span><span class="o">.</span><span class="n">employee_count</span> <span class="o">+=</span> <span class="mi">1</span>
+   
+    <span class="k">def</span> <span class="nf">print_self</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s">&quot;Name : </span><span class="si">%s</span><span class="s">, Salary: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">salary</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">display_count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s">&quot;Total Employees: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">Employee</span><span class="o">.</span><span class="n">employee_count</span></code></pre></div>
+
+
+<p>This can be accessed by the instance like a normal method or by calling <code>Employee.display_count</code>. Note that once you have defined a class, you can call this method <em>before any instances are created</em>.</p>
+
+<h2>Inheritance</h2>
+
+<p>The real usefulness of classes come in when you get into <strong>inheritance</strong>. This is where you take a preexisting class make a <strong>subclass</strong> or <em>*derived class</em> from it:</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Analyst</span><span class="p">(</span><span class="n">Employee</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Subclass of the Employee&#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">salary</span><span class="o">=</span><span class="mi">20000</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">salary</span> <span class="o">=</span> <span class="n">salary</span>
+        <span class="n">Employee</span><span class="o">.</span><span class="n">employee_count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">speak_analyst</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s">&quot;Let&#39;s make some graphs&quot;</span></code></pre></div>
+
+
+<p>Notice that now instead of <code>object</code> as the argument passed to the class name, it's the base class <code>Employee</code> (<code>object</code> is used as Python makes a switch from older Python classes to 'new-style' classes. <a href="http://stackoverflow.com/questions/4015417/python-class-inherits-object">See here for more</a>)<br/>
+This <code>Analyst</code> class has an init function and only defines one new method, <code>speak_analyst</code>. However, because it inherited from <code>Employee</code>, it inherits <em>all methods from it as well</em>. This means that the following are all valid:</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">e</span> <span class="o">=</span> <span class="n">Employee</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;Sam&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">e</span><span class="o">.</span><span class="n">salary</span>
+<span class="mi">10000</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">e</span><span class="o">.</span><span class="n">employee_count</span>
+<span class="mi">1</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">Analyst</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;Scott&#39;</span><span class="p">,</span> <span class="n">salary</span><span class="o">=</span><span class="mi">30000</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">speak_analyst</span><span class="p">()</span>
+<span class="n">Let</span><span class="s">&#39;s make some graphs</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">salary</span>
+<span class="mi">30000</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">employee_count</span>
+<span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">e</span><span class="o">.</span><span class="n">employee_count</span>
+<span class="mi">2</span></code></pre></div>
+
+
+<p>Notice both the shared methods from the base class <em>and</em> the chared class attribute, <code>employee_count</code> that works from an <code>Analyst</code> instance. Also note that the new <code>Analyst</code> increased the <code>employee_count</code> of both <code>Employee</code> and <code>Analyst</code>. This however can be a dangerous way to implement shared data, as directly changing this attribute on an instance can cause it to lose track of the <code>employee_count</code> when others are created (it has overwritten the class attribute.)</p>
+
+<p>Since the two classes above have the same <code>__init__</code> methods, we can shorten the <code>Analyst</code> definition a bit:</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Analyst</span><span class="p">(</span><span class="n">Employee</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Subclass of the Employee&#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">salary</span><span class="o">=</span><span class="mi">20000</span><span class="p">):</span>
+        <span class="n">Employee</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">salary</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">speak_analyst</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s">&quot;Let&#39;s make some graphs&quot;</span></code></pre></div>
+
+
+<p>There is also a <code>super</code> method which can provide an alternate syntax (which becomes even cleaner in Python 3):</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Analyst</span><span class="p">(</span><span class="n">Employee</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Subclass of the Employee&#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">salary</span><span class="o">=</span><span class="mi">20000</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Analyst</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">salary</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">speak_analyst</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s">&quot;Let&#39;s make some graphs&quot;</span></code></pre></div>
+
+
+<p>This will do the exact same thing as the previous <code>Employee.__init__(...)</code> above. The use of <code>super</code> does not really come in until you start using <strong>multiple inheritances</strong>, where a single class is subclassed from two parent classes. <a href="http://www.artima.com/weblogs/viewpost.jsp?thread=236275">Read more about <code>super</code> here.</a></p>
+
+<h3>Overloading methods</h3>
+
+<p>In OOP, <strong>function overloading</strong> is the assignment of more than one behavior to a particular function. The operation performed varies by the types of objects or arguments involved.<br/>
+If your class has a special way you want to perform a builtin operation- say, addition- then you can explicitly define that and override it for your class:</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Vector</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">a</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&#39;Vector (</span><span class="si">%d</span><span class="s">, </span><span class="si">%d</span><span class="s">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
+   
+    <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
+
+<span class="n">v1</span> <span class="o">=</span> <span class="n">Vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">v2</span> <span class="o">=</span> <span class="n">Vector</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">v1</span> <span class="o">+</span> <span class="n">v2</span>
+
+<span class="o">&gt;&gt;</span> <span class="n">Vector</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span></code></pre></div>
+
+
+<h2>Python-specific Class Features</h2>
 
 <p>OOP has uses in most languages, but Python has some pecularities in its class implementation.</p>
+
+<h3>Public and Private Methods</h3>
+
+<p>In other languages, methods and member variables can be marked as <strong>public</strong> or <strong>private</strong>. Public methods can be called and public member variables can be set by any code, inside or outside of the class. Private methods can be called and private member variables can be set only by code inside the object's own class.</p>
+
+<p>The purpose of this is to allow the class to be something presented with a specific set of functions and attributes, and only have those be available to the user. These are the public methods. The private methods are anything that the designer of the class needs to make the public methods work properly. The user does not need to know <em>how</em> the public methods are implement, just that the <em>do</em> work exactly as described. Since good programming practice says to keep functions short and specific, breaking out complicated public methods into smaller private methods can make things logically simpler.</p>
+
+<p>In Python, unlike other languages, no method is <em>fully</em> private. you may have seen methods start with a double underscore <code>__</code>.</p>
+
+<p>For example, at the bottom of many modules, you may see:</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span></code></pre></div>
+
+
+<p>This means that when the module is run directly (typing <code>python module.py</code>), the variable <code>__name__</code> will be set to <code>__main__</code> (as opposed to if the module is imported, in which case <code>__name__</code> will be the module you are importing into.)</p>
+
+<p>These double underscore methods are (some of) the 'private' methods of an object. However, these methds are always visible to the user. If you type:</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="s">&#39;foo&#39;</span></code></pre></div>
+
+
+<p>then type <code>t.__</code> and hit tab into iPython, you'll get all the <code>__</code> methods:</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">__</span>
+<span class="n">t</span><span class="o">.</span><span class="n">__add__</span>           <span class="n">t</span><span class="o">.</span><span class="n">__format__</span>        <span class="n">t</span><span class="o">.</span><span class="n">__gt__</span>            <span class="n">t</span><span class="o">.</span><span class="n">__mod__</span>           <span class="n">t</span><span class="o">.</span><span class="n">__repr__</span>          <span class="n">t</span><span class="o">.</span><span class="n">__subclasshook__</span>
+<span class="n">t</span><span class="o">.</span><span class="n">__class__</span>         <span class="n">t</span><span class="o">.</span><span class="n">__ge__</span>            <span class="n">t</span><span class="o">.</span><span class="n">__hash__</span>          <span class="n">t</span><span class="o">.</span><span class="n">__mul__</span>           <span class="n">t</span><span class="o">.</span><span class="n">__rmod__</span>
+<span class="o">...</span></code></pre></div>
+
+
+<p>You can also see all methods (public and private) of an object with:</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="p">[</span><span class="n">method</span> <span class="k">for</span> <span class="n">method</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span> <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">method</span><span class="p">))]</span></code></pre></div>
+
+
+<p>Even though all methods are visible, it's still useful when creating classes to use private, or at least 'internal', methods. <a href="https://www.python.org/dev/peps/pep-0008/#descriptive-naming-styles">The style convention</a> is to use a single underscore as a weak "internal use" indicator:</p>
+
+<p>The leading and trailing double underscores in a Python <code>__method__</code> is described by the style guide as:</p>
+
+<pre><code>... "magic" objects or attributes that live in user-controlled namespaces. E.g. __init__ , __import__ or __file__ . Never invent such names; only use them as documented.'
+</code></pre>
+
+<p><a href="http://stackoverflow.com/questions/1301346/the-meaning-of-a-single-and-a-double-underscore-before-an-object-name-in-python">This SO answer describes the difference between the single and double underscore methods</a>, and <a href="https://docs.python.org/2/tutorial/classes.html#private-variables-and-class-local-references">'name mangling' is described here.</a></p>
+
+<h3><code>__str__</code> and <code>__repr__</code></h3>
+
+<p>Both of these methods are built into classes, and both do some kind of 'printing'.</p>
 
 <ul>
 <li>The goal of <code>__str__</code> is to be readable</li>
@@ -182,7 +371,7 @@ In python, <a href="https://pythoninternal.wordpress.com/2014/08/11/everythings-
 </ul>
 
 
-<p>As an example, you might have this for a game board class:</p>
+<p>As an example, you might have this for a 4x4 game board class:</p>
 
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">BoardState</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
@@ -195,10 +384,9 @@ In python, <a href="https://pythoninternal.wordpress.com/2014/08/11/everythings-
 
 <p>If you initialze an object, it will be represented like this:</p>
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">bs</span> <span class="o">=</span> <span class="n">BoardState</span><span class="p">()</span>
-
-<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">bs</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">BoardState</span> <span class="n">at</span> <span class="mh">0x10b3c22d0</span><span class="o">&gt;</span></code></pre></div>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">bs</span> <span class="o">=</span> <span class="n">BoardState</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">bs</span>
+<span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">BoardState</span> <span class="n">at</span> <span class="mh">0x10b3c22d0</span><span class="o">&gt;</span></code></pre></div>
 
 
 <p>Using <code>print</code> yeilds the same results. This is because it is using the default <code>__repr__</code> method. (which also is the default <code>__str__</code> method). It is <em>unambiguous</em> because it tells you exactly where it is in memory. However, you might want a little more detail about what is in the class.</p>
@@ -209,8 +397,8 @@ In python, <a href="https://pythoninternal.wordpress.com/2014/08/11/everythings-
 
 <p>Now you would see:</p>
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">bs</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">__main__</span><span class="o">.</span><span class="n">BoardState</span><span class="o">&gt;</span> <span class="k">with</span> <span class="n">pieces</span> <span class="p">{</span><span class="s">&#39;pieces&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)}</span></code></pre></div>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">bs</span>
+<span class="o">&lt;</span><span class="k">class</span> <span class="nc">__main__</span><span class="o">.</span><span class="n">BoardState</span><span class="o">&gt;</span> <span class="k">with</span> <span class="n">pieces</span> <span class="p">{</span><span class="s">&#39;pieces&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)}</span></code></pre></div>
 
 
 <p>However, this is still ugly on sight. To really visualize it, you might define something like this:</p>
@@ -226,19 +414,27 @@ In python, <a href="https://pythoninternal.wordpress.com/2014/08/11/everythings-
 
 <p>Now when we print, it looks like this:</p>
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="k">print</span> <span class="n">bs</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="n">bs</span>
 <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
 <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
 <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
 <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span></code></pre></div>
 
 
+<p>The <code>Employee</code> class above could have also implemented its <code>print_self</code> method as its <code>__str__</code> in order to call <code>print employee</code>:</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Employee</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&quot;Name : </span><span class="si">%s</span><span class="s">, Salary: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">salary</span><span class="p">)</span></code></pre></div>
+
+
 <p>*For a detailed explanation of <code>__repr__</code> vs <code>__str__</code>, <a href="http://stackoverflow.com/questions/1436703/difference-between-str-and-repr-in-python">see here</a></p>
 
 <h4>Other private methods of a class (string example)</h4>
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">In</span> <span class="p">[</span><span class="mi">27</span><span class="p">]:</span> <span class="n">t</span> <span class="o">=</span> <span class="s">&#39;foo&#39;</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">29</span><span class="p">]:</span> <span class="n">t</span><span class="o">.</span><span class="n">__</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="s">&#39;foo&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">__</span>
 <span class="n">t</span><span class="o">.</span><span class="n">__add__</span>           <span class="n">t</span><span class="o">.</span><span class="n">__format__</span>        <span class="n">t</span><span class="o">.</span><span class="n">__gt__</span>            <span class="n">t</span><span class="o">.</span><span class="n">__mod__</span>           <span class="n">t</span><span class="o">.</span><span class="n">__repr__</span>          <span class="n">t</span><span class="o">.</span><span class="n">__subclasshook__</span>
 <span class="n">t</span><span class="o">.</span><span class="n">__class__</span>         <span class="n">t</span><span class="o">.</span><span class="n">__ge__</span>            <span class="n">t</span><span class="o">.</span><span class="n">__hash__</span>          <span class="n">t</span><span class="o">.</span><span class="n">__mul__</span>           <span class="n">t</span><span class="o">.</span><span class="n">__rmod__</span>
 <span class="n">t</span><span class="o">.</span><span class="n">__contains__</span>      <span class="n">t</span><span class="o">.</span><span class="n">__getattribute__</span>  <span class="n">t</span><span class="o">.</span><span class="n">__init__</span>          <span class="n">t</span><span class="o">.</span><span class="n">__ne__</span>            <span class="n">t</span><span class="o">.</span><span class="n">__rmul__</span>
@@ -264,61 +460,16 @@ Python also lets you define methods that let an object act like an array (so you
 </ul>
 
 
-<h2>Overloading methods</h2>
-
-<p>If your class has a special way you want to perform a builtin operation- say, addition- then you can explicitly define that and override it for your class:</p>
-
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Vector</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">a</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span>
-
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s">&#39;Vector (</span><span class="si">%d</span><span class="s">, </span><span class="si">%d</span><span class="s">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
-   
-    <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
-
-<span class="n">v1</span> <span class="o">=</span> <span class="n">Vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">v2</span> <span class="o">=</span> <span class="n">Vector</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">v1</span> <span class="o">+</span> <span class="n">v2</span>
-
-<span class="o">&gt;&gt;</span> <span class="n">Vector</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span></code></pre></div>
-
-
-<h2>Class Methods vs Instance Methods</h2>
-
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Employee</span><span class="p">:</span>
-    <span class="sd">&#39;&#39;&#39;Common base class for all employees&#39;&#39;&#39;</span>
-    <span class="n">empCount</span> <span class="o">=</span> <span class="mi">0</span>
-
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">salary</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">salary</span> <span class="o">=</span> <span class="n">salary</span>
-        <span class="n">Employee</span><span class="o">.</span><span class="n">empCount</span> <span class="o">+=</span> <span class="mi">1</span>
-   
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s">&quot;Name : </span><span class="si">%s</span><span class="s">, Salary: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">salary</span><span class="p">)</span>
-
-    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">displayCount</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">print</span> <span class="s">&quot;Total Employees: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">Employee</span><span class="o">.</span><span class="n">empCount</span></code></pre></div>
-
-
-<h2>Inheritance</h2>
-
-<p><code>super</code> method</p>
-
 <h3>The @property method</h3>
 
-<p>Used to define setters and getters of class attributes. For example,</p>
+<p>This is used to define setters and getters of class attributes. For example,</p>
 
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="nd">@property</span>
 <span class="k">def</span> <span class="nf">audience_selected</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">counters</span><span class="p">[</span><span class="s">&#39;audience&#39;</span><span class="p">][</span><span class="s">&#39;selected&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">()</span></code></pre></div>
 
 
-<p>This, being part of a class, now allows us to call <code>self.audience_selected</code>. That will then call this function unstead of just having some number stored there. If we wrote</p>
+<p>This now allows us to call <code>self.audience_selected</code>, which is easier to call than the double nested call in the method. If we wrote</p>
 
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="nd">@audience_selected.setter</span>
 <span class="k">def</span> <span class="nf">audience_selected</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
@@ -326,6 +477,8 @@ Python also lets you define methods that let an object act like an array (so you
 
 
 <p>We would have a setter for <code>self.audience_selected = value</code></p>
+
+<p>Another example, where the <code>temperature</code> attribute is protected from ill-advised tampering by a user:</p>
 
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Celsius</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">temperature</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
@@ -347,7 +500,11 @@ Python also lets you define methods that let an object act like an array (so you
         <span class="bp">self</span><span class="o">.</span><span class="n">_temperature</span> <span class="o">=</span> <span class="n">value</span></code></pre></div>
 
 
+<p>Now the user cannot set a temperature below -273, or they will et a <code>ValueError</code>.</p>
 
+<h2>Final Notes</h2>
+
+<p>This was meant as an overview to many different parts of classes in Python. Since object oriented design is a very large field of study, learning to implement good classes in programs takes time, and often comes only after learning about other languages which use OOP principles.</p>
 
     </div>
   </body>

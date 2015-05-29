@@ -18,6 +18,13 @@ class Vehicle(object):
 
     base_sale_price = 0
 
+    def __init__(self, miles, make, model, year, sold_on):
+        self.miles = miles
+        self.make = make
+        self.model = model
+        self.year = year
+        self.sold_on = sold_on
+
     def sale_price(self):
         """Return the sale price for this vehicle as a float amount."""
         if self.sold_on is not None:
