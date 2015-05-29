@@ -43,19 +43,19 @@ Programming using OOP is really just a preference- [there are other paradigms] (
 ### Defining your own class
 Let's give a basic definition of a class:
 
-```python
+{% highlight python %}
 class Employee:
-  '''Common base class for all employees'''
-  empCount = 0
+    '''Common base class for all employees'''
+    empCount = 0
 
-  def __init__(self, name, salary):
-    self.name = name
-    self.salary = salary
-    Employee.empCount += 1
-   
-  def printSelf(self):
-    return "Name : %s, Salary: %s" % (self.name, self.salary)
-```
+    def __init__(self, name, salary):
+        self.name = name
+        self.salary = salary
+        Employee.empCount += 1
+     
+    def printSelf(self):
+        return "Name : %s, Salary: %s" % (self.name, self.salary)
+{% endhighlight %}
 
 
 
@@ -75,7 +75,7 @@ OOP has uses in most languages, but Python has some pecularities in its class im
 
 As an example, you might have this for a game board class:
 
-```python
+{% highlight python %}
 class BoardState(object):
     def __init__(self,
             pieces=(0, 0, 0, 0,
@@ -84,32 +84,32 @@ class BoardState(object):
                 0, 0, 0, 0,)):
         self.pieces = pieces
 
-```
+{% endhighlight %}
 If you initialze an object, it will be represented like this:
 
-```python
+{% highlight python %}
 In [1]: bs = BoardState()
 
 In [2]: bs
 Out[2]: <__main__.BoardState at 0x10b3c22d0>
-```
+{% endhighlight %}
 
 Using `print` yeilds the same results. This is because it is using the default `__repr__` method. (which also is the default `__str__` method). It is *unambiguous* because it tells you exactly where it is in memory. However, you might want a little more detail about what is in the class.
 
-```python
+{% highlight python %}
     def __repr__(self):
         return "%s with pieces %s" % (self.__class__, self.__dict__)
-```
+{% endhighlight %}
 Now you would see:
 
-```python
+{% highlight python %}
 In [2]: bs
-Out[2]: <class '__main__.BoardState'> with pieces {'pieces': (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)}
-```
+Out[2]: <class __main__.BoardState> with pieces {'pieces': (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)}
+{% endhighlight %}
 
 However, this is still ugly on sight. To really visualize it, you might define something like this:
 
-```python
+{% highlight python %}
     def __str__(self):
         all_str = ''
         for row_idx in range(4):
@@ -117,24 +117,24 @@ However, this is still ugly on sight. To really visualize it, you might define s
             str_row = ' '.join(str(item) for item in row)
             all_str += str_row + '\n'
         return all_str
-```
+{% endhighlight %}
 
 Now when we print, it looks like this:
 
-```python
+{% highlight python %}
 In [3]: print bs
 0 0 0 0
 0 0 0 0
 0 0 0 0
 0 0 0 0
-```
+{% endhighlight %}
 
 
 *For a detailed explanation of `__repr__` vs `__str__`, [see here](http://stackoverflow.com/questions/1436703/difference-between-str-and-repr-in-python)
 
 #### Other private methods of a class (string example)
 
-```python
+{% highlight python %}
 In [27]: t = 'foo'
 In [29]: t.__
 t.__add__           t.__format__        t.__gt__            t.__mod__           t.__repr__          t.__subclasshook__
@@ -143,12 +143,12 @@ t.__contains__      t.__getattribute__  t.__init__          t.__ne__            
 t.__delattr__       t.__getitem__       t.__le__            t.__new__           t.__setattr__
 t.__doc__           t.__getnewargs__    t.__len__           t.__reduce__        t.__sizeof__
 t.__eq__            t.__getslice__      t.__lt__            t.__reduce_ex__     t.__str__
-```
+{% endhighlight %}
 
 __lt__, __le__, __eq__, __ne__, __gt__ and __ge__: Called to compare the object with another object. These will be called if defined, otherwise Python will fall-back to using __cmp__.
 __call__: Lets an object be "called" e.g. so that you can write things like this: obj(arg1,arg2,...).
-Python also lets you define methods that let an object act like an array (so you can write things like this: obj[2] = "foo"), or like a numeric type (so you write things like this: print(obj1 + 3*obj2).
-`super` method
+Python also lets you define methods that let an object act like an array (so you can write things like this: `obj[2] = "foo"`), or like a numeric type (so you write things like this: `print(obj1 + 3*obj2)`.
+
 
 ### Special Attributes of Python Classes
 Special attributes:  
@@ -167,7 +167,7 @@ Special attributes:
 ## Overloading methods
 If your class has a special way you want to perform a builtin operation- say, addition- then you can explicitly define that and override it for your class:
 
-```python
+{% highlight python %}
 class Vector:
     def __init__(self, a, b):
         self.a = a
@@ -184,11 +184,11 @@ v2 = Vector(5,-2)
 print v1 + v2
 
 >> Vector (7, 8)
-```
+{% endhighlight %}
 
 ## Class Methods vs Instance Methods
 
-```python
+{% highlight python %}
 class Employee:
     '''Common base class for all employees'''
     empCount = 0
@@ -204,31 +204,33 @@ class Employee:
     @classmethod
     def displayCount(self):
         print "Total Employees: %d" % Employee.empCount
-```
+{% endhighlight %}
 
 
+## Inheritance
+`super` method
 
 
 ### The @property method
 Used to define setters and getters of class attributes. For example,
 
-```python
+{% highlight python %}
 @property
 def audience_selected(self):
     return self.counters['audience']['selected'].get()
-```
+{% endhighlight %}
 
 This, being part of a class, now allows us to call `self.audience_selected`. That will then call this function unstead of just having some number stored there. If we wrote
 
-```python
+{% highlight python %}
 @audience_selected.setter
 def audience_selected(self, value):
     self.counters['audience']['selected'].set(value)
-```
+{% endhighlight %}
 
 We would have a setter for `self.audience_selected = value`
 
-```python
+{% highlight python %}
 class Celsius:
     def __init__(self, temperature = 0):
         self._temperature = temperature
@@ -247,5 +249,5 @@ class Celsius:
             raise ValueError("Temperature below -273 is not possible")
         print("Setting value")
         self._temperature = value
-```
+{% endhighlight %}
     

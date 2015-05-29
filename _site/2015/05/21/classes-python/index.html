@@ -35,6 +35,70 @@
   border-bottom-left-radius:0;
 }
 
+
+
+      .hll { background-color: #ffffcc }
+.c { color: #408080; font-style: italic } /* Comment */
+.err { border: 1px solid #FF0000 } /* Error */
+.k { color: #008000; font-weight: bold } /* Keyword */
+.o { color: #666666 } /* Operator */
+.cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.cp { color: #BC7A00 } /* Comment.Preproc */
+.c1 { color: #408080; font-style: italic } /* Comment.Single */
+.cs { color: #408080; font-style: italic } /* Comment.Special */
+.gd { color: #A00000 } /* Generic.Deleted */
+.ge { font-style: italic } /* Generic.Emph */
+.gr { color: #FF0000 } /* Generic.Error */
+.gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.gi { color: #00A000 } /* Generic.Inserted */
+.go { color: #888888 } /* Generic.Output */
+.gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.gs { font-weight: bold } /* Generic.Strong */
+.gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.gt { color: #0044DD } /* Generic.Traceback */
+.kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.kp { color: #008000 } /* Keyword.Pseudo */
+.kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.kt { color: #B00040 } /* Keyword.Type */
+.m { color: #666666 } /* Literal.Number */
+.s { color: #BA2121 } /* Literal.String */
+.na { color: #7D9029 } /* Name.Attribute */
+.nb { color: #008000 } /* Name.Builtin */
+.nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.no { color: #880000 } /* Name.Constant */
+.nd { color: #AA22FF } /* Name.Decorator */
+.ni { color: #999999; font-weight: bold } /* Name.Entity */
+.ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.nf { color: #0000FF } /* Name.Function */
+.nl { color: #A0A000 } /* Name.Label */
+.nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.nt { color: #008000; font-weight: bold } /* Name.Tag */
+.nv { color: #19177C } /* Name.Variable */
+.ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.w { color: #bbbbbb } /* Text.Whitespace */
+.mf { color: #666666 } /* Literal.Number.Float */
+.mh { color: #666666 } /* Literal.Number.Hex */
+.mi { color: #666666 } /* Literal.Number.Integer */
+.mo { color: #666666 } /* Literal.Number.Oct */
+.sb { color: #BA2121 } /* Literal.String.Backtick */
+.sc { color: #BA2121 } /* Literal.String.Char */
+.sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.s2 { color: #BA2121 } /* Literal.String.Double */
+.se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.sh { color: #BA2121 } /* Literal.String.Heredoc */
+.si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.sx { color: #008000 } /* Literal.String.Other */
+.sr { color: #BB6688 } /* Literal.String.Regex */
+.s1 { color: #BA2121 } /* Literal.String.Single */
+.ss { color: #19177C } /* Literal.String.Symbol */
+.bp { color: #008000 } /* Name.Builtin.Pseudo */
+.vc { color: #19177C } /* Name.Variable.Class */
+.vg { color: #19177C } /* Name.Variable.Global */
+.vi { color: #19177C } /* Name.Variable.Instance */
+.il { color: #666666 } /* Literal.Number.Integer.Long */
+
     </style>
   </head>
   <body>
@@ -89,18 +153,18 @@ In python, <a href="https://pythoninternal.wordpress.com/2014/08/11/everythings-
 
 <p>Let's give a basic definition of a class:</p>
 
-<pre><code class="python">class Employee:
-  '''Common base class for all employees'''
-  empCount = 0
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Employee</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;Common base class for all employees&#39;&#39;&#39;</span>
+    <span class="n">empCount</span> <span class="o">=</span> <span class="mi">0</span>
 
-  def __init__(self, name, salary):
-    self.name = name
-    self.salary = salary
-    Employee.empCount += 1
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">salary</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">salary</span> <span class="o">=</span> <span class="n">salary</span>
+        <span class="n">Employee</span><span class="o">.</span><span class="n">empCount</span> <span class="o">+=</span> <span class="mi">1</span>
+     
+    <span class="k">def</span> <span class="nf">printSelf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&quot;Name : </span><span class="si">%s</span><span class="s">, Salary: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">salary</span><span class="p">)</span></code></pre></div>
 
-  def printSelf(self):
-    return "Name : %s, Salary: %s" % (self.name, self.salary)
-</code></pre>
 
 <p>The variable empCount is a <strong>class variable</strong> whose value is shared among <strong>all instances</strong> of a this class. This can be accessed as <code>Employee.empCount</code> from inside the class or outside the class.</p>
 
@@ -120,73 +184,72 @@ In python, <a href="https://pythoninternal.wordpress.com/2014/08/11/everythings-
 
 <p>As an example, you might have this for a game board class:</p>
 
-<pre><code class="python">class BoardState(object):
-    def __init__(self,
-            pieces=(0, 0, 0, 0,
-                0, 0, 0, 0,
-                0, 0, 0, 0,
-                0, 0, 0, 0,)):
-        self.pieces = pieces
-</code></pre>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">BoardState</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+            <span class="n">pieces</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,)):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pieces</span> <span class="o">=</span> <span class="n">pieces</span></code></pre></div>
+
 
 <p>If you initialze an object, it will be represented like this:</p>
 
-<pre><code class="python">In [1]: bs = BoardState()
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">bs</span> <span class="o">=</span> <span class="n">BoardState</span><span class="p">()</span>
 
-In [2]: bs
-Out[2]: &lt;__main__.BoardState at 0x10b3c22d0&gt;
-</code></pre>
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">bs</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">BoardState</span> <span class="n">at</span> <span class="mh">0x10b3c22d0</span><span class="o">&gt;</span></code></pre></div>
+
 
 <p>Using <code>print</code> yeilds the same results. This is because it is using the default <code>__repr__</code> method. (which also is the default <code>__str__</code> method). It is <em>unambiguous</em> because it tells you exactly where it is in memory. However, you might want a little more detail about what is in the class.</p>
 
-<pre><code class="python">    def __repr__(self):
-        return "%s with pieces %s" % (self.__class__, self.__dict__)
-</code></pre>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s"> with pieces </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="p">)</span></code></pre></div>
+
 
 <p>Now you would see:</p>
 
-<pre><code class="python">In [2]: bs
-Out[2]: &lt;class '__main__.BoardState'&gt; with pieces {'pieces': (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)}
-</code></pre>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">bs</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">__main__</span><span class="o">.</span><span class="n">BoardState</span><span class="o">&gt;</span> <span class="k">with</span> <span class="n">pieces</span> <span class="p">{</span><span class="s">&#39;pieces&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)}</span></code></pre></div>
+
 
 <p>However, this is still ugly on sight. To really visualize it, you might define something like this:</p>
 
-<pre><code class="python">    def __str__(self):
-        all_str = ''
-        for row_idx in range(4):
-            row = self.pieces[4*row_idx: 4*(row_idx + 1)]
-            str_row = ' '.join(str(item) for item in row)
-            all_str += str_row + '\n'
-        return all_str
-</code></pre>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">all_str</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+        <span class="k">for</span> <span class="n">row_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+            <span class="n">row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pieces</span><span class="p">[</span><span class="mi">4</span><span class="o">*</span><span class="n">row_idx</span><span class="p">:</span> <span class="mi">4</span><span class="o">*</span><span class="p">(</span><span class="n">row_idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
+            <span class="n">str_row</span> <span class="o">=</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">row</span><span class="p">)</span>
+            <span class="n">all_str</span> <span class="o">+=</span> <span class="n">str_row</span> <span class="o">+</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span>
+        <span class="k">return</span> <span class="n">all_str</span></code></pre></div>
+
 
 <p>Now when we print, it looks like this:</p>
 
-<pre><code class="python">In [3]: print bs
-0 0 0 0
-0 0 0 0
-0 0 0 0
-0 0 0 0
-</code></pre>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="k">print</span> <span class="n">bs</span>
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span></code></pre></div>
+
 
 <p>*For a detailed explanation of <code>__repr__</code> vs <code>__str__</code>, <a href="http://stackoverflow.com/questions/1436703/difference-between-str-and-repr-in-python">see here</a></p>
 
 <h4>Other private methods of a class (string example)</h4>
 
-<pre><code class="python">In [27]: t = 'foo'
-In [29]: t.__
-t.__add__           t.__format__        t.__gt__            t.__mod__           t.__repr__          t.__subclasshook__
-t.__class__         t.__ge__            t.__hash__          t.__mul__           t.__rmod__
-t.__contains__      t.__getattribute__  t.__init__          t.__ne__            t.__rmul__
-t.__delattr__       t.__getitem__       t.__le__            t.__new__           t.__setattr__
-t.__doc__           t.__getnewargs__    t.__len__           t.__reduce__        t.__sizeof__
-t.__eq__            t.__getslice__      t.__lt__            t.__reduce_ex__     t.__str__
-</code></pre>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">In</span> <span class="p">[</span><span class="mi">27</span><span class="p">]:</span> <span class="n">t</span> <span class="o">=</span> <span class="s">&#39;foo&#39;</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">29</span><span class="p">]:</span> <span class="n">t</span><span class="o">.</span><span class="n">__</span>
+<span class="n">t</span><span class="o">.</span><span class="n">__add__</span>           <span class="n">t</span><span class="o">.</span><span class="n">__format__</span>        <span class="n">t</span><span class="o">.</span><span class="n">__gt__</span>            <span class="n">t</span><span class="o">.</span><span class="n">__mod__</span>           <span class="n">t</span><span class="o">.</span><span class="n">__repr__</span>          <span class="n">t</span><span class="o">.</span><span class="n">__subclasshook__</span>
+<span class="n">t</span><span class="o">.</span><span class="n">__class__</span>         <span class="n">t</span><span class="o">.</span><span class="n">__ge__</span>            <span class="n">t</span><span class="o">.</span><span class="n">__hash__</span>          <span class="n">t</span><span class="o">.</span><span class="n">__mul__</span>           <span class="n">t</span><span class="o">.</span><span class="n">__rmod__</span>
+<span class="n">t</span><span class="o">.</span><span class="n">__contains__</span>      <span class="n">t</span><span class="o">.</span><span class="n">__getattribute__</span>  <span class="n">t</span><span class="o">.</span><span class="n">__init__</span>          <span class="n">t</span><span class="o">.</span><span class="n">__ne__</span>            <span class="n">t</span><span class="o">.</span><span class="n">__rmul__</span>
+<span class="n">t</span><span class="o">.</span><span class="n">__delattr__</span>       <span class="n">t</span><span class="o">.</span><span class="n">__getitem__</span>       <span class="n">t</span><span class="o">.</span><span class="n">__le__</span>            <span class="n">t</span><span class="o">.</span><span class="n">__new__</span>           <span class="n">t</span><span class="o">.</span><span class="n">__setattr__</span>
+<span class="n">t</span><span class="o">.</span><span class="n">__doc__</span>           <span class="n">t</span><span class="o">.</span><span class="n">__getnewargs__</span>    <span class="n">t</span><span class="o">.</span><span class="n">__len__</span>           <span class="n">t</span><span class="o">.</span><span class="n">__reduce__</span>        <span class="n">t</span><span class="o">.</span><span class="n">__sizeof__</span>
+<span class="n">t</span><span class="o">.</span><span class="n">__eq__</span>            <span class="n">t</span><span class="o">.</span><span class="n">__getslice__</span>      <span class="n">t</span><span class="o">.</span><span class="n">__lt__</span>            <span class="n">t</span><span class="o">.</span><span class="n">__reduce_ex__</span>     <span class="n">t</span><span class="o">.</span><span class="n">__str__</span></code></pre></div>
+
 
 <p><strong>lt</strong>, <strong>le</strong>, <strong>eq</strong>, <strong>ne</strong>, <strong>gt</strong> and <strong>ge</strong>: Called to compare the object with another object. These will be called if defined, otherwise Python will fall-back to using <strong>cmp</strong>.
 <strong>call</strong>: Lets an object be "called" e.g. so that you can write things like this: obj(arg1,arg2,...).
-Python also lets you define methods that let an object act like an array (so you can write things like this: obj[2] = "foo"), or like a numeric type (so you write things like this: print(obj1 + 3*obj2).
-<code>super</code> method</p>
+Python also lets you define methods that let an object act like an array (so you can write things like this: <code>obj[2] = "foo"</code>), or like a numeric type (so you write things like this: <code>print(obj1 + 3*obj2)</code>.</p>
 
 <h3>Special Attributes of Python Classes</h3>
 
@@ -205,80 +268,86 @@ Python also lets you define methods that let an object act like an array (so you
 
 <p>If your class has a special way you want to perform a builtin operation- say, addition- then you can explicitly define that and override it for your class:</p>
 
-<pre><code class="python">class Vector:
-    def __init__(self, a, b):
-        self.a = a
-        self.b = b
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Vector</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">a</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span>
 
-    def __str__(self):
-        return 'Vector (%d, %d)' % (self.a, self.b)
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&#39;Vector (</span><span class="si">%d</span><span class="s">, </span><span class="si">%d</span><span class="s">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
+   
+    <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
 
-    def __add__(self,other):
-        return Vector(self.a + other.a, self.b + other.b)
+<span class="n">v1</span> <span class="o">=</span> <span class="n">Vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">v2</span> <span class="o">=</span> <span class="n">Vector</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">v1</span> <span class="o">+</span> <span class="n">v2</span>
 
-v1 = Vector(2,10)
-v2 = Vector(5,-2)
-print v1 + v2
+<span class="o">&gt;&gt;</span> <span class="n">Vector</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span></code></pre></div>
 
-&gt;&gt; Vector (7, 8)
-</code></pre>
 
 <h2>Class Methods vs Instance Methods</h2>
 
-<pre><code class="python">class Employee:
-    '''Common base class for all employees'''
-    empCount = 0
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Employee</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;Common base class for all employees&#39;&#39;&#39;</span>
+    <span class="n">empCount</span> <span class="o">=</span> <span class="mi">0</span>
 
-    def __init__(self, name, salary):
-        self.name = name
-        self.salary = salary
-        Employee.empCount += 1
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">salary</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">salary</span> <span class="o">=</span> <span class="n">salary</span>
+        <span class="n">Employee</span><span class="o">.</span><span class="n">empCount</span> <span class="o">+=</span> <span class="mi">1</span>
+   
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&quot;Name : </span><span class="si">%s</span><span class="s">, Salary: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">salary</span><span class="p">)</span>
 
-    def __str__(self):
-        return "Name : %s, Salary: %s" % (self.name, self.salary)
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">displayCount</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s">&quot;Total Employees: </span><span class="si">%d</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">Employee</span><span class="o">.</span><span class="n">empCount</span></code></pre></div>
 
-    @classmethod
-    def displayCount(self):
-        print "Total Employees: %d" % Employee.empCount
-</code></pre>
+
+<h2>Inheritance</h2>
+
+<p><code>super</code> method</p>
 
 <h3>The @property method</h3>
 
 <p>Used to define setters and getters of class attributes. For example,</p>
 
-<pre><code class="python">@property
-def audience_selected(self):
-    return self.counters['audience']['selected'].get()
-</code></pre>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="nd">@property</span>
+<span class="k">def</span> <span class="nf">audience_selected</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">counters</span><span class="p">[</span><span class="s">&#39;audience&#39;</span><span class="p">][</span><span class="s">&#39;selected&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">()</span></code></pre></div>
+
 
 <p>This, being part of a class, now allows us to call <code>self.audience_selected</code>. That will then call this function unstead of just having some number stored there. If we wrote</p>
 
-<pre><code class="python">@audience_selected.setter
-def audience_selected(self, value):
-    self.counters['audience']['selected'].set(value)
-</code></pre>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="nd">@audience_selected.setter</span>
+<span class="k">def</span> <span class="nf">audience_selected</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">counters</span><span class="p">[</span><span class="s">&#39;audience&#39;</span><span class="p">][</span><span class="s">&#39;selected&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></code></pre></div>
+
 
 <p>We would have a setter for <code>self.audience_selected = value</code></p>
 
-<pre><code class="python">class Celsius:
-    def __init__(self, temperature = 0):
-        self._temperature = temperature
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Celsius</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">temperature</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_temperature</span> <span class="o">=</span> <span class="n">temperature</span>
 
-    def to_fahrenheit(self):
-        return (self.temperature * 1.8) + 32
+    <span class="k">def</span> <span class="nf">to_fahrenheit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">temperature</span> <span class="o">*</span> <span class="mf">1.8</span><span class="p">)</span> <span class="o">+</span> <span class="mi">32</span>
 
-    @property
-    def temperature(self):
-        print("Getting value")
-        return self._temperature
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">temperature</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;Getting value&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_temperature</span>
 
-    @temperature.setter
-    def temperature(self, value):
-        if value &lt; -273:
-            raise ValueError("Temperature below -273 is not possible")
-        print("Setting value")
-        self._temperature = value
-</code></pre>
+    <span class="nd">@temperature.setter</span>
+    <span class="k">def</span> <span class="nf">temperature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">273</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Temperature below -273 is not possible&quot;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;Setting value&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_temperature</span> <span class="o">=</span> <span class="n">value</span></code></pre></div>
+
+
+
 
     </div>
   </body>

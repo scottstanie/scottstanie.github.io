@@ -3,7 +3,7 @@ port: 5000
 name: Blog of Scott Staniewicz
 
 # Short description (goes below the title; it will also be used in the RSS feed)
-description: This is a sample Jekyll Blog.
+description: Snapshots of knowledge
 
 # Your name, as you want it to appear underneath each post and in the footer
 author: Scott Staniewicz
@@ -25,6 +25,8 @@ url: http://scottstanie.github.io
 # If you use maroku (default engine) some of your generated pages may not validate or lint as html5
 # If you don't have it install it via gem install rdiscount
 markdown: rdiscount
+
+highlighter: pygments
 
 # Makes pretty (descriptive) permalinks. See Jekyll docs for alternatives.
 permalink: pretty
