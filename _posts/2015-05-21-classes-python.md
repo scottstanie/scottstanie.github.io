@@ -66,9 +66,11 @@ class Employee(object):
 {% endhighlight %}
 
 
-The first method `__init__()` is a special method, which is called the **class constructor** or **initialization method**. Python calls this when you create a new instance of this class.
+The first method `__init__()` is a special method, which is called the **class constructor** or **initialization method**. Python calls this when you create a new instance of this class: `employee = Employee()`. This method essentially first creates an empty `Employee` object, which gets passed as the `self` to the `__init__` method to be initialized. 
 
-You declare other class methods like normal functions with the exception that the first argument to each method is `self`.  You do not need to include it when you call the methods. If you make an instance `employee = Employee('scott', '10000')`, then calling `employee.print_self()` implicitly adds the self to the argument list. The function has access to all properties of that instance (`name` and `salary` above) as well as all **class variables**.
+After initialization, you access class and instance methods with dot notation: `employee.name = 'Scott'`. To specify the name and salary of the employee right away, you use `employee = Employee('Scott', '10000')`. 
+
+You declare other class methods like normal functions with the exception that the first argument to each method is `self`.  You do not need to include it when you call the methods. If you make an instance then calling `employee.print_self()` implicitly adds the self to the argument list. The function has access to all properties of that instance (`name` and `salary` above) as well as all **class variables**.
 
 ### Class variables
 
