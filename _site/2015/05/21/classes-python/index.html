@@ -188,7 +188,7 @@ Defining a class is defining a blueprint for creating objects, and in python, <a
 
 <p>After initialization, you access class and instance methods with dot notation: <code>employee.name = 'Scott'</code>. To specify the name and salary of the employee right away, you use <code>employee = Employee('Scott', '10000')</code>.</p>
 
-<p>You declare other class methods like normal functions with the exception that the first argument to each method is <code>self</code>.  You do not need to include it when you call the methods. If you make an instance then calling <code>employee.print_self()</code> implicitly adds the self to the argument list. The function has access to all properties of that instance (<code>name</code> and <code>salary</code> above) as well as all <strong>class variables</strong>.</p>
+<p>You declare other class methods like normal functions with the exception that the first argument to each method is <code>self</code>.  You do not need to include it when you call the methods. If you make an instance then calling <code>employee.print_self()</code> implicitly adds the <code>self</code> to the argument list. The function has access to all properties of that instance (<code>name</code> and <code>salary</code> above) as well as all <strong>class variables</strong>.</p>
 
 <h3>Class variables</h3>
 
@@ -234,7 +234,7 @@ Defining a class is defining a blueprint for creating objects, and in python, <a
 
 <h2>Inheritance</h2>
 
-<p>The real usefulness of classes come in when you get into <strong>inheritance</strong>. This is where you take a preexisting class make a <strong>subclass</strong> or <em>*derived class</em> from it:</p>
+<p>The real usefulness of classes come in when you get into <strong>inheritance</strong>. This is where you take a preexisting class make a <strong>subclass</strong> or <em>derived class</em> from it:</p>
 
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Analyst</span><span class="p">(</span><span class="n">Employee</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Subclass of the Employee&#39;&#39;&#39;</span>
@@ -248,7 +248,7 @@ Defining a class is defining a blueprint for creating objects, and in python, <a
 
 
 <p>Notice that now instead of <code>object</code> as the argument passed to the class name, it's the base class <code>Employee</code> (<code>object</code> is used as Python makes a switch from older Python classes to 'new-style' classes. <a href="http://stackoverflow.com/questions/4015417/python-class-inherits-object">See here for more</a>)<br/>
-This <code>Analyst</code> class has an init function and only defines one new method, <code>speak_analyst</code>. However, because it inherited from <code>Employee</code>, it inherits <em>all methods from it as well</em>. This means that the following are all valid:</p>
+This <code>Analyst</code> class has an init function and only defines one new method, <code>speak_analyst</code>. However, because it inherited from <code>Employee</code>, it inherits <em>all methods from it as well</em> (except for those it redefines). This means that the following are all valid:</p>
 
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">e</span> <span class="o">=</span> <span class="n">Employee</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;Sam&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">e</span><span class="o">.</span><span class="n">salary</span>
@@ -303,9 +303,6 @@ If your class has a special way you want to perform a builtin operation- say, ad
         <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">a</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span>
 
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s">&#39;Vector (</span><span class="si">%d</span><span class="s">, </span><span class="si">%d</span><span class="s">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
-   
     <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
 

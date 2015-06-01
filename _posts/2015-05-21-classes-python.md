@@ -70,7 +70,7 @@ The first method `__init__()` is a special method, which is called the **class c
 
 After initialization, you access class and instance methods with dot notation: `employee.name = 'Scott'`. To specify the name and salary of the employee right away, you use `employee = Employee('Scott', '10000')`. 
 
-You declare other class methods like normal functions with the exception that the first argument to each method is `self`.  You do not need to include it when you call the methods. If you make an instance then calling `employee.print_self()` implicitly adds the self to the argument list. The function has access to all properties of that instance (`name` and `salary` above) as well as all **class variables**.
+You declare other class methods like normal functions with the exception that the first argument to each method is `self`.  You do not need to include it when you call the methods. If you make an instance then calling `employee.print_self()` implicitly adds the `self` to the argument list. The function has access to all properties of that instance (`name` and `salary` above) as well as all **class variables**.
 
 ### Class variables
 
@@ -120,7 +120,7 @@ This can be accessed by the instance like a normal method or by calling `Employe
 
 ## Inheritance
 
-The real usefulness of classes come in when you get into **inheritance**. This is where you take a preexisting class make a **subclass** or **derived class* from it:
+The real usefulness of classes come in when you get into **inheritance**. This is where you take a preexisting class make a **subclass** or *derived class* from it:
 
 {% highlight python %}
 class Analyst(Employee):
@@ -136,7 +136,7 @@ class Analyst(Employee):
 {% endhighlight %}
 
 Notice that now instead of `object` as the argument passed to the class name, it's the base class `Employee` (`object` is used as Python makes a switch from older Python classes to 'new-style' classes. [See here for more](http://stackoverflow.com/questions/4015417/python-class-inherits-object))  
-This `Analyst` class has an init function and only defines one new method, `speak_analyst`. However, because it inherited from `Employee`, it inherits *all methods from it as well*. This means that the following are all valid:
+This `Analyst` class has an init function and only defines one new method, `speak_analyst`. However, because it inherited from `Employee`, it inherits *all methods from it as well* (except for those it redefines). This means that the following are all valid:
 
 {% highlight python %}
 >>> e = Employee(name='Sam')
@@ -197,9 +197,6 @@ class Vector:
         self.a = a
         self.b = b
 
-    def __str__(self):
-        return 'Vector (%d, %d)' % (self.a, self.b)
-   
     def __add__(self,other):
         return Vector(self.a + other.a, self.b + other.b)
 
