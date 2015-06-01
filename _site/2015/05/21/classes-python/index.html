@@ -123,8 +123,8 @@
       <h1>Classes in Python</h1>
 
 <p>First, what is a class?<br/>
-A class is simply a logical grouping of data and functions, where the functions are called <em>methods</em> of the class. They are really a modelling technique used in the organization of programs, which falls under <strong><em>object oriented programming (OOP)</em></strong>.<br/>
-In python, <a href="https://pythoninternal.wordpress.com/2014/08/11/everythings-an-object/">everything is an <strong>object</strong></a>, and defining a class is defining a blueprint for creating objects.</p>
+A class is simply a logical grouping of data and functions. It is really a modelling technique used in the organization of programs, and it is a fundamental part of <strong><em>object oriented programming (OOP)</em></strong>.<br/>
+Defining a class is defining a blueprint for creating objects, and in python, <a href="https://pythoninternal.wordpress.com/2014/08/11/everythings-an-object/">everything is an <strong>object</strong></a>.</p>
 
 <h3>Object Oriented Terminology</h3>
 
@@ -184,9 +184,11 @@ In python, <a href="https://pythoninternal.wordpress.com/2014/08/11/everythings-
         <span class="k">return</span> <span class="s">&quot;Name : </span><span class="si">%s</span><span class="s">, Salary: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">salary</span><span class="p">)</span></code></pre></div>
 
 
-<p>The first method <code>__init__()</code> is a special method, which is called the <strong>class constructor</strong> or <strong>initialization method</strong>. Python calls this when you create a new instance of this class.</p>
+<p>The first method <code>__init__()</code> is a special method, which is called the <strong>class constructor</strong> or <strong>initialization method</strong>. Python calls this when you create a new instance of this class: <code>employee = Employee()</code>. This method essentially first creates an empty <code>Employee</code> object, which gets passed as the <code>self</code> to the <code>__init__</code> method to be initialized.</p>
 
-<p>You declare other class methods like normal functions with the exception that the first argument to each method is <code>self</code>.  You do not need to include it when you call the methods. If you make an instance <code>employee = Employee('scott', '10000')</code>, then calling <code>employee.print_self()</code> implicitly adds the self to the argument list. The function has access to all properties of that instance (<code>name</code> and <code>salary</code> above) as well as all <strong>class variables</strong>.</p>
+<p>After initialization, you access class and instance methods with dot notation: <code>employee.name = 'Scott'</code>. To specify the name and salary of the employee right away, you use <code>employee = Employee('Scott', '10000')</code>.</p>
+
+<p>You declare other class methods like normal functions with the exception that the first argument to each method is <code>self</code>.  You do not need to include it when you call the methods. If you make an instance then calling <code>employee.print_self()</code> implicitly adds the self to the argument list. The function has access to all properties of that instance (<code>name</code> and <code>salary</code> above) as well as all <strong>class variables</strong>.</p>
 
 <h3>Class variables</h3>
 

@@ -6,8 +6,8 @@ layout: default
 # Classes in Python
 
 First, what is a class?  
-A class is simply a logical grouping of data and functions, where the functions are called *methods* of the class. They are really a modelling technique used in the organization of programs, which falls under ***object oriented programming (OOP)***.  
-In python, [everything is an **object**](https://pythoninternal.wordpress.com/2014/08/11/everythings-an-object/), and defining a class is defining a blueprint for creating objects.  
+A class is simply a logical grouping of data and functions. It is really a modelling technique used in the organization of programs, and it is a fundamental part of ***object oriented programming (OOP)***.  
+Defining a class is defining a blueprint for creating objects, and in python, [everything is an **object**](https://pythoninternal.wordpress.com/2014/08/11/everythings-an-object/).  
 
 
 ### Object Oriented Terminology
@@ -16,8 +16,8 @@ First, let's go over the basic terms used in OOP.
 - **Class**: A user-defined *prototype* for an object that defines a set of features that characterize any object of the class. The features are **data members** (class variables and instance variables) and **methods**, accessed via dot notation.
 
 - **Attribute**: A class variable or instance variable that holds data associated with a class and its objects.
-  - Note that in OOP terminology,  "attributes", "fields", and "variables" are often used interchangeably.
-
+  - Note that in OOP terminology,  "attributes", "fields", and "variables" are often used interchangeably.  
+  
 - **Method**: A special kind of function that is defined in a class definition.
 
 - **Member**: A term to describe either class methods or attributes
