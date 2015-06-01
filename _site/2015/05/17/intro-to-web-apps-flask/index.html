@@ -6,6 +6,8 @@
     <title>An Introduction to Web Apps With Flask</title>
      <link rel="stylesheet"
   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <style type="text/css" media="screen">
       body {
         background:white; color:#020202;
@@ -33,6 +35,24 @@
   -moz-border-radius-bottomleft:0;
   -webkit-border-bottom-left-radius:0;
   border-bottom-left-radius:0;
+}
+
+.header-link {
+  position: absolute;
+  left: 0em;
+  opacity: 0;
+
+  -webkit-transition: opacity 0.2s ease-in-out 0.1s;
+  -moz-transition: opacity 0.2s ease-in-out 0.1s;
+  -ms-transition: opacity 0.2s ease-in-out 0.1s;
+}
+
+h2:hover .header-link,
+h3:hover .header-link,
+h4:hover .header-link,
+h5:hover .header-link,
+h6:hover .header-link {
+  opacity: 1;
 }
 
 
@@ -120,33 +140,32 @@
 
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <div id="content">
-      <h1>Web Apps and Flask</h1>
+      <h1 id="web-apps-and-flask">Web Apps and Flask</h1>
 
-<p>This is intended to be a overview of a wide variety of topics related to web applications and some needed prerequisite knowledge. There's also a very brief walkthrough on how to get started with Flask, as well as plenty of links along the way to learn more and find a full Flask tutorial.<br/>
+<p>This is intended to be a overview of a wide variety of topics related to web applications and some needed prerequisite knowledge. There&#39;s also a very brief walkthrough on how to get started with Flask, as well as plenty of links along the way to learn more and find a full Flask tutorial.<br>
 Target demo: people with some programming experience but with little to no web programming experience, or just generally tech-savvy people.</p>
 
-<h2>What is Flask</h2>
+<h2 id="what-is-flask">What is Flask</h2>
 
-<p><a href="https://github.com/mitsuhiko/flask/">Flask</a> is an example of a Python <a href="http://en.wikipedia.org/wiki/Web_application_framework"><strong><em>web application framework</em></strong></a>. Specifically, it calls itself a <em>microframework</em> because it provides less up front. Before we dive in to how to use flask, let's take a step back and look at what a the very basics of how the internet works so you know what a <strong>web application</strong> consists of, and why you'd want to use a <strong>web framework</strong> to make one.</p>
+<p><a href="https://github.com/mitsuhiko/flask/">Flask</a> is an example of a Python <a href="http://en.wikipedia.org/wiki/Web_application_framework"><strong><em>web application framework</em></strong></a>. Specifically, it calls itself a <em>microframework</em> because it provides less up front. Before we dive in to how to use flask, let&#39;s take a step back and look at what a the very basics of how the internet works so you know what a <strong>web application</strong> consists of, and why you&#39;d want to use a <strong>web framework</strong> to make one.</p>
 
-<h2>The Internet In Brief</h2>
+<h2 id="the-internet-in-brief">The Internet In Brief</h2>
 
-<p>The crux of how the internet works in most sites (in two steps):<br/>
-- A client sends a request to visit some website<br/>
-- A serve sends back some files to display in the browser</p>
+<p>The crux of how the internet works in most sites (in two steps):<br>
+- A client sends a request to visit some website<br>
+- A serve sends back some files to display in the browser  </p>
 
-<p>If you understand that, you can skip to the next section.</p>
+<p>If you understand that, you can skip to the next section. </p>
 
-<p>The internet is a global network of computers, each with a specific address. These addresses look something like xxx.xxx.xxx.xxx, x being a number from 0-255.<br/>
-<img src="http://1.bp.blogspot.com/-gTRV25VTdb8/T55rvji6cEI/AAAAAAAACXM/9clbBo-y0nY/s1600/dnslookups.png" alt="" /></p>
+<p>The internet is a global network of computers, each with a specific address. These addresses look something like xxx.xxx.xxx.xxx, x being a number from 0-255.<br>
+<img src="http://1.bp.blogspot.com/-gTRV25VTdb8/T55rvji6cEI/AAAAAAAACXM/9clbBo-y0nY/s1600/dnslookups.png" alt="">  </p>
 
-<p>When you go to your browser and type <code>www.google.com</code>, you are sending a Hypertext Transfer Protocol (HTTP*) request that says "Send me the data from the IP address with the name google.com". Then your request goes to a <strong>domain name service</strong> (DNS) which keeps track of the IP address for <code>google.com</code>. To see this, type fewuhaof.com, and you will get a DNS error, since there is no address for that gibberish name. Once the DNS gets the address you need, your ISP can send your request to the right computer.</p>
+<p>When you go to your browser and type <code>www.google.com</code>, you are sending a Hypertext Transfer Protocol (HTTP*) request that says &quot;Send me the data from the IP address with the name google.com&quot;. Then your request goes to a <strong>domain name service</strong> (DNS) which keeps track of the IP address for <code>google.com</code>. To see this, type fewuhaof.com, and you will get a DNS error, since there is no address for that gibberish name. Once the DNS gets the address you need, your ISP can send your request to the right computer.  </p>
 
-<p>So if that is all that happens on your end when you type <code>google.com</code>, what is the thing that responded on the other end? That is where a <strong>web server</strong> comes in. Once your request to <code>GET</code> the data from <code>google.com</code> reached the right IP address, it was met by a <em>server</em>, which is just a computer located somewhere that is connected to the internet and sits waiting for incoming requests. Once it receives a request like yours (to <code>GET google.com</code>), it will send back the files needed to show the Google web page, which are HTML, CSS, and JavaScript files.</p>
+<p>So if that is all that happens on your end when you type <code>google.com</code>, what is the thing that responded on the other end? That is where a <strong>web server</strong> comes in. Once your request to <code>GET</code> the data from <code>google.com</code> reached the right IP address, it was met by a <em>server</em>, which is just a computer located somewhere that is connected to the internet and sits waiting for incoming requests. Once it receives a request like yours (to <code>GET google.com</code>), it will send back the files needed to show the Google web page, which are HTML, CSS, and JavaScript files.  </p>
 
-<p>To see a <code>request</code>/<code>response</code> exchange in action, open up your terminal, and type <code>curl -v scottstanie.github.io</code>. Among other things, you'll see:</p>
-
-<pre><code>* Connected to scottstanie.github.io (199.27.75.133) port 80 (#0)
+<p>To see a <code>request</code>/<code>response</code> exchange in action, open up your terminal, and type <code>curl -v scottstanie.github.io</code>. Among other things, you&#39;ll see:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">* Connected to scottstanie.github.io (199.27.75.133) port 80 (#0)
 &gt; GET / HTTP/1.1
 &gt; User-Agent: curl/7.30.0
 &gt; Host: scottstanie.github.io
@@ -154,166 +173,159 @@ Target demo: people with some programming experience but with little to no web p
 &gt;
 &lt; HTTP/1.1 200 OK
 ...
-</code></pre>
+</code></pre></div>
+<p>This is the equivalent of going to your browser to visit this website, but all HTTP requests and server responses will print out in the terminal, as well as all the HTML and CSS files returned. The <code>GET / HTTP/1.1</code> you&#39;ll see is the beginning of the request, and the <code>HTTP/1.1 200 OK</code> starts the response.</p>
 
-<p>This is the equivalent of going to your browser to visit this website, but all HTTP requests and server responses will print out in the terminal, as well as all the HTML and CSS files returned. The <code>GET / HTTP/1.1</code> you'll see is the beginning of the request, and the <code>HTTP/1.1 200 OK</code> starts the response.</p>
+<p>*Note: Don&#39;t confuse HTTP with HTML. HTTP is a <em>protocol</em>: it gives directions to computers on how to talk to each other over the internet. <em>HTML</em> is HyperText Markup Language, which is just text with some directions to a browser on how to display properly like a web page.  </p>
 
-<p>*Note: Don't confuse HTTP with HTML. HTTP is a <em>protocol</em>: it gives directions to computers on how to talk to each other over the internet. <em>HTML</em> is HyperText Markup Language, which is just text with some directions to a browser on how to display properly like a web page.</p>
-
-<h2>What is a web app?</h2>
+<h2 id="what-is-a-web-app?">What is a web app?</h2>
 
 <p>Where does a web app come into the picture described above? Once the server has received your request to see a page, it translates the request to the web app to process. Thus, the web app is the program that decides what should be done with every user that visits a website. For simple static websites (ones that just show an HTML page with no user inputs), that program in Python could look as simple as:</p>
-
-<pre><code>def serve_page():
-  return "&lt;html&gt;&lt;body&gt;Hello, World.&lt;/body&gt;&lt;/html&gt;"
-</code></pre>
-
-<p>This function would be called each time a visitor requests the page, and it would send back the barebones HTML to display "Hello, World." A more complicated web app like Facebook, would might contain JavaScript to allow interactions between the browser and the user, databases to keep track of prior information about the user, and various other parts.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">def serve_page():
+  return &quot;&lt;html&gt;&lt;body&gt;Hello, World.&lt;/body&gt;&lt;/html&gt;&quot;
+</code></pre></div>
+<p>This function would be called each time a visitor requests the page, and it would send back the barebones HTML to display &quot;Hello, World.&quot; A more complicated web app like Facebook, would might contain JavaScript to allow interactions between the browser and the user, databases to keep track of prior information about the user, and various other parts.  </p>
 
 <p>Naturally, this examples also ignores a lot of other code that needs to run to accept the request and talk to the server to send back the info. There is a lot of boilerplate code that goes into every application that needs to run on the internet, and this is where web application <em>frameworks</em> come in.</p>
 
-<h3>Web application frameworks</h3>
+<h3 id="web-application-frameworks">Web application frameworks</h3>
 
-<p>So what is a <strong>web application framework</strong>? <a href="http://www.fullstackpython.com/web-frameworks.html">As described here</a>, web frameworks are reusable code libraries that make it easier to build a reliable, scalable, and maintainable web app. They help reuse code common for HTTP operations and for typical application functionality, such as:<br/>
-  1. URL routing<br/>
-  2. Templating for HTML, <a href="http://www.w3schools.com/xml/">XML</a>, <a href="http://json.org/">JSON</a>, and other output formats<br/>
-  3. Database manipulation<br/>
-  4. Security against <a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery">Cross-site request forgery (CSRF)</a> and other attacks</p>
+<p>So what is a <strong>web application framework</strong>? <a href="http://www.fullstackpython.com/web-frameworks.html">As described here</a>, web frameworks are reusable code libraries that make it easier to build a reliable, scalable, and maintainable web app. They help reuse code common for HTTP operations and for typical application functionality, such as:<br>
+  1. URL routing<br>
+  2. Templating for HTML, <a href="http://www.w3schools.com/xml/">XML</a>, <a href="http://json.org/">JSON</a>, and other output formats<br>
+  3. Database manipulation<br>
+  4. Security against <a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery">Cross-site request forgery (CSRF)</a> and other attacks  </p>
 
-<p>The various points above will come up as you learn more about Flask, so don't worry if you don't know what any of these mean yet. However, these points clearly do not cover all that is necessary to make a fully functioning website. So where does the rest of the <em>stack</em> come from?</p>
+<p>The various points above will come up as you learn more about Flask, so don&#39;t worry if you don&#39;t know what any of these mean yet. However, these points clearly do not cover all that is necessary to make a fully functioning website. So where does the rest of the <em>stack</em> come from?</p>
 
-<h3>"Full stack"?</h3>
+<h3 id="&quot;full-stack&quot;?">&quot;Full stack&quot;?</h3>
 
-<p>You may have heard the term <em>full-stack</em> developer get thrown around without knowing what is this stack that they are developing. The stack simply refers to the <strong>layers of technologies</strong> required to build, run, and deploy an app on the internet. The Python program may handle the logic of what to show each user, but it does not store data, nor does it handle HTTP requests directly. The four major parts of the stack (in the traditional sense) are:</p>
+<p>You may have heard the term <em>full-stack</em> developer get thrown around without knowing what is this stack that they are developing. The stack simply refers to the <strong>layers of technologies</strong> required to build, run, and deploy an app on the internet. The Python program may handle the logic of what to show each user, but it does not store data, nor does it handle HTTP requests directly. The four major parts of the stack (in the traditional sense) are:  </p>
 
 <ol>
-<li>The <strong>operating system</strong> running the programs</li>
-<li>The <strong>web server</strong> handling the incoming requests</li>
-<li>The <strong>database</strong> for storing all website info</li>
-<li>The <strong>application language</strong> (i.e. Python)</li>
+<li>The <strong>operating system</strong> running the programs<br></li>
+<li>The <strong>web server</strong> handling the incoming requests<br></li>
+<li>The <strong>database</strong> for storing all website info<br></li>
+<li>The <strong>application language</strong> (i.e. Python)<br></li>
 </ol>
-
 
 <p>Setting up #1-3 for your web app will not be covered here, as they are necessary once you have a handle on making a simple app and want to expand, scale, and deploy it.</p>
 
-<h1>Actually getting started with Flask</h1>
+<h1 id="actually-getting-started-with-flask">Actually getting started with Flask</h1>
 
-<p>Now that we have the primer with info needed to see where web apps fits into the internet, the best way to start learning what a framework does is to see it in action. Let's make the simplest Flask app possible.</p>
+<p>Now that we have the primer with info needed to see where web apps fits into the internet, the best way to start learning what a framework does is to see it in action. Let&#39;s make the simplest Flask app possible.</p>
 
-<h4>Installing:</h4>
+<h4 id="installing:">Installing:</h4>
 
-<p>If you're not sure what a virtual environment is, see this <a href="http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/">into to virtual environments and the <code>pip</code> installer</a>. Assuming we have Python 2.7 and <code>pip</code> installed, start by creating the virtual environment for your project and activate it. I put all my envs in <code>~/envs/</code>)*   I'll call it <code>myapp</code>:</p>
-
-<pre><code>cd ~/envs/ &amp;&amp; virtualenv myapp &amp;&amp; source ~/envs/myapp/bin/activate
-</code></pre>
-
+<p>If you&#39;re not sure what a virtual environment is, see this <a href="http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/">into to virtual environments and the <code>pip</code> installer</a>. Assuming we have Python 2.7 and <code>pip</code> installed, start by creating the virtual environment for your project and activate it. I put all my envs in <code>~/envs/</code>)*   I&#39;ll call it <code>myapp</code>:  </p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">cd ~/envs/ &amp;&amp; virtualenv myapp &amp;&amp; source ~/envs/myapp/bin/activate
+</code></pre></div>
 <p>Now make a folder where the project will live. Lets call it <code>myapp</code> as well:</p>
-
-<pre><code>mkdir myapp &amp;&amp; cd myapp
-</code></pre>
-
+<div class="highlight"><pre><code class="language-text" data-lang="text">mkdir myapp &amp;&amp; cd myapp
+</code></pre></div>
 <p>Install Flask:</p>
-
-<pre><code>pip install flask
-</code></pre>
-
+<div class="highlight"><pre><code class="language-text" data-lang="text">pip install flask
+</code></pre></div>
 <p>* Note: some people like using <a href="https://virtualenvwrapper.readthedocs.org/en/latest/">virtualenvwrapper</a>, which can simplify the creation and management of virtual environments. Whether or not you use the wrapper tool, virtual envs are <em>strongly</em> recommended, especially for projects (like websites) that will be run on multiple locations.</p>
 
-<h4>Our First App</h4>
+<h4 id="our-first-app">Our First App</h4>
 
 <p>Now we can make a simple web app (<a href="http://flask.pocoo.org/docs/0.10/quickstart">as shown in the Flask quickstart</a>) by creating a file called <code>hello.py</code> and fill it with the following:</p>
-
-<pre><code>from flask import Flask
+<div class="highlight"><pre><code class="language-text" data-lang="text">from flask import Flask
 app = Flask(__name__)
 
-@app.route("/")
+@app.route(&quot;/&quot;)
 def hello():
-    return "Hello World!"
+    return &quot;Hello World!&quot;
 
-if __name__ == "__main__":
+if __name__ == &quot;__main__&quot;:
     app.run()
-</code></pre>
+</code></pre></div>
+<p>If we run <code>python hello.py</code>, open a browser, and go to <code>http://localhost:5000</code>, we will see our app running and presenting the page with &quot;Hello World!&quot;</p>
 
-<p>If we run <code>python hello.py</code>, open a browser, and go to <code>http://localhost:5000</code>, we will see our app running and presenting the page with "Hello World!"</p>
-
-<h4>What is happening here?</h4>
+<h4 id="what-is-happening-here?">What is happening here?</h4>
 
 <p>So how does this create a web app that is suddenly visible in your browser?</p>
 
 <ol>
-<li>First, we make an <code>Flask</code> instance, which handles much of the application boilerplate code described above for serving and receiving requests. We pass it the title of the module (<code>__name__</code> here) so the app knows where to look for files.</li>
-<li>The <code>@app.route</code> is a <a href="https://realpython.com/blog/python/primer-on-python-decorators/">decorator</a> which tells the app what to do for each URL. The only URL we handle here is <code>/</code>, the root URL.</li>
-<li>The function below the decorator handles all the logic of what to serve, and returns text or HTML</li>
-<li>The <code>app.run()</code> code tells the <code>Flask</code> instance to start, with <code>if __name__ == "__main__":</code> being provided to say "only run this if the module is called directly" (i.e., not by an import).</li>
+<li>First, we make an <code>Flask</code> instance, which handles much of the application boilerplate code described above for serving and receiving requests. We pass it the title of the module (<code>__name__</code> here) so the app knows where to look for files.<br></li>
+<li>The <code>@app.route</code> is a <a href="https://realpython.com/blog/python/primer-on-python-decorators/">decorator</a> which tells the app what to do for each URL. The only URL we handle here is <code>/</code>, the root URL.<br></li>
+<li>The function below the decorator handles all the logic of what to serve, and returns text or HTML<br></li>
+<li>The <code>app.run()</code> code tells the <code>Flask</code> instance to start, with <code>if __name__ == &quot;__main__&quot;:</code> being provided to say &quot;only run this if the module is called directly&quot; (i.e., not by an import).<br></li>
 </ol>
 
-
 <p>When you ran this, you saw:</p>
-
-<pre><code>(myapp)Scott:mysite scott$ python hello.py
+<div class="highlight"><pre><code class="language-text" data-lang="text">(myapp)Scott:mysite scott$ python hello.py
 * Running on http://127.0.0.1:5000/
 * Restarting with reloader
-</code></pre>
-
-<p>By default, Flask will run on the localhost, where your local machine acts as a web server. This means that typing <code>http://localhost:5000</code> goes through the same steps outlined about, but instead of going to some external server for the site, the browser just looks at what is running on your computer, which is your program, until you press <code>ctrl-C</code> to stop it. The <code>5000</code> is just another port that a server might go through to reach an application. Port 80 is the usual port for external websites. See the <a href="http://web.stanford.edu/class/msande91si/www-spr04/readings/week1/InternetWhitepaper.htm">Internet tutorial link</a> for more info on this.<br/>
+</code></pre></div>
+<p>By default, Flask will run on the localhost, where your local machine acts as a web server. This means that typing <code>http://localhost:5000</code> goes through the same steps outlined about, but instead of going to some external server for the site, the browser just looks at what is running on your computer, which is your program, until you press <code>ctrl-C</code> to stop it. The <code>5000</code> is just another port that a server might go through to reach an application. Port 80 is the usual port for external websites. See the <a href="http://web.stanford.edu/class/msande91si/www-spr04/readings/week1/InternetWhitepaper.htm">Internet tutorial link</a> for more info on this.<br>
 So once you visited the root URL of <code>localhost</code>, our application received this request, ran the function <code>hello()</code> and returned the string <code>Hello World!</code>.</p>
 
-<h4>Routing</h4>
+<h4 id="routing">Routing</h4>
 
 <p>We now have a basic output when going to the root level domain (the <code>/</code>). How do we handle more routes? Simple: add more decorators. To return the same output for two different routes, we can simply stack the decorators:</p>
-
-<pre><code>@app.route("/index")
-@app.route("/")
+<div class="highlight"><pre><code class="language-text" data-lang="text">@app.route(&quot;/index&quot;)
+@app.route(&quot;/&quot;)
 def hello():
-    return "Hello World!"
-</code></pre>
+    return &quot;Hello World!&quot;
+</code></pre></div>
+<p>Now if we visit <code>http://localhost:5000/index</code>, we get the same output: Both of these routes receive the same function.  </p>
 
-<p>Now if we visit <code>http://localhost:5000/index</code>, we get the same output: Both of these routes receive the same function.</p>
-
-<h4>Templates</h4>
+<h4 id="templates">Templates</h4>
 
 <p>How do we actually display HTML for our app? Instead of just a text string, we can have our routing functions return HTML files. We can make a folder called <code>templates</code> and put our basic HTML file into it:</p>
-
-<pre><code>&lt;!doctype html&gt;
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;!doctype html&gt;
 &lt;head&gt;
   &lt;title&gt;My App&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
   Hello, World!
 &lt;/body&gt;
-</code></pre>
-
+</code></pre></div>
 <p>Add the following import to the top of hello.py:</p>
-
-<pre><code>from flask import render_template
-</code></pre>
-
+<div class="highlight"><pre><code class="language-text" data-lang="text">from flask import render_template
+</code></pre></div>
 <p>And now the rendering function can look like this:</p>
-
-<pre><code>@app.route("/index")
-@app.route("/")
+<div class="highlight"><pre><code class="language-text" data-lang="text">@app.route(&quot;/index&quot;)
+@app.route(&quot;/&quot;)
 def hello():
-    return render_template('index.html')
-</code></pre>
+    return render_template(&#39;index.html&#39;)
+</code></pre></div>
+<p>We have our first template being rendered.  </p>
 
-<p>We have our first template being rendered.</p>
+<p>To see how these templates can be reusable, check out <a href="http://flask.pocoo.org/docs/0.10/tutorial/templates/">the Flask tutorial part on templating</a>.  </p>
 
-<p>To see how these templates can be reusable, check out <a href="http://flask.pocoo.org/docs/0.10/tutorial/templates/">the Flask tutorial part on templating</a>.</p>
+<h4 id="doing-more">Doing More</h4>
 
-<h4>Doing More</h4>
+<p>This is not intended to be a full tutorial on making a Flask app, as there have already been many good ones written. If you really want to get a grasp on Flask, <a href="http://flask.pocoo.org/docs/0.10/tutorial/">the site&#39;s own tutorial is quite good</a>. Working through the entire tutorial should give a feel of the basic functions of a flask app. Also, check out <a href="http://flask.pocoo.org/docs/0.10/patterns/">the rest of the patterns in their docs on best practices</a>. If their tutorial is not enough, there are plenty of other <a href="http://maximebf.com/blog/2012/10/building-websites-in-python-with-flask/#.VVqLOlVVikq">full Flask tutorials</a> out there, as well as <a href="http://mattupstate.com/python/2013/06/26/how-i-structure-my-flask-applications.html">info on structuring apps</a>.</p>
 
-<p>This is not intended to be a full tutorial on making a Flask app, as there have already been many good ones written. If you really want to get a grasp on Flask, <a href="http://flask.pocoo.org/docs/0.10/tutorial/">the site's own tutorial is quite good</a>. Working through the entire tutorial should give a feel of the basic functions of a flask app. Also, check out <a href="http://flask.pocoo.org/docs/0.10/patterns/">the rest of the patterns in their docs on best practices</a>. If their tutorial is not enough, there are plenty of other <a href="http://maximebf.com/blog/2012/10/building-websites-in-python-with-flask/#.VVqLOlVVikq">full Flask tutorials</a> out there, as well as <a href="http://mattupstate.com/python/2013/06/26/how-i-structure-my-flask-applications.html">info on structuring apps</a>.</p>
+<h3 id="more-reading">More Reading</h3>
 
-<h3>More Reading</h3>
-
-<p><a href="http://web.stanford.edu/class/msande91si/www-spr04/readings/week1/InternetWhitepaper.htm">For an even more detailed overview of the internet, see here.</a></p>
+<p><a href="http://web.stanford.edu/class/msande91si/www-spr04/readings/week1/InternetWhitepaper.htm">For an even more detailed overview of the internet, see here.</a>  </p>
 
 <p>More about frameworks in general: <a href="http://www.jeffknupp.com/blog/2014/03/03/what-is-a-web-framework/">a good tutorial by Jeff Knupp</a>, containing quite a bit of front matter about HTTP servers.</p>
 
-<p><a href="http://www.laurencegellert.com/2012/08/what-is-a-full-stack-developer/">For an idea on what some people see as the responsibilities of the "full stack developer", see here</a></p>
+<p><a href="http://www.laurencegellert.com/2012/08/what-is-a-full-stack-developer/">For an idea on what some people see as the responsibilities of the &quot;full stack developer&quot;, see here</a></p>
 
 <p><a href="http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">This tutorial by Miguel Grinberg</a> is a very detailed walk through, though slightly outdated at this point.</p>
 
+    </div>
+    <div id="footer">
+      <script>
+      $(function() {
+  return $("h2, h3, h4, h5, h6").each(function(i, el) {
+    var $el, icon, id;
+    $el = $(el);
+    id = $el.attr('id');
+    icon = '<i class="fa fa-link"></i>';
+    if (id) {
+      return $el.prepend($("<a />").addClass("header-link").attr("href", "#" + id).html(icon));
+    }
+  });
+});
+
+      </script>
     </div>
   </body>
 </html>

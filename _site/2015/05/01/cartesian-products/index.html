@@ -6,6 +6,8 @@
     <title>Cartesian Products</title>
      <link rel="stylesheet"
   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <style type="text/css" media="screen">
       body {
         background:white; color:#020202;
@@ -33,6 +35,24 @@
   -moz-border-radius-bottomleft:0;
   -webkit-border-bottom-left-radius:0;
   border-bottom-left-radius:0;
+}
+
+.header-link {
+  position: absolute;
+  left: 0em;
+  opacity: 0;
+
+  -webkit-transition: opacity 0.2s ease-in-out 0.1s;
+  -moz-transition: opacity 0.2s ease-in-out 0.1s;
+  -ms-transition: opacity 0.2s ease-in-out 0.1s;
+}
+
+h2:hover .header-link,
+h3:hover .header-link,
+h4:hover .header-link,
+h5:hover .header-link,
+h6:hover .header-link {
+  opacity: 1;
 }
 
 
@@ -120,9 +140,9 @@
 
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <div id="content">
-      <h1>Cartesian products in python</h1>
+      <h1 id="cartesian-products-in-python">Cartesian products in python</h1>
 
-<h4>What is a cartesian product?</h4>
+<h4 id="what-is-a-cartesian-product?">What is a cartesian product?</h4>
 
 <p>Mathematically, the <strong>cartesian product</strong> is an operator that acts on multiple sets and returns one set of all possible tuples from the sets. In set notation, the cartesian product of \(A \times B \) is:
 $$
@@ -138,37 +158,49 @@ $$</p>
 
 <p>We are just repeating the same set \(X\) for each position in the n-tuple.</p>
 
-<h4>In python</h4>
+<h4 id="in-python">In python</h4>
 
-<p>So how can we product this in python? It is clear that for even moderate size inputs, if we were to keep every element of the product in memory, it would grow to a monstrous size. This is because with m symbols in X, for a n-tuple, we have a set of size \(n^m\)<br/>
-This where where <strong>generators</strong> in python come in. For an intro to generators, <a href="/2015/04/30/iterator-generator/">see here</a><br/>
+<p>So how can we product this in python? It is clear that for even moderate size inputs, if we were to keep every element of the product in memory, it would grow to a monstrous size. This is because with m symbols in X, for a n-tuple, we have a set of size \(n^m\)<br>
+This where where <strong>generators</strong> in python come in. For an intro to generators, <a href="/2015/04/30/iterator-generator/">see here</a><br>
 Our generator needs to <code>yield</code> each n-tuple one at a time as our function returns it.</p>
 
-<h4>A final note</h4>
+<h4 id="a-final-note">A final note</h4>
 
 <p>For actual implementation of the cartesian product, you can just do:</p>
-
-<pre><code>import itertools
+<div class="highlight"><pre><code class="language-text" data-lang="text">import itertools
 
 prods = itertools.product(choices, repeat=n)
 
 for p in prods:
     print p
-</code></pre>
-
+</code></pre></div>
 <p>This will print all products, yielding them one at a time</p>
-
-<pre><code>(1, 1, 1)
+<div class="highlight"><pre><code class="language-text" data-lang="text">(1, 1, 1)
 (1, 1, 2)
 (1, 1, 3)
 (1, 2, 1)
 (1, 2, 2)
 ...
-</code></pre>
+</code></pre></div>
+<p>ty python.<br>
+<img src="http://imgs.xkcd.com/comics/python.png" alt=""></p>
 
-<p>ty python.<br/>
-<img src="http://imgs.xkcd.com/comics/python.png" alt="" /></p>
+    </div>
+    <div id="footer">
+      <script>
+      $(function() {
+  return $("h2, h3, h4, h5, h6").each(function(i, el) {
+    var $el, icon, id;
+    $el = $(el);
+    id = $el.attr('id');
+    icon = '<i class="fa fa-link"></i>';
+    if (id) {
+      return $el.prepend($("<a />").addClass("header-link").attr("href", "#" + id).html(icon));
+    }
+  });
+});
 
+      </script>
     </div>
   </body>
 </html>

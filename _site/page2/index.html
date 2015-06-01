@@ -6,6 +6,8 @@
     <title>Hello, world.</title>
      <link rel="stylesheet"
   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <style type="text/css" media="screen">
       body {
         background:white; color:#020202;
@@ -33,6 +35,24 @@
   -moz-border-radius-bottomleft:0;
   -webkit-border-bottom-left-radius:0;
   border-bottom-left-radius:0;
+}
+
+.header-link {
+  position: absolute;
+  left: 0em;
+  opacity: 0;
+
+  -webkit-transition: opacity 0.2s ease-in-out 0.1s;
+  -moz-transition: opacity 0.2s ease-in-out 0.1s;
+  -ms-transition: opacity 0.2s ease-in-out 0.1s;
+}
+
+h2:hover .header-link,
+h3:hover .header-link,
+h4:hover .header-link,
+h5:hover .header-link,
+h6:hover .header-link {
+  opacity: 1;
 }
 
 
@@ -132,6 +152,22 @@
 </ul>
 
 
+    </div>
+    <div id="footer">
+      <script>
+      $(function() {
+  return $("h2, h3, h4, h5, h6").each(function(i, el) {
+    var $el, icon, id;
+    $el = $(el);
+    id = $el.attr('id');
+    icon = '<i class="fa fa-link"></i>';
+    if (id) {
+      return $el.prepend($("<a />").addClass("header-link").attr("href", "#" + id).html(icon));
+    }
+  });
+});
+
+      </script>
     </div>
   </body>
 </html>
