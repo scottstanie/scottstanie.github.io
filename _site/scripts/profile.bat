@@ -1,1 +1,1 @@
-python -m cProfile %1
+python -m cProfile -s time %1
