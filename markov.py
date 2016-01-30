@@ -23,9 +23,14 @@ class Markov(object):
     def clean_text(self, text):
         # Remove non-ascii characters
         text = filter(lambda x: x in string.printable, text)
+
         # Remove links the might have been posted
         wordlist = filter(lambda x: 'http' not in x, text.split(' '))
-        # Get rid of newlines and rejoin the words into one string
+
+        # Get rid of random periods
+        wordlist = [w for w in wordlist if w != '.']
+
+        # Remove newlines and rejoin the words into one string
         return ' '.join(wordlist).replace('\n', '')
 
     def ntuples(self):
