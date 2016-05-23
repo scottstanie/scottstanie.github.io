@@ -21,6 +21,8 @@ markdown: redcarpet
 redcarpet:
   extensions: [with_toc_data]
 
+gems: [jekyll-paginate]
+
 highlighter: pygments
 
 # Makes pretty (descriptive) permalinks. See Jekyll docs for alternatives.

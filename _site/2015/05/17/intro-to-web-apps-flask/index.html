@@ -178,7 +178,7 @@ Target demo: people with some programming experience but with little to no web p
 
 <p>*Note: Don&#39;t confuse HTTP with HTML. HTTP is a <em>protocol</em>: it gives directions to computers on how to talk to each other over the internet. <em>HTML</em> is HyperText Markup Language, which is just text with some directions to a browser on how to display properly like a web page.  </p>
 
-<h2 id="what-is-a-web-app?">What is a web app?</h2>
+<h2 id="what-is-a-web-app">What is a web app?</h2>
 
 <p>Where does a web app come into the picture described above? Once the server has received your request to see a page, it translates the request to the web app to process. Thus, the web app is the program that decides what should be done with every user that visits a website. For simple static websites (ones that just show an HTML page with no user inputs), that program in Python could look as simple as:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">def serve_page():
@@ -198,7 +198,7 @@ Target demo: people with some programming experience but with little to no web p
 
 <p>The various points above will come up as you learn more about Flask, so don&#39;t worry if you don&#39;t know what any of these mean yet. However, these points clearly do not cover all that is necessary to make a fully functioning website. So where does the rest of the <em>stack</em> come from?</p>
 
-<h3 id="&quot;full-stack&quot;?">&quot;Full stack&quot;?</h3>
+<h3 id="quot-full-stack-quot">&quot;Full stack&quot;?</h3>
 
 <p>You may have heard the term <em>full-stack</em> developer get thrown around without knowing what is this stack that they are developing. The stack simply refers to the <strong>layers of technologies</strong> required to build, run, and deploy an app on the internet. The Python program may handle the logic of what to show each user, but it does not store data, nor does it handle HTTP requests directly. The four major parts of the stack (in the traditional sense) are:  </p>
 
@@ -215,7 +215,7 @@ Target demo: people with some programming experience but with little to no web p
 
 <p>Now that we have the primer with info needed to see where web apps fits into the internet, the best way to start learning what a framework does is to see it in action. Let&#39;s make the simplest Flask app possible.</p>
 
-<h4 id="installing:">Installing:</h4>
+<h4 id="installing">Installing:</h4>
 
 <p>If you&#39;re not sure what a virtual environment is, see this <a href="http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/">into to virtual environments and the <code>pip</code> installer</a>. Assuming we have Python 2.7 and <code>pip</code> installed, start by creating the virtual environment for your project and activate it. I put all my envs in <code>~/envs/</code>)*   I&#39;ll call it <code>myapp</code>:  </p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">cd ~/envs/ &amp;&amp; virtualenv myapp &amp;&amp; source ~/envs/myapp/bin/activate
@@ -243,7 +243,7 @@ if __name__ == &quot;__main__&quot;:
 </code></pre></div>
 <p>If we run <code>python hello.py</code>, open a browser, and go to <code>http://localhost:5000</code>, we will see our app running and presenting the page with &quot;Hello World!&quot;</p>
 
-<h4 id="what-is-happening-here?">What is happening here?</h4>
+<h4 id="what-is-happening-here">What is happening here?</h4>
 
 <p>So how does this create a web app that is suddenly visible in your browser?</p>
 
