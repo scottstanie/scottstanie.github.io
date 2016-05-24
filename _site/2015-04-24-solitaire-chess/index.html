@@ -142,16 +142,17 @@ h6:hover .header-link {
     <div id="content">
       <h1 id="breadth-first-search-in-python-using-solitaire-chess">Breadth First Search in Python, using Solitaire Chess</h1>
 
-<p>Here is an example of Breadth First Search (BFS) to traverse a graph and find all possible paths. The graph here is a representation of a 4x4 chess board in the game of <a href="http://www.thinkfun.com/microsite/solitairechess/demo">solitaire chess</a>. The pieces are standard chess pieces. The only legal moves are captures of other pieces. Pawns only being able to move downward.<br>
-The board starts in a random configuration, and the objective of the puzzle is to be left with only one piece.<br>
-An interesting programming problem related to this game: Create a program that can accept an arbitrary board state as input and determine if there is a solution. If there are solutions, print out all steps for each one.<br>
+<p>Here is an example of Breadth First Search (BFS) to traverse a graph and find all possible paths. The graph here is a representation of a 4x4 chess board in the game of <a href="http://www.thinkfun.com/microsite/solitairechess/demo">solitaire chess</a>. The pieces are standard chess pieces. The only legal moves are captures of other pieces. Pawns only being able to move downward.<br />
+The board starts in a random configuration, and the objective of the puzzle is to be left with only one piece.<br />
+An interesting programming problem related to this game: Create a program that can accept an arbitrary board state as input and determine if there is a solution. If there are solutions, print out all steps for each one.<br />
 The steps to programming this solution are as follows:
 1. Create classes for each type of piece, with methods for the available move directions that test for boundaries
-2. Create a class for the board state with the methods to find all available moves from the current state. Include an attribute for marking the parent of the board state- that is, which board came before the current one, with <code>None</code> as the parent of the starting board.
-3. For the BFS, create a queue (from <code>collections.deque</code>) to store the board states for testing each one. As new board states are found from each one tested, push them on to the back of the queue.</p>
+2. Create a class for the board state with the methods to find all available moves from the current state. Include an attribute for marking the parent of the board state- that is, which board came before the current one, with <code class="highlighter-rouge">None</code> as the parent of the starting board.
+3. For the BFS, create a queue (from <code class="highlighter-rouge">collections.deque</code>) to store the board states for testing each one. As new board states are found from each one tested, push them on to the back of the queue.</p>
 
-<p>The actual BFS algorithm looks like this, where <code>Board_state.size()</code> is a method to list how many pieces are left on the board, and <code>Board_state.win_paths</code> is list of the indices to keep track of which winning paths the state was a part of.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">def run_BFS(start_board, queue):
+<p>The actual BFS algorithm looks like this, where <code class="highlighter-rouge">Board_state.size()</code> is a method to list how many pieces are left on the board, and <code class="highlighter-rouge">Board_state.win_paths</code> is list of the indices to keep track of which winning paths the state was a part of.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>def run_BFS(start_board, queue):
     all_boards = []
     win_idx = 0
 
@@ -171,20 +172,23 @@ The steps to programming this solution are as follows:
     num_strategies = win_idx
 
     return all_boards, num_strategies
-</code></pre></div>
+</code></pre>
+</div>
+
 <h4 id="depth-first-search">Depth first search</h4>
 
 <p>Depth first search on the other hand looks like the following/</p>
 
 <ol>
-<li>Start with a node to search from, and mark it as &#39;searched&#39;</li>
-<li>Visit one of the neighboring nodes and mark it</li>
-<li>Visit some neighbor node until there are none you haven&#39;t visited, then go to next neighbor node from (2)</li>
-<li>Continue until the goal is found or all are marked</li>
+  <li>Start with a node to search from, and mark it as ‘searched’</li>
+  <li>Visit one of the neighboring nodes and mark it</li>
+  <li>Visit some neighbor node until there are none you haven’t visited, then go to next neighbor node from (2)</li>
+  <li>Continue until the goal is found or all are marked</li>
 </ol>
 
 <p>If we were to use Depth First Search (DFS), the algorithm would look like this:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">def run_DFS(start_board, stack):
+
+<div class="highlighter-rouge"><pre class="highlight"><code>def run_DFS(start_board, stack):
     stack.append(start_board)
 
     all_boards = []
@@ -204,8 +208,10 @@ The steps to programming this solution are as follows:
     num_strategies = win_idx
 
     return all_boards, num_strategies
-</code></pre></div>
-<p>The main difference here is that we are using stack instead of a queue, though in python they can be the same data structure- a deque. The deque and a normal <code>list</code> would be the same here, as we are simply popping graph nodes on top of the stack and removing one at each iteration.<br>
+</code></pre>
+</div>
+
+<p>The main difference here is that we are using stack instead of a queue, though in python they can be the same data structure- a deque. The deque and a normal <code class="highlighter-rouge">list</code> would be the same here, as we are simply popping graph nodes on top of the stack and removing one at each iteration.<br />
 The difference in DFS is that the nodes that were most recently placed on top are examined first, leading to some solution along a path quicker. If we were to stop at the first possible solution, DFS would be usually be quicker (unless the one solution were the last branch of the graph).</p>
 
     </div>

@@ -145,27 +145,30 @@ h6:hover .header-link {
 <p>To summarize first:</p>
 
 <ul>
-<li>An <strong><em>iterable</em></strong> is a container-like object that can be iterated over.
-
-<ul>
-<li>Technically, it&#39;s a object that has an <code>__iter__()</code> method (equivalently, you can call <code>iter(x)</code> on this iterable)</li>
-<li>For example, if <code>x = [1, 2, 3]</code>, x is the <em>iterable</em>, and calling <code>y = iter(x)</code> makes y the <em>iterator</em></li>
-</ul></li>
-<li>A <strong><em>iterator</em></strong> is a lazy value producing factory
-
-<ul>
-<li>It is a object that has a <code>__next__()</code> method for producing the next value available</li>
-<li>It will sit there and wait for something to call that method in order to <code>yield</code> that next value</li>
-</ul></li>
-<li>A <strong><em>generator</em></strong> is a specific type of iterator in python with elegant syntax.
-
-<ul>
-<li>A generator is an iterator, but not the other way around</li>
-<li>The two types of generators are:</li>
-<li>generator <em>functions</em>: any function with <code>yield</code></li>
-<li>generator <em>expressions</em>: like a list comprehension, but with parentheses</li>
-</ul></li>
-<li>Generators can be used to write better streaming code with fewer intermediate variables, less memory, and more efficient CPU usage</li>
+  <li>An <strong><em>iterable</em></strong> is a container-like object that can be iterated over.
+    <ul>
+      <li>Technically, it’s a object that has an <code class="highlighter-rouge">__iter__()</code> method (equivalently, you can call <code class="highlighter-rouge">iter(x)</code> on this iterable)</li>
+      <li>For example, if <code class="highlighter-rouge">x = [1, 2, 3]</code>, x is the <em>iterable</em>, and calling <code class="highlighter-rouge">y = iter(x)</code> makes y the <em>iterator</em></li>
+    </ul>
+  </li>
+  <li>A <strong><em>iterator</em></strong> is a lazy value producing factory
+    <ul>
+      <li>It is a object that has a <code class="highlighter-rouge">__next__()</code> method for producing the next value available</li>
+      <li>It will sit there and wait for something to call that method in order to <code class="highlighter-rouge">yield</code> that next value</li>
+    </ul>
+  </li>
+  <li>A <strong><em>generator</em></strong> is a specific type of iterator in python with elegant syntax.
+    <ul>
+      <li>A generator is an iterator, but not the other way around</li>
+      <li>The two types of generators are:
+        <ul>
+          <li>generator <em>functions</em>: any function with <code class="highlighter-rouge">yield</code></li>
+          <li>generator <em>expressions</em>: like a list comprehension, but with parentheses</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Generators can be used to write better streaming code with fewer intermediate variables, less memory, and more efficient CPU usage</li>
 </ul>
 
     </div>
