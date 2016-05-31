@@ -138,25 +138,29 @@ h6:hover .header-link {
   </div>
 </nav>
 
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <div id="content">
       <h1 id="cartesian-products-in-python">Cartesian products in python</h1>
 
 <h4 id="what-is-a-cartesian-product">What is a cartesian product?</h4>
 
-<p>Mathematically, the <strong>cartesian product</strong> is an operator that acts on multiple sets and returns one set of all possible tuples from the sets. In set notation, the cartesian product of \(A \times B \) is:
-<script type="math/tex">A \times B = \\{(a, b) \mid a \in A, b \in B\\}</script></p>
+<p>Mathematically, the <strong>cartesian product</strong> is an operator that acts on multiple sets and returns one set of all possible tuples from the sets. In set notation, the cartesian product of \(A \times B \) is:</p>
+
+<script type="math/tex; mode=display">A \times B = \{(a, b) \mid a \in A, b \in B\}</script>
 
 <p>This can be extended beyond two sets- the legnth of the tuple is equal to the number of sets you are giving as input.</p>
 
-<p>Now if we have a list of possible symbols, and we want every possible arrangement of them \(n\) times, we would use the <strong>cartesian power</strong>:
-<script type="math/tex">X\^n = \\{(x\_1, ... , x\_n) \mid x\_i \in X \quad \forall i \colon 1, ..., n \\}</script></p>
+<p>Now if we have a list of possible symbols, and we want every possible arrangement of them \(n\) times, we would use the <strong>cartesian power</strong>:</p>
+
+<script type="math/tex; mode=display">X^{n} = \{(x_1, ... , x_n) \mid x_i \in X \quad \forall i \colon 1, ..., n \}</script>
 
 <p>We are just repeating the same set \(X\) for each position in the n-tuple.</p>
 
 <h4 id="in-python">In python</h4>
 
-<p>So how can we product this in python? It is clear that for even moderate size inputs, if we were to keep every element of the product in memory, it would grow to a monstrous size. This is because with m symbols in X, for a n-tuple, we have a set of size \(n\^m\)<br />
+<p>So how can we product this in python? 
+It is clear that for even moderate size inputs, if we were to keep every element of the product in memory, it would grow to a monstrous size. 
+This is because with m symbols in X, for a n-tuple, we have a set of size \(n^m\)<br />
 This where where <strong>generators</strong> in python come in. For an intro to generators, <a href="/2015/04/30/iterator-generator/">see here</a><br />
 Our generator needs to <code class="highlighter-rouge">yield</code> each n-tuple one at a time as our function returns it.</p>
 

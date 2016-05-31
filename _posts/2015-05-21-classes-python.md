@@ -138,24 +138,23 @@ class Analyst(Employee):
 Notice that now instead of `object` as the argument passed to the class name, it's the base class `Employee` (`object` is used as Python makes a switch from older Python classes to 'new-style' classes. [See here for more](http://stackoverflow.com/questions/4015417/python-class-inherits-object))  
 This `Analyst` class has an init function and only defines one new method, `speak_analyst`. However, because it inherited from `Employee`, it inherits *all methods from it as well* (except for those it redefines). This means that the following are all valid:
 
-{% highlight python %}
->>> e = Employee(name='Sam')
->>> e.salary
-10000
->>> e.employee_count
-1
+    >>> e = Employee(name='Sam')
+    >>> e.salary
+    10000
+    >>> e.employee_count
+    1
 
->>> a = Analyst(name='Scott', salary=30000)
->>> a.speak_analyst()
-Let's make some graphs
->>> a.salary
-30000 
->>> a.employee_count
-2
->>> e.employee_count
-2
+    >>> a = Analyst(name='Scott', salary=30000)
+    >>> a.speak_analyst()
+    Let's make some graphs
 
-{% endhighlight %}
+    >>> a.salary
+    30000 
+    >>> a.employee_count
+    2
+    >>> e.employee_count
+    2
+
 
 Notice both the shared methods from the base class *and* the chared class attribute, `employee_count` that works from an `Analyst` instance. Also note that the new `Analyst` increased the `employee_count` of both `Employee` and `Analyst`. This however can be a dangerous way to implement shared data, as directly changing this attribute on an instance can cause it to lose track of the `employee_count` when others are created (it has overwritten the class attribute.)
 

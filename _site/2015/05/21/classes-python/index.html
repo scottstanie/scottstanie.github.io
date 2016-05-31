@@ -138,7 +138,7 @@ h6:hover .header-link {
   </div>
 </nav>
 
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <div id="content">
       <h1 id="classes-in-python">Classes in Python</h1>
 
@@ -275,21 +275,24 @@ Defining a class is defining a blueprint for creating objects, and in python, <a
 <p>Notice that now instead of <code class="highlighter-rouge">object</code> as the argument passed to the class name, it’s the base class <code class="highlighter-rouge">Employee</code> (<code class="highlighter-rouge">object</code> is used as Python makes a switch from older Python classes to ‘new-style’ classes. <a href="http://stackoverflow.com/questions/4015417/python-class-inherits-object">See here for more</a>)<br />
 This <code class="highlighter-rouge">Analyst</code> class has an init function and only defines one new method, <code class="highlighter-rouge">speak_analyst</code>. However, because it inherited from <code class="highlighter-rouge">Employee</code>, it inherits <em>all methods from it as well</em> (except for those it redefines). This means that the following are all valid:</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">e</span> <span class="o">=</span> <span class="n">Employee</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'Sam'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">e</span><span class="o">.</span><span class="n">salary</span>
-<span class="mi">10000</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">e</span><span class="o">.</span><span class="n">employee_count</span>
-<span class="mi">1</span>
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt;&gt;&gt; e = Employee(name='Sam')
+&gt;&gt;&gt; e.salary
+10000
+&gt;&gt;&gt; e.employee_count
+1
 
-<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="n">Analyst</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">'Scott'</span><span class="p">,</span> <span class="n">salary</span><span class="o">=</span><span class="mi">30000</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="o">.</span><span class="n">speak_analyst</span><span class="p">()</span>
-<span class="n">Let</span><span class="s">'s make some graphs</span><span class="err">
-</span><span class="s">&gt;&gt;&gt; a.salary</span><span class="err">
-</span><span class="s">30000 </span><span class="err">
-</span><span class="s">&gt;&gt;&gt; a.employee_count</span><span class="err">
-</span><span class="s">2</span><span class="err">
-</span><span class="s">&gt;&gt;&gt; e.employee_count</span><span class="err">
-</span><span class="s">2</span></code></pre></figure>
+&gt;&gt;&gt; a = Analyst(name='Scott', salary=30000)
+&gt;&gt;&gt; a.speak_analyst()
+Let's make some graphs
+
+&gt;&gt;&gt; a.salary
+30000 
+&gt;&gt;&gt; a.employee_count
+2
+&gt;&gt;&gt; e.employee_count
+2
+</code></pre>
+</div>
 
 <p>Notice both the shared methods from the base class <em>and</em> the chared class attribute, <code class="highlighter-rouge">employee_count</code> that works from an <code class="highlighter-rouge">Analyst</code> instance. Also note that the new <code class="highlighter-rouge">Analyst</code> increased the <code class="highlighter-rouge">employee_count</code> of both <code class="highlighter-rouge">Employee</code> and <code class="highlighter-rouge">Analyst</code>. This however can be a dangerous way to implement shared data, as directly changing this attribute on an instance can cause it to lose track of the <code class="highlighter-rouge">employee_count</code> when others are created (it has overwritten the class attribute.)</p>
 

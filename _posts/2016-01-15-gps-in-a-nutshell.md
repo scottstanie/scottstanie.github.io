@@ -60,13 +60,13 @@ Now before we can directly use that fact, we first have to figure out these dist
 However, we can combine this with the fact that all radio waves, being just ordinary electromagnetic waves, move at the speed of light.
 
 $$
-  c = 3 \times 10\^8 \frac{m}{s}
+  c = 3 \times 10^8 \frac{m}{s}
 $$
 
 So if satellites mark what time they sent a message, and you know what time you received the message, you can estiamte the distance using the **time difference**:
 
 $$
-  speed\_\{light\} * \( t\_{received} - t\_{sent} \) = distance
+  speed_{light} * ( t_{received} - t_{sent} ) = distance
 $$
 
 We can plug these distances, along with the satellite positions, into the trilateration equations to find our location:
@@ -113,17 +113,27 @@ The extra juice for the signal comes from using **[spread spectrum](http://www.e
 
 Without getting too far into the signal processing behind this, the basic idea is a follows:
 
-1. Take the data that you need to transmit from the satellite and turn it into a signal. It will just be a series of 1s and 0s, which in signal form, looks like this: 
+<ol>
+  <li>
+    Take the data that you need to transmit from the satellite and turn it into a signal. It will just be a series of 1s and 0s, which in signal form, looks like this: 
     {% include image.html url="/images/data-signal.jpg" height="120" width="300" %}
-
-2. Multiply this by a *spreading signal*. GPS uses a **[pseudo rangom noise (PRN)](https://en.wikipedia.org/wiki/Pseudorandom_noise)** code. This is also a series of 1s and 0s that oscillate much faster than the data, and the code is known by all GPS receivers: 
+  </li>
+  <li>Multiply this by a <em>spreading signal</em>. GPS uses a <strong><a href="https://en.wikipedia.org/wiki/Pseudorandom_noise">pseudo rangom noise (PRN)</a></strong> code. This is also a series of 1s and 0s that oscillate much faster than the data, and the code is known by all GPS receivers: 
     {% include image.html url="/images/ca-code.gif" height="130" width="300" %}
-
-3. Combining these two signals takes the frequencies of the data signal, which formerly where narrowly concentrated (red), and spreads them over a much wider range (blue):
+    </li>
+    <li>
+    Combining these two signals takes the frequencies of the data signal, which formerly where narrowly concentrated (red), and spreads them over a much wider range (blue):
     {% include image.html url="/images/spread-fig1.jpg" height="240" width="300" %} {% include image.html url="/images/spread-fig2.jpg" height="240" width="300" %}
-
-4. Once a GPS receiver gets this signal, it can take the PRN code, line it up in time with the GPS code, and the magic of spread spectrum occurs:
+    </li>
+    <li>
+    Once a GPS receiver gets this signal, it can take the PRN code, line it up in time with the GPS code, and the magic of spread spectrum occurs:
     {% include image.html url="/images/corrpeak.png" height="240" width="300" %}
+    </li>
+
+</ol>
+
+
+
 
 This figure is the outcome of **[cross correlating](https://en.wikipedia.org/wiki/Cross-correlation)** the receiver's copy of the code with the GPS signal.
 Upon lining up the two signals, there is a huge spike in the detectable power. 
