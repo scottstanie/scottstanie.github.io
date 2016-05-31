@@ -10,14 +10,16 @@ author_email: scott.stanie@gmail.com
 
 category_dir: /
 
-url: http://scottstanie.github.io
+url: http://scottstaniewicz.com
 
 #### Under the Hood Stuff #####
 
 redcarpet:
   extensions: [with_toc_data]
 
-gems: [jekyll-paginate]
+gems:
+  - jekyll-paginate
+  - jekyll-seo-tag
 
 highlighter: rouge
 
