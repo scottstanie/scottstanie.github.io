@@ -9,37 +9,70 @@
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <style type="text/css" media="screen">
-      body {
-        background:white; color:#020202;
-        font:1.5rem georgia, serif;
-        line-height:1.4;
-        font-weight: lighter;
-        text-rendering: optimizelegibility;
-      }
-      div.breaker { clear:both; }
-      img { border:none; vertical-align:bottom; }
-      hr { height:1px; border:none; background-color:#ddd; }
-      h1,h2,h3,h4 {
-        font-family: 'Helvetica Neue', helvetica, sans-serif;
-        -webkit-font-smoothing: antialiased;
-      }
-      #content {
-        padding:20px;
-      }
+      @import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500';
+body {
+  background: white; 
+  margin: 0 auto;
+  max-width: 50em;
+  line-height: 1.5;
+  padding: 4em 1em;
+  color: #020202;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  line-height: 1.4;
+  font-weight:  lighter;
+  text-rendering:  optimizelegibility;
+}
+
+h1,
+h2,
+strong {
+  color: #333;
+}
+
+div.breaker { 
+  clear: both; 
+}
+
+h2 {
+  margin-top: 1em;
+  padding-top: 1em;
+}
+
+h1,h2,h3,h4 {
+  font-family: 'Helvetica Neue', helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+header {
+  background-color: #263d36;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  line-height: 1.2;
+  padding: 10vw 2em;
+  text-align: center;
+}
+
+img { 
+  border: none; 
+  vertical-align: bottom; 
+}
+
+hr { 
+  height: 1px; 
+  border: none; 
+  background-color: #ddd; 
+}
+
       table {
   margin:0;padding:0;
   width:100%;
-  box-shadow: 10px 10px 5px #888888;
-  border:1px solid #000000;
-
   -moz-border-radius-bottomleft:0;
   -webkit-border-bottom-left-radius:0;
   border-bottom-left-radius:0;
 }
 
 .header-link {
-  position: absolute;
-  left: 0em;
   opacity: 0;
 
   -webkit-transition: opacity 0.2s ease-in-out 0.1s;
@@ -176,6 +209,11 @@ h6:hover .header-link {
   <tr><td style="text-align: center;"><img src="/images/werewolf.jpeg" alt="" height="" width=""/></td></tr>
 </table>
 
+</a>
+
+<a href="https://smmrizr.herokuapp.com/">
+  <h3>Smmrizr</h3>
+  Post urls-> Get an article summary
 </a>
 
     </div>

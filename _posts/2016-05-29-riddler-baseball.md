@@ -9,17 +9,21 @@ layout: default
 
 I figured the quickest way to an answer was going to be one line in Python:
 
-    >>> max((sum(random.choice((0,1)) for game in range(162)) for team in range(5)))
-    89
+{% highlight python %}
+>>> max((sum(random.choice((0,1)) for game in range(162)) for team in range(5)))
+89
+{% endhighlight %}
 
 That simulates one full season and returns the number of games that the winner has won.
 Lets make that a function so we run the simulation many times and get the average:
 
-    def first_place_wins():
-        return max((sum(random.choice((0,1)) for game in range(162)) for team in range(5)))
+{% highlight python %}
+def first_place_wins():
+    return max((sum(random.choice((0,1)) for game in range(162)) for team in range(5)))
 
-    >>> sum(first_place_wins() for season in range(1000000))/1000000.0
-    88.391585
+>>> sum(first_place_wins() for season in range(1000000))/1000000.0
+88.391585
+{% endhighlight %}
 
 ... That appears to be our answer.
 
@@ -119,19 +123,25 @@ Below, `binom_dist` is an example of `scipy.stats.binom`.
 
 We first make a function to get the PDF of \\(T_{max}\\):
 
-    def pdf_max(binom_dist, x, n):
-        '''Calculates a probability value at x from the PDF of a random variable
-        equal to the max of n IID binomial distributions, binom_dist'''
-        return (binom_dist.cdf(x) ** n ) - (binom_dist.cdf(x-1) ** n)
+{% highlight python %}
+def pdf_max(binom_dist, x, n):
+    '''Calculates a probability value at x from the PDF of a random variable
+    equal to the max of n IID binomial distributions, binom_dist'''
+    return (binom_dist.cdf(x) ** n ) - (binom_dist.cdf(x-1) ** n)
+{% endhighlight %}
 
 Then we create the binomial distribution for the season.
 
-    binom_dist = scipy.stats.binom(162, 0.5)
+{% highlight python %}
+binom_dist = scipy.stats.binom(162, 0.5)
+{% endhighlight %}
 
 The final part is the expected value:
 
-    >>> sum(pdf_max(binom_dist, i) * i for i in range(1,163))
-    88.394307711000806
+{% highlight python %}
+>>> sum(pdf_max(binom_dist, i) * i for i in range(1,163))
+88.394307711000806
+{% endhighlight %}
   
 It matches! hurray!
 
@@ -141,11 +151,15 @@ It matches! hurray!
 
 To make the original a gross one-liner:
 
-    sum(max((sum(random.choice((0,1)) for game in range(162)) for team in range(5))) for season in range(100000))/100000.0
+{% highlight python %}
+sum(max((sum(random.choice((0,1)) for game in range(162)) for team in range(5))) for season in range(100000))/100000.0
+{% endhighlight %}
 
 And to make it slightly faster:
 
-    from random import random
-    sum(max((sum(random() < 0.5 for game in range(162)) for team in range(5))) for season in range(100000))/100000.0
+{% highlight python %}
+from random import random
+sum(max((sum(random() < 0.5 for game in range(162)) for team in range(5))) for season in range(100000))/100000.0
+{% endhighlight %}
 
 since `random() < 0.5` to get a coin flip runs in about 1/4 the time of the `random.choice` version.
