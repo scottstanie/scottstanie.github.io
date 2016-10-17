@@ -23,7 +23,7 @@ The insertion sort algorithm in python looks like the following:
 Explained briefly, the algorithm will look at each item starting with the second, compare it to all items that come before it (lower index, to the left), move each item to the left once over, and stop once either the beginning of the array is reached or the current key is greater than the item to the left.
 
 ### Loop invariant
-At each itertion of j, the array A[0..j-1] consists of the elements originally in the posisions 0 through j-1, but now in sorted order.  
+At each itertion of j, the array `A[0..j-1]` consists of the elements originally in the posisions 0 through j-1, but now in sorted order.  
 There are three points to show about a loop invariant to prove it is correct:
 
 - **Initialization**: It is true prior to the first iteration of the loop
