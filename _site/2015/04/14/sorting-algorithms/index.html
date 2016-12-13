@@ -216,7 +216,7 @@ return A
 <p>Explained briefly, the algorithm will look at each item starting with the second, compare it to all items that come before it (lower index, to the left), move each item to the left once over, and stop once either the beginning of the array is reached or the current key is greater than the item to the left.</p>
 
 <h3 id="loop-invariant">Loop invariant</h3>
-<p>At each itertion of j, the array A[0..j-1] consists of the elements originally in the posisions 0 through j-1, but now in sorted order.<br />
+<p>At each itertion of j, the array <code class="highlighter-rouge">A[0..j-1]</code> consists of the elements originally in the posisions 0 through j-1, but now in sorted order.<br />
 There are three points to show about a loop invariant to prove it is correct:</p>
 
 <ul>
