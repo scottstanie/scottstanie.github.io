@@ -3,7 +3,7 @@ title: 'Valgrind on Mac 10.9'
 layout: post
 categories: random
 redirect_from:
-- /randoms/2015/08/28/starting/c/valgrind
+- /random/2015/08/28/starting/c/valgrind
 - /blog/2015/08/28/starting/c/valgrind
 ---
 
