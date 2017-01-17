@@ -1,0 +1,137 @@
+---
+title: 'Money, Achievement, and Lifestyle as Career Choices'
+layout: post
+categories: random
+---
+
+
+Which is most important to you? Money, Achievement, or Lifestyle?
+
+And more importantly- which are you choosing for yourself?
+
+This was a question posed to me over Christmas break by a friend from home. 
+It had come from another high school friend who was going around asking all the people from high school he hadn't seen in 7 years about what they were valuing.
+
+It was a pretty different way of looking at career choices for me.
+While I was asking about it in the form of "Which one do you pick?", I immediately thought of it more like "How are you ordering these?"
+
+And while I initially thought of money and achievement as very close choices (with lifestyle being the opposing choice), I settled around imagining it as a spectrum, looking something like this:
+
+{% include image.html url="/images/money-lifestyle-achievement-triangle-color.jpg" description="The money-achievement-lifestyle spectrum" height="280" width="320" %}
+
+
+It seems to me that everyone<sup>1</sup> makes some choice about where to position themselves around this circle, and I find people's valuations really interesting.
+
+
+#### A few examples
+
+There are some obvious archetypes of careers/ people who completely align with one of these positions.
+
+**Investment banking**: Most people entering this grind are surely... 
+
+1. On track to make a shitload of money
+2. shunning lifestyle in favor of 15 hour work days
+3. Arguably not concerned with any "craft" or getting recognized outside of the IB world
+
+Some might say that there is an achievement portion involved in this, especially for those who do it more for the competition, but there's not a better example of a sacrifice of lifestyle for money.
+
+
+![Triangle Image](/images/starving-artist.jpg)
+{: .pull-left}
+
+**The starving artist**: All achievement, no lifestyle (hence money), and generally unconcerned with money.
+
+
+I chose this to be the pure A career path since it's one of the few examples where heavily sacrificing lifestyle is not sure to lead to at least decent money.
+
+<br>
+
+**Disciples of [Tim Ferriss and The 4-Hour Workweek](http://fourhourworkweek.com/)**
+
+![Triangle Image](/images/tim-ferriss.jpg)
+{: .pull-right}
+
+This was my best example of someone striving hard for pure lifestyle.
+If you haven't heard of/ read it, it's worth at least a brief investigation (especially if you think you'd like a four hour work week).
+Tim Ferriss has solid millions of books on the basis of providing the quickest path towards living however you want all the time.
+
+
+There's probably a few different examples of how someone can choose lifestyle first:
+- Someone who picks a professions with exceptionally short hours to make sure they have time outside of work for `<Fill in passion>`
+- The surfshop owner, who is sure to get the lifestyle they want by choosing to make their job the same as their passion.
+- [Mr. Money Mustache](http://www.mrmoneymustache.com/) (with subtitle "Financial Freedom through Badassity"), or any of the folks who preach how to get to retire by the age of 27 through extreme thrift and budget measures.
+
+
+#### The in-between examples
+
+The above paths were my attempts to find examples precisely aligned with one. 
+Much more common are people who balance at least two:
+
+- Thrifty, pragmatic programmer (Money-Lifestyle): 
+  - If you are a good programmer, you could be making 6 figures in many places across the country, even without having a real passion for what they are working on
+  - If they don't have a desire to live an extravagant lifestyle, they could easily end up with enough money to do whatever they want by 35.
+
+- The entrepeneur (Achievement-Money): 
+  - Here are examples where the rankings might change depending on who you are talking to.
+  - Some have the windfall of a liquidity event in mind as they are starting companies
+  - There are others who, after selling one or two companies, think of it literally as "just points on a scoreboard" (to quote a higher up at my current company)
+
+- The college professor: (Lifestyle-Achievement)
+  - Some professors take their research publication very seriously, which is known to be one of the most competitive and least financially rewarding jobs our there ("There's so much competition because to little is at stake.")
+  - But for the tenured professor, it's hard to picture a much better lifestyle for someone not retired
+
+
+
+#### The conversational examples
+
+The original people I was talking about this with were:
+
+- A Yale medical student set to enter residency by 25 (call her "E")
+- An newly accepted medical student (name= "G")
+- A business consultant living in New York (name = "P")
+- Another consultant who was just accepted to an MBA program at Haas in Berkley (name = "N")
+
+Not the widest variety of humans you'll meet, but all people who have thought about this decision in one way or another.
+
+The Yale med student was the one who brought this up to us. 
+She is clearly primarily achievement driven and was aware of it.
+Most doctors and other professions where there is intense competition throughout are A first.
+
+P, the consultant, originally thought he was somewhere in the middle of money and achievement.
+It would be hard for anyone in the finance or consulting world to say they are placing money below a close second, if not heavily dominating their number one spot.
+After pointing out all the other examples of achievement-first choices, P did acknowledge he was possibly money first, expecially since he planned on using the money to get the lifestyle he wanted later in life.
+
+N, after hearing this part, was clearly dealing with a little inner turmoil when she said, "...Maybe I am actually money first... That sounds weird."
+
+### "Money first"
+
+![Triangle Image](/images/potter.jpg)
+{: .pull-right}
+
+One thing I like about this framework of thinking is that it doesn't make a "money-first" person inherently immoral by any means.
+There are many ways to be thinking of your job as primarily a source of money without deceiving others or being [Mr. Potter](https://en.wikipedia.org/wiki/Mr._Potter) and squeezing money from the lower class.
+
+
+### The other axis
+
+All the talk so far has been about the direction you are pointing.
+The obvious thing that hasn't been broached is "what does the radial direction mean?".
+As in, does it matter how far out you go onto the arrow?
+
+To me, it seems like measuring that way is much more about making a balanced life. 
+The further out of the circle you go, the more it means that you could not possibly be considering the third part of this circle.
+
+One of my friends was saying he felt that the distance outward was equivalent to how successful you are in your direction.
+I think that could be one way of looking at it... but to me it feels like a narrow version of success.
+Someone could be very successful at biulding a life that touches all part of the circle, which is a difficult balancing act. 
+They might start a small profitable company (money), create some business they love (achievement), and stop to spend more time with their family (lifestyle).
+
+Obviously this is a bit of an abstract example, but the general idea of not striving for too far in one direction and keeping balance resonates with many other philosophies.
+
+
+
+<sup>1</sup>
+I know that for a decent part of the population, there is not as open a choice posed to them about which to choose.
+Many people have a lot of family support obligations and therefore choose money first as a necessity.
+You could argue that choose money for them then leads to a balance of lifestyle from the family enjoyment they receive by being a good provider, but really the framework is only helpful when there is a clear, open choice for the person.
+
