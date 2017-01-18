@@ -52,7 +52,7 @@ I chose this to be the pure A career path since it's one of the few examples whe
 
 This was my best example of someone striving hard for pure lifestyle.
 If you haven't heard of/ read it, it's worth at least a brief investigation (especially if the idea of a four hour work week appeals to you).
-Tim Ferriss has solid millions of books on the basis of providing the quickest path towards living however you want all the time.
+Tim Ferriss has sold millions of books on the basis of providing the quickest path towards living however you want all the time.
 
 
 There's probably a few different examples of how someone can choose lifestyle first:
