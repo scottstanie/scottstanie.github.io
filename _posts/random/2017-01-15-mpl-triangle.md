@@ -14,7 +14,7 @@ This was a question posed to me over Christmas break by a high school friend I h
 It was a pretty different way of looking at career choices for me.
 While he asked me in the form of "Which one do you pick?", I immediately thought of it more like "How are you ordering these?"
 
-And while I initially thought that money and achievement should be extremely close (with lifestyle being the opposing choice), I ended up imagining it as a spectrum, looking something like this:
+I initially thought that money and achievement should be extremely close (with lifestyle being the opposing choice), but eventually I started seeing it as a spectrum, looking something like this:
 
 {% include image.html url="/images/money-lifestyle-achievement-triangle-color.jpg" description="The money-achievement-lifestyle spectrum" height="280" width="320" %}
 
@@ -32,7 +32,7 @@ There are some obvious archetypes of careers/ people who completely align with o
 2. Shunning lifestyle in favor of 15 hour work days
 3. Arguably not concerned with any "craft" or getting recognized outside of the IB world
 
-Some might say that there is an achievement portion involved in this, especially for those who do it more for the competition, but there's not a better example of a sacrifice of lifestyle for money.
+Some might say that there is an achievement portion involved in this, especially for those who do it more for the competition, but there's not a better example of a sacrificing lifestyle for money.
 
 
 ![Starving Artist](/images/starving-artist.jpg)
@@ -41,7 +41,7 @@ Some might say that there is an achievement portion involved in this, especially
 **The starving artist**: All achievement, no lifestyle (hence money), and generally unconcerned with money.
 
 
-I chose this to be the pure A career path since it's one of the few examples where heavily sacrificing lifestyle is not sure to lead to at least decent money.
+I chose this to be the pure A career path since it's one of the few examples where heavily sacrificing lifestyle is not sure to lead to decent money.
 
 <br>
 
@@ -51,32 +51,32 @@ I chose this to be the pure A career path since it's one of the few examples whe
 {: .pull-right}
 
 This was my best example of someone striving hard for pure lifestyle.
-If you haven't heard of/ read it, it's worth at least a brief investigation (especially if you think you'd like a four hour work week).
+If you haven't heard of/ read it, it's worth at least a brief investigation (especially if the idea of a four hour work week appeals to you).
 Tim Ferriss has solid millions of books on the basis of providing the quickest path towards living however you want all the time.
 
 
 There's probably a few different examples of how someone can choose lifestyle first:
-- Someone who picks a professions with exceptionally short hours to make sure they have time outside of work for `<Fill in passion>`
+- Someone who picks a profession with exceptionally short hours to make sure they have time outside of work for `<Fill in passion>`
 
 ![Mr. Money Moustache](/images/mrmoney.png)
 {: .pull-left}
 
 - The surfshop owner, who is sure to get the lifestyle they want by choosing to make their job the same as their passion.
-- [Mr. Money Mustache](http://www.mrmoneymustache.com/) (with subtitle "Financial Freedom through Badassity"), or any of the folks who preach how to get to retire by the age of 27 through extreme thrift and budget measures.
+- [Mr. Money Mustache](http://www.mrmoneymustache.com/) (with subtitle "Financial Freedom through Badassity"), or any of the folks like Tim Ferriss who preach about how to retire by the age of 27 through extreme thrift and budget measures.
 
 <br>
 
 #### The in-between examples
 
-The above paths were my attempts to find examples precisely aligned with one. 
+The examples about were my attempts to find ways to be super aligned with just one arrow.
 Much more common are people who balance at least two:
 
-- Thrifty, pragmatic programmer (Money-Lifestyle): 
+- The thrifty, indifferent programmer (Money-Lifestyle): 
   - If someone is a good programmer, they could be making 6 figures in many places across the country, even without having a real passion for what they are working on
   - If they don't have a desire to live an extravagant lifestyle, they could easily end up with enough money to do whatever they want by 35.
 
 - The serial entrepeneur (Achievement-Money): 
-  - Some have the windfall of a getting acquired or going public in mind as they are starting companies
+  - As some people start companies, they have in mind the potential for a huge windfall from getting acquired or going public
   - Others, after selling one or two companies, think of it literally as "just points on a scoreboard" (to quote a higher-up at my current company)
 
 - The college professor: (Lifestyle-Achievement)
