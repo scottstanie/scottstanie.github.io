@@ -6,6 +6,7 @@ description: Snapshots of Knowledge
 logo: site-logo.png
 search: true
 url: http://scottstaniewicz.com
+# url: http://localhost:4000
 
 # Jekyll configuration
 # redirects: yes
@@ -45,7 +46,7 @@ owner:
   name: Scott Staniewicz
   avatar: bio-photo.jpg
   email: scott.stanie@gmail.com
-  disqus-shortname: scottstanie
+  disqus-shortname: scottstaniewicz
   github   : scottstanie
   facebook : scott.staniewicz
   linkedin : scott-staniewicz-08579848
