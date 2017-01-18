@@ -68,8 +68,7 @@ There's probably a few different examples of how someone can choose lifestyle fi
 
 #### The in-between examples
 
-The examples about were my attempts to find ways to be super aligned with just one arrow.
-Much more common are people who balance at least two:
+While the examples above were aligned with just one arrow, much more common are people who balance at least two:
 
 - The thrifty, indifferent programmer (Money-Lifestyle): 
   - If someone is a good programmer, they could be making 6 figures in many places across the country, even without having a real passion for what they are working on
