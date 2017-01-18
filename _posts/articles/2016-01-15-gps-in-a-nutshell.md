@@ -19,7 +19,7 @@ Before saying exactly what GPS is, we can first clarify what it is not.
 - It's not an iPhone app
   - Phones have a full GPS receiver inside (looks like a small chip)
 - It's not a service that knows where you are
-  - GPS receivers calcualte their own position internally
+  - GPS receivers calculate their own position internally
 - It's not a system that is unique to America
   - Russia, China, the EU, and India all currently have or are building systems for themselves
 
@@ -67,7 +67,7 @@ $$
   c = 3 \times 10^8 \frac{m}{s}
 $$
 
-So if satellites mark what time they sent a message, and you know what time you received the message, you can estiamte the distance using the **time difference**:
+So if satellites mark what time they sent a message, and you know what time you received the message, you can estimate the distance using the **time difference**:
 
 $$
   speed_{light} * ( t_{received} - t_{sent} ) = distance
@@ -122,7 +122,7 @@ Without getting too far into the signal processing behind this, the basic idea i
     Take the data that you need to transmit from the satellite and turn it into a signal. It will just be a series of 1s and 0s, which in signal form, looks like this: 
     {% include image.html url="/images/data-signal.jpg" height="120" width="300" %}
   </li>
-  <li>Multiply this by a <em>spreading signal</em>. GPS uses a <strong><a href="https://en.wikipedia.org/wiki/Pseudorandom_noise">pseudo rangom noise (PRN)</a></strong> code. This is also a series of 1s and 0s that oscillate much faster than the data, and the code is known by all GPS receivers: 
+  <li>Multiply this by a <em>spreading signal</em>. GPS uses a <strong><a href="https://en.wikipedia.org/wiki/Pseudorandom_noise">pseudo random noise (PRN)</a></strong> code. This is also a series of 1s and 0s that oscillate much faster than the data, and the code is known by all GPS receivers: 
     {% include image.html url="/images/ca-code.gif" height="130" width="300" %}
     </li>
     <li>
@@ -153,7 +153,7 @@ This leads to those fat sphere errors we described above.
 Some of my favorite facts about GPS are:
 
 - Until 1995, the government purposely added enough noise to the civilian GPS signal to make it difficult to know your position better than **50 meters** (so much for driving apps). This was called [selective availability](http://www.gps.gov/systems/gps/modernization/sa/)
-- In 2013 a Texas professor and his team [pirated a yacht ship](http://www.insidegnss.com/node/3659) by sending out fake GPS signals while on board, fooling the ship's navigation sysem.
+- In 2013 a Texas professor and his team [pirated a yacht ship](http://www.insidegnss.com/node/3659) by sending out fake GPS signals while on board, fooling the ship's navigation system.
 
 To close, I leave you with some GIFs of the Fourier transform. Enjoy.
 

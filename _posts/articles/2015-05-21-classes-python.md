@@ -10,7 +10,7 @@ redirect_from:
 # Classes in Python
 
 First, what is a class?  
-A class is simply a logical grouping of data and functions. It is really a modelling technique used in the organization of programs, and it is a fundamental part of ***object oriented programming (OOP)***.  
+A class is simply a logical grouping of data and functions. It is really a modeling technique used in the organization of programs, and it is a fundamental part of ***object oriented programming (OOP)***.  
 Defining a class is defining a blueprint for creating objects, and in python, [everything is an **object**](https://pythoninternal.wordpress.com/2014/08/11/everythings-an-object/).  
 
 
@@ -160,7 +160,7 @@ This `Analyst` class has an init function and only defines one new method, `spea
     2
 
 
-Notice both the shared methods from the base class *and* the chared class attribute, `employee_count` that works from an `Analyst` instance. Also note that the new `Analyst` increased the `employee_count` of both `Employee` and `Analyst`. This however can be a dangerous way to implement shared data, as directly changing this attribute on an instance can cause it to lose track of the `employee_count` when others are created (it has overwritten the class attribute.)
+Notice both the shared methods from the base class *and* the shared class attribute, `employee_count` that works from an `Analyst` instance. Also note that the new `Analyst` increased the `employee_count` of both `Employee` and `Analyst`. This however can be a dangerous way to implement shared data, as directly changing this attribute on an instance can cause it to lose track of the `employee_count` when others are created (it has overwritten the class attribute.)
 
 Since the two classes above have the same `__init__` methods, we can shorten the `Analyst` definition a bit:
 
@@ -214,7 +214,7 @@ print v1 + v2
 
 ## Python-specific Class Features
 
-OOP has uses in most languages, but Python has some pecularities in its class implementation.
+OOP has uses in most languages, but Python has some peculiarities in its class implementation.
 
 ### Public and Private Methods
 
@@ -233,7 +233,7 @@ if __name__ == '__main__':
 
 This means that when the module is run directly (typing `python module.py`), the variable `__name__` will be set to `__main__` (as opposed to if the module is imported, in which case `__name__` will be the module you are importing into.)
 
-These double underscore methods are (some of) the 'private' methods of an object. However, these methds are always visible to the user. If you type:
+These double underscore methods are (some of) the 'private' methods of an object. However, these methods are always visible to the user. If you type:
 
 {% highlight python %}
 >>> t = 'foo'
@@ -284,7 +284,7 @@ class BoardState(object):
 {% endhighlight %}
 
 
-If you initialze an object, it will be represented like this:
+If you initialize an object, it will be represented like this:
 
 
 {% highlight python %}
@@ -294,7 +294,7 @@ If you initialze an object, it will be represented like this:
 {% endhighlight %}
 
 
-Using `print` yeilds the same results. This is because it is using the default `__repr__` method. (which also is the default `__str__` method). It is *unambiguous* because it tells you exactly where it is in memory. However, you might want a little more detail about what is in the class.
+Using `print` yields the same results. This is because it is using the default `__repr__` method. (which also is the default `__str__` method). It is *unambiguous* because it tells you exactly where it is in memory. However, you might want a little more detail about what is in the class.
 
 {% highlight python %}
     def __repr__(self):

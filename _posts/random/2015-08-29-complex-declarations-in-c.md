@@ -6,14 +6,14 @@ redirect_from:
 - /random/2015/08/29/complex/declarations/in/c
 - /blog/2015/08/29/complex/declarations/in/c
 ---
-# Reading Complex Variable Declarators in C
+# Reading Complex Variable Declarations in C
 
 The way variables can be declared can get mind-bendingly difficult in C. While it is generally bad practice to make something so complex that a person has to spend a minute just figuring out what your variable does, it could be helpful to get the full rule set. 
 
 There are a couple notes to keep in mind:
 
 1. The bracket and parentheses (`[]` and `()`) operators, which appears to the right of a variable, take place over the `*` operator.
-2. Brackets and parenthese have the same precedence from left to right.
+2. Brackets and parentheses have the same precedence from left to right.
 3. You can use parentheses to override the default association order.
 
 Some examples:

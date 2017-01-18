@@ -53,7 +53,7 @@ Where does a web app come into the picture described above? Once the server has 
     def serve_page():
       return "<html><body>Hello, World.</body></html>"
 
-This function would be called each time a visitor requests the page, and it would send back the barebones HTML to display "Hello, World." A more complicated web app like Facebook, would might contain JavaScript to allow interactions between the browser and the user, databases to keep track of prior information about the user, and various other parts.  
+This function would be called each time a visitor requests the page, and it would send back the bare-bones HTML to display "Hello, World." A more complicated web app like Facebook, would might contain JavaScript to allow interactions between the browser and the user, databases to keep track of prior information about the user, and various other parts.  
 
 Naturally, this examples also ignores a lot of other code that needs to run to accept the request and talk to the server to send back the info. There is a lot of boilerplate code that goes into every application that needs to run on the internet, and this is where web application *frameworks* come in.
 

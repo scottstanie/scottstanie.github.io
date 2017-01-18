@@ -27,7 +27,7 @@ The insertion sort algorithm in python looks like the following:
 Explained briefly, the algorithm will look at each item starting with the second, compare it to all items that come before it (lower index, to the left), move each item to the left once over, and stop once either the beginning of the array is reached or the current key is greater than the item to the left.
 
 ### Loop invariant
-At each itertion of j, the array `A[0..j-1]` consists of the elements originally in the posisions 0 through j-1, but now in sorted order.  
+At each iteration of j, the array `A[0..j-1]` consists of the elements originally in the positions 0 through j-1, but now in sorted order.  
 There are three points to show about a loop invariant to prove it is correct:
 
 - **Initialization**: It is true prior to the first iteration of the loop
@@ -46,7 +46,7 @@ In the insertion sort example:
 ## Big O Analysis of Insertion Sort
 
 To study the running times of insertion sort, we must define the input size and which running time we mean. Most cases, input size means the number of items in the input- in this case, the array of size n. When multiplying two integers, the total number of bits needed to represent the input is the input size.  
-Running Time is usually measured in primitive \"steps\" to make it machine indepedent. Analysis can consist of looking at:
+Running Time is usually measured in primitive \"steps\" to make it machine independent. Analysis can consist of looking at:
 - Worst case run time: theta of n
 - Average case: big-O
 - Best case:
@@ -60,7 +60,7 @@ Merge sort is the first example of a *divide and conquer* algorithm. This is in 
 Divide and conquer algorithms have three stages:
 - **Divide** the problem into smaller instances of the same problem
 - **Conquer** the subproblems by solving recursively. Once they are small enough, solve in a straightforward manner.
-- **Combine** the solutions into the overall olution
+- **Combine** the solutions into the overall solution
 
 In merge sort, the steps are:
 - Divide the n-element sequence into two subsequences

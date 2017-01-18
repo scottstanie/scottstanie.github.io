@@ -17,7 +17,7 @@ $$
   A \times B = \{(a, b) \mid a \in A, b \in B\}
 $$
 
-This can be extended beyond two sets- the legnth of the tuple is equal to the number of sets you are giving as input.
+This can be extended beyond two sets- the length of the tuple is equal to the number of sets you are giving as input.
 
 Now if we have a list of possible symbols, and we want every possible arrangement of them \\(n\\) times, we would use the **cartesian power**:
 

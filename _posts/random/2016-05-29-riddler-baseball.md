@@ -51,7 +51,7 @@ It has to be higher than that.
 
 #### Distilling the problem 
 
-The tricky part about this problem is the `max` that is involed in it.
+The tricky part about this problem is the `max` that is involved in it.
 We can translate `...the team that finishes in first place` to `the max of the five teams`.
 This means we are finding the expected value of the *max of five random variables.*
 

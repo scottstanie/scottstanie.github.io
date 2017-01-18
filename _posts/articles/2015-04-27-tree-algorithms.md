@@ -102,7 +102,7 @@ Then, after popping the last item off the array and inserting it at the front, t
                 self.swap_nodes(idx, min_idx)
             idx = min_idx
 
-With these opearations to maintain the heap structure, implementing a priority queue is straightforward. 
+With these operations to maintain the heap structure, implementing a priority queue is straightforward. 
 
 ## Binary search trees
 

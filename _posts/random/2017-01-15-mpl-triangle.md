@@ -74,7 +74,7 @@ While the examples above were aligned with just one arrow, much more common are 
   - If someone is a good programmer, they could be making 6 figures in many places across the country, even without having a real passion for what they are working on
   - If they don't have a desire to live an extravagant lifestyle, they could easily end up with enough money to do whatever they want by 35.
 
-- The serial entrepeneur (Achievement-Money): 
+- The serial entrepreneur (Achievement-Money): 
   - As some people start companies, they have in mind the potential for a huge windfall from getting acquired or going public
   - Others, after selling one or two companies, think of it literally as "just points on a scoreboard" (to quote a higher-up at my current company)
 
@@ -101,7 +101,7 @@ G pointed out that while he probably ranked achievement first, he planned on att
 
 P, the consultant, originally thought he was somewhere in the middle of money and achievement.
 It would be hard for anyone in the finance or consulting world to say they are placing money anywhere below #2, and most have it heavily dominating their #1 spot.
-After pointing out all the other examples of achievement-first choices, P did acknowledge he was possibly money first, expecially since he planned on using the money to get the lifestyle he wanted later in life.
+After pointing out all the other examples of achievement-first choices, P did acknowledge he was possibly money first, especially since he planned on using the money to get the lifestyle he wanted later in life.
 
 N, after hearing this part, was clearly dealing with a little inner turmoil when she said, "...Maybe I am actually money first... That sounds weird."
 
@@ -125,7 +125,7 @@ The further out of the circle you go in any direction, the more it means that yo
 
 One of my friends was saying he felt that the distance outward was equivalent to how successful you are in your direction.
 I think that could be one way of looking at it... but to me it feels like a narrow version of success.
-Someone could be very successful at biulding a life that touches all parts of the circle, which is a difficult balancing act. 
+Someone could be very successful at building a life that touches all parts of the circle, which is a difficult balancing act. 
 They might start a small profitable company (money), create some business they love (achievement), and stop to spend more time with their family (lifestyle).
 
 Obviously this is a bit of an abstract example, but the general idea of not striving for too far in one direction and keeping balance resonates with many other philosophies.
