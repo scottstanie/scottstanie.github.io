@@ -89,7 +89,7 @@ While the examples above were aligned with just one arrow, much more common are 
 The original people I talked about this with:
 
 - A Yale medical student set to enter residency by 25 (call her "E")
-- An newly accepted medical student (name = "G")
+- A newly accepted medical student (name = "G")
 - A business consultant living in New York (name = "P")
 - Another consultant who was just accepted to an MBA program at Haas in Berkley (name = "N")
 
