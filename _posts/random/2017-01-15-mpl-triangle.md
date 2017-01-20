@@ -61,7 +61,7 @@ There's probably a few different examples of how someone can choose lifestyle fi
 ![Mr. Money Moustache](/images/mrmoney.png)
 {: .pull-left}
 
-- The surfshop owner, who is sure to get the lifestyle they want by choosing to make their job the same as their passion.
+- The surf shop owner, who is sure to get the lifestyle they want by choosing to make their job the same as their passion.
 - [Mr. Money Mustache](http://www.mrmoneymustache.com/) (with subtitle "Financial Freedom through Badassity"), or any of the folks like Tim Ferriss who preach about how to retire by the age of 27 through extreme thrift and budget measures.
 
 <br>
