@@ -19,7 +19,7 @@ There are a couple notes to keep in mind:
 Some examples:
 
 ```C
-int *ptrs_to_ints[5]  /* An array of 5 points to ints */
+int *ptrs_to_ints[5]  /* An array of 5 pointers to ints */
 
 int (*ptr_to_array)[5]  /* A pointer to an array containing 5 ints */
 
@@ -27,7 +27,7 @@ int *(*pts_to_ptrs)[5]  /* A pointer to an array of 5 pointers to ints */
 ```
 
 
-A helpful algorithm to follow [comes from here]():
+A helpful algorithm to follow [comes from here](https://msdn.microsoft.com/en-us/library/1x82y1z4.aspx):
 
 1. Start with the identifier and look directly to the right for brackets or parentheses (if any).
 2. Interpret these brackets or parentheses, then look to the left for asterisks.
