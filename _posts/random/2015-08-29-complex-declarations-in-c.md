@@ -6,7 +6,6 @@ redirect_from:
 - /random/2015/08/29/complex/declarations/in/c
 - /blog/2015/08/29/complex/declarations/in/c
 ---
-# Reading Complex Variable Declarations in C
 
 The way variables can be declared can get mind-bendingly difficult in C. While it is generally bad practice to make something so complex that a person has to spend a minute just figuring out what your variable does, it could be helpful to get the full rule set. 
 

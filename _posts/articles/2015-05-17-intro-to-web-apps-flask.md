@@ -6,7 +6,6 @@ redirect_from:
 - /tutorials/2015/05/17/intro/to/web/apps/flask
 - /articles/2015/05/17/intro/to/web/apps/flask
 ---
-# Web Apps and Flask
 
 This is intended to be a overview of a wide variety of topics related to web applications and some needed prerequisite knowledge. There's also a very brief walkthrough on how to get started with Flask, as well as plenty of links along the way to learn more and find a full Flask tutorial.  
 Target demo: people with some programming experience but with little to no web programming experience, or just generally tech-savvy people.

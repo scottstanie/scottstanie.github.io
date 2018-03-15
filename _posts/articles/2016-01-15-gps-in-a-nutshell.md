@@ -7,14 +7,10 @@ redirect_from:
 - /articles/2016/01/15/gps/in/a/nutshell
 ---
 
-# What Is GPS?
-
-This is a summary of a Lunchtime Learning talk given at Cogo Labs on the basics of GPS, full of beautiful graphics and compelling PowerPoint art.
-The talk gave an overview of the GPS system, described the concepts that make GPS possible, and dove into some of the signal processing under the covers.
+*This is a summary of a Lunchtime Learning talk given at Cogo Labs on the basics of GPS, full of beautiful graphics and compelling PowerPoint art.
+The talk gave an overview of the GPS system, described the concepts that make GPS possible, and dove into some of the signal processing under the covers.*
 
 ### What GPS Is Not
-
-Before saying exactly what GPS is, we can first clarify what it is not. 
 
 - It's not an iPhone app
   - Phones have a full GPS receiver inside (looks like a small chip)
@@ -24,7 +20,7 @@ Before saying exactly what GPS is, we can first clarify what it is not.
   - Russia, China, the EU, and India all currently have or are building systems for themselves
 
 
-### ...so then what is it?
+### ...so then what is GPS?
 
 As described by the gps.gov website:
 
@@ -48,11 +44,13 @@ GPS is divided into **3 segments**:
 
 ## Well how does it actually work?
 
-So you might be asking, "If the satellites don’t know where I am, what do they know?". The answer to that is that they know their own **position in space** and their **time**.
+So you might be asking, "If the satellites don’t know where I am, what do they know?". 
+
+What the satellites know is their own **position in space** and their **time**.
 
 {% include image.html url="/images/receiver.png" height="280" width="320" %}
 
-The next question would be "How does that help me know where I am?". This is where **trilateration** comes in.
+The follow up would be "How does that help me know where I am?". This is where **trilateration** comes in.
 
 ### Trilateration
 
@@ -153,7 +151,7 @@ This leads to those fat sphere errors we described above.
 Some of my favorite facts about GPS are:
 
 - Until 1995, the government purposely added enough noise to the civilian GPS signal to make it difficult to know your position better than **50 meters** (so much for driving apps). This was called [selective availability](http://www.gps.gov/systems/gps/modernization/sa/)
-- In 2013 a Texas professor and his team [pirated a yacht ship](http://www.insidegnss.com/node/3659) by sending out fake GPS signals while on board, fooling the ship's navigation system.
+- In 2013 a Texas professor and his team [pirated a yacht ship](http://www.insidegnss.com/node/3659) by sending out fake GPS signals while on board, fooling the ship's navigation system\*.
 
 To close, I leave you with some GIFs of the Fourier transform. Enjoy.
 
@@ -161,4 +159,6 @@ To close, I leave you with some GIFs of the Fourier transform. Enjoy.
 {% include image.html url="/images/fourier2.gif" height="240" width="500" %}
 {% include image.html url="/images/fourierlong.gif" height="240" width="400" %}
 
+\* I wrote this mostly at the end of 2015, before I even knew I was applying to UT.
+Two years later, the first graduate class I took was Statistical Estimation with Todd Humphreys, the pirate.
 
