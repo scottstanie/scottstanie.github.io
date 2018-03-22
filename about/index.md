@@ -20,4 +20,3 @@ Outside of school and work, I enjoy cooking (see [nomplan's hall of fame](http:/
 The best way to get in contact with me is via [email](mailto:scott.stanie@gmail.com), but you can also find me on [LinkedIn](https://www.linkedin.com/pub/scott-staniewicz) or [GitHub](https://github.com/scottstanie).
 
 
-{% include video.html src="https://www.youtube.com/embed/bpAp0LFuLOc" height="315" width="561" %}
