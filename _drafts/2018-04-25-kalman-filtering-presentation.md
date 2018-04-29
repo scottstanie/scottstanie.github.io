@@ -9,7 +9,7 @@ This post gives an overview of the estimation problem statement, linear Estimati
 
 ## Estimation problem statement
 
-The basic estimation problem looks like this (plur or minus different letters and notation):
+The basic estimation problem looks like this (plus or minus different letters and notation):
 
 $$ \mathbf{z}_k =  \mathbf{h}( \mathbf{x_k} , \mathbf{w_k}) $$
 
@@ -20,7 +20,7 @@ We usually get a set of measurements for some time before trying to estimate the
 $$  \mathbf{Z_k} = \left\lbrace z(1), z(2), \dots, z(k) \right\rbrace  $$
 
 Our goal then is to create an **estimator**, a function of the measurements, that gives our best guess at what the real state \(x\) is.
-We usually call this \( \hat{x}\).
+We usually call this \\( \hat{x} \\) .
 
 $$ \mathbf{\hat{x}} =\mathbf{\hat{x}}(\mathbf{z}) $$
 
@@ -83,10 +83,49 @@ Dynamic System:
 
 Note: While we can set up a static problem for a dynamical system if we only look at a single point in time.
 
-SCREENSHOT HEIRARCHY OF PROBLEM
 
-{% include image.html url="/images/kalman/pdfevolution.gif" height="340" width="640" %}
-{% include image.html url="/images/kalman/pdfevolutionNoisy.gif" height="340" width="640" %}
+{% include image.html url="/images/kalman/estHierarchy.gif" height="340" width="640" %}
+In the above diagram, "LTI" means "Linear, time invariant", as in the matrices F,H, and others are the same at every point in time.
+
+
+Let's look are the solution to the basic static system with noise, \\( z = Hx + w\\)
+
+$$
+\hat{x} = \bar{x} + P_{xz} P_{zz}^{-1} (z - H \bar{x})
+$$
+Let's take it piece by piece.
+
+The $\bar{x}$ is the "prior", the initial guess we have at what the state should be. 
+It's a good idea to start there.
+
+The $z - H \bar{x}$ term is called the "innovation".
+z is the actual measurement we received, and $H \bar{x}$ is *what we think the measurement should have been$*.
+We put our initial guess through the measurement model, compared it to the actual measurement, and the difference between them is new information.
+Note that if that term were zero, if the measurement was exactly what we expected, there would be no added term to the prior and we would stick with that as our measurement.
+
+The $ P\_{xz} $ term is the *covariance between the state and the measurement*.
+Precisely, this cross covariance is $E[(x - E[x]) (z - E[z])^T].
+A bigger terms means the measurement is *very related* to the state, so if we have a large innovation, we should update our estimate from the prior by a lot.
+
+$ P\_{zz}$ is the covariance of the measurement, which is related to *how noisy the measurements are*.
+A large value means it is noisy, and we can't trust the measurements very much.
+Then $ P\_{zz}^{-1}$ can be thought of as the *information* of $z$.
+A large $ P\_{zz}^{-1}$ comes from a small $ P\_{zz}$, which means the $z$ measurement gives us a lot of useful information and we can trust it a lot.
+Small $ P\_{zz}^{-1}$ means theres not much good information in $z$, so even with a big change between what we expected and what we get, we shouldn't stray far from our prior.
+
+In addition to the estimate, we can also look at the solution to the conditional covariance:
+
+$$
+P_{xx|z} = P_{xx} - P_{xz} P_{zz}^{-1} P\_{xz}^T
+$$
+
+This is the form of the best linear estimator.
+It can also be derived from an MMSE approach.
+
+In full form.
+CREENSHOT.
+{% include image.html url="/images/kalman/pdfEvolution.gif" height="340" width="640" %}
+{% include image.html url="/images/kalman/pdfEvolutionNoisy.gif" height="340" width="640" %}
 {% include image.html url="/images/kalman/particleFilter2.gif" height="340" width="640" %}
 
 
