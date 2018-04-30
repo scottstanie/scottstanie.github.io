@@ -7,8 +7,6 @@ redirect_from:
 - /articles/2015/05/21/classes/python
 ---
 
-# Classes in Python
-
 First, what is a class?  
 A class is simply a logical grouping of data and functions. It is really a modeling technique used in the organization of programs, and it is a fundamental part of ***object oriented programming (OOP)***.  
 Defining a class is defining a blueprint for creating objects, and in python, [everything is an **object**](https://pythoninternal.wordpress.com/2014/08/11/everythings-an-object/).  

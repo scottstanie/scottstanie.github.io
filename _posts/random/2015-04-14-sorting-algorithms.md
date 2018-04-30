@@ -6,7 +6,8 @@ redirect_from:
 - /random/2015/04/14/sorting/algorithms
 - /blog/2015/04/14/sorting/algorithms
 ---
-# Insertion Sort
+
+## Insertion Sort
 
 Start with sequence of keys < a<sub>1</sub>, a<sub>2</sub>, \.\.\. ,a<sub>n</sub> >
 

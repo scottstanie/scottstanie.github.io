@@ -7,8 +7,6 @@ redirect_from:
 - /articles/2015/04/27/tree/algorithms
 ---
 
-# Trees and Tree algorithms
-
 Heaps and Binary search trees (BST) are two variations of a general binary tree. A binary tree is simply a linked data structure where each node is an object. Every node contains the attributes a *parent*, *left child*, and *right child*. The children may be null is the nodes are leaves of the tree, and the parent is null for the root. Heaps and BSTs are binary trees that have certain special ordering properties that make them useful.
 
 ## Binary Heaps

@@ -32,10 +32,35 @@ We are just repeating the same set \\(X\\) for each position in the n-tuple.
 So how can we product this in python? 
 It is clear that for even moderate size inputs, if we were to keep every element of the product in memory, it would grow to a monstrous size. 
 This is because with m symbols in X, for a n-tuple, we have a set of size \\(n^m\\)  
-This where where **generators** in python come in. For an intro to generators, [see here]({% post_url 2015-04-30-iterator-generator %})  
-Our generator needs to `yield` each n-tuple one at a time as our function returns it.
+This where where **generators** in python come in. 
+Our generator needs to yield` each n-tuple one at a time as our function returns it.
 
-#### A final note
+We can do this recursively.
+First for a list of tuples or lists called `lists`:
+
+    def product(lists):
+        if not lists:
+            yield ()
+        else:
+            for item in lists[0]:
+                for prod in product(lists[1:]):
+                    yield (item,) + prod
+
+Then to get the nth cartesian power of a single list, we can just repeat that `n` times and call the above `product` on it:
+    
+    onelist = [1, 2, 3]
+    n = 4
+    lists = [onelist for _ in range(n)]
+    for p in product(lists):
+        print(p)
+
+
+    (1, 1, 1)
+    (1, 1, 2)
+    (1, 1, 3)
+    (1, 2, 1)
+    ...
+#### The real way you want to do this
 
 For actual implementation of the cartesian product, you can just do:
 
@@ -53,7 +78,6 @@ This will print all products, yielding them one at a time
     (1, 1, 2)
     (1, 1, 3)
     (1, 2, 1)
-    (1, 2, 2)
     ...
 
 ty python.  

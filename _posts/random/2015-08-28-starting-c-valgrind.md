@@ -7,7 +7,6 @@ redirect_from:
 - /blog/2015/08/28/starting/c/valgrind
 ---
 
-# Starting Out With C, Valgrind On Mac OS.X 10.9 
 https://github.com/fredericgermain/valgrind/
 
 ```sh

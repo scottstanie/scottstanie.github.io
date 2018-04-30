@@ -1,6 +1,6 @@
 # Site wide configuration
 
-title: Blog of SS
+# title: Blog of SS
 locale: en_US
 # description: Snapshots of Knowledge
 logo: site-logo.png
@@ -17,7 +17,8 @@ highlighter: rouge
 sass:
   sass_dir: _sass
   style: compressed
-gems:
+
+plugins:
   - jekyll-sitemap
   - jekyll-gist
   - jekyll-feed
