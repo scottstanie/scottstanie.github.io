@@ -4,16 +4,17 @@ layout: post
 categories: articles
 ---
 
-A recent confusion for me was when I had to translate some MATLAB scripts that read from and wrote to binary files.
+I recently ran into some confusion when I had to translate some MATLAB scripts that read from and wrote to binary files.
 The files were just 16-bit integers from digital elevation maps (DEMs) that were supposed to be arranged into a matrix.
 
-It seemed like I should have just been able to find the corresponding commands and things should work?
-Turns out I finally had to learn what [**row-major** and **column-major order**](https://en.wikipedia.org/wiki/Row-_and_column-major_order) were after ignoring it many other times.
+Ideally I would have just found the equivalent commands and things would have worked.
+Turns out I had to learn finally what [**row-major** and **column-major order**](https://en.wikipedia.org/wiki/Row-_and_column-major_order) meant.
 
-The reason? 
-MATLAB decided to follow the footsteps of Fortran and use column-major order to save matrices, while Python followed C and every other C-like language and uses row-major.
+MATLAB, being a descendant of Fortran, decided to follow its footsteps and use column-major order internally to store matrices. 
+Python followed C and other C-like language, so it uses row-major.
+This means they do not play nicely together without extra care.
 
-The simplest way that made me get what I had to change was the following binary file test:
+The simplest test that made me understand what I had to change was the following:
 
 ```bash
 $ python
@@ -31,7 +32,7 @@ $ hexdump test_py.bin
 ```
 
 Note that `hexdump` is a unix command to display the contents of a file as a bunch of binary numbers.
-You can use this on text files and it won't be very recognizable, but for matrices saved as binary files, you will see the numbers that were the matrix elements (the first column of `hexdump` is the position of the file.)
+You can use this on text files and it won't be very recognizable, but for matrices saved as binary, you will see the numbers that were the matrix elements (the first column of `hexdump` is the position of the file.)
 
 Everything looks normal for python.
 However, things are different for MATLAB:
@@ -57,7 +58,7 @@ It's only when you are trying to match a specific binary format that the order m
 {% include image.html url="/images/Row_and_column_major_order.svg" height="l40" width="340" description="Credit Wikipedia" %}
 
 
-To match exactly the above picture exactly:
+To demonstrate the above 3x3 picture:
 
 ```bash
 $ python
@@ -112,10 +113,13 @@ A =
 #### Fixes for Python
 
 Now if we are working in Python and only reading to other users of Python/C, we don't need to worry about extra options, we can just use `np.tofile` and `np.fromfile`.
-Note that to get back to a matrix from a file, we'll need to `reshape`:
 ```bash
 >>> print(np.fromfile('test_py.bin', dtype='i2'))
 [1 2 3 4 5 6 7 8 9]
+```
+
+Note that to get back to a matrix from a file, we'll need to `reshape`:
+```bash
 >>> print(np.fromfile('test_py.bin', dtype='i2').reshape((3,3)))
 [[1 2 3]
  [4 5 6]
@@ -142,3 +146,43 @@ We can use numpy's built in option to handle Fortran/MATLAB using the `order='F'
 [4 5 6]
 [7 8 9]]
 ```
+
+The specific application this came up in was handling data from the [Shuttle Radar Topography Mission (SRTM)](https://www2.jpl.nasa.gov/srtm/faq.html) digital elevation maps.
+They store all elevations for a square grid in row major order, using 16-bit **big-endian** format.
+
+### Fixing byte order
+
+Fuller explanations can be found online, but Wikipedia has a fine [short illustration](https://en.wikipedia.org/wiki/Endianness#Illustration).
+
+Since everything on a computer is essentially stored in one long array one byte at a time, you have to pick which part of larger numbers (say, 16 bit integers) get stored first.
+
+If you have the byte order wrong, the number 1 turns into 256, 2 turns into 512, and generally things become a mess.
+
+#### How to handle byte order
+
+An important thing to remember is that [the byte order of the machine shouldn't matter](https://commandcenter.blogspot.com/2012/04/byte-order-fallacy.html), only the order of the data you're working with.
+Here', NASA tells us they use big-endian, so whichever machine we're using, we just need to tell the code that we're about to get some big-endian data.
+
+How do we do this? It's relatively easy in both MATLAB and Python.
+Let's say that `N20W100.hgt` is one of the DEM height files from the SRTM.
+It's 16-bit integers, stored in big endian.
+
+```bash
+A = np.fromfile('N20W100.hgt', dtype='>i2').reshape((3601, 3601))
+A = A.astype('<i2')
+```
+
+The `dtype='>i2'` the way to let numpy know we are getting a **big**-endian (hence greater than, >) 2 byte interger aka 16-bit integer.
+The second line is if we want to put it into the more typical format of little endian, which most computers use nowadays.
+You can also use numpy's `.byteswap()` function to switch big to little.
+
+In MATLAB:
+```bash
+fid = fopen('N20W100.hgt','r','ieee-be');
+A = fread(fid,[3601 3601],'int16');
+A = A'
+```
+Pretty similar, with the caveat that we must transpose it for MATLAB.
+
+
+
