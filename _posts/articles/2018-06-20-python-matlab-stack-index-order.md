@@ -27,17 +27,17 @@ When we use this along with a `FuncAnimation`, we get a nice visual of how the p
 
 {% include image.html url="/images/python_order.gif" description="Python row-order indexing for 2 images" height="380" width="520" %}
 
-If we watch the title, we can see how indeed the last index changes quickest, and first index changes slowest.
+If we watch the figure title, which shows how you would index the stack to access the current element, we see how the last index changes quickest and first index changes slowest.
 
 
 The `unravel_index` function also takes an `order` keyword that allows you to specify 'F' for Fortran column-order (instead of the default 'C' for C/Python row-ordering).
-Using this, we can also visualize what the linear order of pixels is in MATLAB/Fortran:
+Using this, we can also visualize what the order is in MATLAB/Fortran:
 
 {% include image.html url="/images/matlab_order.gif" description="MATLAB's column-order indexing" height="380" width="520" %}
 
 The two clear differences are 
 
-1. Within a single image, the columns are what gets iterated over (hence 'column-major')
-2. The title shows how the last index changes slowest, making it the natural candidate for representing image number.
+1. Within a single image, the columns get iterated over first (hence 'column-major')
+2. The image title shows how the last index changes slowest, making it the natural candidate for representing image number.
 
 If you're interested in the animation code to make this, it's [located here](https://github.com/scottstanie/scottstanie.github.io/blob/master/scripts/index_order.py).
