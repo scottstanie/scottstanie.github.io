@@ -11,3 +11,6 @@ color_square.py
 *dynamic*
 *disjoint*
 .DS_Store
+scripts/
+*slack-export*
+.ipynb_checkpoints
