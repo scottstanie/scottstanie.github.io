@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+<GroundOverlay>
+    <name> 20180420_20180502_masked.tif </name>
+    <description> Kiluea eruption in 2018 </description>
+    <Icon>
+          <href> 20180420_20180502_masked.jpg </href>
+    </Icon>
+    <LatLonBox>
+        <north> 19.70000000084 </north>
+        <south> 19.240000003784 </south>
+        <east> -154.8000000066 </east>
+        <west> -155.70000000084 </west>
+    </LatLonBox>
+</GroundOverlay>
+</kml>
