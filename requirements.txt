@@ -1,3 +1,4 @@
 # For binder notebook viewing
 plotly
 widgetsnbextension
+numpy
