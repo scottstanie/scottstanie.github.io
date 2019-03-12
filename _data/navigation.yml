@@ -12,6 +12,9 @@
 - title: Articles
   url: /articles/
 
+- title: Notebooks
+  url: https://mybinder.org/v2/gh/scottstanie/scottstanie.github.io/master?filepath=notebooks
+
 - title: Old Projects
   url: /projects/
 
