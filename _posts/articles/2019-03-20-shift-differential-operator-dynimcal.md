@@ -4,12 +4,9 @@ layout: post
 categories: articles
 ---
 
-I recently came across a podcast called [My favorite Theorem](https://kpknudson.com/my-favorite-theorem/), which is great for math nerds.
-Each show they bring one professor to talk about something from math they like
-(ideally, their favorite math theorem, although sometimes this only lasts 5 minutes).
-
-The professor in the latest episode began talking about his theorem, which didn't have a name,
-and in fact was so short that he described it in about 3 sentences.
+I recently came across a podcast called [My Favorite Theorem](https://kpknudson.com/my-favorite-theorem/), which is great for math nerds.
+Each show they bring one professor to talk about, as you'd guess, their favorite math theorem.
+In the latest episode, the professor Robert Ghrist began talking about his theorem, which didn't have a name, and in fact was so short that he described it in about 3 sentences.
 The theorem goes like this:
 
 
