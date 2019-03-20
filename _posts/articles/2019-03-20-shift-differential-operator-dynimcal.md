@@ -4,9 +4,9 @@ layout: post
 categories: articles
 ---
 
-I recently came across a podcast called [My Favorite Theorem](https://kpknudson.com/my-favorite-theorem/), which is great for math nerds.
+I recently came across a podcast called [My Favorite Theorem](https://kpknudson.com/my-favorite-theorem/), which (3 episodes in) is just gold for math nerds.
 Each show they bring one professor to talk about, as you'd guess, their favorite math theorem.
-In the latest episode, the professor Robert Ghrist began talking about his theorem, which didn't have a name, and in fact was so short that he described it in about 3 sentences.
+In the latest episode, Professor Robert Ghrist described his theorem, which didn't have a name, and in fact was so short that he described it in about 3 sentences.
 The theorem goes like this:
 
 
@@ -68,8 +68,8 @@ $$
 
 This fact is weird and unexpected on its own, but it also has a great connection
 to material from dynamical systems classes.
-We're usually taught two ideas about when continuous time systems and
-discrete time systems are stable, and we're rarely given a good reason why they should connect.
+We're usually taught two separate facts about the stability of continuous time
+and discrete time systems, and we're rarely given a good reason why they should connect.
 
 A system is stable if, as time goes on indefinitely, the value of \$x\$ will never
 blow up to infinity.
@@ -81,12 +81,12 @@ $$
 $$
 
 This is stable if \$A\$ has real part less than 0, \$Re(A) < 0\$.
-The stable region for this system is **in the left half of the complex plane**:
-Alternatively, if \$x\$ is a vector and \$A\$ a matrix, the eigenvalues of \$A\$ must all
-  have real parts less than zero and all be in the left half of the plane.
+The stable region for this system is in **the left half of the complex plane**:
+Alternatively, if \$x\$ is a vector and \$A\$ a matrix, the eigenvalues of \$A\$
+must all be in the left half of the plane.
 
 
-Once discrete systems are introduced:
+Once discrete systems are introduced,
 
 $$
 x[k+1] = A x[k]
@@ -100,7 +100,7 @@ So the stable region for this system is **within the unit circle**.
 How do these connect?
 Usually the justification is just to solve each of these differential equations
 and see what comes out:
-The continuous time solution looks like \$k e^{At}\$, so any real part of \$A\$ above
+The continuous time solution looks like \$C_0 e^{At}\$, so any real part of \$A\$ above
 zero makes this go to infinity as \$t \rightarrow \infty \$.
 Likewise, you solve the discrete version by repeatedly multiplying the starting
 \$x[0]\$ by \$A\$ until you get something like \$x[n] = A^n x[0] \$.
