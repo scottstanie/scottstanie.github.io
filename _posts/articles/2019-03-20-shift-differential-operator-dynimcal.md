@@ -26,7 +26,7 @@ $$ e^{D} = E. $$
 >> That is, exponentiating the differential operator is equivalent to the shift operator.
 
 Despite the simplicity, he pointed out it was his favorite because it has given
-many engineering students he's taught a big "aha" moment, and I definitely in that category.
+many engineering students he's taught a big "aha" moment, and I definitely fell into that category.
 
 It's relatively easy prove (as far as math theorems go).
 To clarify what $e^D$ means, we will use the same definition that makes \$e^x\$
@@ -38,23 +38,28 @@ $$
 
 Here, \$D^2\$ means applying the D operator two times in a row,
 \$D^2 = \frac{d^2f}{dx^2} = f^{\'\'}(x)\$,
-a.k.a. the second derivative.
+a.k.a. the second derivative, so
+
+$$
+(e^D)f(x) = f(x) + f^{ ' }(x) + \frac{f^{' '}(x)}{2} + \ldots
+$$  
 
 Now the only thing left to the proof is recognizing that \$e^D f(x)\$
 is already the Taylor series expansion of \$f(x + 1)\$ in disguise.
 
-Since the expansion of a function \$g(y)\$ is at the point \$a\$:
+Since the expansion of a function \$g(y)\$ at the point \$a\$ is:
 
 $$
-g(y) = g(a) + g^{ ' }(a)(y-a) + \frac{g^{' '}(a)}{2} (y-a)^2
+g(y) = g(a) + g^{ ' }(a)(y-a) + \frac{g^{' '}(a)}{2} (y-a)^2 + \ldots
 $$
 
-this means if we Taylor expand \$f(x + 1) \$ and substitute \$x\$ for \$a\$, \$(x+1)\$ for \$y\$, we get
+then if we Taylor expand \$f(x + 1) \$ about the point \$x\$, we substitute \$x\$ for \$a\$
+and \$(x+1)\$ for \$y\$ above:
 
 $$
 E f(x) = f(x + 1) \\
-= f(x) + f^{ ' }(x)[(x+1)-x] + \frac{f^{' '}(x)}{2} [(x+1)-x]^2 \\
-= f(x) + f^{ ' }(x) + \frac{f^{' '}(x)}{2} \\
+= f(x) + f^{ ' }(x)[(x+1)-x] + \frac{f^{' '}(x)}{2} [(x+1)-x]^2 + \ldots \\
+= f(x) + f^{ ' }(x) + \frac{f^{' '}(x)}{2} + \ldots \\
 = e^D f(x)
 $$
 
@@ -62,20 +67,21 @@ $$
 ## Connection to stable dynamical systems
 
 This fact is weird and unexpected on its own, but it also has a great connection
-to material taught in dynamical systems classes.
+to material from dynamical systems classes.
 We're usually taught two ideas about when continuous time systems and
-discrete time systems are stable, and rarely given a good reason why they should connect.
+discrete time systems are stable, and we're rarely given a good reason why they should connect.
 
 A system is stable if, as time goes on indefinitely, the value of \$x\$ will never
 blow up to infinity.
-For continuous time system, with \$x\$ is being a scalar function of \$t$:
+For continuous time system, with \$x\$ is being a scalar function of \$t$,
+the system looks like:
 
 $$
 \frac{dx}{dt} = A x(t)
 $$
 
-the system is stable if \$A\$ has real part less than 0, \$Re(A) < 0\$.
-The stable region for this system \$A\$ is **in the left half of the complex plane**:
+This is stable if \$A\$ has real part less than 0, \$Re(A) < 0\$.
+The stable region for this system is **in the left half of the complex plane**:
 Alternatively, if \$x\$ is a vector and \$A\$ a matrix, the eigenvalues of \$A\$ must all
   have real parts less than zero and all be in the left half of the plane.
 
@@ -92,9 +98,9 @@ is less than one (or, if A is a matrix, the eigenvalues all must have
 So the stable region for this system is **within the unit circle**.
 
 How do these connect?
-Well, sometimes the justification is just to solve each of these differential equations
-and see what they look like:
-The continuous time solution looks like \$k e^{At}\$, so any real part above
+Usually the justification is just to solve each of these differential equations
+and see what comes out:
+The continuous time solution looks like \$k e^{At}\$, so any real part of \$A\$ above
 zero makes this go to infinity as \$t \rightarrow \infty \$.
 Likewise, you solve the discrete version by repeatedly multiplying the starting
 \$x[0]\$ by \$A\$ until you get something like \$x[n] = A^n x[0] \$.
@@ -109,7 +115,7 @@ $$
 Dx(t) = \frac{dx}{dt} = Ax(t)
 $$
 
-while the discrete system moves forward from the **shift operator** \$E\$:
+The discrete system moves forward with the **shift operator** \$E\$:
 
 $$
 Ex[k] = x[k+1] = A x[k]
@@ -119,11 +125,12 @@ Once we see this, we can guess how we might connect the stable region of the
 continuous time system to the discrete one: **exponentiate it**!
 
 Using [3blue1brown plotting library, manim](https://github.com/scottstanie/manim),
-we can visualize this this in the nicest way possible by taking every point
-in the plane \$a + bi \$ and transforming it to \$ e^{a + bi}\$:
+we can visualize this this in the nicest way possible: take every point
+in the plane \$a + bi \$, transform it to \$ e^{a + bi}\$, and see where it lands.
 
 {% include image.html url="/images/lhp_animation.gif" description="Demonstration with manim [1]" height="420" width="600" %}
 
 
-Thus, all stable points that evolve by the \$D\$ operator are in the same
-region as stable points that evolve by the \$E\$ operator once they're exponentiated.  
+Thus, all stable points that evolve by the \$D\$ operator (in continuous time)
+ are in the same region as stable points that evolve by the \$E\$ operator
+ (in discrete time) once they're exponentiated.  
