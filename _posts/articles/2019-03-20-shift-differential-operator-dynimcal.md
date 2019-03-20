@@ -11,7 +11,7 @@ The theorem goes like this:
 
 
 >> Let f(x) be a single variable function.
-If we call call \$D\$ be the differential operator:
+If we call call the differential operator \$D\$:
 >>
 $$ Df(x) = \frac{df}{dx}  $$
 >>
@@ -23,7 +23,7 @@ $$ Ef(x) = f(x+1) $$
 >>
 $$ e^{D} = E. $$
 >>
->> That is exponentiating the differential operator is equivalent to the shift operator.
+>> That is, exponentiating the differential operator is equivalent to the shift operator.
 
 Despite the simplicity, he pointed out it was his favorite because it has given
 many engineering students he's taught a big "aha" moment, and I definitely in that category.
