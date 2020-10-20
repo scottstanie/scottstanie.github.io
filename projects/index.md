@@ -40,8 +40,3 @@ A drone chases around [ArUco Markers](https://docs.opencv.org/3.1.0/d5/dae/tutor
 
 {% include video.html src="https://www.youtube.com/embed/3mwp5Lb4ng8" height="315" width="561" %}
 
-
-### [Smmrizr](https://smmrizr.herokuapp.com/)
-  Post urls, Get an article summary.
-  Used more as an API than a pleasant experience.
-  [Link](https://smmrizr.herokuapp.com/)

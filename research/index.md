@@ -13,7 +13,7 @@ InSAR has a huge variety of [geophysical applications](https://en.wikipedia.org/
 {% include image.html url="/images/insar/kilauea_google_earth.jpg" %}
 
 
-My main Ph.D. project has used InSAR to monitor surface changes over the Permian Basin in West Texas to help understand the causes of the induced earthquakes associated with oil and gas production.
+My main Ph.D. project has used InSAR to monitor surface changes over the Permian Basin in West Texas. I've used this data to work with geologists and seismologists in understanding the causes of the induced earthquakes associated with oil and gas production.
 
 Below is an interactive map to play around with the cumulative vertical deformation between November 2014 and January 2019 from our paper:
 
@@ -22,7 +22,7 @@ Below is an interactive map to play around with the cumulative vertical deformat
 The red areas show uplift (up to ~7cm), blue areas show subsidence (down to ~13 cm), and dark red dots are the locations of the [TexNet](https://www.beg.utexas.edu/texnet/catalog) detected earthquakes in 2018.
 You can also download all the deformation data products shown in the paper [at the Texas data repository](https://doi.org/10.18738/T8/AVDBOJ)
 
-<iframe src='/extras/testmapbox.html'
+<iframe src='/extras/insar-mapbox.html'
         width='100%' height='400px'>
 </iframe>
 
