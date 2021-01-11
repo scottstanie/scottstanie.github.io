@@ -1,8 +1,9 @@
 ---
 title: 'The Riddler- Baseball Division Champs'
 layout: post
-categories: random
+categories: articles
 redirect_from:
+- /random/riddler-baseball/
 - /random/2016/05/29/riddler/baseball
 - /blog/2016/05/29/riddler/baseball
 ---
@@ -59,15 +60,18 @@ The five teams are acting as [binomial random variables](https://en.wikipedia.or
 
 If each team is a random variable \\(T_i\\), we are trying to find the expected value of a new random variable, \\(T_{max}\\): 
 
-$$
-  T_{max} = \max \{T_i\}, i \in 1 \ldots 5
-$$
+
+{% raw %}
+$
+T_{max} = \max \left\lbrace T_i \right\rbrace, i \in 1 \ldots 5
+$
+{% endraw %}
 
 The PMF of each of these \\(T_i\\) variables is
 
-$$
+$
   P(T_i = x) = \binom{n}{x}p^{x}(1-p)^{n-x} = \frac{\binom{n}{x}}{2^{n}}
-$$
+$
 
 #### Simplifying down
 
@@ -84,38 +88,38 @@ There is one way to get a 1, three ways for a 2, five ways for a 3, etc.
 Where does the formula come for this?
 It's actually easier to start with the [CDF](https://en.wikipedia.org/wiki/Cumulative_distribution_function) of one die:
 
-$$
+$
   F_{X}(x) = Pr(X \leq x) = \frac{x}{6}
-$$
+$
 
 Taking the max of two dice means looking at the joint distribution.
 But since they are [IID](https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables) variables, this simplifies greatly:
 
-$$
+$
   F_{X_{max}}(x) = Pr(X_1 \leq x, X_2 \leq x) = Pr(X_1 \leq x)P(X_2 \leq x) = \frac{x}{6} \times \frac{x}{6} = \frac{x^2}{36}
-$$
+$
 
 This is easy to verify looking at the problem.
 If you picture it in terms of the box moving out, at row \\(n\\) of dice, there are \\(n^2\\) results that have a max less than or equal to \\(n\\).
 
 For the PMF of each one, we would just take the CDF at \\(x\\) and subtract the CDF of the previous result:
 
-$$
+$
   P(X_{max}=x) = F_{X_{max}}(x) - F_{X_{max}}(x-1) = \frac{x^2 - (x-1)^2}{36} = \frac{x^2 - (x^2 - 2x + 1)}{36} = \frac{2x - 1}{36}
-$$
+$
 
 This is used for the expected value:
 
-$$
+$
   \mathrm{E}\left[ x\right] = \sum_{x\in X} x P(x)
-$$
+$
 
 So for the dice problem:
 
-$$
+$
   \sum_{i=1}^{6} i\cdot  P(i) = \sum_{i=1}^{6} i \cdot \frac{2i - 1}{36} = \frac{1}{36} \cdot
       \sum_{i=1}^{6} 2i^2 - i = \frac{161}{36} \approx 4.47
-$$
+$
 
 #### Tying it back
 
