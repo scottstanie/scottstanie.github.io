@@ -4,24 +4,27 @@ layout: post
 categories: articles
 ---
 
-I recently had a small visualization that I wanted to do: Given a 3D stack of images, make a plot of the images with the ability to interactively flip through back and forth. Also, I wanted to be able to have it work on a static site like Github Pages.
+I recently had a small visualization that I wanted to do: Given a 3D stack of images, make a plot of the images with the ability to interactively flip through the stack. Also, I wanted to be able to have it work on a static site like Github Pages (e.g. this site).
 
-This seems like any good, popular programming language would be able to do this, but many of the web-based visualizations are written with Javascript... and I didn't want to learn more javascript if it wasn't necessary.
-Also, my search was geared pretty specifically towards images and geospatial data. If you just want some bar graphs with sliders, theres a bunch of ways to do that ([Altair](https://altair-viz.github.io/) is probably the easiest to make work in a static page).
+I thought this seemed like a reasonable expectation of any good programming language, especially the most popular data science language.
+There's certainly others asking the [same](https://stackoverflow.com/questions/22739592/how-to-embed-an-interactive-matplotlib-plot-in-a-webpage) [questions](https://stackoverflow.com/questions/39334338/jupyter-embed-live-interactive-widgets) as me, and [years of talk of making this easy to do](https://github.com/jupyter-widgets/ipywidgets/issues/16).
+Note that my search was geared specifically towards images and geospatial data;
+if I just wanted some bar charts with sliders, I would have stuck with the embedding functionality of something like [Altair](https://altair-viz.github.io/) (or one of the other 5 options below).
 
-But for those like me, and the others asking the [same](https://stackoverflow.com/questions/22739592/how-to-embed-an-interactive-matplotlib-plot-in-a-webpage) [questions](https://stackoverflow.com/questions/39334338/jupyter-embed-live-interactive-widgets), here's what I found.
-
-
+Turns out that my decision to stick with Python only and avoid Javascript made this into quite the scavenger hunt.
+You can see below how many Python plotting libraries it took before I found what I wanted.
+This isn't trying to be a full comparison of the libraries (I have no desire to do that).
+I only hope that I'll get to spare somebody else the tedium of trying 15 plotting demos.
 
 
 ## Final choices:
 
-To skip all the searching I did, here are the winners for me:
+Skipping to the winners, here were my favorites:
 
 - Best for 2d: [HoloViews](holoviews.org)
     - Very simple for working with stacks of images.
     - Easy to save offline in a static HTML embedding.
-    - Pretty intuitive if you've gotten into xarray already (like, really into it. Still took me a least an hour to figure out the example below with moderate familiarity).
+    - Pretty intuitive if you've gotten into xarray already (like, really into it. I'm moderately familiar, but it still took me a least an hour to figure out my example below.)
 - Best for 3d: [ipyvolume](https://ipyvolume.readthedocs.io/en/latest/?badge=latest)
     - Uses ipywidgets, threejs, webgl, and other cool Javascript libraries so you don't have to.
     - Still makes it easy to save offline (although it will have a large .html file size)
@@ -29,19 +32,19 @@ To skip all the searching I did, here are the winners for me:
 
 ### The "not-quites"
 
-Here's the notes I made about the others attempted along the way, and why they didn't work for my case (if I missed something obvious and easy here, I'd be happy to hear how):
+Here's the notes I made about the others attempted along the way, and why they didn't work for my case (if I missed something obvious and easy here, I'd be happy to hear how). 
 
 - Matplotlib (with ipywidgets)
-    - First one I tried, since I plot everything normally with this. Works super easily doing something with [ipywidgets, like this](https://stackoverflow.com/questions/44329068/jupyter-notebook-interactive-plot-with-widgets), but it doesn't work in a static page away from the Jupyter kernel, since it runs python on each interaction update. All the examples online wanted you to use things like:
+    - First one I tried, since I plot everything normally with this. Works super easily doing something with [ipywidgets, like this](https://stackoverflow.com/questions/44329068/jupyter-notebook-interactive-plot-with-widgets), but it doesn't work in a static page away from the Jupyter kernel. It runs python on each interaction update, so all the examples online wanted you to use things like:
     - [binder](https://mybinder.org/) (as a backend)
-        - Lots of positive mentions, but the examples take 60+ seconds to load the kernel.... By then, I've lost interest even my own example. For a simple slider, it shouldn't take that much. It certainly works better for a full learning environment.
+        - Lots of positive mentions, but the examples take 60+ seconds to load the kernel.... By then, I've lost interest in even my own example. For a simple slider, it shouldn't take that much. It certainly works better for a full learning environment.
     - [Viola](https://voila.readthedocs.io/en/stable/index.html)
         - Like binder, but being run by Jupyter. Still, I just want to slide through some images, I don't need a full Python kernel running.
 - [Plotly](https://plotly.com/python/)
     - It's probably possible? They certainly didn't make it easy for my simple use case of images and/or 3D plotting 
 - [Bokeh](https://bokeh.org/)
     - Hard on it's own... but used as a backend for others like HoloViews
-- ([Altair](https://altair-viz.github.io/)
+- [Altair](https://altair-viz.github.io/)
     - Doesn't seem to cater to image plotting at all, wants tabular data
 - [bqplot](https://bqplot.readthedocs.io/en/latest/introduction.html#goals)
     - Like altair: doesn't want images, wants tabular data
@@ -49,6 +52,7 @@ Here's the notes I made about the others attempted along the way, and why they d
     - Really heavy and doesn't seem to save offline. Probably great for live explorations.
 - [mpld3](http://mpld3.github.io/examples/index.html)
     - Image support is weak, no showing interacting offline
+
 
 
 I'll show the example I was using as a demonstration, and hopefully it's easy enough to translate to any other 3D image stack.
@@ -62,13 +66,13 @@ from numpy.fft import fft2, ifft2, fftshift
 %matplotlib notebook
 ```
 
-Here I was playing around with creating [Gaussian random fields](https://garrettgoon.com/gaussian-fields/). These are using in cosmology to describe the distribution of stars/galaxies in the universe, but also work as a way to simulate turbulence in the atmosphere.
+Here I was playing around with creating [Gaussian random fields](https://garrettgoon.com/gaussian-fields/). These are used in cosmology to describe the distribution of stars/galaxies in the universe, but also work as a way to simulate turbulence in the atmosphere (my use case).
 
-It turns out that theres a relatively simple way and [fast way to generate this random field](https://mathematica.stackexchange.com/questions/4829/efficiently-generating-n-d-gaussian-random-fields):
+Theres a relatively simple way and [fast way to generate an instance of this random field](https://mathematica.stackexchange.com/questions/4829/efficiently-generating-n-d-gaussian-random-fields):
 
 - Generate some white noise
-- rescale the Fourier transform of the noise so that the power spectrum is a power law: $P(k) \propto k^{-\beta} $
-- then take the IFFT:
+- Rescale the Fourier transform of the noise so that the power spectrum is a power law: $P(k) \propto k^{-\beta} $
+- Take the IFFT
 
 ```python
 def power_law(k, beta):
@@ -723,24 +727,18 @@ Data variables:
 
 
 
-Now what HoloViews needs is it's own `Dataset`. Luckily, it's integrated well-enough with xarray that you can just pass it in to create it.
+Now HoloViews needs its own `hv.Dataset`. Luckily, it's integrated well-enough with xarray that you can just pass in the xarray `Dataset` to create it:
 
 
 ```python
 phids = hv.Dataset(xrphi)
-phids
 ```
 
 
-
-
-    :Dataset   [beta,y,x]   (phi)
-
-
-
+Now to visualize this, you create an `Image` object.
 The only extra information you need to pass to the `Image` constructor is the `kdims`, or the "Key" dimenions: which is the x (horizontal) dimension, and which is the y (vertical). The other dimensions will get gobbled up and become a slider on the "HoloMap".
 
-If you've got two dimensions named 'x' and 'y', it can interpret this automatically, but being explicit is nice:
+If you've got two dimensions named 'x' and 'y', it will interpret this automatically (but being explicit is nice):
 
 ```python
 imnoise = phids.to(hv.Image, kdims=["x", "y"])
@@ -788,15 +786,17 @@ imnoise
 
 
 This is a very nice version of what I was looking for, especially given how many lines of code it took.
+We see that the simulated noise goes from pure white noise (when $\beta = 0$) to very spatially correlated, realistic looking tropospheric noise at high $\beta$s.
+
 BUT, the final test was whether it was easy to output an HTML snippet that will work offline, or whether that's another huge obstacle.
 
 Luckily, it was this simple:
 
 ```python
-renderer = hv.renderer("bokeh")
-# Using renderer save
 outname = "test_holo.html"
-# Unclear why it must append .html...
+
+renderer = hv.renderer("bokeh")
+# Unclear why the function must append .html? oh well
 renderer.save(imnoise, outname.replace(".html", ""))
 
 from IPython.core.display import HTML
@@ -1754,9 +1754,9 @@ HTML(wt)
 
 
 
-Though it took many hours of search and trying differeny library examples, I'm sold after I found this. 
-It was exactly what I wanted from the start, needed very few lines of code to get a working version, and the integration with `xarray` is an added bonus.
-They even have a further extension for other geospatial data with [GeoViews](http://geoviews.org), which I'll keep my eye on for more complicated mapping plots.
+Though it took many hours of search and trying different library examples, I was sold after I found this. 
+It was exactly what I wanted, looked nice, needed very few lines of code, and the integration with `xarray` is an added bonus.
+They even have a further extension for other geospatial data with [GeoViews](http://geoviews.org), which I'll keep my eye on for more complicated map making.
 
 # 3D Surface example
 
@@ -1776,7 +1776,7 @@ znorm.min(), znorm.max()
 color = colormap(znorm)
 ```
 
-Ipyvolume made this nearly as easy as using Matplotlib's 3D plotting, but it was much better viewing manipulation thanks to the other libraries it uses:
+Ipyvolume made this nearly as easy as using Matplotlib's 3D plotting, but it has a much slicker interface thanks to the other libraries it uses.
 
 ```python
 ipv.figure()
@@ -1793,7 +1793,6 @@ vb
     VBox(children=(VBox(children=(Figure(animation=200.0, camera=PerspectiveCamera(fov=45.0, position=(0.0, 0.0, 2…
 
 
-While this is still pretty cool, I think I was over eager to think my plots needed to be 3D.
 
 Like HoloViews, ipyvolume also makes it easy to save as an HTML embedding:
 
@@ -1806,6 +1805,7 @@ with open(outname) as f:
     wt = f.read()
 HTML(wt)
 ```
+While the animation is pretty sweet, I think I was a bit over eager in thinking this example needed to be 3D... maybe next time.
 
 
 
