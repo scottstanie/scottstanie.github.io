@@ -2,3 +2,5 @@
 plotly
 widgetsnbextension
 numpy
+matplotlib
+ipywidgets
