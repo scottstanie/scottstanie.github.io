@@ -21,7 +21,7 @@ I only hope that I'll get to spare somebody else the tedium of trying 15 plottin
 
 Skipping to the winners, here were my favorites:
 
-- Best for 2d: [HoloViews](holoviews.org)
+- Best for 2d: [HoloViews](http://holoviews.org/)
     - Very simple for working with stacks of images.
     - Easy to save offline in a static HTML embedding.
     - Pretty intuitive if you've gotten into xarray already (like, really into it. I'm moderately familiar, but it still took me a least an hour to figure out my example below.)
