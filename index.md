@@ -11,7 +11,7 @@ image:
 
 
 Hi, I'm Scott.
-I'm currently a Signal Analysis Engineer at NASA [Jet Propulsion Laboratory](https://communicationstrackingradar.jpl.nasa.gov/sections/sec-334/). 
+I'm currently a Signal Analysis Engineer at NASA [Jet Propulsion Laboratory](https://communicationstrackingradar.jpl.nasa.gov/sections/sec-334/) working as a member of the algorithm development team for the Observational Products for End-users from Remote sensing Analysis ([OPERA](https://www.jpl.nasa.gov/go/opera)) project.
 I finished my Ph.D. at UT Austin in 2022 in the [radar interferometry group](http://sites.utexas.edu/annchen/), part of the [Center for Space Research](https://www.csr.utexas.edu/).
 Before that I was in Cambridge and working at [Cogo Labs](http://cogolabs.com) for a few years, and I graduated from Tufts University with degrees in Electrical Engineering and Mathematics.
 

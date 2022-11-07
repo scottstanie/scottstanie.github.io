@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Articles
+title: Posts
 excerpt: "An archive of articles."
 ---
 

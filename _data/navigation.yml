@@ -3,18 +3,11 @@
 - title: Home
   url: /
 
-- title: About
-  url: /about/
-
 - title: Research
   url: /research/
 
-- title: Articles
+- title: Posts
   url: /articles/
 
 - title: Notebooks
   url: https://mybinder.org/v2/gh/scottstanie/scottstanie.github.io/master?filepath=notebooks
-
-- title: Old Projects
-  url: /projects/
-
