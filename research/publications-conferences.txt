@@ -1,0 +1,45 @@
+Journal Publications
+--------------------
+
+Hennings, P., Staniewicz, S., Smye, K., Chen, J., Horne, E., Nicot, J. P., Ge, J., Reedy, R., & Scanlon, B. (2023). Development of complex patterns of anthropogenic uplift and subsidence in the Delaware Basin of West Texas and southeast New Mexico, USA. Science of The Total Environment, 166367.
+
+Lee, H. P., Staniewicz, S., Chen, J., Hennings, P., & Olson, J. E. (2023). Subsurface deformation monitoring with InSAR and elastic inversion modeling in west Texas. Geoenergy Science and Engineering, 212299.
+
+Staniewicz, S., Chen, J. Automatic Detection of InSAR Surface Deformation Signals in the Presence of Severe Tropospheric Noise. IEEE Transactions on Geoscience and Remote Sensing, In Review.
+
+Horne, E. A., Hennings, P. H., Smye, K. M., Staniewicz, S., Chen, J., & Savvaidis, A. (2022). Structural characteristics of shallow faults in the Delaware Basin. Interpretation, 10(4), T807-T835.
+
+Staniewicz, S., Chen, J., Lee, H., Olson, J., Savvaidis, A., Reedy, R., Breton, C., Rathje, E., Hennings, P. (2020). InSAR Reveals Complex Surface Deformation Patterns Over an 80,000 km 2 Oil‐Producing Region in the Permian Basin. Geophysical Research Letters, 47(21), e2020GL090151.
+
+-----------
+Conferences
+-----------
+
+Staniewicz, S.J., Mirzaee, S., Fattahi, H., Detecting Persistent and Distributed Scatterer Changes in Geocoded Single Look Complex Images for Near-Real-Time InSAR Processing, Fringe Workshop 2023, Leeds, UK.
+
+Staniewicz, S.J., Mirzaee, S., Fattahi, H., Near Real Time Estimation of Unbiased Ground Displacement Time-Series With InSAR Big Data, Fringe Workshop 2023, Leeds, UK.
+
+Staniewicz, S. J., Mirzaee, S., Fattahi, H., Persistent Scatterer Selection For Wide-Area Near-Real-Time Insar Processing, IEEE International Geoscience and Remote Sensing Symposium 2023, Pasadena, CA.
+
+Oliver-Cabrera, T., Staniewicz, S. J., Fattahi, H., Improvements on phase unwrapping from phase interpolation algorithm, IEEE International Geoscience and Remote Sensing Symposium 2023, Pasadena, CA.
+
+Jones, C., An, K., & Staniewicz, S. Hazard assessment with SAR– What to expect from the NISAR mission (No. EGU22-6544). 2022 Copernicus Meetings, Vienna, Austria/ Virtual.
+
+*Staniewicz, S. J., Chen, J., Quantifying the Probability of False Alarm for Automatically Detected Features in InSAR Deformation Maps, 2021 Fall Meeting, American Geophysical Union, Abstract G44A-06. New Orleans, LA.
+
+*Staniewicz, S. J., Jones, C., and Wang, K., Evaluating the Impact of NISAR Resolution on Critical Infrastructure Monitoring in California’s Central Valley, 2021 Fall Meeting, American Geophysical Union, Abstract H12I-10. New Orleans, LA.
+
+Staniewicz, S., J., Chen, J., Lee, H., Olson, J. E., Savvaidis, A., & Hennings, P., Cumulative and Transient Surface Deformation Signals in the Permian Basin. American Geophysical Union Fall Meeting 2020, Virtual.
+
+Horne, E., Hennings, P., Savvaidis, A., Morris, A. P., Staniewicz, S. J., & Chen, J., 3D Structural Analysis and Seismogenic Association in the Central Delaware Basin, West Texas. American Geophysical Union Fall Meeting 2020, Virtual.
+
+*Staniewicz, S., Chen, J., Accurate Insar Surface Deformation Mapping Over The Oil-Producing Permian Basin With Automated Tropospheric Outlier Removal. IEEE International Geoscience and Remote Sensing Symposium 2020, Virtual.
+
+*Staniewicz, S., J., Chen, J., Lee, H., Olson, J. E., Rathje, E., Savvaidis, A., & Hennings, P., InSAR Reveals Complex Uplift and Subsidence Patterns Over 100,000 km 2 of Oil Producing Regions in the Permian Basin. American Geophysical Union Fall Meeting 2019, San Francisco, CA.
+
+*Staniewicz, S., J. Chen, E. Rathje, and J. Olson, Automatic detection of InSAR deformation signals associated with hydrocarbon production and wastewater injection using Laplacian of Gaussian filtering, IEEE International Geoscience and Remote Sensing Symposium 2019, Yokohama, Japan.
+
+Staniewicz, S. J., Chen, J., Rathje, E., & Olson, J. E., An Approach for Automatic Detection of InSAR Deformation Signals Associated with Wastewater Injection and Induced Seismic Events.American Geophysical Union Fall Meeting 2018, Washington, DC.
+
+* indicates oral presentation
+
