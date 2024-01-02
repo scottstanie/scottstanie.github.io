@@ -1,6 +1,6 @@
 ---
 title: 'MATLAB vs Python binary storage of matrices'
-layout: post
+layout: default
 categories: articles
 ---
 
@@ -16,7 +16,13 @@ This means they do not play nicely together without extra care.
 
 The simplest test that made me understand what I had to change was the following:
 
-```bash
+{% highlight python linenos %}
+def f(x):
+    return 3 * x
+{% endhighlight %}
+
+
+{% highlight bash %}
 $ python
 >>> import numpy as np
 >>> A = np.array([[1, 2],[3, 4]]).astype('int16')
@@ -29,7 +35,8 @@ $ python
 $ hexdump test_py.bin
 0000000 0001 0002 0003 0004                    
 0000008
-```
+{% endhighlight %}
+
 
 Note that `hexdump` is a unix command to display the contents of a file as a bunch of binary numbers.
 You can use this on text files and it won't be very recognizable, but for matrices saved as binary, you will see the numbers that were the matrix elements (the first column of `hexdump` is the position of the file.)

@@ -1,10 +1,10 @@
 ---
 title: 'MATLAB vs Python Indexing for 3D data'
-layout: post
+layout: default
 categories: articles
 ---
 
-I thought I had learned well enough what row-major and column-major order were [from my last confusion]({% post_url 2018-05-20-python-matlab-binary %}), but I didn't follow what the implications would be when moving from 2 indices to 3.
+I thought I had learned well enough what row-major and column-major order were [from my last confusion]({% post_url /articles/2018-05-20-python-matlab-binary %}), but I didn't follow what the implications would be when moving from 2 indices to 3.
 
 After learning image processing on MATLAB, I assumed that since a single image is indexed by `(row, column)`, `(row, column, image number)` was the most sensible order when dealing with multiple images.
 I had been confused by the first few Python tutorials I saw (like [this one for Tensorflow](https://www.tensorflow.org/tutorials/keras/basic_classification)), where they use the *first* index for the image number rather than the *last* for stacks of images.
@@ -25,7 +25,7 @@ Using the function `numpy.unravel_index` in Python, you can find what the 3 inde
 
 When we use this along with a `FuncAnimation`, we get a nice visual of how the pixels are ordered in the 3D stack:
 
-{% include image.html url="/images/python_order.gif" description="Python row-order indexing for 2 images" height="380" width="520" %}
+{% include image.html url="/images/python_order.gif" description="Python row-order indexing for 2 images" height="380"  %}
 
 If we watch the figure title, which shows how you would index the stack to access the current element, we see how the last index changes quickest and first index changes slowest.
 
@@ -33,7 +33,7 @@ If we watch the figure title, which shows how you would index the stack to acces
 The `unravel_index` function also takes an `order` keyword that allows you to specify 'F' for Fortran column-order (instead of the default 'C' for C/Python row-ordering).
 Using this, we can also visualize what the order is in MATLAB/Fortran:
 
-{% include image.html url="/images/matlab_order.gif" description="MATLAB's column-order indexing" height="380" width="520" %}
+{% include image.html url="/images/matlab_order.gif" description="MATLAB's column-order indexing" height="380" %}
 
 The two clear differences are 
 

@@ -1,11 +1,8 @@
 ---
 title: 'The Riddler- Baseball Division Champs'
-layout: post
+layout: default
 categories: articles
-redirect_from:
-- /random/riddler-baseball/
-- /random/2016/05/29/riddler/baseball
-- /blog/2016/05/29/riddler/baseball
+has_math: true
 ---
 
 [The Riddler column on FiveThirtyEight this week](http://fivethirtyeight.com/features/can-you-solve-the-puzzle-of-the-baseball-division-champs/) seemed like a straight forward probability problem:
@@ -62,16 +59,16 @@ If each team is a random variable \\(T_i\\), we are trying to find the expected 
 
 
 {% raw %}
-$
+$$
 T_{max} = \max \left\lbrace T_i \right\rbrace, i \in 1 \ldots 5
-$
+$$
 {% endraw %}
 
 The PMF of each of these \\(T_i\\) variables is
 
-$
+$$
   P(T_i = x) = \binom{n}{x}p^{x}(1-p)^{n-x} = \frac{\binom{n}{x}}{2^{n}}
-$
+$$
 
 #### Simplifying down
 
@@ -80,7 +77,7 @@ If this were a simple pair of dice we were rolling and taxing the max, it would 
 Picturing each die's result on one axis, the [max norm, or \\(L_{\inf}\\) norm](https://en.wikipedia.org/wiki/Uniform_norm), looks like a square as you move out from the center.
 All pairs of results along this line turn into the same max result.
 
-{% include image.html url="/images/dice.png" description="Max of two dice" height="280" width="320" %}
+{% include image.html url="/images/dice.png" description="Max of two dice" %}
 
 Here it's easy to count the occurrences to enumerate the probabilities.
 There is one way to get a 1, three ways for a 2, five ways for a 3, etc.
@@ -88,38 +85,44 @@ There is one way to get a 1, three ways for a 2, five ways for a 3, etc.
 Where does the formula come for this?
 It's actually easier to start with the [CDF](https://en.wikipedia.org/wiki/Cumulative_distribution_function) of one die:
 
-$
+$$
   F_{X}(x) = Pr(X \leq x) = \frac{x}{6}
-$
+$$
 
 Taking the max of two dice means looking at the joint distribution.
 But since they are [IID](https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables) variables, this simplifies greatly:
 
-$
-  F_{X_{max}}(x) = Pr(X_1 \leq x, X_2 \leq x) = Pr(X_1 \leq x)P(X_2 \leq x) = \frac{x}{6} \times \frac{x}{6} = \frac{x^2}{36}
-$
+$$
+\begin{gather*}
+  F_{X_{max}}(x) = Pr(X_1 \leq x, X_2 \leq x) = Pr(X_1 \leq x)P(X_2 \leq x)\\
+   = \frac{x}{6} \times \frac{x}{6} = \frac{x^2}{36}
+\end{gather*}
+$$
 
 This is easy to verify looking at the problem.
 If you picture it in terms of the box moving out, at row \\(n\\) of dice, there are \\(n^2\\) results that have a max less than or equal to \\(n\\).
 
 For the PMF of each one, we would just take the CDF at \\(x\\) and subtract the CDF of the previous result:
 
-$
-  P(X_{max}=x) = F_{X_{max}}(x) - F_{X_{max}}(x-1) = \frac{x^2 - (x-1)^2}{36} = \frac{x^2 - (x^2 - 2x + 1)}{36} = \frac{2x - 1}{36}
-$
+$$
+\begin{gather*}
+  P(X_{max}=x) = F_{X_{max}}(x) - F_{X_{max}}(x-1) \\
+  =\frac{x^2 - (x-1)^2}{36} = \frac{x^2 - (x^2 - 2x + 1)}{36} = \frac{2x - 1}{36}
+\end{gather*}
+$$
 
 This is used for the expected value:
 
-$
+$$
   \mathrm{E}\left[ x\right] = \sum_{x\in X} x P(x)
-$
+$$
 
 So for the dice problem:
 
-$
+$$
   \sum_{i=1}^{6} i\cdot  P(i) = \sum_{i=1}^{6} i \cdot \frac{2i - 1}{36} = \frac{1}{36} \cdot
       \sum_{i=1}^{6} 2i^2 - i = \frac{161}{36} \approx 4.47
-$
+$$
 
 #### Tying it back
 
@@ -160,14 +163,10 @@ It matches! hurray!
 To make the original a gross one-liner:
 
 {% highlight python %}
-sum(max((sum(random.choice((0,1)) for game in range(162)) for team in range(5))) for season in range(100000))/100000.0
-{% endhighlight %}
-
-And to make it slightly faster:
-
-{% highlight python %}
 from random import random
-sum(max((sum(random() < 0.5 for game in range(162)) for team in range(5))) for season in range(100000))/100000.0
+sum(
+    max((sum(random() < 0.5 for game in range(162)) for team in range(5))) 
+    for season in range(100000)
+)/100000.0
 {% endhighlight %}
 
-since `random() < 0.5` to get a coin flip runs in about 1/4 the time of the `random.choice` version.

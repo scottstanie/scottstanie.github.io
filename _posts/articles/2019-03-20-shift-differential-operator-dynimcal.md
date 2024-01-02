@@ -1,7 +1,8 @@
 ---
 title: 'Connecting the Shift and Differential Operator to Dynamical Systems'
-layout: post
+layout: default
 categories: articles
+has_math: true
 ---
 
 I recently came across a podcast called [My Favorite Theorem](https://kpknudson.com/my-favorite-theorem/), which (3 episodes in) is just gold for math nerds.
@@ -10,20 +11,21 @@ In the latest episode, Professor Robert Ghrist described his theorem, which didn
 The theorem goes like this:
 
 
->> Let f(x) be a single variable function.
-If we call call the differential operator \$D\$:
->>
-$$ Df(x) = \frac{df}{dx}  $$
->>
-and call the "shift" operator E:  
->>
-$$ Ef(x) = f(x+1) $$
->>
->> then  
->>
-$$ e^{D} = E. $$
->>
->> That is, exponentiating the differential operator is equivalent to the shift operator.
+> Let \$f(x)\$ be a single variable function.
+> If we call call the differential operator $D$:
+>
+> $$ Df(x) = \frac{df}{dx}  $$
+>
+> and call the "shift" operator E:  
+>
+> $$ Ef(x) = f(x+1) $$
+>
+> then  
+>
+> $$ e^{D} = E. $$
+>
+> That is, exponentiating the differential operator is equivalent to the shift operator.
+>
 
 Despite the simplicity, he pointed out it was his favorite because it has given
 many engineering students he's taught a big "aha" moment, and I definitely fell into that category.
@@ -128,9 +130,9 @@ Using [3blue1brown plotting library, manim](https://github.com/scottstanie/manim
 we can visualize this this in the nicest way possible: take every point
 in the plane \$a + bi \$, transform it to \$ e^{a + bi}\$, and see where it lands.
 
-{% include image.html url="/images/lhp_animation.gif" description="Demonstration with manim [1]" height="420" width="600" %}
+{% include image.html url="/images/lhp_animation.gif" description="Demonstration with manim" height="420" width="600" %}
 
 
-Thus, all stable points that evolve by the \$D\$ operator (in continuous time)
+Thus, all stable points that evolve by the \$ D\$ operator (in continuous time)
  are in the same region as stable points that evolve by the \$E\$ operator
  (in discrete time) once they're exponentiated.  

@@ -1,7 +1,8 @@
 ---
 title: 'Offline Interactive Plotting with Python in 2021'
-layout: post
+layout: default
 categories: articles
+has_math: true
 ---
 
 I recently had a small visualization that I wanted to do: Given a 3D stack of images, plot them with the ability to interactively flip through the stack. Also, I wanted to have it work on a static site like Github Pages (e.g. this site).
