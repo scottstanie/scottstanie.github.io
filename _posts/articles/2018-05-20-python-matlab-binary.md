@@ -16,12 +16,6 @@ This means they do not play nicely together without extra care.
 
 The simplest test that made me understand what I had to change was the following:
 
-{% highlight python linenos %}
-def f(x):
-    return 3 * x
-{% endhighlight %}
-
-
 {% highlight bash %}
 $ python
 >>> import numpy as np
