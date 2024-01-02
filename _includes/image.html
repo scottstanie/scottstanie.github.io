@@ -1,4 +1,5 @@
-<table class="image" >
-  <caption style="text-align: center;" align="bottom">{{ include.description }}</caption>
-  <tr><td style="text-align: center;"><img src="{{ include.url }}" alt="{{ include.description }}" height="{{ include.height }}" width="{{ include.width }}"/></td></tr>
-</table>
+<div class="image-container">
+  <img src="{{ include.url }}" alt="{{ include.description }}" {% if include.width %} width="{{ include.width }}" {%
+    endif %} {% if include.height %} height="{{ include.height }}" {% endif %} class="responsive-image" />
+  <div class="caption">{{ include.description }}</div>
+</div>

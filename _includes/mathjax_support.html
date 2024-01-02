@@ -1,16 +1,21 @@
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    TeX: {
-      equationNumbers: {
-        autoNumber: "AMS"
-      }
-    },
-    tex2jax: {
-      inlineMath: [ ['$','$'], ['\\(', '\\)'] ], // If want $ $ to work
-      // inlineMath: [ ['\\(', '\\)'] ],
-      displayMath: [ ['$$','$$'] ],
-      processEscapes: true,
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<!-- https://docs.mathjax.org/en/latest/options/index.html#configuring-mathjax-1 -->
+<!-- I want to use $ $ for inline math -->
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [              // start/end delimiter pairs for in-line math
+        ['\\(', '\\)'],
+        ['$', '$']
+      ],
+      processEscapes: true,      // use \$ to produce a literal dollar sign
+      // processEnvironments: true, // process \begin{xxx}...\end{xxx} outside math mode
+      tags: 'ams',              // or 'ams' or 'all'
+      tagIndent: '0.8em',        // amount to indent tags
     }
-  });
+  };
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>

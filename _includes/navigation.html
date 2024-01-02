@@ -1,16 +1,11 @@
 <div class="navigation-wrapper">
-	<nav role="navigation" id="site-nav" class="">
-	    <ul>
-      {% for link in site.data.navigation %}
-		    {% if link.url contains 'http' %}
-		        {% assign domain = '' %}
-		        {% else %}
-		        {% assign domain = site.url %}
-		    {% endif %}
-		    <li><a href="{{ domain }}{{ link.url }}" {% if link.url contains 'http' %}target="_blank"{% endif %}>{{ link.title }}</a></li>
-		  {% endfor %}
-	    </ul>
-	</nav>
-</div><!-- /.navigation-wrapper -->
+    <nav role="navigation" id="site-nav">
+        <ul>
+            <li><a href="{{ site.url }}/">Home</a></li>
+            <li><a href="{{ site.url }}/research/">Research</a></li>
+            <li><a href="{{ site.url }}/articles/">Posts</a></li>
+            <!-- <li><a href="https://mybinder.org/v2/gh/scottstanie/scottstanie.github.io/master?filepath=notebooks/"target="_blank">Notebooks</a></li> -->
+        </ul>
+    </nav>
 
-<div class="js-menu-screen menu-screen"></div>
+</div>

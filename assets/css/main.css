@@ -1,0 +1,194 @@
+:root,
+html {
+    font-family: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif !important;
+    --icon-size: 1.5rem;
+    --max-width: 50em;
+}
+
+:root[data-theme="light"] {
+    --background: #F8F8F8;
+    --text-color: #333;
+    --strong-text-color: #000;
+    --link-color: #7e1f36;
+    --border-color: #DDD;
+}
+
+:root[data-theme="dark"] {
+    --background: #222;
+    --text-color: #DDD;
+    --strong-text-color: #FFF;
+    --link-color: #ff5680;
+    --border-color: #777;
+}
+
+body {
+    margin: 0 auto;
+    max-width: var(--max-width);
+    line-height: 1.5;
+    padding: 4em 1em;
+    background: var(--background);
+    color: var(--text-color);
+}
+
+h2 {
+    margin-top: 1em;
+    padding-top: 1em;
+}
+
+:is(h1, h2, strong) {
+    color: var(--strong-text-color);
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Articles/body */
+/* ----------------- */
+
+.entry-date {
+    /* italicize entry date for posts */
+    font-style: italic;
+}
+
+blockquote {
+    /* Add slight border around blockquotes */
+    border-left: 2px solid #69c;
+    padding-left: 0.5rem;
+}
+
+.image-container {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 90%;
+}
+
+
+/* small screens: use full width for images */
+@media (max-width: 600px) {
+    .image-container {
+        /* Make only 80% of page width */
+        max-width: 100%;
+    }
+}
+
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.caption {
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+/* Top of page / nav */
+/* ----------------- */
+.navigation-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 1rem 1rem;
+    background: var(--background);
+    color: var(--text-color);
+    border-bottom: 1px solid var(--border-color);
+    /* Make larger text for list element text */
+    font-size: 1.2rem;
+}
+
+.navigation-wrapper ul {
+    display: table;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.navigation-wrapper li {
+    /* Add slight border around list elements */
+    /* display: inline-block; */
+    text-align: center;
+    display: table-cell;
+    padding: 0.5rem 1.0rem;
+    border-radius: 0.1rem;
+    /* Set the color */
+    background-color: var(--nav-button-color);
+    border: 1px solid var(--border-color);
+}
+
+
+/* Footer stuff */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: var(--background);
+    color: var(--text-color);
+    border-top: 1px solid #DDD;
+
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+footer div {
+    padding: 0rem 1rem;
+}
+
+#theme-toggle input {
+    display: none;
+}
+
+#theme-toggle input+label:after {
+    font-size: var(--icon-size);
+    content: '🔆'
+}
+
+#theme-toggle input:checked+label:after {
+    font-size: var(--icon-size);
+    content: '🌙️'
+}
+
+
+.icon.github {
+    display: inline-block;
+    height: var(--icon-size);
+    width: auto;
+}
+
+.github.icon {
+    src: url('/assets/icons/github-mark.svg');
+    overflow: hidden;
+    max-height: 100%;
+    max-width: auto;
+}
+
+.github.icon:hover {
+    filter: invert(0.5)
+}
+
+/* Hide the logo opposite to current theme */
+[data-theme="light"] .github.icon.dark {
+    display: none;
+}
+
+[data-theme="dark"] .github.icon.light {
+    display: none;
+}
+
+/* code highlighting: from rouge site, controlled by JS for light/dark toggle */
+/* ----------------- */
+/* @import url('https://raw.githubusercontent.com/jwarby/pygments-css/master/github.css'); */
+/* @import url('https://raw.githubusercontent.com/jwarby/pygments-css/master/monokai.css'); */
