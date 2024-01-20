@@ -16,6 +16,9 @@
 </header>
 
 <body>
+  {% if page.title %}
+  <h1 class="page-heading">{{ page.title }}</h1>
+  {% endif %}
   {% if page.has_math %}
   {% include mathjax_support.html %}
   {% endif %}

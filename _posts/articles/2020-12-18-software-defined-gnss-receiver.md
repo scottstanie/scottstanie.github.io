@@ -1,7 +1,5 @@
 ---
 title: 'Making a software defined GPS receiver'
-layout: default
-categories: articles
 ---
 
 I recently finished the UT aerospace course "GNSS Signal Processing", where the goal is to create the full signal processing chain inside a GPS receiver. 

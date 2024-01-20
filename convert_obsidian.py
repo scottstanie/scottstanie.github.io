@@ -6,7 +6,35 @@ from dateutil.parser import parse
 
 import yaml
 
-posts_dir = Path(sys.argv[1])
+try:
+    posts_dir = Path(sys.argv[1])
+except IndexError:
+    print("Usage: python convert_obsidian.py <path to obsidian posts directory>")
+    sys.exit(1)
+OUT_DIR = Path("_posts/til")
+
+
+def get_jekyll_title(yaml_data: yaml.YAMLObject) -> str:
+    title = yaml_data["title"]
+    # make a safe post filename for jekyll as YYYY-mm-dd-title-with-bad-chars-stripped
+    # Trim trailing/leading space from title
+    # Convert title to lowercase and replace spaces with hyphens
+    # Also trim backticks, periods, and replace double hyphens with single hyphens
+    # Replace a leading dash with nothing
+    safe_title = re.sub(r"[^a-z0-9]+", "-", title.lower())
+    safe_title = re.sub(r"^-", "", safe_title)
+    safe_title = re.sub(r"-+$", "", safe_title)
+    safe_title = re.sub(r"[\[\]\(\)\{\}\.\'`]", "", safe_title)
+    safe_title = re.sub(r"--+", "-", safe_title)
+    safe_title = re.sub(r"^-+", "", safe_title)
+
+    # Parse out the date from the "created" field
+    created_dt = yaml_data["created"]
+    if isinstance(created_dt, str):
+        created_dt = parse(created_dt)
+    new_filename = f"{created_dt.strftime('%Y-%m-%d')}-{safe_title}.md"
+    return new_filename
+
 
 for filename in posts_dir.iterdir():
     if filename.suffix != ".md":
@@ -20,20 +48,24 @@ for filename in posts_dir.iterdir():
 
     # Parse YAML
     yaml_data = yaml.safe_load(yaml_header)
-
-    # Add title
+    # Add the original title to the YAML header
     title = filename.stem
     yaml_data["title"] = title
+
+    new_filename = get_jekyll_title(yaml_data)
+    new_path = OUT_DIR / new_filename
+
+    # Continue if we've already created this:
+    if new_path.exists():
+        print(f"Already created {new_filename}, skipping")
+        continue
+    else:
+        print(f"Creating {new_path}")
 
     # Remove the original yaml header from the content
     content = content[match.end() :]
     # Dump YAML back to string
     new_yaml_str = yaml.dump(yaml_data)
-
-    # Parse out the date from the "created" field
-    created_dt = yaml_data["created"]
-    if isinstance(created_dt, str):
-        created_dt = parse(created_dt)
 
     # Find all the Obsidian-specific links for images
     # for example:
@@ -60,21 +92,7 @@ for filename in posts_dir.iterdir():
 
     content = re.sub(obsidian_img_regex, replace_obsidian_image, content)
 
-    # make a safe post filename for jekyll as YYYY-mm-dd-title-with-bad-chars-stripped
-    # Trim trailing/leading space from title
-    # Convert title to lowercase and replace spaces with hyphens
-    # Also trim backticks, periods, and replace double hyphens with single hyphens
-    # Replace a leading dash with nothing
-    safe_title = re.sub(r"[^a-z0-9]+", "-", title.lower())
-    safe_title = re.sub(r"^-", "", safe_title)
-    safe_title = re.sub(r"-+$", "", safe_title)
-    safe_title = re.sub(r"[\[\]\(\)\{\}\.\'`]", "", safe_title)
-    safe_title = re.sub(r"--+", "-", safe_title)
-    safe_title = re.sub(r"^-+", "", safe_title)
-
-    new_filename = f"{created_dt.strftime('%Y-%m-%d')}-{safe_title}.md"
-
     # Write new file
-    with open(new_filename, "w") as f:
+    with open(new_path, "w") as f:
         f.write("---\n" + new_yaml_str + "---\n")
         f.write(content)

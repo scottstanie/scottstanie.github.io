@@ -1,7 +1,5 @@
 ---
 title: 'Connecting the Shift and Differential Operator to Dynamical Systems'
-layout: default
-categories: articles
 has_math: true
 ---
 

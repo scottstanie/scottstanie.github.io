@@ -1,7 +1,5 @@
 ---
 title: 'MATLAB vs Python Indexing for 3D data'
-layout: default
-categories: articles
 ---
 
 I thought I had learned well enough what row-major and column-major order were [from my last confusion]({% post_url /articles/2018-05-20-python-matlab-binary %}), but I didn't follow what the implications would be when moving from 2 indices to 3.

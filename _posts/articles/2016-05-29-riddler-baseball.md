@@ -1,7 +1,5 @@
 ---
 title: 'The Riddler- Baseball Division Champs'
-layout: default
-categories: articles
 has_math: true
 ---
 

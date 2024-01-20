@@ -1,7 +1,5 @@
 ---
 title: 'MATLAB vs Python binary storage of matrices'
-layout: default
-categories: articles
 ---
 
 I recently ran into some confusion when I had to translate some MATLAB scripts that read from and wrote to binary files.

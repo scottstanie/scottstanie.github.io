@@ -1,8 +1,5 @@
 ---
-layout: default
-title: Research
 ---
-
 
 My research uses satellite radar interferometry [(InSAR)](https://www.usgs.gov/centers/ca-water-ls/science/interferometric-synthetic-aperture-radar-insar?qt-science_center_objects=0#qt-science_center_objects) to measure millimeter-level changes to Earth's surface over time.
 InSAR has a huge variety of [geophysical applications](https://en.wikipedia.org/wiki/Interferometric_synthetic-aperture_radar#Applications), like mapping ground deformation due to the 2018 eruption of Kilauea:
