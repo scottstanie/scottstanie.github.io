@@ -15,6 +15,12 @@ Staniewicz, S., Chen, J., Lee, H., Olson, J., Savvaidis, A., Reedy, R., Breton, 
 Conferences
 -----------
 
+Staniewicz, S.J., Fattahi, H. and Mirzaee, S., 2023. Automated Near-Real-Time Estimation of Surface Displacement Over North America Using Sentinel-1. 2023 Fall Meeting, American Geophysical Union, Abstract G24B-10. San Francisco, CA.
+
+Fattahi, H., Staniewicz, S.J., Jung, J., Brancato, V., Shiroma, G.H., Jeong, S. and Mirzaee, S., Monitoring the dynamics of earth surface with the national and global NASA’s SAR products from NISAR and Sentinel-1. AGU23. 2023 Fall Meeting, American Geophysical Union, Abstract G21A-01. San Francisco, CA.
+
+Fattahi, H., Gunter, G., Hawkins, B., Burns, R., Brancato, V., Shiroma, G.H., Ghaemi, H., Huang, B., Jung, J., Huang, X. and Niemoeller, S.C., ISCE3: InSAR Scientific Computing Environment Enhanced Edition. 2023 Fall Meeting, American Geophysical Union, Abstract G23C-0488. San Francisco, CA.
+
 Staniewicz, S.J., Mirzaee, S., Fattahi, H., Detecting Persistent and Distributed Scatterer Changes in Geocoded Single Look Complex Images for Near-Real-Time InSAR Processing, Fringe Workshop 2023, Leeds, UK.
 
 Staniewicz, S.J., Mirzaee, S., Fattahi, H., Near Real Time Estimation of Unbiased Ground Displacement Time-Series With InSAR Big Data, Fringe Workshop 2023, Leeds, UK.
