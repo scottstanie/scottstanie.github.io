@@ -11,17 +11,15 @@ plugins:
 
 # Make the default layout the "default"
 defaults:
-  -
-    scope:
-      path: "_posts"
-    values:
-      layout: "default"
-    scope:
+  - scope:
       path: ""
       type: "pages"
     values:
       layout: "default"
-
+  - scope:
+      path: "_posts"
+    values:
+      layout: "default"
 
 include: [".htaccess"]
 exclude: [ "Gemfile", "Gemfile.lock", "README.md"]

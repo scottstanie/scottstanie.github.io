@@ -9,7 +9,7 @@ title: How SNAPHU uses the number of looks
 
 Varying the number of looks parameter in SNAPHU has a surprisingly large effect on the output, especially the connected component output. Why is that?
 
-There's two stages, which seem simple, even though I can't actually map them to a single equation in the referenced paper [1].
+SNAPHU uses correlation in two places; both are simple equations, but I can't actually map them to a single equation in the provided reference (Touzi, 1999).
 
 1. Calculate a $\rho_0$:
 
@@ -18,7 +18,7 @@ $$
 $$
 where $c_1 = 1.3, c_2 = 0.14$ are constants (whose defaults in SNAPHU I'm using here) and $L$ is the number of looks (probably the [effective number of SAR looks]()).
 
-Then using this value, from the [full configuration manual](https://web.stanford.edu/group/radar/softwareandlinks/sw/snaphu/snaphu.conf.full)
+2. Using $\rho_{0}$, compute a low correlation threshold (from [full configuration manual](https://web.stanford.edu/group/radar/softwareandlinks/sw/snaphu/snaphu.conf.full))
 
 > Values smaller than the threshold `rhominfactor`*`rho0` are assumed to
 > come from zero statistical correlation because of estimator bias (double).
@@ -50,5 +50,3 @@ Worse still, you would have no chance of guessing where the connected components
 
 
 
-## References
-1. [[@Touzi1999CoherenceEstimationSAR]]
