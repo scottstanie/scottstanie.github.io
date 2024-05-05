@@ -68,24 +68,26 @@ Type '!multi' to enter multiple lines, then '!end' to finish
 ```
 
 >  I have some python code where the multiprocessing is hanging ONLY with imap_unordered:
- ```python
- # Create a pool and dispatch
- with Pool(processes=worker_count, maxtasksperchild=1) as p:
-	 # mp_tasks = p.map(wrap_solve_mcf, uw_inputs(range(nruns)))  # runs fine!
-	 mp_tasks = p.imap_unordered(wrap_solve_mcf, uw_inputs(range(nruns))) # FAILS!
 
- # runs fine!
- # p = Pool(processes=worker_count, maxtasksperchild=1)
- # mp_tasks = p.imap_unordered(wrap_solve_mcf, uw_inputs(range(nruns)))
- # p.close()
+```python
+# Create a pool and dispatch
+with Pool(processes=worker_count, maxtasksperchild=1) as p:
+    # mp_tasks = p.map(wrap_solve_mcf, uw_inputs(range(nruns)))  # runs fine!
+    mp_tasks = p.imap_unordered(wrap_solve_mcf, uw_inputs(range(nruns))) # FAILS!
+
+# runs fine!
+# p = Pool(processes=worker_count, maxtasksperchild=1)
+# mp_tasks = p.imap_unordered(wrap_solve_mcf, uw_inputs(range(nruns)))
+# p.close()
 
 ```
 > Why is that? what is different?
 
 
-The answer from Claude:
 
-<details>
+The answer from Claude was shockingly coherent and helpful (reproduced with formatting):
+
+--------
 
 The difference between `map` and `imap_unordered` is in how they return the results and how the main process interacts with the worker processes.
 
@@ -127,6 +129,3 @@ In this case, you explicitly close the pool after consuming the results from the
 Remember to handle the results appropriately based on your requirements, whether you need them in a specific order or not.
 
 
-</details>
-
-Shockingly coherent and helpful.
