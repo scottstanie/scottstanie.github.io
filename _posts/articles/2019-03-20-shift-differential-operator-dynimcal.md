@@ -26,7 +26,7 @@ The theorem goes like this:
 >
 
 Despite the simplicity, he pointed out it was his favorite because it has given
-many engineering students he's taught a big "aha" moment, and I definitely fell into that category.
+many engineering students he's taught a big "aha" moment. I definitely fell into that category.
 
 It's relatively easy prove (as far as math theorems go).
 To clarify what $e^D$ means, we will use the same definition that makes \$e^x\$
@@ -77,32 +77,35 @@ For continuous time system, with \$x\$ is being a scalar function of \$t$,
 the system looks like:
 
 $$
-\frac{dx}{dt} = A x(t)
+\frac{dx}{dt} = a x(t)
 $$
 
-This is stable if \$A\$ has real part less than 0, \$Re(A) < 0\$.
-The stable region for this system is in **the left half of the complex plane**:
-Alternatively, if \$x\$ is a vector and \$A\$ a matrix, the eigenvalues of \$A\$
+This is stable if \$a\$ has real part less than 0, \$Re(a) < 0\$.
+The stable region for this system is in **the left half of the complex plane**.
+
+Alternatively, if \$\mathbf{x}\$ is a vector and \$A\$ a matrix, the eigenvalues of \$A\$
 must all be in the left half of the plane.
 
-
-Once discrete systems are introduced,
+On the other hand, for a discrete system, the dynamics are:
 
 $$
-x[k+1] = A x[k]
+x[k+1] = a x[k]
 $$
 
-stability occurs if the magnitude of A (which could be complex),
-is less than one (or, if A is a matrix, the eigenvalues all must have
+Here, stability occurs if the magnitude of A (which could be complex),
+is less than one (or, if $a$ is a matrix $A$, the eigenvalues all must have
   magnitude less than one).
 So the stable region for this system is **within the unit circle**.
 
 How do these connect?
+
 Usually the justification is just to solve each of these differential equations
 and see what comes out:
-The continuous time solution looks like \$C_0 e^{At}\$, so any real part of \$A\$ above
+
+- The continuous time solution looks like \$C_0 e^{At}\$, so any real part of \$A\$ above
 zero makes this go to infinity as \$t \rightarrow \infty \$.
-Likewise, you solve the discrete version by repeatedly multiplying the starting
+
+- Likewise, you solve the discrete version by repeatedly multiplying the starting
 \$x[0]\$ by \$A\$ until you get something like \$x[n] = A^n x[0] \$.
 Thus, an \$A\$ that has absolute value above 1 will go to infinity as n grows.
 
@@ -130,7 +133,4 @@ in the plane \$a + bi \$, transform it to \$ e^{a + bi}\$, and see where it land
 
 {% include image.html url="/images/lhp_animation.gif" description="Demonstration with manim" height="420" width="600" %}
 
-
-Thus, all stable points that evolve by the \$ D\$ operator (in continuous time)
- are in the same region as stable points that evolve by the \$E\$ operator
- (in discrete time) once they're exponentiated.  
+Thus, all stable points that evolve by the \$ D\$ operator (in continuous time) are in the same region as stable points that evolve by the \$E\$ operator (in discrete time) once they're exponentiated.  
