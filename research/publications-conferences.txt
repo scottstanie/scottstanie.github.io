@@ -19,6 +19,10 @@ Staniewicz, S., Chen, J., Lee, H., Olson, J., Savvaidis, A., Reedy, R., Breton, 
 Conferences
 -----------
 
+*Bekaert, B., Staniewicz, S., Bato, M. G., Agram  P., ... (2025). Free and Open-Access OPERA Surface Motion Data over North America: A Geohazard Perspective. Living Planet Symposium, Vienna, Austria.
+
+*Williams, F., Bekaert, D., Anderson, A., ... , Staniewicz, S. (2025). ASF’s Displacement Portal: Enhancing Access To The OPERA-DISP Dataset. Living Planet Symposium, Vienna, Austria.
+
 *Staniewicz, S.J., Fattahi, H. and Mirzaee, S., Oliver-Cabrera, T., Gunter, G., Havazli, E, 2024. Algorithmic advances for the OPERA North American Surface Displacement Product from Sentinel-1 imagery. 2024 Fall Meeting, American Geophysical Union, Abstract G33C-04. Washington, D.C.
 
 Joshil, S, Lavalle, M., Seker, I., Loria, E., Staniewicz, S.J., 2024. Tomographic SAR Simulation Studies for Mapping Three-Dimensional Vegetation Structure and Underlying Topography. 2024 Fall Meeting, American Geophysical Union, Abstract GC51V-0266. Washington, D.C.
@@ -33,7 +37,7 @@ Fattahi, H., Gunter, G., Hawkins, B., Burns, R., Brancato, V., Shiroma, G.H., Gh
 
 Staniewicz, S.J., Mirzaee, S., Fattahi, H., Detecting Persistent and Distributed Scatterer Changes in Geocoded Single Look Complex Images for Near-Real-Time InSAR Processing, Fringe Workshop 2023, Leeds, UK.
 
-Staniewicz, S.J., Mirzaee, S., Fattahi, H., Near Real Time Estimation of Unbiased Ground Displacement Time-Series With InSAR Big Data, Fringe Workshop 2023, Leeds, UK.
+*Staniewicz, S.J., Mirzaee, S., Fattahi, H., Near Real Time Estimation of Unbiased Ground Displacement Time-Series With InSAR Big Data, Fringe Workshop 2023, Leeds, UK.
 
 Staniewicz, S. J., Mirzaee, S., Fattahi, H., Persistent Scatterer Selection For Wide-Area Near-Real-Time Insar Processing, IEEE International Geoscience and Remote Sensing Symposium 2023, Pasadena, CA.
 
