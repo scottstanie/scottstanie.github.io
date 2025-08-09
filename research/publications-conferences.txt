@@ -1,6 +1,8 @@
 Journal Publications
 --------------------
 
+Staniewicz, S. J., & Chen, J. (2025). Automatic detection of InSAR deformation and tropospheric noise features using computer vision: A case study over West Texas. Journal of Geophysical Research: Solid Earth, 130(7), e2024JB029614.
+
 Buzzanga, B., Govorcin, M., Kremer, F., Schubert, J. E., Bekaert, D. P. S., Schaeffer, B., ... & Staniewicz, S. (2025). Satellite-based vertical land motion for infrastructure monitoring: a prototype roadmap in Greater Houston, Texas. Scientific Reports, 15(1), 1-12.
 
 Staniewicz, S. J., Mirzaee, S., Gunter, G. M., Oliver-Cabrera, T., Havazli, E., & Fattahi, H. (2024). Dolphin: A Python package for large-scale InSAR PS/DS processing. Journal of Open Source Software, 9(103), 6997.
@@ -8,8 +10,6 @@ Staniewicz, S. J., Mirzaee, S., Gunter, G. M., Oliver-Cabrera, T., Havazli, E., 
 Hennings, P., Staniewicz, S., Smye, K., Chen, J., Horne, E., Nicot, J. P., Ge, J., Reedy, R., & Scanlon, B. (2023). Development of complex patterns of anthropogenic uplift and subsidence in the Delaware Basin of West Texas and southeast New Mexico, USA. Science of The Total Environment, 166367.
 
 Lee, H. P., Staniewicz, S., Chen, J., Hennings, P., & Olson, J. E. (2023). Subsurface deformation monitoring with InSAR and elastic inversion modeling in west Texas. Geoenergy Science and Engineering, 212299.
-
-Staniewicz, S., Chen, J. Automatic Detection of InSAR Surface Deformation Signals in the Presence of Severe Tropospheric Noise. IEEE Transactions on Geoscience and Remote Sensing, In Review.
 
 Horne, E. A., Hennings, P. H., Smye, K. M., Staniewicz, S., Chen, J., & Savvaidis, A. (2022). Structural characteristics of shallow faults in the Delaware Basin. Interpretation, 10(4), T807-T835.
 
