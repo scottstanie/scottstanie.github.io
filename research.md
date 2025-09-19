@@ -8,15 +8,15 @@ InSAR has a huge variety of [geophysical applications](https://en.wikipedia.org/
 
 At NASA’s Jet Propulsion Laboratory, I led the algorithm development team for the [OPERA Sentinel-1 Surface Displacement product](https://www.jpl.nasa.gov/go/opera/products/), the first continental-scale InSAR ground motion product over North America.
 
+{% include image.html url="/images/insar/opera-portal-overview.jpg" height=600 %}
+
+Shown above is a screenshot of the [Displacement Portal](https://displacement.asf.alaska.edu/), built by the Alaska Satellite Facility to browse the Displacement Products. The portal displays a "filtered" version of the displacement to highlight local displacement signals, like the [ongoing deformation at Edgecumbe Volcano](https://displacement.asf.alaska.edu/#/?dispOverview=VEL&zoom=9.530&center=-135.765,56.730&series=POINT(-135.71266187808317%2057.04575563150868)--1--Point--f66d0b87-ff12-40ec-ae21-8d9668bd3b59--Series::POINT(-135.73084261279834%2057.06092404288884)--2--Point--71b35a3f-e043-4cc8-8872-e9df32b175b1--Series&start=2017-05-26T06:54:04Z&end=2024-06-06T06:54:43Z) in Alaska:
+
+{% include image.html url="/images/insar/opera-portal-edcumbe-uplift.jpg" height=600 %}
+
 During my Ph.D., I used InSAR to monitor surface changes over the Permian Basin in West Texas, the largest oil-producing region in the United States. To help mitigate the rising number of induced earthquakes, I worked with geologists and seismologists to deliver observational datasets and help understand the causes of the earthquakes.
 
-[You can find my full publication list on my Google Scholar profile.](https://scholar.google.com/citations?user=TC7VtDsAAAAJ&hl=en)
-
-## Open Source Software
-
-I am an active contributor to the open source InSAR community. For the OPERA project, I developed the [dolphin](https://github.com/isce-framework/dolphin) library, which is a Python package implementing advanced multi-temporal "PS/DS" (combined Persistent Scatterer/Distributed Scatterer) processing and phase linking algorithms. This library is the core of software used to generate the OPERA North America Surface Displacement product.
-
-I am also a maintainer or contributor to [dozens of other open source packages on GitHub](https://github.com/scottstanie).
+[You can find my full publication list on my Google Scholar profile,](https://scholar.google.com/citations?user=TC7VtDsAAAAJ&hl=en) or browse my [open source software](/software/) associated with my research.
 
 ## Research talks available online
 
