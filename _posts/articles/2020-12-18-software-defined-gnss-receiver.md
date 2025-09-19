@@ -15,7 +15,7 @@ I found a [$10 GPS patch antenna](https://www.amazon.com/gp/product/B07WFHNG73/)
 After finishing the final exam (where we were given data to acquire and track satellites from a mystery dataset), I started searching for what changes would be needed to work with my RTL-SDR.
 It only took some minor struggling to figure out what type of data the <code>rtl_sdr</code> command outputs ([for the curious, it's ibyte data](https://gnss-sdr.org/docs/tutorials/understanding-data-types/)).
 
-{% include image.html url="/images/rtlsdr_data_outside2.png" description="Collecting the data, avoiding the stares of neighbors" %}
+{% include image.html url="/images/rtlsdr_data_outside2.jpeg" description="Collecting the data, avoiding the stares of neighbors" %}
 
 I went outside to collect a minute of data, then held my breath as my acquistion code ran and tried to pick out any satellites in the sky.
 
@@ -24,10 +24,10 @@ I went outside to collect a minute of data, then held my breath as my acquistion
 To my surprise, on the first (correctly formatted) run of the code, it picked out 8 satellites.
 It seemed like it was too many to be a fluke, but I had to check what was really there:
 
-{% include image.html url="/images/trimble_skyview.png" description="GPS satellites overhead (http://www.gnssplanning.com/#/skyplot)" %}
+{% include image.html url="/images/rtlsdr_trimble_skyview.jpg" description="GPS satellites overhead (http://www.gnssplanning.com/#/skyplot)" %}
 
 I had picked out 8 of the 10 satellites sitting over Austin at the time, and the two low-elevation misses were probably due to my bad data-collection spot near a building.
 
 Once I had written the final (tedious) part to decode the navigation bits and get the satellite times (skipping a bit of the orbital calculations from some internet help), my final position was not so bad for the hacky code that produced it: 
 
-{% include image.html url="/images/rtlsdr_nav_solution2.png" description="A near hit: ~3-4 meters away from my gray squat spot" %}
+{% include image.html url="/images/rtlsdr_nav_solution2.jpg" description="A near hit: ~3-4 meters away from my gray squat spot" %}
