@@ -9,6 +9,8 @@ html {
     --background: #F8F8F8;
     --text-color: #333;
     --strong-text-color: #000;
+    --caption-color: #363636;
+    --caption-size: 0.9rem;
     --link-color: #7e1f36;
     --border-color: #DDD;
 }
@@ -17,6 +19,8 @@ html {
     --background: #222;
     --text-color: #DDD;
     --strong-text-color: #FFF;
+    --caption-color: #e0e0e0;
+    --caption-size: 0.9rem;
     --link-color: #ff5680;
     --border-color: #777;
 }
@@ -84,11 +88,12 @@ blockquote {
     margin: 0 auto;
 }
 
-.caption {
+figcaption {
     text-align: center;
     margin-top: 10px;
+    color: var(--caption-color);
+    font-size: var(--caption-size);
 }
-
 
 /* Top of page / nav */
 /* ----------------- */

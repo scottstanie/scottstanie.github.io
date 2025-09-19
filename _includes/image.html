@@ -2,5 +2,7 @@
   <img loading="lazy" src="{{ include.url }}" alt="{{ include.description }}" {% if include.width %}
     width="{{ include.width }}" {% endif %} {% if include.height %} height="{{ include.height }}" {% endif %}
     class="responsive-image" />
-  <div class="caption">{{ include.description }}</div>
+  {% if include.caption %}
+  <figcaption><em>{{ include.caption }}</em></figcaption>
+  {% endif %}
 </div>
