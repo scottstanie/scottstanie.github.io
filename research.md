@@ -27,6 +27,8 @@ Shown above is a screenshot of the [Displacement Portal](https://displacement.as
 %}
 
 During my Ph.D., I used InSAR to monitor surface changes over the Permian Basin in West Texas, the largest oil-producing region in the United States. To help mitigate the rising number of induced earthquakes, I worked with geologists and seismologists to deliver observational datasets and help understand the causes of the earthquakes.
+You can read reporting using my InSAR data on the recent implications [from Bloomberg](https://www.bloomberg.com/graphics/2025-permian-basin-geyser/) ([video here](https://www.bloomberg.com/news/videos/2025-09-16/the-texas-oil-industry-s-toxic-water-problem-video)).
+
 
 [You can find my full publication list on my Google Scholar profile,](https://scholar.google.com/citations?user=TC7VtDsAAAAJ&hl=en) or browse my [open source software](/software/) associated with my research.
 
