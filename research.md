@@ -44,10 +44,3 @@ I presented two talks at the EarthScope 2025 ISCE Short Course:
 ### 2023 FRINGE (University of Leeds, UK)
 
 [Near-real-time estimation of ground displacement time series with InSAR](https://www.youtube.com/live/MucdZ6auOd8?t=3639s)
-
-<!-- Below is an interactive map to play around with the cumulative vertical deformation between November 2014 and January 2019 from our paper:
-
->Staniewicz et al., "InSAR reveals complex surface deformation patterns over an 80,000 square kilometer oil-producing region in the Permian Basin", Geophysical Research Letters (2020): 2020GL090151 
-
-The red areas show uplift (up to ~7cm), blue areas show subsidence (down to ~13 cm), and dark red dots are the locations of the [TexNet](https://www.beg.utexas.edu/texnet/catalog) detected earthquakes in 2018.
-You can also download all the deformation data products shown in the paper [at the Texas data repository](https://doi.org/10.18738/T8/AVDBOJ)
