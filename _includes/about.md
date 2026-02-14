@@ -5,4 +5,4 @@ Before that, I was a Signal Analysis Engineer at NASA <a href="https://www.jpl.n
 I finished my Ph.D. at UT Austin in 2022 in the <a href="http://sites.utexas.edu/annchen/" target="_blank">radar interferometry group</a>, part of the <a href="https://www.csr.utexas.edu/" target="_blank">Center for Space Research</a>.
 You can read more about my <a href="/research">research here</a>.
 
-The best way to get in contact with me is via [email](mailto:scott.stanie@gmail.com), but you can also find me on [LinkedIn](www.linkedin.com/in/scott-staniewicz-08579848) or [GitHub](https://github.com/scottstanie).
+The best way to get in contact with me is via [email](mailto:scott.stanie@gmail.com), but you can also find me on [LinkedIn](https://www.linkedin.com/in/scott-staniewicz-08579848) or [GitHub](https://github.com/scottstanie).
