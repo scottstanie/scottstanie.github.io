@@ -1,4 +1,5 @@
 ---
+category: articles
 title: 'MATLAB vs Python binary storage of matrices'
 ---
 

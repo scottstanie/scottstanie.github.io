@@ -4,7 +4,7 @@ search: true
 url: https://scottstaniewicz.com
 
 # Jekyll configuration
-permalink:   /:categories/:title/
+permalink:   /:title/
 
 plugins:
   - jekyll-sitemap
@@ -15,11 +15,11 @@ defaults:
       path: ""
       type: "pages"
     values:
-      layout: "default"
+      layout: "sidebar"
   - scope:
       path: "_posts"
     values:
-      layout: "default"
+      layout: "sidebar"
 
 include: [".htaccess"]
 exclude: [ "Gemfile", "Gemfile.lock", "README.md"]

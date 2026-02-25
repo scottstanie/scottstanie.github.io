@@ -1,4 +1,5 @@
 ---
+category: til
 created: 2024-04-21T18:48
 tags:
 - python

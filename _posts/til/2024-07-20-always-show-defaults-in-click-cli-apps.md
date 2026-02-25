@@ -1,4 +1,5 @@
 ---
+permalink: /til/always-show-defaults-in-click-cli-apps/
 category: til
 created: 2024-07-20T12:22
 tags:

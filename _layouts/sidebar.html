@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: " en-US" }}">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>{{ page.title }} - {{ site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/highlight-github.css' | relative_url }}" id="light-theme-code-style">
+  <link rel="stylesheet" href="{{ '/assets/css/highlight-monokai.css' | relative_url }}" id="dark-theme-code-style"
+    disabled>
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+</head>
+
+<body class="sidebar-layout">
+  <div class="site-wrapper">
+    <aside class="sidebar">
+      {% include sidebar-nav.html %}
+    </aside>
+    <main class="main-content">
+      {% if page.title %}
+      <h1 class="page-heading">{{ page.title }}</h1>
+      {% endif %}
+      {% if page.has_math %}
+      {% include mathjax_support.html %}
+      {% endif %}
+      {{ content }}
+      <footer class="sidebar-footer">
+        <div id="theme-toggle">
+          <input type="checkbox" id="theme-toggle" />
+          <label for="theme-toggle"></label>
+        </div>
+      </footer>
+    </main>
+  </div>
+</body>
+
+<script>
+  let toggle = document.getElementById("theme-toggle");
+  function toggleCodeStyle(isDark) {
+    document.querySelector('#light-theme-code-style').disabled = isDark
+    document.querySelector('#dark-theme-code-style').disabled = !isDark
+  }
+
+  const storedTheme = localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  if (storedTheme) {
+    document.documentElement.setAttribute('data-theme', storedTheme)
+    toggleCodeStyle(storedTheme === "dark")
+  }
+
+  toggle.onclick = function () {
+    const currentTheme = document.documentElement.getAttribute("data-theme")
+    const targetTheme = currentTheme === "dark" ? "light" : "dark"
+    const isDark = targetTheme === "dark"
+    document.documentElement.setAttribute('data-theme', targetTheme)
+    localStorage.setItem('theme', targetTheme)
+    document.querySelector('#theme-toggle input').checked = isDark
+    toggleCodeStyle(isDark)
+  };
+</script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4f145d9745ce43e7873939edac1b0495"}'></script><!-- End Cloudflare Web Analytics -->
+
+</html>

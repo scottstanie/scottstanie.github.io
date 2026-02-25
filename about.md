@@ -1,6 +1,6 @@
 ---
 title: About Me
-layout: default
+layout: sidebar
 ---
 
 <!-- Just redirect to the content from the index -->

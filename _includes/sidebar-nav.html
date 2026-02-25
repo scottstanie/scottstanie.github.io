@@ -1,0 +1,7 @@
+<nav class="tree-nav" role="navigation">
+  <a href="/" class="tree-root">scottstaniewicz.com</a>
+  <div class="tree-item"><span class="t">├──</span> <a href="/" {% if page.url == '/' %}class="active"{% endif %}>About</a></div>
+  <div class="tree-item"><span class="t">├──</span> <a href="/research/" {% if page.url == '/research/' %}class="active"{% endif %}>Research</a></div>
+  <div class="tree-item"><span class="t">├──</span> <a href="/software/" {% if page.url == '/software/' %}class="active"{% endif %}>Software</a></div>
+  <div class="tree-item"><span class="t">└──</span> <a href="/articles/" {% if page.url contains '/articles' or page.category == 'articles' or page.category == 'til' or page.category == 'consumed' or page.category == 'notes' %}class="active"{% endif %}>Posts</a></div>
+</nav>

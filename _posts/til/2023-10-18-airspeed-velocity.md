@@ -6,6 +6,7 @@ tags:
 - python
 - tools
 title: Airspeed Velocity
+category: til
 ---
 
 ## Benchmarking with `asv`

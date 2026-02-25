@@ -1,4 +1,5 @@
 ---
+category: articles
 title: 'Making a software defined GPS receiver'
 ---
 

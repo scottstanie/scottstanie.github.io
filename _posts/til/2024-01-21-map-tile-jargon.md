@@ -1,4 +1,5 @@
 ---
+permalink: /til/map-tile-jargon/
 category: til
 created: 2024-01-21T17:50
 tags:

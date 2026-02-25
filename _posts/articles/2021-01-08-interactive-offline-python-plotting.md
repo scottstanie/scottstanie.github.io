@@ -1,4 +1,5 @@
 ---
+category: articles
 title: 'Offline Interactive Plotting with Python in 2021'
 has_math: true
 ---

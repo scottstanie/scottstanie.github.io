@@ -1,4 +1,5 @@
 ---
+category: articles
 created: 2023-03-03 08:48:00
 has_math: 'true'
 tags:

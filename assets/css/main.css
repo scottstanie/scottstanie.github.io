@@ -193,6 +193,187 @@ footer div {
     display: none;
 }
 
+/* Post filters */
+/* ----------------- */
+.post-filters {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.filter-btn {
+    padding: 0.25rem 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    font-size: 0.85rem;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.filter-btn:hover {
+    border-color: var(--link-color);
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+.filter-btn.active {
+    background: var(--link-color);
+    border-color: var(--link-color);
+    color: var(--background);
+}
+
+.entry-category {
+    font-size: 0.75rem;
+    color: var(--caption-color);
+    margin-left: 0.5rem;
+}
+
+/* Fleeting notes stream */
+/* ----------------- */
+.fleeting-stream hr {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 2rem 0;
+}
+
+.fleeting-entry time {
+    font-style: italic;
+    color: var(--caption-color);
+    font-size: 0.9rem;
+}
+
+.fleeting-entry h3 {
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Sidebar layout */
+/* ----------------- */
+body.sidebar-layout {
+    max-width: none;
+    padding: 0;
+    margin: 0;
+}
+
+.site-wrapper {
+    display: flex;
+    min-height: 100vh;
+    overflow: hidden;
+    width: 100%;
+}
+
+.sidebar {
+    width: 260px;
+    flex-shrink: 0;
+    padding: 2em 1em 2em 1.5em;
+    border-right: 1px dashed var(--border-color);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+    max-width: var(--max-width);
+    padding: 4em 2em;
+}
+
+.sidebar-footer {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0 0;
+}
+
+/* Tree navigation */
+.tree-nav {
+    font-size: 0.85rem;
+    line-height: 1.8;
+}
+
+.tree-item .t {
+    font-family: "IBM Plex Mono", "Menlo", monospace;
+    font-size: 0.75rem;
+}
+
+.tree-root {
+    font-weight: bold;
+    color: var(--strong-text-color);
+    display: block;
+    margin-bottom: 0.25em;
+}
+
+.tree-item {
+    white-space: nowrap;
+}
+
+.tree-item .t {
+    color: var(--border-color);
+    user-select: none;
+}
+
+.tree-item a {
+    color: var(--text-color);
+}
+
+.tree-item a:hover {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+.tree-item a.active {
+    color: var(--link-color);
+    font-weight: bold;
+}
+
+/* Collapsible tree sections */
+.tree-details {
+    margin: 0;
+    padding: 0;
+}
+
+.tree-details summary {
+    list-style: none;
+    cursor: pointer;
+}
+
+.tree-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.tree-details summary::marker {
+    display: none;
+    content: "";
+}
+
+/* Mobile: sidebar collapses to top */
+@media (max-width: 768px) {
+    .site-wrapper {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+        border-right: none;
+        border-bottom: 1px dashed var(--border-color);
+        padding: 1em 1em;
+        overflow-y: visible;
+    }
+
+    .main-content {
+        padding: 2em 1em;
+    }
+
+    .tree-nav {
+        font-size: 0.8rem;
+        line-height: 1.6;
+    }
+}
+
 /* code highlighting: from rouge site, controlled by JS for light/dark toggle */
 /* ----------------- */
 /* @import url('https://raw.githubusercontent.com/jwarby/pygments-css/master/github.css'); */

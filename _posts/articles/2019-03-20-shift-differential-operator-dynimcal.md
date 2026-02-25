@@ -1,4 +1,5 @@
 ---
+category: articles
 title: 'Connecting the Shift and Differential Operator to Dynamical Systems'
 has_math: true
 ---

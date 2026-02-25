@@ -1,4 +1,5 @@
 ---
+category: til
 created: 2023-10-02 16:39:00
 tags:
 - software

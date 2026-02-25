@@ -1,4 +1,5 @@
 ---
+category: articles
 title: 'The Riddler- Baseball Division Champs'
 has_math: true
 ---

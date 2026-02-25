@@ -1,4 +1,5 @@
 ---
+category: articles
 title: 'MATLAB vs Python Indexing for 3D data'
 ---
 
