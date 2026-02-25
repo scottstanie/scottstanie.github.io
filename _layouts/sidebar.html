@@ -24,6 +24,12 @@
       {% include mathjax_support.html %}
       {% endif %}
       {{ content }}
+      {% if page.previous or page.next %}
+      <nav class="post-nav">
+        {% if page.next %}<a class="post-nav-prev" href="{{ page.next.url }}">&larr; {{ page.next.title }}</a>{% endif %}
+        {% if page.previous %}<a class="post-nav-next" href="{{ page.previous.url }}">{{ page.previous.title }} &rarr;</a>{% endif %}
+      </nav>
+      {% endif %}
       <footer class="sidebar-footer">
         <div id="theme-toggle">
           <input type="checkbox" id="theme-toggle" />

@@ -193,6 +193,28 @@ footer div {
     display: none;
 }
 
+/* Post prev/next navigation */
+/* ----------------- */
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9rem;
+}
+
+.post-nav-prev,
+.post-nav-next {
+    max-width: 45%;
+}
+
+.post-nav-next {
+    margin-left: auto;
+    text-align: right;
+}
+
 /* Post filters */
 /* ----------------- */
 .post-filters {
