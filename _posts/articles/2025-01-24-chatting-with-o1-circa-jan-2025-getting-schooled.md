@@ -10,7 +10,7 @@ title: Chatting with o1 circa Jan. 2025 - Getting schooled
 
 See Chatting with Claude circa November 2024 - A smart colleague emerges
 
-I just had a conversation with ChatGPT o1 ("A Toeplitz correlation matrix with 1s and 0s is impossible"), which left me somewhere between awe and worry (Others have called this an ["Oh Fuck" moment](https://ghuntley.com/oh-fuck/)). 
+I just had a conversation with ChatGPT o1 which left me somewhere between awe and worry (Others have called this an ["Oh Fuck" moment](https://ghuntley.com/oh-fuck/)).
 
 Before the conversation, I had a little experiment in my head about InSAR, which I was pretty sure would prove my intuition correct. I finally started to code it up last night. Then, before I got to the actual analysis stage, I got an unexpected linear algebra error, 3 steps before I thought I've be plotting results, showing that the premise of this though experiment is wrong.
 

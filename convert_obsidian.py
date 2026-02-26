@@ -37,12 +37,42 @@ def get_jekyll_filename(yaml_data: dict) -> str:
     return f"{created_dt.strftime('%Y-%m-%d')}-{safe_title}.md"
 
 
-def strip_wikilinks(content: str) -> str:
-    """Convert [[wikilinks]] to plain text and [[link|alias]] to alias."""
-    # [[link|display text]] -> display text
-    content = re.sub(r"\[\[([^\]]*?)\|([^\]]*?)\]\]", r"\2", content)
-    # [[link]] -> link
-    content = re.sub(r"\[\[([^\]]*?)\]\]", r"\1", content)
+def build_post_title_index() -> dict[str, str]:
+    """Build a mapping of post title (lowercase) -> URL from existing Jekyll posts."""
+    index = {}
+    for f in Path("_posts").rglob("*.md"):
+        text = f.read_text()
+        match = re.search(r"^---\n(.*?)\n---", text, re.DOTALL)
+        if not match:
+            continue
+        yaml_data = yaml.safe_load(match.group(1))
+        title = yaml_data.get("title", "")
+        # Use explicit permalink if set, otherwise derive from filename
+        if "permalink" in yaml_data:
+            url = yaml_data["permalink"]
+        else:
+            slug = re.sub(r"^\d{4}-\d{2}-\d{2}-", "", f.stem)
+            url = f"/{slug}/"
+        index[title.lower()] = (title, url)
+    return index
+
+
+def resolve_wikilinks(content: str, post_index: dict[str, str]) -> str:
+    """Convert [[wikilinks]] to markdown links when a matching post exists."""
+
+    def _replace_wikilink(match: re.Match[str]) -> str:
+        target = match.group(1)
+        display = match.group(2) or target
+        display = display.lstrip("|")
+
+        lookup = target.lower()
+        if lookup in post_index:
+            title, url = post_index[lookup]
+            return f"[{display}]({url})"
+        return display
+
+    # [[link|display text]] and [[link]]
+    content = re.sub(r"\[\[([^\]\|]+)(\|[^\]]*)?\]\]", _replace_wikilink, content)
     return content
 
 
@@ -69,7 +99,7 @@ def replace_obsidian_images(content: str, vault_dir: Path) -> str:
     return re.sub(obsidian_img_regex, _replace, content)
 
 
-def convert_file(filepath: Path, out_dir: Path, category: str, vault_dir: Path, *, dry_run: bool = False) -> bool:
+def convert_file(filepath: Path, out_dir: Path, category: str, vault_dir: Path, post_index: dict, *, dry_run: bool = False) -> bool:
     """Convert a single Obsidian markdown file to a Jekyll post.
 
     Returns True if a new file was created, False if skipped.
@@ -107,14 +137,14 @@ def convert_file(filepath: Path, out_dir: Path, category: str, vault_dir: Path, 
 
     # Convert Obsidian syntax
     body = replace_obsidian_images(body, vault_dir)
-    body = strip_wikilinks(body)
+    body = resolve_wikilinks(body, post_index)
 
     new_yaml_str = yaml.dump(yaml_data, default_flow_style=False)
     new_path.write_text(f"---\n{new_yaml_str}---\n{body}")
     return True
 
 
-def sync_folder(vault_dir: Path, vault_subdir: str, out_subdir: str, category: str, *, dry_run: bool = False):
+def sync_folder(vault_dir: Path, vault_subdir: str, out_subdir: str, category: str, post_index: dict, *, dry_run: bool = False):
     """Sync all .md files from a vault subfolder to a Jekyll posts subfolder."""
     in_dir = vault_dir / vault_subdir
     out_dir = Path("_posts") / out_subdir
@@ -133,7 +163,7 @@ def sync_folder(vault_dir: Path, vault_subdir: str, out_subdir: str, category: s
     for filepath in sorted(in_dir.iterdir()):
         if filepath.suffix != ".md":
             continue
-        if convert_file(filepath, out_dir, category, vault_dir, dry_run=dry_run):
+        if convert_file(filepath, out_dir, category, vault_dir, post_index, dry_run=dry_run):
             created += 1
         else:
             skipped += 1
@@ -155,10 +185,12 @@ def main():
 
     assert args.vault_dir.is_dir(), f"Vault directory not found: {args.vault_dir}"
 
+    post_index = build_post_title_index()
+
     for vault_subdir, (out_subdir, category) in SYNC_FOLDERS.items():
         if args.only and out_subdir not in args.only:
             continue
-        sync_folder(args.vault_dir, vault_subdir, out_subdir, category, dry_run=args.dry_run)
+        sync_folder(args.vault_dir, vault_subdir, out_subdir, category, post_index, dry_run=args.dry_run)
 
 
 if __name__ == "__main__":
