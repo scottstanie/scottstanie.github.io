@@ -66,9 +66,12 @@ def resolve_wikilinks(content: str, post_index: dict[str, str]) -> str:
         display = display.lstrip("|")
 
         lookup = target.lower()
-        if lookup in post_index:
-            title, url = post_index[lookup]
-            return f"[{display}]({url})"
+        # Also try stripping date prefix (Obsidian filenames often include dates)
+        lookup_no_date = re.sub(r"^\d{4}-\d{2}-\d{2}\s+", "", lookup)
+        for key in (lookup, lookup_no_date):
+            if key in post_index:
+                title, url = post_index[key]
+                return f"[{display}]({url})"
         return display
 
     # [[link|display text]] and [[link]]
