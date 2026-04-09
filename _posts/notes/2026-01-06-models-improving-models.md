@@ -4,7 +4,7 @@ created: 2026-01-06T07:50
 tags:
 - ai
 - recursion
-title: 2026 - 01 - 06 Models improving models
+title: Models improving models
 ---
 
 I can no longer understand those online who, with high confidence, scoff at the idea of recursive self improvement of AI models. 
@@ -19,8 +19,4 @@ Perhaps they are conflating any "self improvement" with the ["FOOM"](https://www
 
 What happened during this progression? There were some physical changes — enormous data centers had to be built — but most of the difficult work, the work that only a few, highly trained and specialized humans could perform, was all in the digital world: understanding complex math, writing software based on to test ideas algorithms, communicating your new ideas and results to others.
 
-These are all things that frontier models can do. They [note in the Opus 4.6 system](https://thezvi.substack.com/p/claude-opus-46-escalates-things-quickly) card that many of the research tasks to improve from Opus 4.5 to 4.6 were done by Claude. I supposed you could think everything coming out of an AI lab is a lie meant to hype up marketing, but the much simpler explanation, the one that matches my own experience, is that the self-improvement claims are no longer future hype, but happening right now.
-
-
-
-
+These are all things that frontier models can do. They [note in the Opus 4.6 system](https://thezvi.substack.com/p/claude-opus-46-escalates-things-quickly) card that many of the research tasks to improve from Opus 4.5 to 4.6 were done by Claude. I supposed you could think that all statements by AI lab employees, and [related anecdotes](https://x.com/karpathy/status/2031135152349524125), are lies meant to hype up marketing. But the much simpler explanation, the one that matches my own experience, is that the self-improvement claims are no longer future hype, but happening right now.
