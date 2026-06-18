@@ -23,6 +23,8 @@ Conferences
 
 *Staniewicz, S., Stringham, C., Muellerschoen, R., De, S., Farquharson, G. (2026). Operational High-Cadence, Mid-Inclination X-Band InSAR from Capella’s Constellation: Two Years of Displacement Monitoring Results, Fringe Workshop 2026, Jagiellonian University, Kraków, Poland.
 
+Staniewicz, S., Mirzaee, S., & Fattahi, H. (2025). Algorithm Theoretical Basis Document for OPERA Surface Displacement from Sentinel-1 data.
+
 Stringham, C., Staniewicz, S. J., De, S., Farquharson, G. (2026). Capella InSAR Constellation Performance: One Year of Mid-Inclination Operations and Validation. EUSAR 2026; 16th European Conference on Synthetic Aperture Radar.
 
 Bekaert, D., Govorcin, M., Buzzanga, B., Sangha, S., Handwerger, A., Staniewicz, S., ... & Maurer, J. (2026). Surface Displacement Monitoring for Natural and Anthropogenic Hazard Applications: From Tectonics to Urban Subsidence (No. EGU26-22006). Copernicus Meetings.
