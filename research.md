@@ -44,3 +44,8 @@ I presented two talks at the EarthScope 2025 ISCE Short Course:
 ### 2023 FRINGE (University of Leeds, UK)
 
 [Near-real-time estimation of ground displacement time series with InSAR](https://www.youtube.com/live/MucdZ6auOd8?t=3639s)
+
+### 2026 FRINGE (Jagiellonian University, Kraków, Poland)
+
+[Operational High-Cadence, Mid-Inclination X-Band InSAR from Capella’s Constellation: Two Years of Displacement Monitoring Results](https://www.youtube.com/live/Bl1K0oJhPvs?si=LTw64F-bD_zEnPOS&t=3654)
+
