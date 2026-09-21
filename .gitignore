@@ -14,3 +14,7 @@ color_square.py
 scripts/
 *slack-export*
 .ipynb_checkpoints
+
+# Generated CV artifacts (see research/NOTES.md)
+research/*.docx
+research/~$*
