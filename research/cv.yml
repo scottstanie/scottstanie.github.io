@@ -124,9 +124,7 @@ affiliations:
   - Tau Beta Pi
 
 # ---------------------------------------------------------------------------
-# Publications: union of the previous publications-conferences.txt and the
-# Google Docs CV. Sorted newest first. Entries flagged `needs_check: true`
-# had a conflict or gap between the two sources -- see NOTES.md.
+# Publications: union of the previous publications-conferences.txt and the Google Docs CV. 
 # ---------------------------------------------------------------------------
 publications:
 
@@ -206,11 +204,10 @@ publications:
     type: conference
     year: 2025
     oral: true
-    authors: ["Bekaert, B.", "Staniewicz, S.", "Bato, M. G.", "Agram, P.", "..."]
+    authors: ["Bekaert, D.", "Staniewicz, S.", "Bato, M. G.", "Agram, P.", "..."]
     title: "Free and Open-Access OPERA Surface Motion Data over North America: A Geohazard Perspective"
     venue: Living Planet Symposium
     location: Vienna, Austria
-    needs_check: true   # "Bekaert, B." -- likely should be "Bekaert, D."
 
   - key: lps2025_williams
     type: conference
@@ -306,12 +303,11 @@ publications:
   - key: agu2023_isce3
     type: conference
     year: 2023
-    authors: ["Fattahi, H.", "Gunter, G.", "Hawkins, B.", "Burns, R.", "Brancato, V.", "Shiroma, G. H.", "Ghaemi, H.", "Huang, B.", "Jung, J.", "Huang, X.", "Niemoeller, S. C.", "..."]
+    authors: ["Fattahi, H.", "Gunter, G.", "Hawkins, B.", "...", "Staniewicz, S. J.", "..."]
     title: "ISCE3: InSAR Scientific Computing Environment Enhanced Edition"
     venue: Fall Meeting, American Geophysical Union
     abstract_id: G23C-0488
     location: San Francisco, CA
-    needs_check: true   # author list truncated in source; confirm you are a coauthor
 
   - key: fringe2023_psds
     type: conference
@@ -339,7 +335,6 @@ publications:
     venue: IGARSS 2023 - IEEE International Geoscience and Remote Sensing Symposium
     location: Pasadena, CA
     peer_reviewed: false
-    needs_check: true   # no Crossref proceedings record found; presentation-only?
 
   - key: igarss2023_unwrapping
     type: conference
@@ -349,7 +344,6 @@ publications:
     venue: IGARSS 2023 - IEEE International Geoscience and Remote Sensing Symposium
     location: Pasadena, CA
     peer_reviewed: false
-    needs_check: true   # no Crossref proceedings record found; presentation-only?
 
   - key: staniewicz2022_thesis
     type: thesis
@@ -357,7 +351,6 @@ publications:
     authors: ["Staniewicz, S. J."]
     title: Surface Deformation Mapping and Automatic Feature Detection with InSAR
     venue: Ph.D. dissertation, University of Texas at Austin
-    needs_check: true   # added from research/pdfs/; absent from both old sources
 
   - key: horne2022_interpretation
     type: journal

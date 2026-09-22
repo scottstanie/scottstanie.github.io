@@ -7,7 +7,7 @@ scottstaniewicz.com | scott.stanie@gmail.com | Github: scottstanie
 **Staff Radar Engineer** | Capella Space / IonQ, Louisville, CO / San Francisco, CA | 10/2025 – present
 
 - Oversaw product launch and application development of first commercial InSAR offering.
-- Developed real-time/onboard GPU-compatible SAR and InSAR algorithms.
+- Developed real-time/onboard GPU-compatible SAR focusing, InSAR, and AMTI algorithms.
 
 **Signal Analysis Engineer** | NASA Jet Propulsion Laboratory, Pasadena, CA | 06/2022 – 10/2025
 

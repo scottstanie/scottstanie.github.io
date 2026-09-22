@@ -34,12 +34,13 @@ You can read reporting using my InSAR data on the recent implications [from Bloo
 
 ## Research talks available online
 
-### EarthScope 2025 ISCE Short Course
+### EarthScope ISCE Short Course - 2025, 2026
 
-I presented two talks at the EarthScope 2025 ISCE Short Course:
+I presented two talks at the EarthScope 2025 and 2026 ISCE Short Course:
 
 - [InSAR Timeseries Analysis: theory and overview](https://youtu.be/3y65GR5msyA?si=XT7WcR8QNTy6E1P8)
 - [OPERA North America Surface Displacement Products with MintPy](https://youtu.be/2UaE0hcXJRY?si=l25KlKy93NCTnJDc&t=9220), using [`dolphin`](https://github.com/isce-framework/dolphin) for high resolution PS/DS processing
+- [2026 OPERA, Timeseries, and Dolphin processing](https://www.youtube.com/watch?v=HRcABw5TItc)
 
 ### 2023 FRINGE (University of Leeds, UK)
 
