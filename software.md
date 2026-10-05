@@ -15,6 +15,12 @@ This library is the core of software used to generate the OPERA North America Su
 
 ---
 
+### [whirlwind](https://github.com/scottstanie/whirlwind-insar)
+
+A fast, memory-efficient phase unwrapper for InSAR, with benchmarks on Sentinel-1, NISAR, and Capella data in our [paper](https://arxiv.org/abs/2609.36267).
+
+---
+
 ### [sentineleof](https://github.com/scottstanie/sentineleof)
 
 A lightweight library for downloading Sentinel-1 precise orbit files.  
