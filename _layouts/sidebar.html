@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
   <title>{{ page.title }} - {{ site.title }}</title>
+  {% if page.description %}
+  <meta name="description" content="{{ page.description | escape }}">
+  <meta property="og:title" content="{{ page.title | escape }}">
+  <meta property="og:description" content="{{ page.description | escape }}">
+  {% endif %}
   <link rel="stylesheet" href="{{ '/assets/css/highlight-github.css' | relative_url }}" id="light-theme-code-style">
   <link rel="stylesheet" href="{{ '/assets/css/highlight-monokai.css' | relative_url }}" id="dark-theme-code-style"
     disabled>
@@ -19,6 +24,21 @@
     <main class="main-content">
       {% if page.title %}
       <h1 class="page-heading">{{ page.title }}</h1>
+      {% endif %}
+      {% if page.collection == "posts" %}
+      {% assign minutes = content | strip_html | number_of_words | divided_by: 230 | at_least: 1 %}
+      {% case page.category %}
+        {% when "essays" %}{% assign kind = "Essay" %}{% assign anchor = "essays" %}
+        {% when "technical" %}{% assign kind = "Technical" %}{% assign anchor = "technical" %}
+        {% when "notes" %}{% assign kind = "Note" %}{% assign anchor = "notes" %}
+        {% when "til" %}{% assign kind = "TIL" %}{% assign anchor = "notes" %}
+        {% when "reading" %}{% assign kind = "Reading" %}{% assign anchor = "reading" %}
+      {% endcase %}
+      <p class="post-meta">
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+        · <a href="{{ '/articles/' | relative_url }}#{{ anchor }}">{{ kind }}</a>
+        {% unless page.category == "reading" %}· {{ minutes }} min read{% endunless %}
+      </p>
       {% endif %}
       {% if page.has_math %}
       {% include mathjax_support.html %}

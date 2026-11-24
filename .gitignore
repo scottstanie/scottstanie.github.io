@@ -18,3 +18,5 @@ scripts/
 # Generated CV artifacts (see research/NOTES.md)
 research/*.docx
 research/~$*
+
+.cloudflare-token

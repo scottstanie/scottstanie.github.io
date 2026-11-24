@@ -3,8 +3,8 @@
 
 Usage:
     python convert_obsidian.py ~/Documents/Research
-    python convert_obsidian.py ~/Documents/Research --only fleeting
-    python convert_obsidian.py ~/Documents/Research --only til consumed
+    python convert_obsidian.py ~/Documents/Research --only essays
+    python convert_obsidian.py ~/Documents/Research --only til reading
     python convert_obsidian.py ~/Documents/Research --dry-run
 """
 import argparse
@@ -18,9 +18,9 @@ from dateutil.parser import parse
 # Mapping of vault folder name -> (jekyll output subdir, category)
 SYNC_FOLDERS = {
     "TIL": ("til", "til"),
-    "Consumed": ("consumed", "consumed"),
+    "Consumed": ("reading", "reading"),
     "Microposts": ("notes", "notes"),
-    "Posts": ("articles", "articles"),
+    "Posts": ("essays", "essays"),
 }
 
 
@@ -31,10 +31,11 @@ def get_jekyll_filename(yaml_data: dict) -> str:
     safe_title = re.sub(r"^-+|-+$", "", safe_title)
     safe_title = re.sub(r"-{2,}", "-", safe_title)
 
-    created_dt = yaml_data["created"]
-    if isinstance(created_dt, str):
-        created_dt = parse(created_dt)
-    return f"{created_dt.strftime('%Y-%m-%d')}-{safe_title}.md"
+    # `date` (the publish/completion date) overrides `created` when present
+    post_dt = yaml_data.get("date", yaml_data["created"])
+    if isinstance(post_dt, str):
+        post_dt = parse(post_dt)
+    return f"{post_dt.strftime('%Y-%m-%d')}-{safe_title}.md"
 
 
 def build_post_title_index() -> dict[str, str]:
@@ -115,6 +116,9 @@ def convert_file(filepath: Path, out_dir: Path, category: str, vault_dir: Path, 
         print(f"  Skipping {filepath.name} (no YAML front matter)")
         return False
     yaml_data = yaml.safe_load(match.group(1))
+    if yaml_data.get("published") is False:
+        print(f"  Skipping {filepath.name} (published: false)")
+        return False
 
     # Title from filename (Obsidian convention)
     # Strip leading date prefix like "2025-07-11 " if present
@@ -181,7 +185,7 @@ def main():
         "--only",
         nargs="+",
         choices=[v[0] for v in SYNC_FOLDERS.values()],
-        help="Only sync specific categories (e.g. --only fleeting consumed)",
+        help="Only sync specific categories (e.g. --only essays reading)",
     )
     parser.add_argument("--dry-run", action="store_true", help="Show what would be created without writing files")
     args = parser.parse_args()
